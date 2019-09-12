@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Form extends Component {
-  render () {
-      return (
-        <div></div>
-      );
-    }
-}
+const Form = ({
+  children
+}) => {
+	return (
+		<form>
+			{children}
+		</form>
+	);
+};
+
+Form.propTypes = {
+	children: PropTypes.element.isRequired
+};
+
+export { Form };
