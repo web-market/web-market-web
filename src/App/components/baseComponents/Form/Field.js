@@ -1,18 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Field = ({
-	component
-}) => {
-	return (
-		<div>
-			{component}
-		</div>
+const Field = (props) => {
+	const handleChange = (val) => {
+		console.log(val);
+	};
+
+	const Component = React.cloneElement(
+		props.component,
+		{
+			onChange: handleChange,
+			...props
+		}
 	);
-};
 
-Field.propTypes = {
-	component: PropTypes.element.isRequired
+	return (
+		Component
+	);
 };
 
 export { Field };

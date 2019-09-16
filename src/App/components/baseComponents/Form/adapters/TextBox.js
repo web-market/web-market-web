@@ -1,14 +1,12 @@
 import React from 'react';
 import TexBox from '../formFields/TextBox';
 
-const TextBoxAdapter = () => {
-	const handleOnChange = (e) => {
-		console.log(e);
-	};
-
+const TextBoxAdapter = (
+							name
+						) => {
 	return (
 		<TexBox
-			onChange={handleOnChange}
+			name={name}
 		/>
 	);
 };

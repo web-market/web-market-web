@@ -2,17 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Form = ({
-  children
-}) => {
+				children,
+				onSubmit
+			}) => {
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+
+		onSubmit(e);
+	};
+
 	return (
-		<form>
+		<form onSubmit={handleFormSubmit}>
 			{children}
 		</form>
 	);
 };
 
 Form.propTypes = {
-	children: PropTypes.element.isRequired
+	onSubmit: PropTypes.func.isRequired
 };
 
 export { Form };
