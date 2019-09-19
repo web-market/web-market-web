@@ -1,5 +1,8 @@
 import React, { useReducer, useCallback } from 'react';
-import { INIT_FIELDS } from './consts';
+import {
+	INIT_FIELDS,
+	INIT_FORM_NAME
+} from './consts';
 import { isFunction } from '../../../utils';
 
 const ContextForm = React.createContext();
@@ -17,10 +20,10 @@ const reducer = (state, action) => {
 				...state,
 				fields: { ...action.initialFields }
 			};
-		case 'decrement':
+		case INIT_FORM_NAME:
 			return {
 				...state,
-				count: state.count - 1
+				name: action.name
 			};
 		case 'set-color':
 			return {
@@ -48,12 +51,21 @@ function ContextFormProvider (props) {
 		});
 	}, []);
 
-	const initForm = (children) => {
-		console.log(children);
-	};
+	const initFormName = useCallback((name) => {
+		dispatch({
+			type: INIT_FORM_NAME,
+			name
+		});
+	}, []);
+
+
+	const initForm = useCallback(({ children, name }) => {
+		initFields(children);
+		initFormName(name);
+	}, [initFields, initFormName]);
 
 	return (
-		<ContextForm.Provider value={{ ...state, initForm, initFields }}>
+		<ContextForm.Provider value={{ ...state, initForm }}>
 			{props.children}
 		</ContextForm.Provider>
 	);

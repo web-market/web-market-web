@@ -2,11 +2,16 @@ import React, { useEffect, useContext, useMemo } from 'react';
 import { ContextForm } from './FormContext';
 
 const Form = ({ children }) => {
-	const { fields, onSubmit, initFields } = useContext(ContextForm);
+	const { fields, name, onSubmit, initForm } = useContext(ContextForm);
 
 	useEffect(() => {
-			initFields(children);
-	}, [initFields, children]);
+		const initData = {
+			children,
+			name: 'testForm'
+		};
+
+		initForm(initData);
+	}, [initForm, children]);
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
@@ -15,6 +20,7 @@ const Form = ({ children }) => {
 	};
 
 	console.log(fields);
+	console.log(name);
 
 	return (
 		<form onSubmit={handleFormSubmit}>
