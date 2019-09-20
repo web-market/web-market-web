@@ -8,7 +8,7 @@ import { isFunction } from '../../../utils';
 const ContextForm = React.createContext();
 
 const initialState = {
-	name: '',
+	formName: '',
 	fields: [],
 
 };
@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 		case INIT_FORM_NAME:
 			return {
 				...state,
-				name: action.name
+				formName: action.name
 			};
 		case 'set-color':
 			return {

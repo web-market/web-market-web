@@ -10,7 +10,10 @@ class App extends Component {
 
 	render () {
 		return (
-			<Form onSubmit={this.handleSubmit}>
+			<Form
+				name="testForm"
+				onSubmit={this.handleSubmit}
+			>
 				<Field
 					component={TextBox}
 					name="age"
