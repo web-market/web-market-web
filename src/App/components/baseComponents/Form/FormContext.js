@@ -1,7 +1,8 @@
 import React, { useReducer, useCallback } from 'react';
 import {
 	INIT_FIELDS,
-	INIT_FORM_NAME
+	INIT_FORM_NAME,
+	CHANGE_FILED_VALUE
 } from './consts';
 import { isFunction } from '../../../utils';
 
@@ -25,10 +26,10 @@ const reducer = (state, action) => {
 				...state,
 				formName: action.name
 			};
-		case 'set-color':
+		case CHANGE_FILED_VALUE:
 			return {
 				...state,
-				currentColor: action.payload
+				fields: { ...state.fields, ...action.obj }
 			};
 	}
 };
@@ -58,6 +59,12 @@ function ContextFormProvider (props) {
 		});
 	}, []);
 
+	const changeFieldValue = useCallback(obj => {
+		dispatch({
+			type: CHANGE_FILED_VALUE,
+			obj
+		});
+	}, []);
 
 	const initForm = useCallback(({ children, name }) => {
 		initFields(children);
@@ -65,7 +72,7 @@ function ContextFormProvider (props) {
 	}, [initFields, initFormName]);
 
 	return (
-		<ContextForm.Provider value={{ ...state, initForm }}>
+		<ContextForm.Provider value={{ ...state, initForm, changeFieldValue }}>
 			{props.children}
 		</ContextForm.Provider>
 	);

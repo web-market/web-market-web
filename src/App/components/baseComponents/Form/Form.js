@@ -20,7 +20,6 @@ const Form = ({ children, name }) => {
 	};
 
 	console.log(fields);
-	console.log(formName);
 
 	return (
 		<form onSubmit={handleFormSubmit}>

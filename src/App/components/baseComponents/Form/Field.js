@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ContextForm } from './FormContext';
 
 const Field = (props) => {
+	const { name, component } = props;
+	const { changeFieldValue } = useContext(ContextForm);
+
 	const handleChange = (val) => {
-		console.log(val);
+		changeFieldValue({ [name]: val });
 	};
 
 	const Component = React.cloneElement(
-		props.component,
+		component,
 		{
 			onChange: handleChange,
 			...props
