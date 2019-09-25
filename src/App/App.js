@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Form, Field } from './components/baseComponents/Form';
 import TextBox from './components/baseComponents/Form/adapters/TextBox';
+import { required } from './utils/validators';
 
 class App extends Component {
 	handleSubmit = (value) => {
@@ -17,7 +18,7 @@ class App extends Component {
 				<Field
 					component={TextBox}
 					name="age"
-					validate={[]}
+					validate={[required]}
 				/>
 				<Field
 					component={TextBox}

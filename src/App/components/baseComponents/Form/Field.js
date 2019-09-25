@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ContextForm } from './FormContext';
 
+import { isUndefined } from '../../../utils';
+
 const Field = (props) => {
 	const { name, component, validate } = props;
 	const { changeFieldValue, setIsFormValid } = useContext(ContextForm);
@@ -12,10 +14,11 @@ const Field = (props) => {
 	}, [isValid, setIsFormValid]);
 
 	const handleValidate = (val) => {
-		console.log(validate);
-		// if (required) {
-		// 	return val ? setValid(true) : setValid(false);
-		// }
+		if (isUndefined(validate)) return;
+
+		const result = validate.map(f => f(val));
+
+		setValid(!result.includes(false));
 	};
 
 	const handleChange = (val) => {
