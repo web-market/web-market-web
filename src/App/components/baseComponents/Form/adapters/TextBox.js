@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TexBox from '../formFields/TextBox';
 
-const TextBoxAdapter = (
-							name
-						) => {
-	return (
-		<TexBox
-			name={name}
-		/>
-	);
-};
+class TextBoxAdapter extends Component {
+	render () {
+		return (
+			<TexBox
+				{...this.props}
+			/>
+		);
+	}
+}
 
-const TextBox = TextBoxAdapter();
-export default TextBox;
+export default TextBoxAdapter;

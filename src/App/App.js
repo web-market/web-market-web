@@ -17,6 +17,7 @@ class App extends Component {
 				<Field
 					component={TextBox}
 					name="age"
+					validate={[]}
 				/>
 				<Field
 					component={TextBox}

@@ -1,24 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ContextForm } from './FormContext';
 
 const Field = (props) => {
-	const { name, component } = props;
-	const { changeFieldValue } = useContext(ContextForm);
+	const { name, component, validate } = props;
+	const { changeFieldValue, setIsFormValid } = useContext(ContextForm);
+
+	const [isValid, setValid] = useState(true);
+
+	useEffect(() => {
+		setIsFormValid(isValid);
+	}, [isValid, setIsFormValid]);
+
+	const handleValidate = (val) => {
+		console.log(validate);
+		// if (required) {
+		// 	return val ? setValid(true) : setValid(false);
+		// }
+	};
 
 	const handleChange = (val) => {
 		changeFieldValue({ [name]: val });
+
+		handleValidate(val);
 	};
 
-	const Component = React.cloneElement(
-		component,
-		{
-			onChange: handleChange,
-			...props
-		}
-	);
+	const Component = component;
 
 	return (
-		Component
+		<Component
+			isValid={isValid}
+			onChange={handleChange}
+			{...props}
+		/>
 	);
 };
 
