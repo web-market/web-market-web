@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-import { Form, Field } from './components/baseComponents/Form';
-import TextBox from './components/baseComponents/Form/adapters/TextBox';
+import { Form, Field } from './baseComponents/Form';
+import TextBox from './baseComponents/Form/adapters/TextBox';
 import { required } from './utils/validators';
+
+import { ContextFormProvider } from './baseComponents/Form/store/FormContext';
 
 class App extends Component {
 	handleSubmit = (value) => {
@@ -11,21 +13,23 @@ class App extends Component {
 
 	render () {
 		return (
-			<Form
-				name="testForm"
-				onSubmit={this.handleSubmit}
-			>
-				<Field
-					component={TextBox}
-					name="age"
-					validate={[required]}
-				/>
-				<Field
-					component={TextBox}
-					name="city"
-				/>
-				<button type="submit">Submit</button>
-			</Form>
+			<ContextFormProvider>
+				<Form
+					name="testForm"
+					onSubmit={this.handleSubmit}
+				>
+					<Field
+						component={TextBox}
+						name="age"
+						validate={[required]}
+					/>
+					<Field
+						component={TextBox}
+						name="city"
+					/>
+					<button type="submit">Submit</button>
+				</Form>
+			</ContextFormProvider>
 		);
 	}
 }

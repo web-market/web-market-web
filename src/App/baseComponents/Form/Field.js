@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ContextForm } from './FormContext';
+import { ContextForm } from './store/FormContext';
 
-import { isUndefined } from '../../../utils';
+import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate } = props;
