@@ -26,6 +26,7 @@ class App extends Component {
 					<Field
 						component={TextBox}
 						name="city"
+						validate={[required]}
 					/>
 					<button type="submit">Submit</button>
 				</Form>

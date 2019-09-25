@@ -3,15 +3,17 @@ import {
 	INIT_FIELDS,
 	INIT_FORM_NAME,
 	CHANGE_FILED_VALUE,
-	SET_FORM_VALID
+	SET_FORM_VALID,
+	SET_FORM_VALIDATION_RULES
 } from './consts';
-import { isFunction } from '../../../utils';
+import { isFunction, isUndefined } from '../../../utils';
 
 const ContextForm = React.createContext();
 
 const initialState = {
 	formName: '',
 	fields: [],
+	validateRules: [],
 	isValid: true,
 };
 
@@ -37,6 +39,11 @@ const reducer = (state, action) => {
 				...state,
 				isValid: action.valid
 			};
+		case SET_FORM_VALIDATION_RULES:
+			return {
+				...state,
+				validateRules: action.initialValidationRules
+			};
 	}
 };
 
@@ -47,14 +54,46 @@ function ContextFormProvider (props) {
 		const fields = elems.filter((e) => isFunction(e.type));
 
 		const initialFields = {};
+		const initialValidationRules = [];
 
 		fields.forEach(field => {
 			initialFields[field.props.name] = null;
+
+			if (isUndefined(field.props.validate)) return;
+
+			field.props.validate.map(f => initialValidationRules.push(f));
 		});
 
 		dispatch({
 			type: INIT_FIELDS,
 			initialFields
+		});
+	}, []);
+
+	const initValidationRules = useCallback((elems) => {
+		const fields = elems.filter((e) => isFunction(e.type));
+
+		const initialValidationRules = [];
+
+		fields.forEach(field => {
+			if (isUndefined(field.props.validate)) return;
+
+			field.props.validate.forEach(f => {
+				if (initialValidationRules.length === 0) {
+					initialValidationRules.push(f);
+				} else {
+					initialValidationRules.forEach(t => {
+						if (t.name !== f.name) {
+							initialValidationRules.push(f);
+						}
+					});
+				}
+			});
+		});
+
+		dispatch({
+			type: SET_FORM_VALIDATION_RULES,
+			initialValidationRules
 		});
 	}, []);
 
@@ -81,8 +120,9 @@ function ContextFormProvider (props) {
 
 	const initForm = useCallback(({ children, name }) => {
 		initFields(children);
+		initValidationRules(children);
 		initFormName(name);
-	}, [initFields, initFormName]);
+	}, [initValidationRules, initFields, initFormName]);
 
 	return (
 		<ContextForm.Provider value={{

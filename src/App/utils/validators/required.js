@@ -1,3 +1,5 @@
+import { isNull } from '../isNull';
+
 export const required = (value) => {
-	return value.length !== 0;
+	return isNull(value) ? false : value.length !== 0;
 };

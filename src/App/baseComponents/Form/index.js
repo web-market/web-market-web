@@ -1,2 +1,2 @@
-export { FormProviderComponent as Form } from './store/FormProvider';
+export { Form } from './Form';
 export { Field } from './Field';

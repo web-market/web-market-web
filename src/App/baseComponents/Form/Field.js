@@ -16,9 +16,9 @@ const Field = (props) => {
 	const handleValidate = (val) => {
 		if (isUndefined(validate)) return;
 
-		const result = validate.map(f => f(val));
+		const r = validate.map(f => f(val));
 
-		setValid(!result.includes(false));
+		setValid(!r.includes(false));
 	};
 
 	const handleChange = (val) => {
