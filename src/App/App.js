@@ -4,7 +4,7 @@ import { Form, Field } from './baseComponents/Form';
 import TextBox from './baseComponents/Form/adapters/TextBox';
 import { required, number } from './utils/validators';
 
-import { ContextFormProvider } from './baseComponents/Form/store/FormContext';
+import { FormContextProvider } from './baseComponents/Form/store/FormContext';
 
 class App extends Component {
 	handleSubmit = (value) => {
@@ -13,7 +13,7 @@ class App extends Component {
 
 	render () {
 		return (
-			<ContextFormProvider>
+			<FormContextProvider>
 				<Form
 					name="testForm"
 					onSubmit={this.handleSubmit}
@@ -29,7 +29,7 @@ class App extends Component {
 					/>
 					<button type="submit">Submit</button>
 				</Form>
-			</ContextFormProvider>
+			</FormContextProvider>
 		);
 	}
 }

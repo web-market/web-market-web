@@ -13,8 +13,6 @@ const Field = (props) => {
 
 		const r = validate.map(f => f(val));
 
-		console.log(r);
-
 		isValid.current = !r.includes(false);
 	};
 

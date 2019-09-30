@@ -58,7 +58,7 @@ const reducer = (state, action) => {
 	}
 };
 
-function ContextFormProvider (props) {
+function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const initFields = useCallback((elems) => {
@@ -183,4 +183,4 @@ function ContextFormProvider (props) {
 	);
 }
 
-export { ContextForm, ContextFormProvider };
+export { ContextForm, FormContextProvider };
