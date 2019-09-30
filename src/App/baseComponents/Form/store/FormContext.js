@@ -1,3 +1,8 @@
+// SELECTORS
+// fields: array. all registered fields (name, value, validationRules);
+// formValidationRules: array. all validation rules from fields, if exists;
+// isFormValid: bool. is form valid
+
 import React, { useReducer, useCallback } from 'react';
 import {
 	INIT_FIELDS,
@@ -13,8 +18,8 @@ const ContextForm = React.createContext();
 const initialState = {
 	formName: '',
 	fields: [],
-	validateRules: [],
-	isValid: true,
+	formValidationRules: [],
+	isFormValid: true,
 };
 
 const reducer = (state, action) => {
@@ -22,7 +27,7 @@ const reducer = (state, action) => {
 		case INIT_FIELDS:
 			return {
 				...state,
-				fields: { ...action.initialFields }
+				fields: [...action.initialFields]
 			};
 		case INIT_FORM_NAME:
 			return {
@@ -32,17 +37,23 @@ const reducer = (state, action) => {
 		case CHANGE_FILED_VALUE:
 			return {
 				...state,
-				fields: { ...state.fields, ...action.obj }
+				fields: state.fields.map(f => {
+					if (f.name === action.obj.name) {
+						return action.obj;
+					}
+
+					return f;
+				})
 			};
 		case SET_FORM_VALID:
 			return {
 				...state,
-				isValid: action.valid
+				isFormValid: action.valid
 			};
 		case SET_FORM_VALIDATION_RULES:
 			return {
 				...state,
-				validateRules: action.initialValidationRules
+				formValidationRules: action.initialValidationRules
 			};
 	}
 };
@@ -53,21 +64,24 @@ function ContextFormProvider (props) {
 	const initFields = useCallback((elems) => {
 		const fields = elems.filter((e) => isFunction(e.type));
 
-		const initialFields = {};
-		const initialValidationRules = [];
+		const initialFields = [];
 
 		fields.forEach(field => {
-			initialFields[field.props.name] = null;
+			const { name, validate } = field.props;
 
-			if (isUndefined(field.props.validate)) return;
-
-			field.props.validate.map(f => initialValidationRules.push(f));
+			initialFields.push({
+				name,
+				validationRules: validate,
+				value: null
+			});
 		});
 
 		dispatch({
 			type: INIT_FIELDS,
 			initialFields
 		});
+
+		return Promise.resolve(initialFields);
 	}, []);
 
 	const initValidationRules = useCallback((elems) => {
@@ -118,10 +132,31 @@ function ContextFormProvider (props) {
 		});
 	}, []);
 
+	const validateForm = (fields = state.fields) => {
+		const validationResult = fields.map(f => {
+			const { validationRules, value } = f;
+
+			if (isUndefined(validationRules)) return true;
+
+			return validationRules.map(r => {
+				return r(value);
+			});
+		});
+
+		const hasError = validationResult.flat().includes(false);
+
+		return new Promise((resolve, reject) => {
+			setIsFormValid(!hasError);
+
+			return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
+		});
+	};
+
 	const initForm = useCallback(({ children, name }) => {
-		initFields(children);
 		initValidationRules(children);
 		initFormName(name);
+
+		return Promise.resolve(initFields(children));
 	}, [initValidationRules, initFields, initFormName]);
 
 	return (
@@ -129,7 +164,8 @@ function ContextFormProvider (props) {
 			...state,
 			initForm,
 			changeFieldValue,
-			setIsFormValid
+			setIsFormValid,
+			validateForm
 		}}
 		>
 			{props.children}

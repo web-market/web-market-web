@@ -1,9 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { ContextForm } from './store/FormContext';
-import { isUndefined } from '../../utils';
 
 const Form = ({ children, name, onSubmit }) => {
-	const { fields, formName, initForm, validateRules } = useContext(ContextForm);
+	const { fields, initForm, validateForm } = useContext(ContextForm);
 
 	useEffect(() => {
 		const initData = {
@@ -11,29 +10,21 @@ const Form = ({ children, name, onSubmit }) => {
 			name
 		};
 
-		initForm(initData);
+		initForm(initData)
+			.then((fields) => {
+				return validateForm(fields);
+			})
+			.catch(e => { console.log(e); });
 	}, [name, initForm, children]);
-
-	const validate = () => {
-		if (isUndefined(validateRules)) return;
-
-		const r = [];
-
-		validateRules.forEach((f) => {
-			Object.entries(fields).forEach(([key, val]) => {
-				r.push(f(val));
-			});
-		});
-
-		return r.includes(false);
-	};
 
 	const handleFormSubmit = e => {
 		e.preventDefault();
 
-		if (validate()) return;
-
-		onSubmit(fields);
+		validateForm()
+			.then(() => {
+				onSubmit(fields);
+			})
+			.catch(e => { console.log(e); });
 	};
 
 	return (

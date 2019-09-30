@@ -1,17 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ContextForm } from './store/FormContext';
 
 import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate } = props;
-	const { changeFieldValue, setIsFormValid } = useContext(ContextForm);
-
+	const { changeFieldValue } = useContext(ContextForm);
 	const [isValid, setValid] = useState(true);
-
-	useEffect(() => {
-		setIsFormValid(isValid);
-	}, [isValid, setIsFormValid]);
 
 	const handleValidate = (val) => {
 		if (isUndefined(validate)) return;
@@ -21,10 +16,16 @@ const Field = (props) => {
 		setValid(!r.includes(false));
 	};
 
-	const handleChange = (val) => {
-		changeFieldValue({ [name]: val });
+	const handleChange = (value) => {
+		changeFieldValue(
+			{
+				name,
+				validationRules: validate,
+				value
+			}
+		);
 
-		handleValidate(val);
+		handleValidate(value);
 	};
 
 	const Component = component;
