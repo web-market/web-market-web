@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { ContextForm } from './store/FormContext';
 
 const Form = ({ children, name, onSubmit }) => {
-	const { fields, initForm, validateForm } = useContext(ContextForm);
+	const { fields, initForm, isFormValid, validateForm } = useContext(ContextForm);
 
 	useEffect(() => {
 		const initData = {
@@ -26,6 +26,8 @@ const Form = ({ children, name, onSubmit }) => {
 			})
 			.catch(e => { console.log(e); });
 	};
+
+	console.log(fields);
 
 	return (
 		<form onSubmit={handleFormSubmit}>

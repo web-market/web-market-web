@@ -7,7 +7,7 @@ import React, { useReducer, useCallback } from 'react';
 import {
 	INIT_FIELDS,
 	INIT_FORM_NAME,
-	CHANGE_FILED_VALUE,
+	CHANGE_FILED,
 	SET_FORM_VALID,
 	SET_FORM_VALIDATION_RULES
 } from './consts';
@@ -34,7 +34,7 @@ const reducer = (state, action) => {
 				...state,
 				formName: action.name
 			};
-		case CHANGE_FILED_VALUE:
+		case CHANGE_FILED:
 			return {
 				...state,
 				fields: state.fields.map(f => {
@@ -72,7 +72,8 @@ function ContextFormProvider (props) {
 			initialFields.push({
 				name,
 				validationRules: validate,
-				value: null
+				value: null,
+				isValid: true
 			});
 		});
 
@@ -118,9 +119,9 @@ function ContextFormProvider (props) {
 		});
 	}, []);
 
-	const changeFieldValue = useCallback(obj => {
+	const changeField = useCallback(obj => {
 		dispatch({
-			type: CHANGE_FILED_VALUE,
+			type: CHANGE_FILED,
 			obj
 		});
 	}, []);
@@ -134,13 +135,22 @@ function ContextFormProvider (props) {
 
 	const validateForm = (fields = state.fields) => {
 		const validationResult = fields.map(f => {
-			const { validationRules, value } = f;
+			const { validationRules, value, name } = f;
 
 			if (isUndefined(validationRules)) return true;
 
-			return validationRules.map(r => {
+			const intermediateResult = validationRules.map(r => {
 				return r(value);
 			});
+
+			changeField({
+				name,
+				value,
+				validationRules,
+				isValid: !intermediateResult.includes(false)
+			});
+
+			return intermediateResult;
 		});
 
 		const hasError = validationResult.flat().includes(false);
@@ -163,7 +173,7 @@ function ContextFormProvider (props) {
 		<ContextForm.Provider value={{
 			...state,
 			initForm,
-			changeFieldValue,
+			changeField,
 			setIsFormValid,
 			validateForm
 		}}

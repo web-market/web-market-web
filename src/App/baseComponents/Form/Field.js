@@ -1,27 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ContextForm } from './store/FormContext';
 
 import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate } = props;
-	const { changeFieldValue } = useContext(ContextForm);
-	const [isValid, setValid] = useState(true);
+	const { changeField } = useContext(ContextForm);
+	const isValid = useRef(true);
 
 	const handleValidate = (val) => {
 		if (isUndefined(validate)) return;
 
 		const r = validate.map(f => f(val));
 
-		setValid(!r.includes(false));
+		console.log(r);
+
+		isValid.current = !r.includes(false);
 	};
 
 	const handleChange = (value) => {
-		changeFieldValue(
+		changeField(
 			{
 				name,
 				validationRules: validate,
-				value
+				value,
+				isValid: isValid.current
 			}
 		);
 
@@ -32,7 +35,7 @@ const Field = (props) => {
 
 	return (
 		<Component
-			isValid={isValid}
+			isValid={isValid.current}
 			onChange={handleChange}
 			{...props}
 		/>
