@@ -174,7 +174,7 @@ function FormContextProvider (props) {
 			...state,
 			initForm,
 			changeField,
-			setIsFormValid,
+			setIsFormValid, //try not to use
 			validateForm
 		}}
 		>
