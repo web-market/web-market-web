@@ -35,7 +35,7 @@ const Field = (props) => {
 	return (
 		<Component
 			isValid={isValid.current}
-			onChange={handleChange}
+			onFieldChange={handleChange}
 			{...props}
 		/>
 	);
