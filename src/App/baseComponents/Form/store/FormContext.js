@@ -9,7 +9,8 @@ import {
 	INIT_FORM_NAME,
 	CHANGE_FILED,
 	SET_FORM_VALID,
-	SET_FORM_VALIDATION_RULES
+	SET_FORM_VALIDATION_RULES,
+	SET_FORM_VALUES
 } from './consts';
 import { isFunction, isUndefined } from '../../../utils';
 
@@ -19,8 +20,32 @@ const initialState = {
 	formName: '',
 	fields: [],
 	formValidationRules: [],
+	formValues: [],
 	isFormValid: true,
 };
+
+function merge (prevValues, newValues) {
+	const mergeValues = [];
+
+	newValues.forEach(value => {
+		if (prevValues.length === 0) {
+			mergeValues.push(value);
+		} else {
+			prevValues.forEach(prevValue => {
+				const valueKey = Object.keys(value);
+				const prevValueKey = Object.keys(prevValue);
+
+				if (valueKey[0] === prevValueKey[0]) {
+					return mergeValues.push(value);
+				}
+
+				return mergeValues.push(prevValue);
+			});
+		}
+	});
+
+	return [...mergeValues];
+}
 
 const reducer = (state, action) => {
 	switch (action.type) {
@@ -55,13 +80,32 @@ const reducer = (state, action) => {
 				...state,
 				formValidationRules: action.initialValidationRules
 			};
+		case SET_FORM_VALUES:
+			return {
+				...state,
+				formValues: merge(state.formValues, action.formValues)
+			};
 	}
 };
 
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const initFields = useCallback((elems) => {
+
+	const setFormValues = (fields) => {
+		const formValues = fields.map(field => {
+			return {
+				[field.name]: field.value
+			};
+		});
+
+		dispatch({
+			type: SET_FORM_VALUES,
+			formValues
+		});
+	};
+
+	const _initFields = useCallback((elems) => {
 		const fields = elems.filter((e) => isFunction(e.type));
 
 		const initialFields = [];
@@ -76,6 +120,8 @@ function FormContextProvider (props) {
 				isValid: true
 			});
 		});
+
+		setFormValues(initialFields);
 
 		dispatch({
 			type: INIT_FIELDS,
@@ -175,7 +221,6 @@ function FormContextProvider (props) {
 			initForm,
 			changeField,
 			setIsFormValid, //try not to use
-			validateForm
 		}}
 		>
 			{props.children}

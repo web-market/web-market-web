@@ -5,7 +5,7 @@ import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate } = props;
-	const { changeField } = useContext(ContextForm);
+	const { changeField, setFormValues } = useContext(ContextForm);
 	const isValid = useRef(true);
 
 	const handleValidate = (val) => {
@@ -17,16 +17,17 @@ const Field = (props) => {
 	};
 
 	const handleChange = (value) => {
-		changeField(
-			{
-				name,
-				validationRules: validate,
-				value,
-				isValid: isValid.current
-			}
-		);
-
 		handleValidate(value);
+
+		const payload = {
+			name,
+			validationRules: validate,
+			value,
+			isValid: isValid.current
+		};
+
+		changeField(payload);
+		setFormValues([payload]);
 	};
 
 	const Component = component;

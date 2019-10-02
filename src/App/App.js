@@ -8,7 +8,7 @@ import { FormContextProvider } from './baseComponents/Form/store/FormContext';
 
 class App extends Component {
 	handleSubmit = (value) => {
-		console.warn('SUBMITTED');
+		console.log(value);
 	};
 
 	render () {
