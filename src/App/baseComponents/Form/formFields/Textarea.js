@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextArea = ({
+const Textarea = ({
 					onChange,
 					name,
 					placeholder
@@ -15,10 +15,10 @@ const TextArea = ({
 	);
 };
 
-TextArea.propTypes = {
+Textarea.propTypes = {
 	onChange: PropTypes.func,
 	name: PropTypes.string,
 	placeholder: PropTypes.string
 };
 
-export default TextArea;
+export default Textarea;

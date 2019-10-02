@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import TextArea from '../formFields/TextArea';
+import Textarea from '../formFields/TextArea';
 
 class TextareaAdapter extends Component {
 	render () {
 		return (
-			<TextArea
+			<Textarea
 				{...this.props}
 			/>
 		);
