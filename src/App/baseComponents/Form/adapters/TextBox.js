@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TexBox from '../formFields/TextBox';
 
-class TextBoxAdapter extends Component {
+class TextboxAdapter extends Component {
 	render () {
 		return (
 			<TexBox
@@ -11,4 +11,4 @@ class TextBoxAdapter extends Component {
 	}
 }
 
-export default TextBoxAdapter;
+export default TextboxAdapter;

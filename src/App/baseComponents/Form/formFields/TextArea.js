@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Textbox = ({
+const TextArea = ({
 					onChange,
-					name
+					name,
+					placeholder
 				}) => {
 	return (
-		<input
-			type="textbox"
+		<textarea
+			placeholder={placeholder}
 			onChange={e => onChange(e.target.value)}
 			name={name}
 		/>
 	);
 };
 
-Textbox.propTypes = {
+TextArea.propTypes = {
 	onChange: PropTypes.func,
-	name: PropTypes.string
+	name: PropTypes.string,
+	placeholder: PropTypes.string
 };
 
-export default Textbox;
+export default TextArea;

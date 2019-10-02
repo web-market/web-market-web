@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import { Form, Field } from './baseComponents/Form';
-import TextBox from './baseComponents/Form/adapters/TextBox';
+import Textbox from './baseComponents/Form/adapters/Textbox';
+import Textarea from './baseComponents/Form/adapters/Textarea';
 import { required, number } from './utils/validators';
 
 import { FormContextProvider } from './baseComponents/Form/store/FormContext';
@@ -19,13 +20,18 @@ class App extends Component {
 					onSubmit={this.handleSubmit}
 				>
 					<Field
-						component={TextBox}
+						component={Textbox}
 						name="age"
 						validate={[required, number]}
 					/>
 					<Field
-						component={TextBox}
+						component={Textbox}
 						name="city"
+						validate={[required]}
+					/>
+					<Field
+						component={Textarea}
+						name="textarea"
 						validate={[required]}
 					/>
 					<button type="submit">Submit</button>
