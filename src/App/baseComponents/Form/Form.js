@@ -12,7 +12,7 @@ const Form = ({ children, name, onSubmit }) => {
 
 		initForm(initData)
 			.then((fields) => {
-				return validateForm(fields);
+				return validateForm(fields, false);
 			})
 			.catch(e => { console.log(e); });
 	}, [name, initForm, children]);

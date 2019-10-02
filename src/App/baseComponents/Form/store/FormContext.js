@@ -1,7 +1,14 @@
 // SELECTORS
 // fields: array. all registered fields (name, value, validationRules);
 // formValidationRules: array. all validation rules from fields, if exists;
-// isFormValid: bool. is form valid
+// isFormValid: is form valid. bool.
+// formValues: form values. array. { name: value }
+
+// ACTIONS
+//initForm: init form name, fields, validation rules. signature => {name, fields}
+//changeField: change fields metadata. signature => {name, values, isValid, validationRules}
+//validateForm: validate form. call on init and before send. signature => [{field}, {...}]
+//setIsFormValid: manually set form validation state. try no to use. signature => bool
 
 import React, { useReducer, useCallback } from 'react';
 import {
@@ -131,7 +138,7 @@ function FormContextProvider (props) {
 		return Promise.resolve(initialFields);
 	}, []);
 
-	const initValidationRules = useCallback((elems) => {
+	const _initValidationRules = useCallback((elems) => {
 		const fields = elems.filter((e) => isFunction(e.type));
 
 		const initialValidationRules = [];
@@ -158,7 +165,7 @@ function FormContextProvider (props) {
 		});
 	}, []);
 
-	const initFormName = useCallback((name) => {
+	const _initFormName = useCallback((name) => {
 		dispatch({
 			type: INIT_FORM_NAME,
 			name
@@ -179,7 +186,7 @@ function FormContextProvider (props) {
 		});
 	}, []);
 
-	const validateForm = (fields = state.fields) => {
+	const validateForm = (fields = state.fields, getPromise = true) => {
 		const validationResult = fields.map(f => {
 			const { validationRules, value, name } = f;
 
@@ -200,26 +207,29 @@ function FormContextProvider (props) {
 		});
 
 		const hasError = validationResult.flat().includes(false);
+		setIsFormValid(!hasError);
 
-		return new Promise((resolve, reject) => {
-			setIsFormValid(!hasError);
-
-			return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
-		});
+		if (getPromise) {
+			return new Promise((resolve, reject) => {
+				return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
+			});
+		}
 	};
 
 	const initForm = useCallback(({ children, name }) => {
-		initValidationRules(children);
-		initFormName(name);
+		_initValidationRules(children);
+		_initFormName(name);
 
-		return Promise.resolve(initFields(children));
-	}, [initValidationRules, initFields, initFormName]);
+		return Promise.resolve(_initFields(children));
+	}, [_initValidationRules, _initFields, _initFormName]);
 
 	return (
 		<ContextForm.Provider value={{
 			...state,
 			initForm,
 			changeField,
+			validateForm,
+			setFormValues,
 			setIsFormValid, //try not to use
 		}}
 		>
