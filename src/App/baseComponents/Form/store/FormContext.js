@@ -20,6 +20,7 @@ import {
 	SET_FORM_VALUES
 } from './consts';
 import { isFunction, isUndefined } from '../../../utils';
+import { merge } from './utils';
 
 const ContextForm = React.createContext();
 
@@ -30,29 +31,6 @@ const initialState = {
 	formValues: [],
 	isFormValid: true,
 };
-
-function merge (prevValues, newValues) {
-	const mergeValues = [];
-
-	newValues.forEach(value => {
-		if (prevValues.length === 0) {
-			mergeValues.push(value);
-		} else {
-			prevValues.forEach(prevValue => {
-				const valueKey = Object.keys(value);
-				const prevValueKey = Object.keys(prevValue);
-
-				if (valueKey[0] === prevValueKey[0]) {
-					return mergeValues.push(value);
-				}
-
-				return mergeValues.push(prevValue);
-			});
-		}
-	});
-
-	return [...mergeValues];
-}
 
 const reducer = (state, action) => {
 	switch (action.type) {
