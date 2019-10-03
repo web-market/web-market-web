@@ -12,7 +12,6 @@ export const DevForm = () => {
 				component={Textbox}
 				name="age"
 			/>
-
 		</Form>
 	);
 };

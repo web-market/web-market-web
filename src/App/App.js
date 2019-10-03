@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import { FormContextProvider } from './baseComponents/Form/store/FormContext';
 
-import Sandbox from './devComponent/Sandbox';
+import Sandbox from './devComponents/Sandbox';
 
 class App extends Component {
 	render () {
