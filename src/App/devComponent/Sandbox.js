@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
-import Dropdown from '../baseComponents/Form/formFields/Dropdown';
-import { Form, Field } from '../baseComponents/Form';
-import Textbox from '../baseComponents/Form/adapters/Textbox';
+import { DevDropdown, DevForm } from './components';
 
 class Sandbox extends Component {
 	render () {
 		return (
 			<>
-			<Form
-				name="testForm"
-			>
-				<Field
-					component={Textbox}
-					name="age"
-				/>
-
-			</Form>
-			<Dropdown />
+				<nav>
+					<ul>
+						<li>
+							<Link to="/sandbox/from">From</Link>
+						</li>
+						<li>
+							<Link to="/sandbox/dropdown">Dropdown</Link>
+						</li>
+					</ul>
+				</nav>
+				<Switch>
+					<Route path="/sandbox/from" component={DevForm} />
+					<Route path="/sandbox/dropdown" component={DevDropdown} />
+				</Switch>
 			</>
 		);
 	}

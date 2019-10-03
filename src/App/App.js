@@ -22,12 +22,8 @@ class App extends Component {
 							</ul>
 						</nav>
 						<Switch>
-							<Route path="/sandbox">
-								<Sandbox />
-							</Route>
-							<Route path="/">
-								<div>main page</div>
-							</Route>
+							<Route path="/sandbox" component={Sandbox} />
+							<Route path="/" component={() => { return (<div>main page</div>); }} />
 						</Switch>
 					</>
 				</Router>
