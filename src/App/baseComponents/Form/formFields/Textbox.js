@@ -22,6 +22,10 @@ const Textbox = ({
 	);
 };
 
+Textbox.defaultProps = {
+	onChange: () => {}
+};
+
 Textbox.propTypes = {
 	onFieldChange: PropTypes.func,
 	onChange: PropTypes.func,

@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
-
-import { Form, Field } from './baseComponents/Form';
-import Textbox from './baseComponents/Form/adapters/Textbox';
-import Textarea from './baseComponents/Form/adapters/Textarea';
-import Dropdown from './baseComponents/Form/formFields/Dropdown';
-import { required, number } from './utils/validators';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import { FormContextProvider } from './baseComponents/Form/store/FormContext';
 
-class App extends Component {
-	handleSubmit = (value) => {
-		console.log(value);
-	};
+import Sandbox from './devComponent/Sandbox';
 
+class App extends Component {
 	render () {
 		return (
 			<FormContextProvider>
-				<Form
-					name="testForm"
-					onSubmit={this.handleSubmit}
-				>
-					<Field
-						component={Textbox}
-						name="age"
-						validate={[required, number]}
-					/>
-					<Field
-						component={Textbox}
-						name="city"
-						validate={[required]}
-					/>
-					<Field
-						component={Textarea}
-						name="textarea"
-						validate={[required]}
-					/>
-					<Dropdown />
-					<button type="submit">Submit</button>
-				</Form>
+				<Router>
+					<>
+						<nav>
+							<ul>
+								<li>
+									<Link to="/sandbox">Sandbox</Link>
+								</li>
+								<li>
+									<Link to="/">main page</Link>
+								</li>
+							</ul>
+						</nav>
+						<Switch>
+							<Route path="/sandbox">
+								<Sandbox />
+							</Route>
+							<Route path="/">
+								<div>main page</div>
+							</Route>
+						</Switch>
+					</>
+				</Router>
 			</FormContextProvider>
 		);
 	}

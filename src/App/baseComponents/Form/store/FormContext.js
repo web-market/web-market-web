@@ -195,10 +195,12 @@ function FormContextProvider (props) {
 	};
 
 	const initForm = useCallback(({ children, name }) => {
-		_initValidationRules(children);
+		const childrenArray = Array.isArray(children) ? children : new Array(children);
+
+		_initValidationRules(childrenArray);
 		_initFormName(name);
 
-		return Promise.resolve(_initFields(children));
+		return Promise.resolve(_initFields(childrenArray));
 	}, [_initValidationRules, _initFields, _initFormName]);
 
 	return (
