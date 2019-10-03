@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Form, Field } from './baseComponents/Form';
 import Textbox from './baseComponents/Form/adapters/Textbox';
 import Textarea from './baseComponents/Form/adapters/Textarea';
+import Dropdown from './baseComponents/Form/formFields/Dropdown';
 import { required, number } from './utils/validators';
 
 import { FormContextProvider } from './baseComponents/Form/store/FormContext';
@@ -34,6 +35,7 @@ class App extends Component {
 						name="textarea"
 						validate={[required]}
 					/>
+					<Dropdown />
 					<button type="submit">Submit</button>
 				</Form>
 			</FormContextProvider>
