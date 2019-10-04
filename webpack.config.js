@@ -29,6 +29,11 @@ module.exports = {
 				use: ['babel-loader']
 			},
 			{
+				test: /\.jsx$/,
+				exclude: /node_modules/,
+				use: ['babel-loader']
+			},
+			{
 				test: /\.s[ac]ss$/i,
 				use: [
 					isDevelopment ? MiniCssExtractPlugin.loader : 'style-loader',
