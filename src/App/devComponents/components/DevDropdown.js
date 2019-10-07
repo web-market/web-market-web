@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '../../baseComponents/Form/Fields/Dropdown';
+import Dropdown from '../../baseComponents/Dropdown';
 
 export const DevDropdown = () => {
 	return (
