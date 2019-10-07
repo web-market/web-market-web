@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TexBox from '../formFields/TextBox';
+import TexBox from '../Fields/TextBox';
 
 class TextboxAdapter extends Component {
 	render () {

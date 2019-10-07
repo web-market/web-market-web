@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Textarea from '../formFields/TextArea';
+import Textarea from '../Fields/TextArea';
 
 class TextareaAdapter extends Component {
 	render () {

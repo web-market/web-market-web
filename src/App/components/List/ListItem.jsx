@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+import styles from './styles/index.scss';
+
 const ListItem = ({
 	link,
 	title,
-	component
+	component,
+	className
 }) => {
+	const componentClassName = classNames(
+		styles.listItem,
+		className
+	);
+
 	const getItemContent = () => {
 		if (link) {
 			return (
@@ -17,7 +26,7 @@ const ListItem = ({
 	};
 
 	return (
-		<li>{getItemContent()}</li>
+		<li className={componentClassName}>{getItemContent()}</li>
 	);
 };
 
@@ -25,6 +34,7 @@ ListItem.propTypes = {
 	link: PropTypes.string,
 	title: PropTypes.string,
 	component: PropTypes.object,
+	className: PropTypes.string,
 };
 
 export { ListItem };

@@ -1,15 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//TODO: add styles for list component
-const List = ({ children }) => {
+import classNames from 'classnames';
+import styles from './styles/index.scss';
+
+const List = ({
+	children,
+	inline,
+	className
+}) => {
+	const componentClassName = classNames(
+		styles.list,
+		{
+			[styles.list_inline]: inline,
+		},
+		className
+	);
+
 	return (
-		<ul>{children}</ul>
+		<ul className={componentClassName}>{children}</ul>
 	);
 };
 
+List.defaultProps = {
+	inline: true
+};
+
 List.propTypes = {
-	children: PropTypes.array.isRequired
+	children: PropTypes.array.isRequired,
+	inline: PropTypes.bool,
+	className: PropTypes.string
 };
 
 export { List };
