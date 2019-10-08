@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
-import { List, ListItem } from '../components/List';
+import { List, ListItem } from '../baseComponents/List';
 import { DevDropdown, DevForm } from './components';
 
 class Sandbox extends Component {

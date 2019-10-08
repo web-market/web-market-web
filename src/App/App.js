@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Sandbox from './devComponents/Sandbox';
-import { List, ListItem } from './components/List';
+import { List, ListItem } from './baseComponents/List';
 
 import styles from './styles/index.scss';
 
