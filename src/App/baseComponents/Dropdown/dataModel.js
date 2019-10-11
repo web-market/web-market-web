@@ -1,16 +1,64 @@
 const data = [
 	{
-		name: 'Mr. Anderson',
-		value: 13
+		value: 'Mr. Anderson',
+		id: 1215632
 	},
 	{
-		name: 'Agent Lee',
-		value: 1233
+		value: 'Agent Lee',
+		id: 1233
 	},
 	{
-		name: 'Gordon Freeman',
-		value: 13
+		value: 'Gordon Freeman',
+		id: 13263
+	},
+	{
+		value: 'Mr. Anderson',
+		id: 13423
+	},
+	{
+		value: 'Agent Lee',
+		id: 12333
+	},
+	{
+		value: 'Gordon Freeman',
+		id: 15
+	},
+	{
+		value: 'Mr. Anderson',
+		id: 3243
+	},
+	{
+		value: 'Agent Lee',
+		id: 342
+	},
+	{
+		value: 'Gordon Freeman',
+		id: 16323
+	},
+	{
+		value: 'Mr. Anderson',
+		id: 15216
+	},
+	{
+		value: 'Agent Lee',
+		id: 12421
+	},
+	{
+		value: 'Gordon Freeman',
+		id: 1523
+	},
+	{
+		value: 'Mr. Anderson',
+		id: 111
+	},
+	{
+		value: 'Agent Lee',
+		id: 1243
+	},
+	{
+		value: 'Gordon Freeman',
+		id: 153
 	}
 ];
 
-export default { data };
+export default data;

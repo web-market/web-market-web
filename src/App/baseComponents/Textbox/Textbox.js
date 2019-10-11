@@ -33,4 +33,4 @@ Textbox.propTypes = {
 	value: PropTypes.string
 };
 
-export default Textbox;
+export { Textbox };

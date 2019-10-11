@@ -9,7 +9,7 @@ const Icon = ({ width, height, icon, color, className }) => {
 			className={className}
 			height={height}
 			width={width}
-			viewBox={`0 0 ${width} ${height}`}
+			viewBox="0 0 16 8"
 		>
 			<path d={icon} fill={color} />
 		</svg>

@@ -4,7 +4,6 @@ import { Form } from './Form';
 import { FormContextProvider } from './store/FormContext';
 
 const FromProvider = (props) => {
-	console.log(props);
 	return (
 		<FormContextProvider>
 			<Form {...props} />
