@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import styles from './styles/index.scss';
 
 const GridLayoutRow = ({ children, grid, gapColumn, baseGrid }) => {
+	const componentClassName = classNames(
+		styles.gridBox
+	);
+
 	const isGapDimension = (dimension) => {
 		return dimension.split('_').length > 1;
 	};
 
 	const getGap = (gridProps) => { // toDo: refactoring
 		return gridProps.split('_')[1];
-	};
-
-	const getGrid = () => {
-		return {
-			display: 'grid',
-		};
 	};
 
 	const getBaseGrid = () => {
@@ -95,7 +95,7 @@ const GridLayoutRow = ({ children, grid, gapColumn, baseGrid }) => {
 	// }
 	// return gridRow;
 	return (
-		<div style={getGrid()}>
+		<div className={componentClassName}>
 			{
 				children.map((child, index) => {
 					return <div style={gridItemsStyles[index]}>{child}</div>
