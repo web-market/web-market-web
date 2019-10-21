@@ -7,10 +7,10 @@ export const DevGridLayout = () => {
 	return (
 		<GridLayout>
 			<GridLayoutRow
-				grid="8-offset_2-4"
+				grid="offset_1-4-offset_2-4"
 				gapColumn={2}
 			>
-				<Padding p={2} dimension={'em'}>
+				<Padding p={2}>
 					<div>GridRow</div>
 				</Padding>
 
