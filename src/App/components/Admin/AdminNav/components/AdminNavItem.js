@@ -1,27 +1,36 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 
 import classNames from 'classnames';
 import styles from '../styles/index.scss';
 import { Icon } from '../../../../baseComponents/Icon/Icon';
-import { goods } from '../../../../icons/icons';
+import { COLORS } from '../../../../styles/baseColors';
 
-const AdminNavItem = () => {
+const AdminNavItem = ({ icon, label }) => {
 	const componentClassName = classNames(
 		styles.adminNavItem
 	);
 
 	return (
-		<div className={componentClassName}>
-			<Icon
-				icon={goods}
-			/>
-		</div>
+		<PaddingBox vrTiny>
+			<div className={componentClassName}>
+				<Icon
+					icon={icon}
+					color={COLORS.SECONDARY}
+				/>
+				<div className={styles.adminNavItem_label}>{ label }</div>
+			</div>
+		</PaddingBox>
 	);
 };
 
-// NAME.defaultProps = {};
+AdminNavItem.defaultProps = {};
 
-// NAME.propTypes = {};
+AdminNavItem.propTypes = {
+	icon: PropTypes.string,
+	label: PropTypes.string
+};
 
 export { AdminNavItem };

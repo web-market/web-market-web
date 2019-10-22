@@ -7,6 +7,8 @@ import { AdminNavItem } from './AdminNavItem';
 import classNames from 'classnames';
 import styles from '../styles/index.scss';
 
+import { goods, statistic } from '../../../../icons/icons';
+
 const AdminNavItemList = () => {
 	const componentClassName = classNames(
 		styles.adminNavItemList
@@ -16,7 +18,14 @@ const AdminNavItemList = () => {
 		<div className={componentClassName}>
 			<PaddingBox vrTiny>
 				<>
-					<AdminNavItem />
+					<AdminNavItem
+						icon={goods}
+						label="!!!Продукты"
+					/>
+					<AdminNavItem
+						icon={statistic}
+						label="!!!Статистика"
+					/>
 				</>
 			</PaddingBox>
 		</div>

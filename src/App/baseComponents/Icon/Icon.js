@@ -3,19 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { COLORS } from '../../styles/baseColors';
 
+import styles from './styles/index.scss';
+import classNames from 'classnames';
+
 const Icon = ({ icon, color, className }) => {
+	const componentClassName = classNames(
+		styles.icon,
+		className
+	);
+
 	return (
 		<div
-			className={className}
-			style={{
-				width: 18,
-				height: 18
-			}}
+			className={componentClassName}
 		>
 			<svg
-				style={{
-					verticalAlign: 'bottom'
-				}}
+				className={styles.icon_svg}
 				viewBox="0 0 24 24"
 			>
 				<path d={icon} fill={color} />
