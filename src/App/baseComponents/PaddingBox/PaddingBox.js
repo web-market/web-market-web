@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import styles from './styles';
+import styles from './styles/index.scss';
 
 const PaddingBox = ({ children,
                         tiny,
