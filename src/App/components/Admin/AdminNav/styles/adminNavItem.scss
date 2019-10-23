@@ -1,0 +1,15 @@
+.adminNavItem {
+	display: flex;
+	color: $secondary;
+	padding: 8px;
+}
+
+.adminNavItem:hover {
+	cursor: pointer;
+	color: $info;
+	background-color: #E3F2FD;
+}
+
+.adminNavItem_label {
+	margin-left: 32px;
+}

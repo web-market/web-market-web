@@ -1,0 +1,13 @@
+.dropdownItem {
+	padding: 8px 1em 8px 1em;
+}
+
+.dropdownItem:hover {
+	background-color: $light;
+	cursor: pointer;
+}
+
+.dropdownItem_placeholder {
+	font-style: italic;
+	color: $fieldIcon;
+}

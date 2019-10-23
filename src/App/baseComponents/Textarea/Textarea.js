@@ -21,4 +21,4 @@ Textarea.propTypes = {
 	placeholder: PropTypes.string
 };
 
-export default Textarea;
+export { Textarea };

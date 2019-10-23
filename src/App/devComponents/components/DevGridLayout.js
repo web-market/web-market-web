@@ -1,7 +1,6 @@
 import React from 'react';
 
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
-import { Padding } from '../../baseComponents/Padding';
 
 export const DevGridLayout = () => {
 	return (
@@ -10,11 +9,8 @@ export const DevGridLayout = () => {
 				grid="offset_1-4-offset_2-4"
 				gapColumn={2}
 			>
-				<Padding p={2}>
-					<div>GridRow</div>
-				</Padding>
-
-				<div>GridRow1</div>
+    	  <div>GridRow1</div>
+				<div>GridRow2</div>
 			</GridLayoutRow>
 		</GridLayout>
 	);
