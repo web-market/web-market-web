@@ -7,7 +7,7 @@ import { AdminNavItem } from './AdminNavItem';
 import classNames from 'classnames';
 import styles from '../styles/index.scss';
 
-import { goods, statistic } from '../../../../icons/icons';
+import { mainNavItem } from '../store/staticData';
 
 const AdminNavItemList = () => {
 	const componentClassName = classNames(
@@ -18,14 +18,17 @@ const AdminNavItemList = () => {
 		<div className={componentClassName}>
 			<PaddingBox vrTiny>
 				<>
-					<AdminNavItem
-						icon={goods}
-						label="!!!Продукты"
-					/>
-					<AdminNavItem
-						icon={statistic}
-						label="!!!Статистика"
-					/>
+					{
+						mainNavItem.map(item => {
+							return (
+								<AdminNavItem
+									key={item.label}
+									icon={item.icon}
+									label={item.label}
+								/>
+							);
+						})
+					}
 				</>
 			</PaddingBox>
 		</div>
