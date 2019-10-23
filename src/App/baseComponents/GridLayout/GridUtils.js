@@ -1,9 +1,12 @@
-const isGapDimension = dimension => dimension.split('_').length > 1;
-const getGap = gridProps => gridProps.split('_')[1];
+import { GAP, COL, BASE_GRID_MODEL, DISPLAY_GRID } from './consts';
+
 export const getGridItems = grid => {
+	const hasGap = dimension => dimension.split('_').length > 1;
+	const getGap = gridProps => gridProps.split('_')[1];
+
     if (grid.length > 0) {
         return grid.split('-').reduce((propsObj, gridProps) => {
-            if (isGapDimension(gridProps)) {
+            if (hasGap(gridProps)) {
                 propsObj.push({
                     gap: Number(getGap(gridProps)),
                 });
@@ -20,14 +23,14 @@ export const getGridItems = grid => {
 
 export const getGridItemsStyles = gridItems => {
     const gridStyles = [];
-    for (let i = 0, counter = 1; i < gridItems.length; i++) {
-        if (Object.keys(gridItems[i])[0] === 'col') {
+    for (let i = 0, counter = 1; i < gridItems.length; i += 1) {
+        if (Object.keys(gridItems[i])[0] === COL) {
             gridStyles.push({
                 gridColumnStart: counter,
                 gridColumnEnd: counter + gridItems[i].col,
             });
             counter += gridItems[i].col;
-        } else if (Object.keys(gridItems[i])[0] === 'gap') {
+        } else if (Object.keys(gridItems[i])[0] === GAP) {
             counter += gridItems[i].gap;
         }
     }
@@ -36,9 +39,9 @@ export const getGridItemsStyles = gridItems => {
 
 export const getBaseGridStyles = gapColumn => {
     return {
-        display: 'grid',
+        display: DISPLAY_GRID,
         gridColumnGap: `${gapColumn}em`,
-        gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+        gridTemplateColumns: BASE_GRID_MODEL,
     };
 };
 
