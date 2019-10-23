@@ -6,10 +6,11 @@ export const DevGridLayout = () => {
 	return (
 		<GridLayout>
 			<GridLayoutRow
-				grid="8-offset_2-4"
+				grid="offset_1-6-offset_2-4"
 				gapColumn={2}
 			>
-				<div>GridRow1</div>
+    	  		<div>GridRow1</div>
+				<div>GridRow2</div>
 			</GridLayoutRow>
 		</GridLayout>
 	);

@@ -5,16 +5,11 @@ import classNames from 'classnames';
 import styles from './styles/index.scss';
 
 const PaddingBox = ({ children,
-                        tiny,
-                        small,
-                        normal,
-                        large,
-                        vrTiny,
-                        hrTiny,
-                        tTiny,
-                        rTiny,
-                        bTiny,
-                        lTiny,
+                        tiny, small, normal, large,
+                        vrTiny, hrTiny, tTiny, rTiny, bTiny, lTiny,
+                        vrSmall, hrSmall, tSmall, rSmall, bSmall, lSmall,
+                        vrNormal, hrNormal, tNormal, rNormal, bNormal, lNormal,
+                        vrLarge, hrLarge, tLarge, rLarge, bLarge, lLarge
 }) => {
     const componentClassName = classNames(
         {
@@ -29,6 +24,27 @@ const PaddingBox = ({ children,
             [styles.padding_rTiny]: rTiny,
             [styles.padding_bTiny]: bTiny,
             [styles.padding_lTiny]: lTiny,
+
+            [styles.padding_vrSmall]: vrSmall,
+            [styles.padding_hrSmall]: hrSmall,
+            [styles.padding_tSmall]: tSmall,
+            [styles.padding_rSmall]: rSmall,
+            [styles.padding_bSmall]: bSmall,
+            [styles.padding_lSmall]: lSmall,
+
+            [styles.padding_vrNormal]: vrNormal,
+            [styles.padding_hrNormal]: hrNormal,
+            [styles.padding_tNormal]: tNormal,
+            [styles.padding_rNormal]: rNormal,
+            [styles.padding_bNormal]: bNormal,
+            [styles.padding_lNormal]: lNormal,
+
+            [styles.padding_vrLarge]: vrLarge,
+            [styles.padding_hrLarge]: hrLarge,
+            [styles.padding_tLarge]: tLarge,
+            [styles.padding_rLarge]: rLarge,
+            [styles.padding_bLarge]: bLarge,
+            [styles.padding_lLarge]: lLarge,
         }
     );
 
