@@ -6,11 +6,13 @@ import { COLORS } from '../../styles/baseColors';
 import styles from './styles/index.scss';
 import classNames from 'classnames';
 
-const Icon = ({ icon, color, className }) => {
+const Icon = ({ icon, color, className, onHover, onHoverColor }) => {
 	const componentClassName = classNames(
 		styles.icon,
 		className
 	);
+
+	const iconColor = onHover ? onHoverColor : color;
 
 	return (
 		<div
@@ -20,7 +22,7 @@ const Icon = ({ icon, color, className }) => {
 				className={styles.icon_svg}
 				viewBox="0 0 24 24"
 			>
-				<path d={icon} fill={color} />
+				<path d={icon} fill={iconColor} />
 			</svg>
 		</div>
 	);
@@ -28,13 +30,15 @@ const Icon = ({ icon, color, className }) => {
 
 Icon.defaultProps = {
 	color: COLORS.FIELD_ICON,
-	className: ''
+	className: '',
+	onHover: false
 };
 
 Icon.propTypes = {
 	icon: PropTypes.string.isRequired,
 	color: PropTypes.string,
 	className: PropTypes.string,
+	onHover: PropTypes.bool,
 };
 
 export { Icon };
