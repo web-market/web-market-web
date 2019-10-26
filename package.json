@@ -1,6 +1,6 @@
 {
   "name": "webmarket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webmarke paltform",
   "main": "index.js",
   "scripts": {
