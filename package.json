@@ -5,16 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode development --open --hot",
-    "start": "cross-env NODE_ENV=prod webpack --mode production",
-    "eslint": " eslint src"
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --mode development --open --hot",
+    "build": "cross-env NODE_ENV=prod webpack --mode production && mv build ../public",
+    "eslint": "eslint src"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/web-market/webmarket-web.git"
   },
   "author": "dKostreba",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/web-market/webmarket-web/issues"
   },
