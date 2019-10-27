@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import TexBox from '../../TextBox';
+import Texbox from '../../Textbox';
 
 class TextboxAdapter extends Component {
 	render () {
 		return (
-			<TexBox
+			<Texbox
 				{...this.props}
 			/>
 		);
