@@ -16,7 +16,7 @@ const AdminNavItem = ({ icon, label }) => {
 	);
 
 	return (
-		<PaddingBox vrTiny>
+		<PaddingBox ultraVrTiny>
 			<div
 				className={componentClassName}
 				onMouseEnter={() => setHover(true)}

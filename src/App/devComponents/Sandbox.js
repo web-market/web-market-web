@@ -5,7 +5,8 @@ import { List, ListItem } from '../baseComponents/List';
 import {
 	DevDropdown,
 	DevForm,
-	DevGridLayout
+	DevGridLayout,
+	DevCollapser
 } from './components';
 
 class Sandbox extends Component {
@@ -23,12 +24,16 @@ class Sandbox extends Component {
 						<ListItem
 							component={<Link to="/sandbox/gridlayout">GridLayout</Link>}
 						/>
+						<ListItem
+							component={<Link to="/sandbox/collapser">Collapser</Link>}
+						/>
 					</List>
 				</div>
 				<Switch>
 					<Route path="/sandbox/from" component={DevForm} />
 					<Route path="/sandbox/dropdown" component={DevDropdown} />
 					<Route path="/sandbox/gridlayout" component={DevGridLayout} />
+					<Route path="/sandbox/collapser" component={DevCollapser} />
 				</Switch>
 			</>
 		);
