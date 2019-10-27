@@ -11,6 +11,7 @@ import { chevronDown, chevronUp } from '../../icons/icons';
 
 import data from './dataModel';
 import classNames from 'classnames';
+import { COLORS } from '../../styles/baseColors';
 
 const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 	const [open, setOpen] = useState(false);
@@ -55,6 +56,7 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 				<Icon
 					className={styles.dropdown_icon}
 					icon={open ? chevronUp : chevronDown}
+					color={COLORS.FIELD_ICON}
 				/>
 			</div>
 			<div className={dropDownContainer}>

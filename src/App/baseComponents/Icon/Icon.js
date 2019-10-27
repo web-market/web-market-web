@@ -19,7 +19,6 @@ const Icon = ({ icon, color, className, onHover, onHoverColor }) => {
 			className={componentClassName}
 		>
 			<svg
-				className={styles.icon_svg}
 				viewBox="0 0 24 24"
 			>
 				<path d={icon} fill={iconColor} />
@@ -29,7 +28,7 @@ const Icon = ({ icon, color, className, onHover, onHoverColor }) => {
 };
 
 Icon.defaultProps = {
-	color: COLORS.FIELD_ICON,
+	color: COLORS.DARK,
 	className: '',
 	onHover: false
 };
