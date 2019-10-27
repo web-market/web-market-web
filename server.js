@@ -2,19 +2,19 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static(path.join(__dirname) + '/public'));
-app.use("/styles", express.static(__dirname));
-app.use("/images", express.static(__dirname + '/images'));
-app.use("/scripts", express.static(__dirname + '/scripts'));
+app.use(express.static(path.join(__dirname + '/src')));
+app.use('/styles', express.static(__dirname));
+app.use('/images', express.static(__dirname + '/images'));
+app.use('/scripts', express.static(__dirname + '/scripts'));
 
 // viewed at based directory http://localhost:8080/
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + 'public/index.html'));
+    res.sendFile(path.join(__dirname + 'src/index.html'));
 });
 
 // add other routes below
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname + 'public/about.html'));
+    res.sendFile(path.join(__dirname + 'src/about.html'));
 });
 
 const PORT = process.env.PORT || 5000;
