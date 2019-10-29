@@ -6,21 +6,20 @@ const isDevelopment = process.env.NODE_ENV !== 'prod';
 
 module.exports = {
 	devtool: 'inline-source-map',
-	entry: './src/index.js',
-	output: {
-		path: path.join(__dirname, '/public'),
-		filename: isDevelopment ? '[name].js' : '[name].[hash].js',
-		publicPath: '/'
-	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
 		}),
 		new MiniCssExtractPlugin({
-			filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
 			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-		})
+		}),
 	],
+	entry: './src/index.js',
+	output: {
+		path: path.join(__dirname, 'dist'),
+		filename: isDevelopment ? '[name].js' : '[name].[hash].js'
+	},
 	module: {
 		rules: [
 			{
@@ -36,7 +35,7 @@ module.exports = {
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-					isDevelopment ? MiniCssExtractPlugin.loader : 'style-loader',
+					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
