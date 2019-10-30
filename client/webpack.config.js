@@ -13,13 +13,13 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
 			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-			publicPath: isDevelopment ? '/' : '',
 		}),
 	],
 	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: isDevelopment ? '[name].js' : '[name].[hash].js'
+		filename: isDevelopment ? '[name].js' : '[name].[hash].js',
+		publicPath: isDevelopment ? '/' : '',
 	},
 	module: {
 		rules: [
@@ -36,7 +36,7 @@ module.exports = {
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-					isDevelopment ? 'style-loader' :MiniCssExtractPlugin.loader,
+					isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
