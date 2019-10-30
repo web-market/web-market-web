@@ -12,7 +12,8 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
-			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+			publicPath: isDevelopment ? '/' : '',
 		}),
 	],
 	entry: './src/index.js',
@@ -35,7 +36,7 @@ module.exports = {
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-					MiniCssExtractPlugin.loader,
+					isDevelopment ? 'style-loader' :MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
