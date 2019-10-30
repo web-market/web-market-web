@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons/icons';
 
-import classNames from 'classnames';
 import styles from './styles/index.scss';
 
 const Collapser = ({ label, open, content }) => {
 	const [isOpen, setIsOpen] = useState(open);
+	const [height, setheight] = useState(null);
+	const collpserContentRef = useRef(content.ref);
 
 	const setOpen = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const componentCollapserContentClassName = classNames(
-		{
-			[styles.collapser_content__close]: !isOpen,
-			[styles.collapser_content__open]: isOpen
-		},
-		styles.collapser_content
-	);
+	useEffect(() => {
+		isOpen ? setheight(collpserContentRef.current.offsetHeight) : setheight(0);
+	});
 
 	return (
 		<>
@@ -34,9 +31,17 @@ const Collapser = ({ label, open, content }) => {
 				/>
 			</div>
 			<div
-				className={componentCollapserContentClassName}
+				style={{ height }}
+				className={styles.collapser_content}
 			>
-				{ content }
+				{
+					React.cloneElement(
+						content,
+						{
+							ref: collpserContentRef
+						}
+					)
+				}
 			</div>
 		</>
 	);

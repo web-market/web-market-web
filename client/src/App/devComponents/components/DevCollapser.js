@@ -7,6 +7,7 @@ const DevCollapser = () => {
 		<>
 			<Collpase
 				label="Collapser"
+				open
 				content={(
 					<div>
 						<div>dadasdas</div>

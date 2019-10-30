@@ -10,21 +10,9 @@
 }
 
 .collapser_content {
-	margin-top: 8px;
 	-moz-transition: height .3s;
 	-o-transition: height .3s;
 	-webkit-transition: height .3s;
 	transition: height .3s;
 	overflow: hidden;
-}
-
-.collapser_content__close {
-	height: 0;
-	border: 1px solid red;
-
-}
-
-.collapser_content__open {
-	height: auto;
-	border: 1px solid red;
 }
