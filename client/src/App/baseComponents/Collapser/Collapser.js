@@ -34,6 +34,17 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 		className
 	);
 
+	const getCollapsedContent = () => {
+		return (
+			React.cloneElement(
+				content,
+				{
+					ref: collapserContentRef
+				}
+			)
+		)
+	};
+
 	return (
 		<div className={componentClassName}>
 			<div
@@ -49,14 +60,7 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 				style={{ height }}
 				className={styles.collapser_content}
 			>
-				{
-					React.cloneElement(
-						content,
-						{
-							ref: collapserContentRef
-						}
-					)
-				}
+				{getCollapsedContent()}
 			</div>
 		</div>
 	);
@@ -71,7 +75,12 @@ Collapser.propTypes = {
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
 	label: PropTypes.string.isRequired,
-	content: PropTypes.object.isRequired
+	content: PropTypes.oneOfType([
+		PropTypes.object.isRequired,
+		PropTypes.array.isRequired,
+	])
+
+
 };
 
 export { Collapser };

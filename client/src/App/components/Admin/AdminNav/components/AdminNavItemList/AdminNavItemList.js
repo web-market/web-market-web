@@ -25,6 +25,7 @@ const AdminNavItemList = () => {
 									key={item.label}
 									icon={item.icon}
 									label={item.label}
+									items={item.items}
 								/>
 							);
 						})

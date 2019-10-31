@@ -7,7 +7,24 @@ export const mainNavItem = [
 	},
 	{
 		icon: goods,
-		label: '!!!Продукты'
+		label: '!!!Каталог',
+		items: [
+			{
+				label: '!!!Менеджер товаров',
+				link: '/adminpanel/catalog/',
+				hasRoute: true
+			},
+			{
+				label: '!!!Категории',
+				link: '/adminpanel/category/',
+				hasRoute: true
+			},
+			{
+				label: '!!!Фильтры',
+				link: '/adminpanel/filters/',
+				hasRoute: true
+			},
+		]
 	},
 	{
 		icon: category,
