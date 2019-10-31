@@ -4,28 +4,43 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons/icons';
 
+import { isUndefined } from "../../utils";
+
+import classNames from 'classnames';
 import styles from './styles/index.scss';
 
-const Collapser = ({ label, open, content }) => {
+const Collapser = ({ label, open, content, labelClassName, className }) => {
 	const [isOpen, setIsOpen] = useState(open);
-	const [height, setheight] = useState(null);
-	const collpserContentRef = useRef(content.ref);
+	const [height, setHeight] = useState(null);
+	const collapserContentRef = useRef(content.ref);
 
 	const setOpen = () => {
 		setIsOpen(!isOpen);
 	};
 
 	useEffect(() => {
-		isOpen ? setheight(collpserContentRef.current.offsetHeight) : setheight(0);
+		initCollapseContentHeight()
 	});
 
+	const initCollapseContentHeight = () => {
+		const refObject = isUndefined(collapserContentRef.current.componentRef)
+							? collapserContentRef.current
+							: collapserContentRef.current.componentRef.current;
+
+		isOpen ? setHeight(refObject.offsetHeight) : setHeight(0);
+	};
+
+	const componentClassName = classNames(
+		className
+	);
+
 	return (
-		<>
+		<div className={componentClassName}>
 			<div
 				className={styles.collapser_header}
 				onClick={setOpen}
 			>
-				<div>{label}</div>
+				<div className={labelClassName}>{label}</div>
 				<Icon
 					icon={isOpen ? chevronUp : chevronDown}
 				/>
@@ -38,12 +53,12 @@ const Collapser = ({ label, open, content }) => {
 					React.cloneElement(
 						content,
 						{
-							ref: collpserContentRef
+							ref: collapserContentRef
 						}
 					)
 				}
 			</div>
-		</>
+		</div>
 	);
 };
 
@@ -52,9 +67,11 @@ Collapser.defaultProps = {
 };
 
 Collapser.propTypes = {
+	open: PropTypes.bool,
+	className: PropTypes.string,
+	labelClassName: PropTypes.string,
 	label: PropTypes.string.isRequired,
-	content: PropTypes.object.isRequired,
-	open: PropTypes.bool
+	content: PropTypes.object.isRequired
 };
 
 export { Collapser };

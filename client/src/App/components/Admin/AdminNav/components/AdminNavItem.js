@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
+import PaddingBox from '../../../../baseComponents/PaddingBox';
 
 import classNames from 'classnames';
 import styles from '../styles/index.scss';

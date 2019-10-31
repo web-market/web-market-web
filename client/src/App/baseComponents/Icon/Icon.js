@@ -14,16 +14,23 @@ const Icon = ({ icon, color, className, onHover, onHoverColor }) => {
 
 	const iconColor = onHover ? onHoverColor : color;
 
-	return (
-		<div
-			className={componentClassName}
-		>
-			<svg
-				viewBox="0 0 24 24"
+	//TODO:: find better solution to prevent blincking.
+	const getIconContent = () => {
+		return (
+			<div
+				className={componentClassName}
 			>
-				<path d={icon} fill={iconColor} />
-			</svg>
-		</div>
+				<svg
+					viewBox="0 0 24 24"
+				>
+					<path d={icon} fill={iconColor} />
+				</svg>
+			</div>
+		)
+	};
+
+	return (
+		getIconContent()
 	);
 };
 
