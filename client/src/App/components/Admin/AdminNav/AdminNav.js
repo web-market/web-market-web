@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import AdminNavProfile from './components/AdminNavProfile';
-import { AdminNavItemList } from './components/AdminNavItemList';
+import AdminNavItemList from './components/AdminNavItemList';
 import { AdminNavBottomItemList } from './components/AdminNavBottomItemList';
 
 import classNames from 'classnames';

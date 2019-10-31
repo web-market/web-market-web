@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import PaddingBox from '../../../../../baseComponents/PaddingBox';
 
 import classNames from 'classnames';
-import styles from '../styles/index.scss';
-import { Icon } from '../../../../baseComponents/Icon/Icon';
-import { COLORS } from '../../../../styles/baseColors';
+import styles from './styles/index.scss';
+import { Icon } from '../../../../../baseComponents/Icon/Icon';
+import { COLORS } from '../../../../../styles/baseColors';
 
 const AdminNavItem = ({ icon, label }) => {
 	const [hover, setHover] = useState(false);
