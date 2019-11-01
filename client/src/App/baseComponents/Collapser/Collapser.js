@@ -27,6 +27,8 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 							? collapserContentRef.current
 							: collapserContentRef.current.componentRef.current;
 
+		console.log(refObject);
+
 		isOpen ? setHeight(refObject.offsetHeight) : setHeight(0);
 	};
 

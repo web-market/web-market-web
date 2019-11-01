@@ -14,7 +14,10 @@
 }
 
 .adminNavProfile_collapserContent {
+	box-sizing: border-box;
+	border-top: 1px solid #E5E5E5;
 	padding: 16px 0 16px 0;
+	margin-top: 8px;
 }
 
 .adminNavProfile_userName {

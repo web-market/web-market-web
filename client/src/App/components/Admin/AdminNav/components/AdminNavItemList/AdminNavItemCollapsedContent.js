@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Link from "../../../../../baseComponents/Link";
-import PropTypes from "prop-types";
-// import PropTypes from 'prop-types';
+import { Icon } from '../../../../../baseComponents/Icon/Icon';
 
 import styles from './styles/index.scss';
+import { chevronRight } from "../../../../../icons/icons";
 
 class AdminNavItemCollapsedContent extends Component {
 	constructor(props) {
@@ -19,6 +20,10 @@ class AdminNavItemCollapsedContent extends Component {
 					key={item.label}
 					className={styles.adminNavItemCollapsedContent_item}
 				>
+					<Icon
+						className={styles.adminNavItemCollapsedContent_itemIcon}
+						icon={chevronRight}
+					/>
 					<Link
 						label={item.label}
 						link={item.link}

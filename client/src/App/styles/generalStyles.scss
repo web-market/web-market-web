@@ -15,7 +15,7 @@ body {
 	margin: 0;
 	font-size: 1rem;
 	font-weight: 300;
-	color: #5A6169;
+	color: $secondary;
 	background-color: #fff;
 	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -27,6 +27,12 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+a:active,
+a:visited {
+	color: $secondary;
+}
+
 
 b, strong {
 	font-weight: 500;
