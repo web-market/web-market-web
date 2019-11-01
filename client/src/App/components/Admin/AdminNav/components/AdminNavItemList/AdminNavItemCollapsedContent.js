@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
 import Link from "../../../../../baseComponents/Link";
 import PropTypes from "prop-types";
 // import PropTypes from 'prop-types';
+
+import styles from './styles/index.scss';
 
 class AdminNavItemCollapsedContent extends Component {
 	constructor(props) {
@@ -12,19 +15,25 @@ class AdminNavItemCollapsedContent extends Component {
 	getNavCollapsedContent = () => {
 		return this.props.items.map(item => {
 			return (
-				<Link
+				<div
 					key={item.label}
-					label={item.label}
-					link={item.link}
-					hasRoute={item.hasRoute}
-				/>
+					className={styles.adminNavItemCollapsedContent_item}
+				>
+					<Link
+						label={item.label}
+						link={item.link}
+						hasRoute={item.hasRoute}
+					/>
+				</div>
 			)
 		})
 	};
 
 	render () {
 		return (
-			<div ref={this.componentRef}>
+			<div
+				className={styles.adminNavItemCollapsedContent}
+				ref={this.componentRef}>
 				{this.getNavCollapsedContent()}
 			</div>
 		);

@@ -21,7 +21,7 @@ const AdminNavItem = ({ icon, label, items }) => {
 	);
 
 	const getNavCollapsedItem = () => {
-		return (
+		const labelContent = (
 			<>
 				{icon && (
 					<Icon
@@ -29,13 +29,20 @@ const AdminNavItem = ({ icon, label, items }) => {
 						color={COLORS.SECONDARY}
 						onHover={hover}
 						onHoverColor={COLORS.INFO}
+						className={styles.adminNavItem_icon}
 					/>
 				)}
-				<Collapser
-					content={<AdminNavItemCollapsedContent items={items} />}
-					label={label}
-				/>
+				<span>{ label }</span>
 			</>
+		);
+
+		return (
+			<Collapser
+				content={<AdminNavItemCollapsedContent items={items} />}
+				label={labelContent}
+				className={styles.adminNavItem_collapsed}
+				labelClassName={styles.adminNavItem_collapsedLabel}
+			/>
 		)
 
 	};
@@ -49,9 +56,10 @@ const AdminNavItem = ({ icon, label, items }) => {
 						color={COLORS.SECONDARY}
 						onHover={hover}
 						onHoverColor={COLORS.INFO}
+						className={styles.adminNavItem_icon}
 					/>
 				)}
-				<div className={styles.adminNavItem_label}>{ label }</div>
+				<span>{ label }</span>
 			</>
 		)
 	};

@@ -11,6 +11,14 @@
 	background-color: #E3F2FD;
 }
 
-.adminNavItem_label {
-	margin-left: 32px;
+.adminNavItem_icon {
+	margin-right: 32px;
+}
+
+.adminNavItem_collapsed {
+	width: 100%;
+}
+
+.adminNavItem_collapsedLabel {
+	display: flex;
 }

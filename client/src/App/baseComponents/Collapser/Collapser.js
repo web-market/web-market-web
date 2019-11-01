@@ -74,7 +74,10 @@ Collapser.propTypes = {
 	open: PropTypes.bool,
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
-	label: PropTypes.string.isRequired,
+	label: PropTypes.oneOfType([
+		PropTypes.object.isRequired,
+		PropTypes.string.isRequired,
+	]),
 	content: PropTypes.oneOfType([
 		PropTypes.object.isRequired,
 		PropTypes.array.isRequired,
