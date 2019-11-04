@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles/styles.scss';
+import styles from './styles/index.scss';
 import classNames from 'classnames';
 import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from './GridUtils';
 

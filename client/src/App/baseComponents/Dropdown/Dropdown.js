@@ -78,7 +78,7 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 };
 
 Dropdown.defaultProps = {
-	isOpen: true,
+	isOpen: false,
 	items: data,
 	placeholder: '###Select',
 };
