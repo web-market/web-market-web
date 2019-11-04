@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { isUndefined } from "../../../../../utils";
+import { isUndefined } from '../../../../../utils';
 
 import PaddingBox from '../../../../../baseComponents/PaddingBox';
-import Collapser from "../../../../../baseComponents/Collapser";
+import Collapser from '../../../../../baseComponents/Collapser';
 
 import classNames from 'classnames';
 import styles from './styles/index.scss';

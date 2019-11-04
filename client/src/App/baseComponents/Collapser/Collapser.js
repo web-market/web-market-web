@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons/icons';
 
-import { isUndefined } from "../../utils";
+import { isUndefined } from '../../utils';
 
 import classNames from 'classnames';
 import styles from './styles/index.scss';
@@ -19,7 +19,7 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 	};
 
 	useEffect(() => {
-		initCollapseContentHeight()
+		initCollapseContentHeight();
 	});
 
 	const initCollapseContentHeight = () => {
@@ -27,9 +27,7 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 							? collapserContentRef.current
 							: collapserContentRef.current.componentRef.current;
 
-		console.log(refObject);
-
-		isOpen ? setHeight(refObject.offsetHeight) : setHeight(0);
+		return isOpen ? setHeight(refObject.offsetHeight) : setHeight(0);
 	};
 
 	const componentClassName = classNames(
@@ -44,7 +42,7 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 					ref: collapserContentRef
 				}
 			)
-		)
+		);
 	};
 
 	return (

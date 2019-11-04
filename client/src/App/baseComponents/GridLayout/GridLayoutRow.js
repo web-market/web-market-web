@@ -4,9 +4,10 @@ import styles from './styles/index.scss';
 import classNames from 'classnames';
 import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from './GridUtils';
 
-const GridLayoutRow = ({ children, grid, gapColumn }) => {
+const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 	const componentClassName = classNames(
-		styles.gridBox
+		styles.gridLayout,
+		className
 	);
 	const gridItems = getGridItems(grid);
 	if (isValidGrid(gridItems)) {
@@ -40,6 +41,7 @@ GridLayoutRow.defaultProps = {
 GridLayoutRow.propTypes = {
 	gapColumn: PropTypes.number,
 	grid: PropTypes.string,
+	className: PropTypes.string,
 };
 
 export { GridLayoutRow };

@@ -1,0 +1,9 @@
+@mixin bg-color ($color, $hover: false) {
+	background-color: $color;
+
+	@if $hover {
+		@include hover-focus {
+			background-color: darken($color, 10%) !important;
+		}
+	}
+}
