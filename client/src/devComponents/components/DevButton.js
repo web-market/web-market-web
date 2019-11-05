@@ -14,35 +14,36 @@ export const DevButton = () => {
 			>
 				<Button
 					primary
-					label="Primary"
+					label="Primary 🦄"
 					transparent
 					icon={chevronUp}
 				/>
 				<Button
 					secondary
-					label="Secondary"
+					label="Secondary 😂"
 					transparent
 				/>
 				<Button
 					success
-					label="Success"
+					label="Success ❤"
 					transparent
 					icon={chevronUp}
 				/>
 				<Button
 					danger
-					label="Danger"
+					label="Danger 🔥"
 					transparent
+					icon={filter}
 				/>
 				<Button
 					warning
-					label="Warning"
+					label="Warning 🍋"
 					transparent
 					icon={chevronUp}
 				/>
 				<Button
 					info
-					label="Info"
+					label="Info ℹ"
 					transparent
 				/>
 				<Button

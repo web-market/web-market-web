@@ -12,9 +12,6 @@ const Icon = ({ icon, color, className, onHover, onHoverColor }) => {
 		className
 	);
 
-	console.log(onHover);
-	console.log(onHoverColor);
-
 	const iconColor = onHover ? onHoverColor : color;
 
 	//TODO:: find better solution to prevent blincking.

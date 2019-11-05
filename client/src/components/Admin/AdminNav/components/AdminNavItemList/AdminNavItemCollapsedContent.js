@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Link from "../../../../../baseComponents/Link";
+import Link from '../../../../../baseComponents/Link';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
 
 import styles from './styles/index.scss';
-import { chevronRight } from "../../../../../icons/icons";
+import { chevronRight } from '../../../../../icons/icons';
 
 class AdminNavItemCollapsedContent extends Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.componentRef = React.createRef();
 	}
@@ -30,15 +30,16 @@ class AdminNavItemCollapsedContent extends Component {
 						hasRoute={item.hasRoute}
 					/>
 				</div>
-			)
-		})
+			);
+		});
 	};
 
 	render () {
 		return (
 			<div
 				className={styles.adminNavItemCollapsedContent}
-				ref={this.componentRef}>
+				ref={this.componentRef}
+			>
 				{this.getNavCollapsedContent()}
 			</div>
 		);

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import Link from '../../../../../baseComponents/Link';
 
 import { profileItem } from './store/staticData'
-import styles from "./styles/index.scss";
+import styles from './styles/index.scss';
 
-class AdminNavProfileItems extends Component{
-	constructor(props) {
+class AdminNavProfileItems extends Component {
+	constructor (props) {
 		super(props);
 		this.componentRef = React.createRef();
 	}
@@ -25,11 +25,11 @@ class AdminNavProfileItems extends Component{
 						hasRoute={item.hasRoute}
 					/>
 				</div>
-			)
+			);
 		});
 	};
 
-	render() {
+	render () {
 		return (
 			<div
 				ref={this.componentRef}
@@ -37,7 +37,7 @@ class AdminNavProfileItems extends Component{
 			>
 				{this.getItemContent()}
 			</div>
-		)
+		);
 	}
 }
 
