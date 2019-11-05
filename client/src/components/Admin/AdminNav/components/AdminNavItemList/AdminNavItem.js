@@ -11,7 +11,7 @@ import styles from './styles/index.scss';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
 import { COLORS } from '../../../../../styles/baseColors';
 
-import { AdminNavItemCollapsedContent } from './AdminNavItemCollapsedContent'
+import { AdminNavItemCollapsedContent } from './AdminNavItemCollapsedContent';
 
 const AdminNavItem = ({ icon, label, items }) => {
 	const [hover, setHover] = useState(false);
@@ -43,8 +43,7 @@ const AdminNavItem = ({ icon, label, items }) => {
 				className={styles.adminNavItem_collapsed}
 				labelClassName={styles.adminNavItem_collapsedLabel}
 			/>
-		)
-
+		);
 	};
 
 	const getNavItem = () => {
@@ -61,7 +60,7 @@ const AdminNavItem = ({ icon, label, items }) => {
 				)}
 				<span>{ label }</span>
 			</>
-		)
+		);
 	};
 
 	const getItemComponent = () => {

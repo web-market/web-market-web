@@ -3,7 +3,9 @@ import { goods, statistic, category, filter, settings, notification } from '../.
 export const mainNavItem = [
 	{
 		icon: statistic,
-		label: '!!!Статистика'
+		label: '!!!Статистика',
+		link: '/adminpanel/statistic/',
+		hasRoute: true
 	},
 	{
 		icon: goods,
