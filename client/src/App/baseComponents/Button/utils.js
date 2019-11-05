@@ -6,15 +6,20 @@ const typeMap = [
 	'warning',
 	'info',
 	'light',
-	'dark',
+	'dark'
 ];
 
 export const getType = (props) => {
-	return typeMap.map(type => {
-		if (props.hasOwnProperty(type)) {
-			return type;
-		}
+	let hasType = false;
+	let t = null;
 
-		return null;
+	typeMap.forEach(type => {
+		if (props[type] && !hasType) {
+			hasType = true;
+
+			t = type;
+		}
 	});
+
+	return t;
 };

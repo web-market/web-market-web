@@ -16,6 +16,7 @@ export const DevButton = () => {
 					primary
 					label="Primary"
 					transparent
+					icon={chevronUp}
 				/>
 				<Button
 					secondary
@@ -26,6 +27,7 @@ export const DevButton = () => {
 					success
 					label="Success"
 					transparent
+					icon={chevronUp}
 				/>
 				<Button
 					danger
@@ -36,6 +38,7 @@ export const DevButton = () => {
 					warning
 					label="Warning"
 					transparent
+					icon={chevronUp}
 				/>
 				<Button
 					info
@@ -51,6 +54,7 @@ export const DevButton = () => {
 					dark
 					label="Dark"
 					transparent
+					icon={chevronUp}
 				/>
 			</GridLayoutRow>
 			<GridLayoutRow
@@ -78,6 +82,7 @@ export const DevButton = () => {
 				<Button
 					warning
 					label="Warning"
+					icon={chevronUp}
 				/>
 				<Button
 					info
@@ -86,10 +91,12 @@ export const DevButton = () => {
 				<Button
 					light
 					label="Light"
+					icon={chevronUp}
 				/>
 				<Button
 					dark
 					label="Dark"
+					icon={chevronUp}
 				/>
 			</GridLayoutRow>
 		</GridLayout>

@@ -6,6 +6,7 @@
 	cursor: pointer;
 	box-sizing: border-box;
 	color: $light;
+	position: relative;
 
 	@include transition(background-color .3s, box-shadow .3s, color .3s);
 }
@@ -119,6 +120,10 @@
 	};
 }
 
+.button_hasIcon {
+	padding-left: 10px;
+}
+
 .button_light {
 	@include bg-color($light_button, $hover: true);
 	color: $dark;
@@ -156,5 +161,14 @@
 	};
 }
 
+.button_label {
+	margin-left: 20px;
+}
 
+.button_icon {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 8px;
+}
 
