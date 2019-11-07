@@ -10,7 +10,8 @@ const PaddingBox = ({ children,
                         vrTiny, hrTiny, tTiny, rTiny, bTiny, lTiny,
                         vrSmall, hrSmall, tSmall, rSmall, bSmall, lSmall,
                         vrNormal, hrNormal, tNormal, rNormal, bNormal, lNormal,
-                        vrLarge, hrLarge, tLarge, rLarge, bLarge, lLarge
+                        vrLarge, hrLarge, tLarge, rLarge, bLarge, lLarge,
+						className
 }) => {
     const componentClassName = classNames(
         {
@@ -53,7 +54,8 @@ const PaddingBox = ({ children,
             [styles.padding_rLarge]: rLarge,
             [styles.padding_bLarge]: bLarge,
             [styles.padding_lLarge]: lLarge,
-        }
+        },
+		className
     );
 
     return (
@@ -87,6 +89,8 @@ PaddingBox.propTypes = {
     rTiny: PropTypes.bool,
     bTiny: PropTypes.bool,
     lTiny: PropTypes.bool,
+
+	className: PropTypes.string
 };
 
 export { PaddingBox };

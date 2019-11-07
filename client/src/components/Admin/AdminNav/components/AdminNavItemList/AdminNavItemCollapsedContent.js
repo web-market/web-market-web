@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../../../../../baseComponents/Link';
-import { Icon } from '../../../../../baseComponents/Icon/Icon';
 
-import styles from './styles/index.scss';
-import { chevronRight } from '../../../../../icons/icons';
+import classes from './styles/index.scss';
 
 class AdminNavItemCollapsedContent extends Component {
 	constructor (props) {
@@ -18,16 +16,13 @@ class AdminNavItemCollapsedContent extends Component {
 			return (
 				<div
 					key={item.label}
-					className={styles.adminNavItemCollapsedContent_item}
+					className={classes.adminNavItemCollapsedContent_item}
 				>
-					<Icon
-						className={styles.adminNavItemCollapsedContent_itemIcon}
-						icon={chevronRight}
-					/>
 					<Link
 						label={item.label}
 						link={item.link}
 						hasRoute={item.hasRoute}
+						activeLinkClass={classes.adminNavItemCollapsedContent_activeLink}
 					/>
 				</div>
 			);
@@ -37,7 +32,7 @@ class AdminNavItemCollapsedContent extends Component {
 	render () {
 		return (
 			<div
-				className={styles.adminNavItemCollapsedContent}
+				className={classes.adminNavItemCollapsedContent}
 				ref={this.componentRef}
 			>
 				{this.getNavCollapsedContent()}

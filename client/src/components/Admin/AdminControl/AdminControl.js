@@ -2,11 +2,12 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import { Switch, Route } from 'react-router-dom';
-
-import UserProfile from '../UserProfile'
+import UserProfile from '../UserProfile';
+import Category from '../Category';
 
 import classNames from 'classnames';
 import styles from './styles/index.scss';
+import { URL } from '../consts';
 
 const AdminControl = () => {
 	const componentClassName = classNames(
@@ -16,8 +17,8 @@ const AdminControl = () => {
 	return (
 		<div className={componentClassName}>
 			<Switch>
-				<Route path="/adminpanel/userprofile/" component={UserProfile} />
-				<Route path="/adminpanel/userprofile/" component={UserProfile} />
+				<Route path={URL.USER_PROFILE} component={UserProfile} />
+				<Route path={URL.CATALOG.CATEGORY} component={Category} />
 			</Switch>
 		</div>
 	);

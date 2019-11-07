@@ -3,7 +3,7 @@ import React from 'react';
 
 import AdminNavProfile from './components/AdminNavProfile';
 import AdminNavItemList from './components/AdminNavItemList';
-import { AdminNavBottomItemList } from './components/AdminNavBottomItemList';
+import AdminNavBottomItemList from './components/AdminNavBottomItemList';
 
 import classNames from 'classnames';
 import styles from './styles/index.scss';

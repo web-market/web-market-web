@@ -9,12 +9,6 @@
 	font-size: 14px;
 	margin: 8px -4px;
 	padding: 4px;
-	@include transition(margin-left .3s);
-}
-
-.adminNavItemCollapsedContent_itemIcon {
-	position: absolute;
-	left: -8px;
 }
 
 .adminNavItemCollapsedContent_item:nth-child(1) {
@@ -26,12 +20,22 @@
 	display: block;
 }
 
-.adminNavItemCollapsedContent_item:hover  {
-	@include transition(margin-left .3s);
-	margin-left: 16px;
-
-	.adminNavItemCollapsedContent_itemIcon {
-		left: -16px;
-	}
+.adminNavItemCollapsedContent_item:hover > a {
+	@include transition(color .3s);
+	color: $info;
 }
 
+.adminNavItemCollapsedContent_activeLink {
+	margin-left: 8px;
+	color: $info !important;
+}
+
+.adminNavItemCollapsedContent_activeLink:before {
+	content: '';
+	width: 3px;
+	height: 25px;
+	background-color: #00B8D8;
+	position: absolute;
+	left: 4px;
+	bottom: 0;
+}

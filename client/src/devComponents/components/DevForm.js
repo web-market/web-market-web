@@ -16,6 +16,7 @@ export const DevForm = () => {
 				<Field
 					component={Textbox}
 					name="age"
+					value="dasdas"
 				/>
 				<Field
 					component={Dropdown}

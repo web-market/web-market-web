@@ -1,10 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
-import { AdminNavItem } from '../components/AdminNavItemList/AdminNavItem';
+import PaddingBox from '../../../../../baseComponents/PaddingBox';
+import { AdminNavItem } from '../AdminNavItemList/AdminNavItem';
 
-import { bottomNavItem } from '../store/staticData';
+import { bottomNavItem } from '../../store/staticData';
 
 const AdminNavBottomItemList = () => {
 	return (

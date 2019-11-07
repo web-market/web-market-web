@@ -1,4 +1,5 @@
 import { goods, statistic, category, filter, settings, notification } from '../../../../icons/icons';
+import { URL } from '../../consts';
 
 export const mainNavItem = [
 	{
@@ -18,7 +19,7 @@ export const mainNavItem = [
 			},
 			{
 				label: '!!!Категории',
-				link: '/adminpanel/category/',
+				link: URL.CATALOG.CATEGORY,
 				hasRoute: true
 			},
 			{

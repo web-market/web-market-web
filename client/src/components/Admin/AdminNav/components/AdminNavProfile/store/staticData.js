@@ -1,10 +1,11 @@
 import { userProfile } from '../../../../../../icons/icons';
+import { URL } from '../../../../consts';
 
 export const profileItem = [
 	{
 		icon: userProfile,
 		label: '!!!Профиль',
-		link: '/adminpanel/userprofile/',
+		link: URL.USER_PROFILE,
 		hasRoute: true
 	},
 	{

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link as RouteLink } from 'react-router-dom';
+import { Link as RouteLink, NavLink } from 'react-router-dom';
 
 import styles from './styles/index.scss';
 
@@ -9,13 +9,20 @@ const Link = (
 	{
 		link,
 		label,
-		hasRoute
+		hasRoute,
+		activeLinkClass
 	}
 ) => {
+	const getRouteLink = () => {
+		return activeLinkClass
+			? <NavLink to={link} activeClassName={activeLinkClass}>{label}</NavLink>
+			: <RouteLink to={link}>{label}</RouteLink>;
+	};
+
 	const getLink = () => {
 		return hasRoute
-			? <RouteLink to={link}>{label}</RouteLink>
-			: <a className={styles.link} href={link}>{label}</a>
+			? getRouteLink()
+			: <a className={styles.link} href={link}>{label}</a>;
 	};
 
 	return getLink();
@@ -24,7 +31,8 @@ const Link = (
 Link.propTypes = {
 	label: PropTypes.string.isRequired,
 	link: PropTypes.string.isRequired,
-	hasRoute: PropTypes.bool.isRequired
+	hasRoute: PropTypes.bool.isRequired,
+	activeLinkClass: PropTypes.string
 };
 
 export { Link };

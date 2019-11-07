@@ -18,7 +18,7 @@ const AdminNavProfile = () => {
 
 	return (
 		<div className={componentClassName}>
-			<PaddingBox tNormal bTiny>
+			<PaddingBox tSmall bTiny>
 				<>
 					<img
 						className={styles.adminNavProfile_userLogo}
