@@ -9,6 +9,7 @@ const typeMap = [
 	'dark'
 ];
 
+// not necessary
 export const getType = (props) => {
 	let hasType = false;
 	let t = null;

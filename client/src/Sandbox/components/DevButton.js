@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../../baseComponents/Button';
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
 
-import { filter, chevronUp } from '../../icons/icons';
+import { filter, chevronUp, plus } from '../../icons';
 
 export const DevButton = () => {
 	return (
@@ -13,46 +13,44 @@ export const DevButton = () => {
 				gapColumn={1}
 			>
 				<Button
-					primary
-					label="Primary 🦄"
+					type="primary"
 					transparent
-					icon={chevronUp}
+					icon={plus}
 				/>
 				<Button
-					secondary
+					type="secondary"
 					label="Secondary 😂"
 					transparent
 				/>
 				<Button
-					success
+					type="success"
 					label="Success ❤"
 					transparent
 					icon={chevronUp}
 				/>
 				<Button
-					danger
-					label="Danger 🔥"
+					type="danger"
 					transparent
 					icon={filter}
 				/>
 				<Button
-					warning
+					type="warning"
 					label="Warning 🍋"
 					transparent
 					icon={chevronUp}
 				/>
 				<Button
-					info
+					type="info"
 					label="Info ℹ"
 					transparent
 				/>
 				<Button
-					light
+					type="light"
 					label="Light"
 					transparent
 				/>
 				<Button
-					dark
+					type="dark"
 					label="Dark"
 					transparent
 					icon={chevronUp}
@@ -63,39 +61,39 @@ export const DevButton = () => {
 				gapColumn={1}
 			>
 				<Button
-					primary
+					type="primary"
 					label="Primary"
 					icon={filter}
 				/>
 				<Button
-					secondary
+					type="secondary"
 					label="Secondary"
 					icon={chevronUp}
 				/>
 				<Button
-					success
+					type="success"
 					label="Success"
 				/>
 				<Button
-					danger
+					type="danger"
 					label="Danger"
 				/>
 				<Button
-					warning
+					type="warning"
 					label="Warning"
 					icon={chevronUp}
 				/>
 				<Button
-					info
+					type="info"
 					label="Info"
 				/>
 				<Button
-					light
+					type="light"
 					label="Light"
 					icon={chevronUp}
 				/>
 				<Button
-					dark
+					type="dark"
 					label="Dark"
 					icon={chevronUp}
 				/>

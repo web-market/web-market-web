@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
-import { chevronDown, chevronUp } from '../../icons/icons';
+import { chevronDown, chevronUp } from '../../icons';
 
 import { isUndefined } from '../../utils';
 

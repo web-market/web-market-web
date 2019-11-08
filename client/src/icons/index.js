@@ -1,0 +1,12 @@
+export { chevronDown } from './icons';
+export { chevronUp } from './icons';
+export { chevronRight } from './icons';
+export { goods } from './icons';
+export { statistic } from './icons';
+export { category } from './icons';
+export { filter } from './icons';
+export { settings } from './icons';
+export { notification } from './icons';
+export { userProfile } from './icons';
+export { check } from './icons';
+export { plus } from './icons';

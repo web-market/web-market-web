@@ -120,10 +120,6 @@
 	};
 }
 
-.button_hasIcon {
-	padding-left: 10px;
-}
-
 .button_light {
 	@include bg-color($light_button, $hover: true);
 	color: $dark;
@@ -172,3 +168,25 @@
 	top: 8px;
 }
 
+.button_hasIcon {
+	padding-left: 10px;
+}
+
+.button_onlyIcon {
+	border-radius: 50px;
+
+	.button_icon {
+		top: initial;
+		position: inherit;
+		width: 24px;
+		height: 24px;
+	}
+
+	.button_hasIcon {
+		padding: 0;
+	}
+}
+
+.button_onlyIcon.button_hasIcon {
+	padding: 6px;
+}

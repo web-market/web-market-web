@@ -1,4 +1,4 @@
-import { goods, statistic, category, filter, settings, notification } from '../../../../icons/icons';
+import { goods, statistic, category, filter, settings, notification } from '../../../../icons';
 import { URL } from '../../consts';
 
 export const mainNavItem = [

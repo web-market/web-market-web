@@ -7,14 +7,19 @@ import { AdminControlHeaderRightSide } from './components/AdminControlHeaderRigh
 import classes from './styles/index.scss';
 
 const AdminControlHeader = ({
-								label
+								label,
+								actions,
+								onActionClick
 							}) => {
 	return (
 		<div className={classes.adminControlHeader}>
 			<AdminControlHeaderLeftSide
 				label={label}
 			/>
-			<AdminControlHeaderRightSide />
+			<AdminControlHeaderRightSide
+				actions={actions}
+				onActionClick={onActionClick}
+			/>
 		</div>
 	);
 };
@@ -22,7 +27,9 @@ const AdminControlHeader = ({
 AdminControlHeader.defaultProps = {};
 
 AdminControlHeader.propTypes = {
-	label: PropTypes.string
+	label: PropTypes.string,
+	actions: PropTypes.array,
+	onActionClick: PropTypes.func
 };
 
 export { AdminControlHeader };

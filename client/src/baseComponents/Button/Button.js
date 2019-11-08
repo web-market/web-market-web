@@ -2,52 +2,45 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
-import { getType } from './utils';
 
 import { COLORS } from '../../styles/baseColors';
-import { TYPE } from './const';
+import { TYPE } from './consts';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
-const Button = (props) => {
+const Button = ({
+					label,
+					type,
+					transparent,
+					icon,
+					actionName,
+					actionHandler
+				}) => {
 	const [hover, setHover] = useState(false);
-
-	const {
-		label,
-		primary,
-		secondary,
-		success,
-		danger,
-		warning,
-		info,
-		light,
-		dark,
-		transparent,
-		icon
-	} = props;
 
 	const componentClassName = classNames(
 		classes.button,
 		{
-			[classes.button_primary]: !transparent && primary,
-			[classes.button_secondary]: !transparent && secondary,
-			[classes.button_success]: !transparent && success,
-			[classes.button_danger]: !transparent && danger,
-			[classes.button_warning]: !transparent && warning,
-			[classes.button_info]: !transparent && info,
-			[classes.button_light]: !transparent && light,
-			[classes.button_dark]: !transparent && dark,
+			[classes.button_primary]: !transparent && type === 'primary',
+			[classes.button_secondary]: !transparent && type === 'secondary',
+			[classes.button_success]: !transparent && type === 'success',
+			[classes.button_danger]: !transparent && type === 'danger',
+			[classes.button_warning]: !transparent && type === 'warning',
+			[classes.button_info]: !transparent && type === 'info',
+			[classes.button_light]: !transparent && type === 'light',
+			[classes.button_dark]: !transparent && type === 'dark',
 
-			[classes.button_primary__transparent]: transparent && primary,
-			[classes.button_secondary__transparent]: transparent && secondary,
-			[classes.button_success__transparent]: transparent && success,
-			[classes.button_danger__transparent]: transparent && danger,
-			[classes.button_warning__transparent]: transparent && warning,
-			[classes.button_info__transparent]: transparent && info,
-			[classes.button_light__transparent]: transparent && light,
-			[classes.button_dark__transparent]: transparent && dark,
+			[classes.button_primary__transparent]: transparent && type === 'primary',
+			[classes.button_secondary__transparent]: transparent && type === 'secondary',
+			[classes.button_success__transparent]: transparent && type === 'success',
+			[classes.button_danger__transparent]: transparent && type === 'danger',
+			[classes.button_warning__transparent]: transparent && type === 'warning',
+			[classes.button_info__transparent]: transparent && type === 'info',
+			[classes.button_light__transparent]: transparent && type === 'light',
+			[classes.button_dark__transparent]: transparent && type === 'dark',
 
-			[classes.button_hasIcon]: icon
+			[classes.button_hasIcon]: icon,
+			[classes.button_onlyIcon]: !label
 		}
 	);
 
@@ -58,7 +51,6 @@ const Button = (props) => {
 	);
 
 	const getIconColor = () => {
-		const type = getType(props);
 		const isDarkColor = type === TYPE.WARNING || type === TYPE.LIGHT;
 
 		if (transparent) {
@@ -88,6 +80,7 @@ const Button = (props) => {
 	return (
 		<div
 			className={componentClassName}
+			onClick={() => actionHandler(actionName)}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 		>
@@ -102,9 +95,13 @@ const Button = (props) => {
 					/>
 				)
 			}
-			<span className={componentLabelClassName}>
-				{label}
-			</span>
+			{
+				label && (
+					<span className={componentLabelClassName}>
+						{label}
+					</span>
+				)
+			}
 		</div>
 	);
 };
@@ -115,17 +112,12 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	transparent: PropTypes.bool,
 	icon: PropTypes.string,
-	primary: PropTypes.bool,
-	secondary: PropTypes.bool,
-	success: PropTypes.bool,
-	danger: PropTypes.bool,
-	warning: PropTypes.bool,
-	info: PropTypes.bool,
-	light: PropTypes.bool,
-	dark: PropTypes.bool,
+	type: PropTypes.string,
+	actionName: PropTypes.string,
+	actionHandler: PropTypes.func
 };
 
 export { Button };

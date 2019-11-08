@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { RouteContextProviderWithRouter as RouteContext } from './store/RouteContext';
 
-import Sandbox from '../devComponents/Sandbox';
+import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
 import StoreModule from '../components/Store/StoreModule';
 

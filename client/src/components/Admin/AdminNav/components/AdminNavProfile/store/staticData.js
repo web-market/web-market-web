@@ -1,4 +1,4 @@
-import { userProfile } from '../../../../../../icons/icons';
+import { userProfile } from '../../../../../../icons';
 import { URL } from '../../../../consts';
 
 export const profileItem = [

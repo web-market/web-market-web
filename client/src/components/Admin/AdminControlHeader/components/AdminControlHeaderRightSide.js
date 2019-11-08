@@ -1,14 +1,27 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
-const AdminControlHeaderRightSide = () => {
+import { AdminControlHeaderRightSideActions } from './AdminControlHeaderRightSideActions';
+import PropTypes from 'prop-types';
+
+const AdminControlHeaderRightSide = ({
+										actions,
+										onActionClick
+									}) => {
 	return (
-		<div>###AdminControlHeaderRightSide.js</div>
+		<>
+			<AdminControlHeaderRightSideActions
+				actions={actions}
+				onActionClick={onActionClick}
+			/>
+		</>
 	);
 };
 
-// NAME.defaultProps = {};
+AdminControlHeaderRightSide.defaultProps = {};
 
-// NAME.propTypes = {};
+AdminControlHeaderRightSide.propTypes = {
+	actions: PropTypes.array,
+	onActionClick: PropTypes.func
+};
 
 export { AdminControlHeaderRightSide };

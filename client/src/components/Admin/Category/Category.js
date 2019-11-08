@@ -4,15 +4,25 @@ import React from 'react';
 import AdminControlHeader from '../AdminControlHeader';
 import { CategoryList } from './component/CategoryList';
 
+import { actions, categories } from './store/staticData';
+
 import classes from './styles/index.scss';
 
 const Category = () => {
+	const handleActionClick = (action) => {
+		console.log(action);
+	};
+
 	return (
 		<>
 			<AdminControlHeader
 				label="!!!Категории"
+				actions={actions}
+				onActionClick={handleActionClick}
 			/>
-			<CategoryList />
+			<CategoryList
+				categories={categories}
+			/>
 		</>
 	);
 };

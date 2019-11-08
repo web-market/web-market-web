@@ -7,7 +7,7 @@ import DropDownItem from './DropDownItem';
 
 import styles from './styles/index.scss';
 import Icon from '../Icon';
-import { chevronDown, chevronUp } from '../../icons/icons';
+import { chevronDown, chevronUp } from '../../icons';
 
 import data from './dataModel';
 import classNames from 'classnames';
