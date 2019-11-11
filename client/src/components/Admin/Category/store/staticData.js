@@ -38,6 +38,22 @@ export const categories = [
 						parentCategoryId: 1,
 						isActive: true,
 						sortOrder: 0,
+						childCategories: [
+							{
+								id: 12,
+								name: '!Свитшоты с принтами!!!',
+								parentCategoryId: 1,
+								isActive: true,
+								sortOrder: 0,
+							},
+							{
+								id: 13,
+								name: '!Свитшоты DC!!!!',
+								parentCategoryId: 1,
+								isActive: true,
+								sortOrder: 0,
+							},
+						]
 					},
 				]
 			},

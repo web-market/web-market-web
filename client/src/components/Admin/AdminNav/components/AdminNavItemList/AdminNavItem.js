@@ -69,12 +69,13 @@ const AdminNavItem = ({ icon, label, items }) => {
 		return getNavCollapsedItem();
 	};
 
+	//TODO: dkosreba. find another solution for svg icon fill
 	return (
 		<PaddingBox ultraVrTiny>
 			<div
 				className={componentClassName}
-				onMouseEnter={() => setHover(true)}
-				onMouseLeave={() => setHover(false)}
+				// onMouseEnter={() => setHover(true)}
+				// onMouseLeave={() => setHover(false)}
 			>
 				{getItemComponent()}
 			</div>

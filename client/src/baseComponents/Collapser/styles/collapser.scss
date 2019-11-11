@@ -1,15 +1,19 @@
-.collapser {
+.collapse {
 	width: 100%;
 	position: relative;
 }
 
-.collapser_header {
+.collapse_header {
 	display: flex;
 	cursor: pointer;
 	justify-content: space-between;
 }
 
-.collapser_content {
+.collapse_content {
+	display: none;
+}
+
+.collapse_contentTransition {
 	-moz-transition: height .3s;
 	-o-transition: height .3s;
 	-webkit-transition: height .3s;

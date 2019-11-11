@@ -1,63 +1,63 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import Collapser from '../../../../baseComponents/Collapser';
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
 import { isNullOrUndefined } from '../../../../utils';
-
 import classes from '../styles/index.scss';
 
 const CategoryList = ({
 						categories
 					}) => {
 	const getSubCategory = (categoryList) => {
-		const collapseContent = categoryList.childCategories.map((category, index) => {
-			const key = `${category.name}-${index}`;
-
-			return (
-				<div
-					key={key}
-					style={{ marginLeft: 20 }}
-				>
-					{getCategory(category)}
-				</div>
-			);
-		});
-
-		console.log(collapseContent);
+		const getCollapseContent = () => {
+			return categoryList.childCategories.map((category, index) => {
+				return getCategory(category, index);
+			});
+		};
 
 		return (
 			<Collapser
 				label={categoryList.name}
-				content={collapseContent}
+				content={getCollapseContent()}
+				transition={false}
 			/>
 		);
 	};
 
-	const getCategory = (categoryList) => {
-		const hasChild = !isNullOrUndefined(categoryList.childCategories)
-							&& categoryList.childCategories.length !== 0;
+	const getCategory = (category, index = category.name) => {
+		const hasChild = !isNullOrUndefined(category.childCategories)
+							&& category.childCategories.length !== 0;
+
+		const key = `${category.name}-${index}`;
+
+		console.log(key);
 
 		return hasChild
-			? getSubCategory(categoryList)
-			: categoryList.name;
+			? (
+				<div
+					key={key}
+					style={{ marginLeft: 20 }}
+				>
+					{getSubCategory(category)}
+				</div>
+				)
+			: (
+				<div
+					key={key}
+					style={{ marginLeft: 20 }}
+				>
+					{category.name}
+				</div>
+			);
 	};
 
 	const getCategories = () => {
 		if (isNullOrUndefined(categories)) return;
 
 		return categories.map((category, index) => {
-			const key = `${category}-${index}`;
-
-			return (
-				<div
-					key={key}
-				>
-					{getCategory(category)}
-				</div>
-			);
+			return getCategory(category, index);
 		});
 	};
 

@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons';
+import CollapseContent from './CollapseContent';
 
 import { isUndefined } from '../../utils';
 
 import classNames from 'classnames';
 import styles from './styles/index.scss';
 
-const Collapser = ({ label, open, content, labelClassName, className }) => {
+const Collapser = ({ label, open, content, labelClassName, className, transition }) => {
 	const [isOpen, setIsOpen] = useState(open);
 	const [height, setHeight] = useState(null);
-	const collapserContentRef = useRef(content.ref);
+	const collapseContentRef = useRef(content.ref);
 
 	const setOpen = () => {
 		setIsOpen(!isOpen);
@@ -23,9 +24,9 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 	});
 
 	const initCollapseContentHeight = () => {
-		const refObject = isUndefined(collapserContentRef.current.componentRef)
-							? collapserContentRef.current
-							: collapserContentRef.current.componentRef.current;
+		const refObject = isUndefined(collapseContentRef.current.componentRef)
+							? collapseContentRef.current
+							: collapseContentRef.current.componentRef.current;
 
 		return isOpen ? setHeight(refObject.offsetHeight) : setHeight(0);
 	};
@@ -34,23 +35,32 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 		className
 	);
 
+	const collapseContentClassName = classNames(
+		{
+			[styles.collapse_contentTransition]: transition,
+			[styles.collapse_content]: !transition && !isOpen
+		}
+	);
+
 	const getCollapsedContent = () => {
 		return (
 			React.cloneElement(
-				content,
+				<CollapseContent
+					content={content}
+				/>,
 				{
-					ref: collapserContentRef
+					ref: collapseContentRef
 				}
 			)
 		);
 	};
 
-	console.log(getCollapsedContent());
+	const collapseHeight = transition ? { height } : { height: 'inherit' };
 
 	return (
 		<div className={componentClassName}>
 			<div
-				className={styles.collapser_header}
+				className={styles.collapse_header}
 				onClick={setOpen}
 			>
 				<div className={labelClassName}>{label}</div>
@@ -59,8 +69,8 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 				/>
 			</div>
 			<div
-				style={{ height }}
-				className={styles.collapser_content}
+				style={collapseHeight}
+				className={collapseContentClassName}
 			>
 				{getCollapsedContent()}
 			</div>
@@ -70,10 +80,12 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 
 Collapser.defaultProps = {
 	open: false,
+	transition: true,
 };
 
 Collapser.propTypes = {
 	open: PropTypes.bool,
+	transition: PropTypes.bool,
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
 	label: PropTypes.oneOfType([
