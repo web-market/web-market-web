@@ -9,7 +9,6 @@ import styles from './styles/index.scss';
 import { mainNavItem } from '../../store/staticData';
 
 const AdminNavItemList = () => {
-
 	const componentClassName = classNames(
 		styles.adminNavItemList
 	);
@@ -26,6 +25,8 @@ const AdminNavItemList = () => {
 									icon={item.icon}
 									label={item.label}
 									items={item.items}
+									link={item.link}
+									hasRoute={item.hasRoute}
 								/>
 							);
 						})

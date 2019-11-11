@@ -17,7 +17,7 @@ class AdminNavItemCollapsedContent extends Component {
 						label={item.label}
 						link={item.link}
 						hasRoute={item.hasRoute}
-						activeLinkClass={classes.adminNavItemCollapsedContent_activeLink}
+						activeLinkClass={classes.adminNavItemCollapsedContent_active}
 					/>
 				</div>
 			);

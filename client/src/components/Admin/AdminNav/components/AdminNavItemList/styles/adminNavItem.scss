@@ -11,6 +11,11 @@
 	color: $info;
 	background-color: #e9f5ff;
 
+	a {
+		color: $info;
+		text-decoration: none;
+	}
+
 	@include transition(background-color .2s, color .2s);
 }
 
@@ -20,6 +25,10 @@
 
 .adminNavItem_collapsed {
 	width: 100%;
+}
+
+.adminNavItem_active {
+	color: $info !important;
 }
 
 .adminNavItem_collapsedLabel {

@@ -7,17 +7,18 @@ import PaddingBox from '../../../../../baseComponents/PaddingBox';
 import Collapser from '../../../../../baseComponents/Collapser';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
 import { COLORS } from '../../../../../styles/baseColors';
 
 import { AdminNavItemCollapsedContent } from './AdminNavItemCollapsedContent';
+import Link from '../../../../../baseComponents/Link';
 
-const AdminNavItem = ({ icon, label, items }) => {
+const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 	const [hover, setHover] = useState(false);
 
 	const componentClassName = classNames(
-		styles.adminNavItem
+		classes.adminNavItem
 	);
 
 	const getNavCollapsedItem = () => {
@@ -29,7 +30,7 @@ const AdminNavItem = ({ icon, label, items }) => {
 						color={COLORS.SECONDARY}
 						onHover={hover}
 						onHoverColor={COLORS.INFO}
-						className={styles.adminNavItem_icon}
+						className={classes.adminNavItem_icon}
 					/>
 				)}
 				<span>{ label }</span>
@@ -40,8 +41,8 @@ const AdminNavItem = ({ icon, label, items }) => {
 			<Collapser
 				content={<AdminNavItemCollapsedContent items={items} />}
 				label={labelContent}
-				className={styles.adminNavItem_collapsed}
-				labelClassName={styles.adminNavItem_collapsedLabel}
+				className={classes.adminNavItem_collapsed}
+				labelClassName={classes.adminNavItem_collapsedLabel}
 			/>
 		);
 	};
@@ -55,10 +56,15 @@ const AdminNavItem = ({ icon, label, items }) => {
 						color={COLORS.SECONDARY}
 						onHover={hover}
 						onHoverColor={COLORS.INFO}
-						className={styles.adminNavItem_icon}
+						className={classes.adminNavItem_icon}
 					/>
 				)}
-				<span>{ label }</span>
+				<Link
+					label={label}
+					link={link}
+					hasRoute={hasRoute}
+					activeLinkClass={classes.adminNavItem_active}
+				/>
 			</>
 		);
 	};

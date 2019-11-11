@@ -32,8 +32,6 @@ const CategoryList = ({
 
 		const key = `${category.name}-${index}`;
 
-		console.log(key);
-
 		return hasChild
 			? (
 				<div

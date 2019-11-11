@@ -25,12 +25,12 @@
 	color: $info;
 }
 
-.adminNavItemCollapsedContent_activeLink {
+.adminNavItemCollapsedContent_active {
 	margin-left: 8px;
 	color: $info !important;
 }
 
-.adminNavItemCollapsedContent_activeLink:before {
+.adminNavItemCollapsedContent_active:before {
 	content: '';
 	width: 3px;
 	height: 25px;

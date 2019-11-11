@@ -18,7 +18,7 @@ const AdminControl = () => {
 		<div className={componentClassName}>
 			<Switch>
 				<Route path={URL.USER_PROFILE} component={UserProfile} />
-				<Route path={URL.CATALOG.CATEGORY} component={Category} />
+				<Route path={URL.CATEGORY} component={Category} />
 			</Switch>
 		</div>
 	);

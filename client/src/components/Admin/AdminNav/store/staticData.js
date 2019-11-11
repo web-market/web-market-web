@@ -11,42 +11,42 @@ export const mainNavItem = [
 	{
 		icon: goods,
 		label: '!!!Каталог',
+		link: '/TEST/',
+		hasRoute: false,
 		items: [
 			{
 				label: '!!!Менеджер товаров',
-				link: '/adminpanel/catalog/',
+				link: URL.CATALOG.PRODUCT_MANAGER,
 				hasRoute: true
-			},
-			{
-				label: '!!!Категории',
-				link: URL.CATALOG.CATEGORY,
-				hasRoute: true
-			},
-			{
-				label: '!!!Фильтры',
-				link: '/adminpanel/filters/',
-				hasRoute: true
-			},
+			}
 		]
 	},
 	{
 		icon: category,
-		label: '!!!Категории'
+		label: '!!!Категории',
+		link: URL.CATEGORY,
+		hasRoute: true
 	},
 	{
 		icon: filter,
-		label: '!!!Фильтры'
+		label: '!!!Фильтры',
+		link: '/TEST/',
+		hasRoute: false
 	}
 ];
 
 export const bottomNavItem = [
 	{
 		icon: settings,
-		label: '!!!Настройки'
+		label: '!!!Настройки',
+		link: '/TEST/',
+		hasRoute: false
 	},
 	{
 		icon: notification,
-		label: '!!!Уведомления'
+		label: '!!!Уведомления',
+		link: '/TEST/',
+		hasRoute: false
 	}
 ];
 

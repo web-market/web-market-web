@@ -8,7 +8,6 @@ class CollapseContent extends Component {
 	}
 
 	render () {
-		console.log(this.props.content);
 		return (
 			<div ref={this.componentRef}>
 				{this.props.content}
