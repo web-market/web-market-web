@@ -15,7 +15,7 @@ export const mainNavItem = [
 		hasRoute: false,
 		items: [
 			{
-				label: '!!!Менеджер товаров',
+				label: 'Менеджер товаров',
 				link: URL.CATALOG.PRODUCT_MANAGER,
 				hasRoute: true
 			}

@@ -3,5 +3,19 @@
 }
 
 .category_list {
-	margin: 24px 32px;
+	margin: 0 24px 24px 24px;
+	border-radius: 2px;
+	background-color: $metro_background;
+	box-shadow: $all_shadow;
+	min-height: 500px;
+}
+
+.category_item:hover {
+	@include hover-focus {
+		background-color: darken($metro_background, 10%) !important;
+	}
+}
+
+.category_item .category_item {
+	padding-left: 24px;
 }

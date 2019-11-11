@@ -5,6 +5,7 @@ import { AdminControlHeaderLeftSide } from './components/AdminControlHeaderLeftS
 import { AdminControlHeaderRightSide } from './components/AdminControlHeaderRightSide';
 
 import classes from './styles/index.scss';
+import { PaddingBox } from '../../../baseComponents/PaddingBox/PaddingBox';
 
 const AdminControlHeader = ({
 								label,
@@ -12,7 +13,11 @@ const AdminControlHeader = ({
 								onActionClick
 							}) => {
 	return (
-		<div className={classes.adminControlHeader}>
+		<PaddingBox
+			vrSmall
+			hrTiny
+			className={classes.adminControlHeader}
+		>
 			<AdminControlHeaderLeftSide
 				label={label}
 			/>
@@ -20,7 +25,7 @@ const AdminControlHeader = ({
 				actions={actions}
 				onActionClick={onActionClick}
 			/>
-		</div>
+		</PaddingBox>
 	);
 };
 

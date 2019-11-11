@@ -36,17 +36,27 @@ const CategoryList = ({
 			? (
 				<div
 					key={key}
-					style={{ marginLeft: 20 }}
 				>
-					{getSubCategory(category)}
+					<PaddingBox
+						vrTiny
+						lTiny
+						className={classes.category_item}
+					>
+						{getSubCategory(category)}
+					</PaddingBox>
 				</div>
 				)
 			: (
 				<div
 					key={key}
-					style={{ marginLeft: 20 }}
 				>
-					{category.name}
+					<PaddingBox
+						vrTiny
+						lTiny
+						className={classes.category_item}
+					>
+						{category.name}
+					</PaddingBox>
 				</div>
 			);
 	};
@@ -60,7 +70,10 @@ const CategoryList = ({
 	};
 
 	return (
-		<PaddingBox className={classes.category_list}>
+		<PaddingBox
+			tiny
+			className={classes.category_list}
+		>
 			{getCategories()}
 		</PaddingBox>
 	);
