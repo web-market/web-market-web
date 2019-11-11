@@ -1,7 +1,9 @@
 import React from 'react';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
 import PropTypes from 'prop-types';
+
+import Collapser from '../../../../baseComponents/Collapser';
+import PaddingBox from '../../../../baseComponents/PaddingBox';
 
 import { isNullOrUndefined } from '../../../../utils';
 
@@ -11,23 +13,30 @@ const CategoryList = ({
 						categories
 					}) => {
 	const getSubCategory = (categoryList) => {
+		const collapseContent = categoryList.childCategories.map((category, index) => {
+			const key = `${category.name}-${index}`;
+
+			return (
+				<div
+					key={key}
+					style={{ marginLeft: 20 }}
+				>
+					{getCategory(category)}
+				</div>
+			);
+		});
+
+		console.log(collapseContent);
+
 		return (
-			<div>
-				{categoryList.name}
-				{
-					categoryList.childCategories.map((category) => {
-						return (
-							<div style={{ marginLeft: 20 }}>
-								{getSingleCategory(category)}
-							</div>
-						);
-					})
-				}
-			</div>
+			<Collapser
+				label={categoryList.name}
+				content={collapseContent}
+			/>
 		);
 	};
 
-	const getSingleCategory = (categoryList) => {
+	const getCategory = (categoryList) => {
 		const hasChild = !isNullOrUndefined(categoryList.childCategories)
 							&& categoryList.childCategories.length !== 0;
 
@@ -39,10 +48,14 @@ const CategoryList = ({
 	const getCategories = () => {
 		if (isNullOrUndefined(categories)) return;
 
-		return categories.map(category => {
+		return categories.map((category, index) => {
+			const key = `${category}-${index}`;
+
 			return (
-				<div>
-					{getSingleCategory(category)}
+				<div
+					key={key}
+				>
+					{getCategory(category)}
 				</div>
 			);
 		});

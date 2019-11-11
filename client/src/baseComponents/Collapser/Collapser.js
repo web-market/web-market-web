@@ -45,6 +45,8 @@ const Collapser = ({ label, open, content, labelClassName, className }) => {
 		);
 	};
 
+	console.log(getCollapsedContent());
+
 	return (
 		<div className={componentClassName}>
 			<div

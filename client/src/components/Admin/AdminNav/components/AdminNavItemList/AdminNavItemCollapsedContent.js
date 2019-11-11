@@ -30,6 +30,7 @@ class AdminNavItemCollapsedContent extends Component {
 	};
 
 	render () {
+		console.log(this.getNavCollapsedContent());
 		return (
 			<div
 				className={classes.adminNavItemCollapsedContent}
