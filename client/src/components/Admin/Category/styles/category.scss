@@ -1,13 +1,5 @@
-.category {
-
-}
-
 .category_list {
-	margin: 0 12px 12px 12px;
-	border-radius: 2px;
-	background-color: $metro_background;
-	box-shadow: $all_shadow;
-	min-height: 500px;
+	@include control-content-wrapper
 }
 
 .category_item:hover {
