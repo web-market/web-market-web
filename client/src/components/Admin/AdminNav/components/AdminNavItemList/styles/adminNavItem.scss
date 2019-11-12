@@ -1,34 +1,37 @@
-.adminNavItem {
+.adminNavItem_link{
 	display: flex;
-	color: $secondary;
-	padding: 8px;
-	font-weight: 500;
-	border-radius: 2px;
+	color: #e9f5ff;
+	padding: 16px 8px 16px 8px;
+	font-weight: 400;
+	line-height: 1.5;
 }
 
-.adminNavItem:hover {
+a.adminNavItem_link:active,
+a.adminNavItem_link:visited {
+	color: #e9f5ff !important;
+}
+
+.adminNavItem_link:hover {
 	cursor: pointer;
-	color: $info;
-	background-color: #e9f5ff;
+	color: #e9f5ff;
+	background-color: #33cabb;
+	text-decoration: none;
 
 	a {
-		color: $info;
-		text-decoration: none;
+		color: #e9f5ff;
+
 	}
 
 	@include transition(background-color .2s, color .2s);
-}
-
-.adminNavItem_icon {
-	margin-right: 32px;
 }
 
 .adminNavItem_collapsed {
 	width: 100%;
 }
 
-.adminNavItem_active {
-	color: $info !important;
+.adminNavItem_activeLink {
+	color: #e9f5ff !important;
+	background-color: #33cabb;
 }
 
 .adminNavItem_collapsedLabel {

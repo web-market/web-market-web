@@ -1,8 +1,11 @@
+@import "../colors/colors";
+
 @mixin control-content-wrapper () {
 	margin: 0 12px 12px 12px;
 	border-radius: 2px;
 	background-color: $metro_background;
-	box-shadow: $all_shadow;
+	box-sizing: border-box;
 	min-height: 500px;
 	font-weight: 400;
+	border: 1px solid $border
 }

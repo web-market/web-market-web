@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Link from '../../../../../baseComponents/Link';
 
 import classes from './styles/index.scss';
+import { PaddingBox } from '../../../../../baseComponents/PaddingBox/PaddingBox';
 
 class AdminNavItemCollapsedContent extends Component {
 	getNavCollapsedContent = () => {
@@ -14,10 +15,9 @@ class AdminNavItemCollapsedContent extends Component {
 					className={classes.adminNavItemCollapsedContent_item}
 				>
 					<Link
-						label={item.label}
+						content={item.label}
 						link={item.link}
 						hasRoute={item.hasRoute}
-						activeLinkClass={classes.adminNavItemCollapsedContent_active}
 					/>
 				</div>
 			);
@@ -26,9 +26,12 @@ class AdminNavItemCollapsedContent extends Component {
 
 	render () {
 		return (
-			<div className={classes.adminNavItemCollapsedContent}>
+			<PaddingBox
+				vrSmall
+				className={classes.adminNavItemCollapsedContent}
+			>
 				{this.getNavCollapsedContent()}
-			</div>
+			</PaddingBox>
 		);
 	}
 }

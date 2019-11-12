@@ -12,7 +12,7 @@ export const mainNavItem = [
 		icon: goods,
 		label: '!!!Каталог',
 		link: '/TEST/',
-		hasRoute: false,
+		hasRoute: true,
 		items: [
 			{
 				label: 'Менеджер товаров',
@@ -31,7 +31,7 @@ export const mainNavItem = [
 		icon: filter,
 		label: '!!!Фильтры',
 		link: '/TEST/',
-		hasRoute: false
+		hasRoute: true
 	}
 ];
 
@@ -40,13 +40,13 @@ export const bottomNavItem = [
 		icon: settings,
 		label: '!!!Настройки',
 		link: '/TEST/',
-		hasRoute: false
+		hasRoute: true
 	},
 	{
 		icon: notification,
 		label: '!!!Уведомления',
 		link: '/TEST/',
-		hasRoute: false
+		hasRoute: true
 	}
 ];
 

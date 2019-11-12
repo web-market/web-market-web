@@ -1,14 +1,13 @@
 .adminNavItemCollapsedContent {
-	padding: 4px 0 0 0;
 	box-sizing: border-box;
+	background-color: #455160;
 }
 
 .adminNavItemCollapsedContent_item {
 	display: flex;
 	position: relative;
 	font-size: 14px;
-	margin: 8px -4px;
-	padding: 4px;
+	padding: 8px 4px;
 }
 
 .adminNavItemCollapsedContent_item:nth-child(1) {
@@ -19,23 +18,9 @@
 	width: 100%;
 	display: block;
 	margin-left: 8px;
+	color: #e9f5ff !important;
 }
 
 .adminNavItemCollapsedContent_item:hover > a {
-	@include transition(color .3s);
-	color: $info;
-}
-
-.adminNavItemCollapsedContent_active {
-	color: $info !important;
-}
-
-.adminNavItemCollapsedContent_active:before {
-	content: '';
-	width: 3px;
-	height: 25px;
-	background-color: #00B8D8;
-	position: absolute;
-	left: 4px;
-	bottom: 0;
+	text-decoration: none;
 }

@@ -8,30 +8,50 @@ import styles from './styles/index.scss';
 const Link = (
 	{
 		link,
-		label,
+		content,
 		hasRoute,
+		routeLinkClass,
 		activeLinkClass
 	}
 ) => {
 	const getRouteLink = () => {
 		return activeLinkClass
-			? <NavLink to={link} activeClassName={activeLinkClass}>{label}</NavLink>
-			: <RouteLink to={link}>{label}</RouteLink>;
+			? (
+				<NavLink
+					to={link}
+					className={routeLinkClass}
+					activeClassName={activeLinkClass}
+				>
+					{content}
+				</NavLink>
+			)
+			: (
+				<RouteLink
+					to={link}
+					className={routeLinkClass}
+				>
+					{content}
+				</RouteLink>
+			);
 	};
 
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={styles.link} href={link}>{label}</a>;
+			: <a className={styles.link} href={link}>{content}</a>;
 	};
 
 	return getLink();
 };
 
 Link.propTypes = {
-	label: PropTypes.string.isRequired,
+	content: PropTypes.oneOfType([
+		PropTypes.string.isRequired,
+		PropTypes.object.isRequired,
+	]),
 	link: PropTypes.string.isRequired,
 	hasRoute: PropTypes.bool.isRequired,
+	routeLinkClass: PropTypes.string,
 	activeLinkClass: PropTypes.string
 };
 

@@ -20,7 +20,7 @@ class AdminNavProfileItems extends Component {
 					key={item.label}
 				>
 					<Link
-						label={item.label}
+						content={item.label}
 						link={item.link}
 						hasRoute={item.hasRoute}
 					/>
