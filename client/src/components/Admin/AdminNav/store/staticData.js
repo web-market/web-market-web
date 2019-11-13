@@ -1,15 +1,15 @@
-import { goods, statistic, category, filter, settings, notification } from '../../../../icons';
+import { chevronDown, chartBar, th, filter, settings, alignJustify } from '../../../../icons';
 import { URL } from '../../consts';
 
 export const mainNavItem = [
 	{
-		icon: statistic,
+		icon: chartBar,
 		label: '!!!Статистика',
 		link: '/adminpanel/statistic/',
 		hasRoute: true
 	},
 	{
-		icon: goods,
+		icon: alignJustify,
 		label: '!!!Каталог',
 		link: '/TEST/',
 		hasRoute: true,
@@ -22,7 +22,7 @@ export const mainNavItem = [
 		]
 	},
 	{
-		icon: category,
+		icon: th,
 		label: '!!!Категории',
 		link: URL.CATEGORY,
 		hasRoute: true
@@ -43,7 +43,7 @@ export const bottomNavItem = [
 		hasRoute: true
 	},
 	{
-		icon: notification,
+		icon: chevronDown,
 		label: '!!!Уведомления',
 		link: '/TEST/',
 		hasRoute: true

@@ -1,9 +1,9 @@
-import { userProfile } from '../../../../../../icons';
+import { chevronLeft } from '../../../../../../icons';
 import { URL } from '../../../../consts';
 
 export const profileItem = [
 	{
-		icon: userProfile,
+		icon: chevronLeft,
 		label: '!!!Профиль',
 		link: URL.USER_PROFILE,
 		hasRoute: true

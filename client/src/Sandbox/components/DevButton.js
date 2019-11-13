@@ -3,8 +3,6 @@ import React from 'react';
 import Button from '../../baseComponents/Button';
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
 
-import { filter, chevronUp, plus } from '../../icons';
-
 export const DevButton = () => {
 	return (
 		<GridLayout>
@@ -15,7 +13,7 @@ export const DevButton = () => {
 				<Button
 					type="primary"
 					transparent
-					icon={plus}
+					icon="chevron-up"
 				/>
 				<Button
 					type="secondary"
@@ -26,18 +24,15 @@ export const DevButton = () => {
 					type="success"
 					label="Success ❤"
 					transparent
-					icon={chevronUp}
 				/>
 				<Button
 					type="danger"
 					transparent
-					icon={filter}
 				/>
 				<Button
 					type="warning"
 					label="Warning 🍋"
 					transparent
-					icon={chevronUp}
 				/>
 				<Button
 					type="info"
@@ -53,7 +48,6 @@ export const DevButton = () => {
 					type="dark"
 					label="Dark"
 					transparent
-					icon={chevronUp}
 				/>
 			</GridLayoutRow>
 			<GridLayoutRow
@@ -63,12 +57,10 @@ export const DevButton = () => {
 				<Button
 					type="primary"
 					label="Primary"
-					icon={filter}
 				/>
 				<Button
 					type="secondary"
 					label="Secondary"
-					icon={chevronUp}
 				/>
 				<Button
 					type="success"
@@ -81,7 +73,6 @@ export const DevButton = () => {
 				<Button
 					type="warning"
 					label="Warning"
-					icon={chevronUp}
 				/>
 				<Button
 					type="info"
@@ -90,12 +81,10 @@ export const DevButton = () => {
 				<Button
 					type="light"
 					label="Light"
-					icon={chevronUp}
 				/>
 				<Button
 					type="dark"
 					label="Dark"
-					icon={chevronUp}
 				/>
 			</GridLayoutRow>
 		</GridLayout>

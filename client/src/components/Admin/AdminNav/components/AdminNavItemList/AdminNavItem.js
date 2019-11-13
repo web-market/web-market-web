@@ -4,32 +4,30 @@ import PropTypes from 'prop-types';
 import { isUndefined } from '../../../../../utils';
 import classes from './styles/index.scss';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
+import { angleRight } from '../../../../../icons';
 
 import { AdminNavItemCollapsedContent } from './AdminNavItemCollapsedContent';
 import Link from '../../../../../baseComponents/Link';
+import classNames from 'classnames';
 
 const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const linkContent = (
-			<>
-				<span>{ label }</span>
-				{icon && (
-					<Icon
-						icon={icon}
-					/>
-				)}
-			</>
-		);
+	const navItemCollapsed = classNames(
+		classes.adminNavItem_content,
+		classes.adminNavItem_content_collapsed
+	);
 
-	const getNavCollapsedItem = () => {
-		const linkContent = (
-			<div
-				className={classes.adminNavItem_link}
-				onClick={() => setIsOpen(!isOpen)}
-			>
+	const navItemCollapsedIcon = classNames(
+		classes.adminNavItem_collapsedIcon,
+		{
+			[classes.adminNavItem_collapsedIcon__open]: isOpen
+		}
+	);
+
+	const linkContent = (
+			<div className={classes.adminNavItem_content}>
 				<span>{ label }</span>
-				<span>Open</span>
 				{icon && (
 					<Icon
 						icon={icon}
@@ -38,9 +36,30 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 			</div>
 		);
 
+	const collapsedLinkContent = (
+		<div
+			className={navItemCollapsed}
+			onClick={() => setIsOpen(!isOpen)}
+		>
+			<span>{ label }</span>
+			<div className={classes.adminNavItem_content_collapsed_iconWrapper}>
+				<Icon
+					className={navItemCollapsedIcon}
+					icon={angleRight}
+				/>
+				{icon && (
+					<Icon
+						icon={icon}
+					/>
+				)}
+			</div>
+		</div>
+	);
+
+	const getNavCollapsedItem = () => {
 		return (
 			<>
-				{linkContent}
+				{collapsedLinkContent}
 				{isOpen && (
 					<AdminNavItemCollapsedContent items={items} />
 				)}
@@ -54,7 +73,6 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 				link={link}
 				content={content}
 				hasRoute={hasRoute}
-				routeLinkClass={classes.adminNavItem_link}
 				activeLinkClass={classes.adminNavItem_activeLink}
 			/>
 		);
@@ -66,7 +84,11 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 		return getNavCollapsedItem();
 	};
 
-	return getItemComponent();
+	return (
+		<div className={classes.adminNavItem}>
+			{getItemComponent()}
+		</div>
+	);
 };
 
 AdminNavItem.defaultProps = {};

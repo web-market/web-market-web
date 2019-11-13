@@ -5,12 +5,12 @@ import PaddingBox from '../../../../../baseComponents/PaddingBox';
 import { AdminNavItem } from './AdminNavItem';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 import { mainNavItem } from '../../store/staticData';
 
 const AdminNavItemList = () => {
 	const componentClassName = classNames(
-		styles.adminNavItemList
+		classes.adminNavItemList
 	);
 
 	return (

@@ -1,8 +1,4 @@
 .icon {
-	min-width: 18px;
-	min-height: 18px;
-
-	path  {
-		@include transition(fill, .3s)
-	}
+	width: 16px;
+	height: 16px;
 }
