@@ -1,71 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { isUndefined } from '../../../../../utils';
 import classes from './styles/index.scss';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
-import { angleRight } from '../../../../../icons';
 
-import { AdminNavItemCollapsedContent } from './AdminNavItemCollapsedContent';
 import Link from '../../../../../baseComponents/Link';
-import classNames from 'classnames';
+import AdminNavItemCollapse from './AdminNavItemCollapse';
 
-const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const navItemCollapsed = classNames(
-		classes.adminNavItem_content,
-		classes.adminNavItem_content_collapsed
-	);
-
-	const navItemCollapsedIcon = classNames(
-		classes.adminNavItem_collapsedIcon,
-		{
-			[classes.adminNavItem_collapsedIcon__open]: isOpen
-		}
-	);
-
+const AdminNavItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
 	const linkContent = (
 			<div className={classes.adminNavItem_content}>
 				<span>{ label }</span>
 				{icon && (
-					<Icon
-						icon={icon}
-					/>
+					<div className={classes.adminNavItem_content_navItemIcon}>
+						<Icon
+							icon={icon}
+						/>
+					</div>
 				)}
 			</div>
 		);
 
-	const collapsedLinkContent = (
-		<div
-			className={navItemCollapsed}
-			onClick={() => setIsOpen(!isOpen)}
-		>
-			<span>{ label }</span>
-			<div className={classes.adminNavItem_content_collapsed_iconWrapper}>
-				<Icon
-					className={navItemCollapsedIcon}
-					icon={angleRight}
-				/>
-				{icon && (
-					<Icon
-						icon={icon}
-					/>
-				)}
-			</div>
-		</div>
-	);
-
-	const getNavCollapsedItem = () => {
-		return (
-			<>
-				{collapsedLinkContent}
-				{isOpen && (
-					<AdminNavItemCollapsedContent items={items} />
-				)}
-			</>
-		);
-	};
 
 	const getNavItem = (content = linkContent) => {
 		return (
@@ -81,7 +37,15 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link }) => {
 	const getItemComponent = () => {
 		if (isUndefined(items)) return getNavItem();
 
-		return getNavCollapsedItem();
+		return (
+			<AdminNavItemCollapse
+				items={items}
+				icon={icon}
+				label={label}
+				menuRoute={menuRoute}
+				activeMenu={activeMenu}
+			/>
+		);
 	};
 
 	return (
@@ -95,7 +59,12 @@ AdminNavItem.defaultProps = {};
 
 AdminNavItem.propTypes = {
 	icon: PropTypes.string,
-	label: PropTypes.string.isRequired
+	label: PropTypes.string.isRequired,
+	activeMenu: PropTypes.string,
+	menuRoute: PropTypes.string,
+	link: PropTypes.string,
+	hasRoute: PropTypes.bool,
+	items: PropTypes.array,
 };
 
 export { AdminNavItem };

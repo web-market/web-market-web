@@ -5,11 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Icon = ({ icon, className }) => {
 	const getIconContent = () => {
-		return (
-			<span className={className}>
+		return className
+			? (
+				<span className={className}>
+					<FontAwesomeIcon icon={icon} />
+				</span>
+			) : (
 				<FontAwesomeIcon icon={icon} />
-			</span>
-		);
+			);
 	};
 
 	return (

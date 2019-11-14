@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
+import { parsedLocation } from './utils';
 
 import AdminNavProfile from './components/AdminNavProfile';
 import AdminNavItemList from './components/AdminNavItemList';
@@ -9,6 +10,10 @@ import classNames from 'classnames';
 import styles from './styles/index.scss';
 
 const AdminNav = () => {
+	const location = useLocation();
+
+	const { activeMenu } = parsedLocation(location);
+
 	const componentClassName = classNames(
 		styles.adminNav
 	);
@@ -16,14 +21,10 @@ const AdminNav = () => {
 	return (
 		<div className={componentClassName}>
 			<AdminNavProfile />
-			<AdminNavItemList />
+			<AdminNavItemList activeMenu={activeMenu} />
 			<AdminNavBottomItemList />
 		</div>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { AdminNav };

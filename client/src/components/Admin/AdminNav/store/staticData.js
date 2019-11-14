@@ -13,10 +13,16 @@ export const mainNavItem = [
 		label: '!!!Каталог',
 		link: '/TEST/',
 		hasRoute: true,
+		menuRoute: URL.CATALOG.ROOT,
 		items: [
 			{
 				label: 'Менеджер товаров',
 				link: URL.CATALOG.PRODUCT_MANAGER,
+				hasRoute: true
+			},
+			{
+				label: 'Топ продаж',
+				link: URL.CATALOG.TOP_SALE,
 				hasRoute: true
 			}
 		]
@@ -25,13 +31,26 @@ export const mainNavItem = [
 		icon: th,
 		label: '!!!Категории',
 		link: URL.CATEGORY,
-		hasRoute: true
+		hasRoute: true,
 	},
 	{
 		icon: filter,
 		label: '!!!Фильтры',
 		link: '/TEST/',
-		hasRoute: true
+		hasRoute: true,
+		menuRoute: URL.FILTERS.ROOT,
+		items: [
+			{
+				label: 'qweqweqwe',
+				link: URL.FILTERS.PRODUCT_MANAGER,
+				hasRoute: true
+			},
+			{
+				label: 'qwewqe',
+				link: URL.FILTERS.TOP_SALE,
+				hasRoute: true
+			}
+		]
 	}
 ];
 

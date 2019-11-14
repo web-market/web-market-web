@@ -1,0 +1,29 @@
+.adminNavItem_hasActiveChild.adminNavItem_content {
+	background-color: #33cabb;
+}
+
+.adminNavItem_hasActiveChild {
+	.adminNavItem_content_navItemIcon {
+		background-color: #53d2c5
+	}
+}
+
+.adminNavItem_content_iconWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.adminNavItem_collapsedIcon {
+	font-size: 14px;
+	margin-right: 16px;
+
+	@include transition(transform .3s);
+}
+
+.adminNavItem_collapsedIcon__open {
+	@include rotate(90)
+}
+
+.adminNavItem_collapsedLabel {
+	display: flex;
+}

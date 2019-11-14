@@ -4,59 +4,49 @@
 	}
 }
 
+a {
+	.adminNavItem_content:active,
+	.adminNavItem_content:visited {
+		color: #e9f5ff !important;
+	}
+}
+
 .adminNavItem_content {
 	display: flex;
 	align-items: center;
 	color: #e9f5ff;
-	padding: 16px 8px 16px 8px;
+	padding: 8px 16px;
 	font-weight: 400;
 	line-height: 1.5;
 	justify-content: space-between;
 }
 
-.adminNavItem_content_collapsed {
-	//justify-content: space-between;
-}
-
-.adminNavItem_content_collapsed_iconWrapper {
-	display: flex;
-}
-
-.adminNavItem_collapsedIcon {
-	font-size: 14px;
-	margin-right: 16px;
-	display: block;
-
-	@include transition(transform .2s);
-}
-
-.adminNavItem_collapsedIcon__open {
-	@include rotate(90)
-}
-
-a.adminNavItem_content:active,
-a.adminNavItem_content:visited {
-	color: #e9f5ff !important;
-}
-
 .adminNavItem_content:hover {
 	cursor: pointer;
 	color: #e9f5ff;
-	background-color: #33cabb;
+	background-color: #394250;
 	text-decoration: none;
-
-	a {
-		color: #e9f5ff;
-	}
-
-	@include transition(background-color .2s, color .2s);
 }
 
 .adminNavItem_activeLink {
-	color: #e9f5ff !important;
-	background-color: #33cabb;
+	.adminNavItem_content {
+		background-color: #33cabb;
+	}
+
+	.adminNavItem_content_navItemIcon {
+		background-color: #53d2c5
+	}
 }
 
-.adminNavItem_collapsedLabel {
+.adminNavItem_content_navItemIcon {
 	display: flex;
+	align-items: center;
+	background-color: #3b4553;
+	width: 40px;
+	height: 40px;
+	font-size: 16px;
+
+	svg {
+		margin: 0 auto;
+	}
 }
