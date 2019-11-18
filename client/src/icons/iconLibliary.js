@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
 import {
 	faChevronDown,
@@ -27,3 +27,5 @@ library.add(
 	faAngleRight,
 	faAlignJustify
 );
+
+dom.watch();

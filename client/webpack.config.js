@@ -5,16 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV !== 'prod';
 
 module.exports = {
-	devtool: 'inline-source-map',
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './src/index.html'
-		}),
-		new MiniCssExtractPlugin({
-			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
-			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-		}),
-	],
 	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -24,14 +14,9 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: ['babel-loader']
-			},
-			{
-				test: /\.jsx$/,
-				exclude: /node_modules/,
-				use: ['babel-loader']
+				use: ['babel-loader'],
 			},
 			{
 				test: /\.s[ac]ss$/i,
@@ -54,14 +39,25 @@ module.exports = {
 							sourceMap: isDevelopment
 						}
 					}
-				]
+				],
+				exclude: /node_modules/,
 			}
 		]
 	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './src/index.html'
+		}),
+		new MiniCssExtractPlugin({
+			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
+			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+		}),
+	],
 	resolve: {
 		extensions: ['.js', '.jsx', '.scss']
 	},
 	devServer: {
 		historyApiFallback: true
-	}
+	},
+	devtool: 'inline-source-map',
 };
