@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { AdminNavItem } from './AdminNavItem';
-import { mainNavItem } from '../../store/staticData';
+import { mainNavItem } from '../../staticData/staticData';
+
+import classes from './styles/index.scss';
 
 const AdminNavItemList = ({ activeMenu }) => {
 	return (
@@ -23,6 +25,7 @@ const AdminNavItemList = ({ activeMenu }) => {
 					);
 				})
 			}
+			<div className={classes.adminNavItemList_separator}></div>
 		</div>
 	);
 };

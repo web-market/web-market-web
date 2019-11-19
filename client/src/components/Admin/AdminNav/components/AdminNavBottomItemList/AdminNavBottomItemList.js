@@ -1,10 +1,9 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import PaddingBox from '../../../../../baseComponents/PaddingBox';
 import { AdminNavItem } from '../AdminNavItemList/AdminNavItem';
 
-import { bottomNavItem } from '../../store/staticData';
+import { bottomNavItem } from '../../staticData/staticData';
 
 const AdminNavBottomItemList = () => {
 	return (
@@ -29,9 +28,5 @@ const AdminNavBottomItemList = () => {
 		</>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { AdminNavBottomItemList };

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
 
 import PaddingBox from '../../../../../baseComponents/PaddingBox';
 
 import { AdminNavProfileICollapseContent } from './AdminNavProfileICollapseContent';
-import { navProfile } from '../../store/staticData';
+import { navProfile } from '../../staticData/staticData';
 
 import classes from './styles/index.scss';
 import { angleRight } from '../../../../../icons';
@@ -66,9 +65,5 @@ const AdminNavProfile = () => {
 		</>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { AdminNavProfile };

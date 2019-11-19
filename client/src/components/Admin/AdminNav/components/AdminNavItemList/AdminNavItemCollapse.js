@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { AdminNavItemCollapseContent } from './AdminNavItemCollapseContent';
@@ -14,13 +14,18 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
 
-	const getHeight = useMemo(() => {
+	//TODO: dKostreba. create a state management provider for side nav menu. remove isInit
+	const isInit = useRef(true);
+
+	const getHeight = useCallback(() => {
 		if (isUndefined(collapseRef)) return;
 
 		const height = collapseRef.childNodes[0].offsetHeight;
 		const extraHeight = collapseRef.childNodes[0].childElementCount * 16;
 
-		if (menuRoute === activeMenu) {
+		if (menuRoute === activeMenu && isInit.current) {
+			isInit.current = false;
+
 			return extraHeight + height;
 		}
 
@@ -32,7 +37,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 	}, [setIsOpen, activeMenu, menuRoute]);
 
 	useEffect(() => {
-		return isOpen ? setHeight(getHeight) : setHeight(0);
+		return isOpen ? setHeight(getHeight()) : setHeight(0);
 	}, [isOpen, collapseRef, getHeight]);
 
 	const navItemCollapsed = classNames(

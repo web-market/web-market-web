@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Link from '../../../../../baseComponents/Link';
 
-import { profileItem } from './store/staticData';
+import { profileItem } from './staticData/staticData';
 import classes from './styles/index.scss';
 import { PaddingBox } from '../../../../../baseComponents/PaddingBox/PaddingBox';
 
