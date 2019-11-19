@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { AdminNavItemCollapseContent } from './AdminNavItemCollapseContent';
@@ -14,13 +14,26 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
 
-	useEffect(() => {
+	const getHeight = useMemo(() => {
 		if (isUndefined(collapseRef)) return;
 
-		const collapseContentHeight = collapseRef.childNodes[0].offsetHeight;
+		const height = collapseRef.childNodes[0].offsetHeight;
+		const extraHeight = collapseRef.childNodes[0].childElementCount * 16;
 
-		return isOpen ? setHeight(collapseContentHeight) : setHeight(0);
-	}, [isOpen, collapseRef]);
+		if (menuRoute === activeMenu) {
+			return extraHeight + height;
+		}
+
+		return height;
+	}, [collapseRef, menuRoute, activeMenu]);
+
+	useEffect(() => {
+		setIsOpen(menuRoute === activeMenu);
+	}, [setIsOpen, activeMenu, menuRoute]);
+
+	useEffect(() => {
+		return isOpen ? setHeight(getHeight) : setHeight(0);
+	}, [isOpen, collapseRef, getHeight]);
 
 	const navItemCollapsed = classNames(
 		classes.adminNavItem_content,

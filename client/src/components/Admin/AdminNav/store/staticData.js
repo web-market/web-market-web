@@ -24,6 +24,11 @@ export const mainNavItem = [
 				label: 'Топ продаж',
 				link: URL.CATALOG.TOP_SALE,
 				hasRoute: true
+			},
+			{
+				label: 'Зубы анархиста',
+				link: URL.CATALOG.ANARCHY_TOOTH,
+				hasRoute: true
 			}
 		]
 	},
