@@ -1,10 +1,10 @@
 .adminNavItem_hasActiveChild.adminNavItem_content {
-	background-color: #33cabb;
+	background-color: $primary;
 }
 
 .adminNavItem_hasActiveChild {
 	.adminNavItem_content_navItemIcon {
-		background-color: #53d2c5
+		background-color: $primary;
 	}
 }
 

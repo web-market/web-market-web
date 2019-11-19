@@ -19,6 +19,7 @@ const CategoryList = ({
 
 		return (
 			<Collapser
+				className={classes.category_item}
 				label={categoryList.name}
 				content={getCollapseContent()}
 				transition={false}
@@ -40,7 +41,6 @@ const CategoryList = ({
 					<PaddingBox
 						vrTiny
 						lTiny
-						className={classes.category_item}
 					>
 						{getSubCategory(category)}
 					</PaddingBox>

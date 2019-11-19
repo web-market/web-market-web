@@ -58,15 +58,17 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 	const collapseHeight = transition ? { height } : { height: 'inherit' };
 
 	return (
-		<div className={componentClassName}>
-			<div
-				className={styles.collapse_header}
-				onClick={setOpen}
-			>
-				<div className={labelClassName}>{label}</div>
-				<Icon
-					icon={isOpen ? chevronUp : chevronDown}
-				/>
+		<>
+			<div className={componentClassName}>
+				<div
+					className={styles.collapse_header}
+					onClick={setOpen}
+				>
+					<div className={labelClassName}>{label}</div>
+					<Icon
+						icon={isOpen ? chevronUp : chevronDown}
+					/>
+				</div>
 			</div>
 			<div
 				style={collapseHeight}
@@ -74,7 +76,7 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 			>
 				{getCollapsedContent()}
 			</div>
-		</div>
+		</>
 	);
 };
 

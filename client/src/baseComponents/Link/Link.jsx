@@ -10,7 +10,7 @@ const Link = (
 		link,
 		content,
 		hasRoute,
-		routeLinkClass,
+		className,
 		activeLinkClass
 	}
 ) => {
@@ -19,7 +19,7 @@ const Link = (
 			? (
 				<NavLink
 					to={link}
-					className={routeLinkClass}
+					className={className}
 					activeClassName={activeLinkClass}
 				>
 					{content}
@@ -28,7 +28,7 @@ const Link = (
 			: (
 				<RouteLink
 					to={link}
-					className={routeLinkClass}
+					className={className}
 				>
 					{content}
 				</RouteLink>
@@ -51,7 +51,7 @@ Link.propTypes = {
 	]),
 	link: PropTypes.string.isRequired,
 	hasRoute: PropTypes.bool.isRequired,
-	routeLinkClass: PropTypes.string,
+	className: PropTypes.string,
 	activeLinkClass: PropTypes.string
 };
 

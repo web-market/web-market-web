@@ -7,15 +7,20 @@ import { Icon } from '../../../../../baseComponents/Icon/Icon';
 import { angleRight } from '../../../../../icons';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
+import { isUndefined } from '../../../../../utils';
 
 const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [collapseContentHeight, setCollapseContentHeight] = useState(collapseContentHeight);
-	const [height, setHeight] = useState(collapseContentHeight);
+	const [height, setHeight] = useState(0);
+	const [collapseRef, setCollapseRef] = useState();
 
 	useEffect(() => {
-		return isOpen ? setHeight(collapseContentHeight + 32) : setHeight(0);
-	}, [isOpen, collapseContentHeight]);
+		if (isUndefined(collapseRef)) return;
+
+		const collapseContentHeight = collapseRef.childNodes[0].offsetHeight;
+
+		return isOpen ? setHeight(collapseContentHeight) : setHeight(0);
+	}, [isOpen, collapseRef]);
 
 	const navItemCollapsed = classNames(
 		classes.adminNavItem_content,
@@ -46,6 +51,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 					<div className={classes.adminNavItem_content_navItemIcon}>
 						<Icon
 							icon={icon}
+							className={classes.adminNavItem_content_navItemIcon}
 						/>
 					</div>
 				)}
@@ -59,7 +65,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 				{collapsedLinkContent}
 				<AdminNavItemCollapseContent
 					items={items}
-					setCollapseContentHeight={setCollapseContentHeight}
+					setCollapseRef={setCollapseRef}
 					height={height}
 				/>
 			</>

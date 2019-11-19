@@ -1,5 +1,5 @@
 .adminNavItemCollapsedContent {
-	background-color: #455160;
+	background-color: $collapse_content_bg_dark;
 	overflow: hidden;
 
 	@include transition(height .3s, padding .3s);
@@ -22,7 +22,7 @@
 	width: 8px;
 	height: 8px;
 	border-radius: 10px;
-	border: 1px solid #e9f5ff;
+	border: 1px solid $text_light;
 	box-sizing: border-box;
 	margin-right: 32px;
 
@@ -31,21 +31,17 @@
 
 .adminNavItemCollapsedContent_item:hover {
 	.adminNavItemCollapsedContent_itemIcon {
-		border-color: #33cabb;
-		background-color: #33cabb;
+		border-color: $primary;
+		background-color: $primary;
 	}
 }
 
 .adminNavItemCollapsedContent_item > a {
 	width: 100%;
 	display: block;
-	color: #e9f5ff !important;
+	color: $text_light !important;
 	padding-left: 16px;
 	line-height: 2.3;
-}
-
-.adminNavItemCollapsedContent_item:hover > a {
-	text-decoration: none;
 }
 
 .adminNavItemCollapsedContent_activeLink {

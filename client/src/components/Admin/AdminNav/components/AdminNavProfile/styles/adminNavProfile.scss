@@ -1,23 +1,41 @@
+.adminNavProfile {
+	display: flex;
+	align-items: center;
+	background-color: $purple;
+}
+
 .adminNavProfile_userLogo {
 	display: block;
 	width: 40px;
 	border-radius: 20px;
 	height: 40px;
+
 }
 
-.adminNavProfile_collapser {
-	margin-top: 16px;
-}
+.adminNavProfile_userNameWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-left: 8px;
+	width: 100%;
 
-.adminNavProfile_collapserContent {
-	box-sizing: border-box;
-	border-top: 1px solid #E5E5E5;
-	padding: 16px 0 16px 0;
-	margin-top: 8px;
+	@include hover-focus {
+		cursor: pointer;
+	}
 }
 
 .adminNavProfile_userName {
 	font-size: 1em;
-	font-weight: bold;
+	max-width: 125px;
+	color: $text_light;
 }
 
+.adminNavProfile_icon {
+	color: $text_light;
+
+	@include transition(transform .3s);
+}
+
+.adminNavProfile_iconIsOpen {
+	@include rotate(90)
+}

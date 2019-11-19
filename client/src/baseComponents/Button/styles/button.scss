@@ -12,7 +12,7 @@
 }
 
 .button_primary {
-	@include bg-color($primary_button, $hover: true);
+	@include bg-color($primary, $hover: true);
 		@include hover_focus {
 			@include box-shadow($primary_shadow);
 		};
@@ -20,17 +20,17 @@
 
 .button_primary__transparent {
 	color: $primary;
-	@include border ($primary_button);
+	@include border ($primary);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($primary_shadow);
-		@include bg-color($primary_button);
+		@include bg-color($primary);
 	};
 }
 
 .button_secondary {
-	@include bg-color($secondary_button, $hover: true);
+	@include bg-color($secondary, $hover: true);
 	@include hover_focus {
 			@include box-shadow($secondary_shadow);
 		};
@@ -38,17 +38,17 @@
 
 .button_secondary__transparent {
 	color: $secondary;
-	@include border ($secondary_button);
+	@include border ($secondary);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($secondary_shadow);
-		@include bg-color($secondary_button);
+		@include bg-color($secondary);
 	};
 }
 
 .button_success {
-	@include bg-color($success_button, $hover: true);
+	@include bg-color($success, $hover: true);
 	@include hover_focus {
 			@include box-shadow($success_shadow);
 		};
@@ -56,17 +56,17 @@
 
 .button_success__transparent {
 	color: $success;
-	@include border ($success_button);
+	@include border ($success);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($success_shadow);
-		@include bg-color($success_button);
+		@include bg-color($success);
 	};
 }
 
 .button_danger {
-	@include bg-color($danger_button, $hover: true);
+	@include bg-color($danger, $hover: true);
 		@include hover_focus {
 			@include box-shadow($danger_shadow);
 		};
@@ -74,17 +74,17 @@
 
 .button_danger__transparent {
 	color: $danger;
-	@include border ($danger_button);
+	@include border ($danger);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($danger_shadow);
-		@include bg-color($danger_button);
+		@include bg-color($danger);
 	};
 }
 
 .button_warning {
-	@include bg-color($warning_button, $hover: true);
+	@include bg-color($warning, $hover: true);
 	color: $dark;
 		@include hover_focus {
 			@include box-shadow($warning_shadow);
@@ -93,17 +93,17 @@
 
 .button_warning__transparent {
 	color: $warning;
-	@include border ($warning_button);
+	@include border ($warning);
 
 	@include hover_focus {
 		color: $dark;
 		@include box-shadow($warning_shadow);
-		@include bg-color($warning_button);
+		@include bg-color($warning);
 	};
 }
 
 .button_info {
-	@include bg-color($info_button, $hover: true);
+	@include bg-color($info, $hover: true);
 		&:hover {
 			@include box-shadow($info_shadow);
 		};
@@ -111,17 +111,17 @@
 
 .button_info__transparent {
 	color: $info;
-	@include border ($info_button);
+	@include border ($info);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($info_shadow);
-		@include bg-color($info_button);
+		@include bg-color($info);
 	};
 }
 
 .button_light {
-	@include bg-color($light_button, $hover: true);
+	@include bg-color($light, $hover: true);
 	color: $dark;
 		@include hover_focus {
 			@include box-shadow($light_shadow);
@@ -130,17 +130,17 @@
 
 .button_light__transparent {
 	color: $dark;
-	@include border ($light_button);
+	@include border ($light);
 
 	@include hover_focus {
 		color: $dark;
 		@include box-shadow($light_shadow);
-		@include bg-color($light_button);
+		@include bg-color($light);
 	};
 }
 
 .button_dark {
-	@include bg-color($dark_button, $hover: true);
+	@include bg-color($dark, $hover: true);
 		@include hover_focus {
 			@include box-shadow($dark_shadow);
 		};
@@ -148,12 +148,12 @@
 
 .button_dark__transparent {
 	color: $dark;
-	@include border ($dark_button);
+	@include border ($dark);
 
 	@include hover_focus {
 		color: $light;
 		@include box-shadow($dark_shadow);
-		@include bg-color($dark_button);
+		@include bg-color($dark);
 	};
 }
 

@@ -7,14 +7,14 @@
 a {
 	.adminNavItem_content:active,
 	.adminNavItem_content:visited {
-		color: #e9f5ff !important;
+		color: $text_light !important;
 	}
 }
 
 .adminNavItem_content {
 	display: flex;
 	align-items: center;
-	color: #e9f5ff;
+	color: $text_light;
 	padding: 8px 16px;
 	font-weight: 400;
 	line-height: 1.5;
@@ -23,9 +23,8 @@ a {
 
 .adminNavItem_content:hover {
 	cursor: pointer;
-	color: #e9f5ff;
+	color: $text_light;
 	background-color: #394250;
-	text-decoration: none;
 }
 
 .adminNavItem_activeLink {

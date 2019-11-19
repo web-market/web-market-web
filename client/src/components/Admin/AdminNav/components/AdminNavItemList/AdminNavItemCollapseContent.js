@@ -12,8 +12,8 @@ class AdminNavItemCollapseContent extends Component {
 	}
 
 	componentDidMount () {
-		this.props.setCollapseContentHeight(
-			this.collapseContent.current.offsetHeight
+		this.props.setCollapseRef(
+			this.collapseContent.current
 		);
 	}
 
@@ -64,7 +64,9 @@ class AdminNavItemCollapseContent extends Component {
 				style={this.collapseHeight}
 				className={classes.adminNavItemCollapsedContent}
 			>
-				{this.getNavCollapsedContent()}
+				<div>
+					{this.getNavCollapsedContent()}
+				</div>
 			</div>
 		);
 	}
@@ -72,7 +74,8 @@ class AdminNavItemCollapseContent extends Component {
 
 AdminNavItemCollapseContent.propTypes = {
 	items: PropTypes.array.isRequired,
-	height: PropTypes.number
+	height: PropTypes.number,
+	setCollapseRef: PropTypes.func
 };
 
 export { AdminNavItemCollapseContent };

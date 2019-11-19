@@ -6,7 +6,7 @@ import styles from './styles/index.scss';
 
 const PaddingBox = ({ children,
                         tiny, small, normal, large,
-						ultraVrTiny, ultraHrTiny, ultraTTiny, ultraRTiny, ultraBTiny, ultraLTiny,
+						vrUltraTiny, hrUltraTiny, tUltraTiny, rUltraTiny, bUltraTiny, lUltraTiny,
                         vrTiny, hrTiny, tTiny, rTiny, bTiny, lTiny,
                         vrSmall, hrSmall, tSmall, rSmall, bSmall, lSmall,
                         vrNormal, hrNormal, tNormal, rNormal, bNormal, lNormal,
@@ -17,15 +17,15 @@ const PaddingBox = ({ children,
         {
             [styles.padding_tiny]: tiny,
             [styles.padding_small]: small,
-            [styles.padding_small]: normal,
-            [styles.padding_small]: large,
+            [styles.padding_normal]: normal,
+            [styles.padding_large]: large,
 
-			[styles.padding_ultraVrTiny]: ultraVrTiny,
-			[styles.padding_ultraHrTiny]: ultraHrTiny,
-			[styles.padding_ultraTTiny]: ultraTTiny,
-			[styles.padding_ultraRTiny]: ultraRTiny,
-			[styles.padding_ultraBTiny]: ultraBTiny,
-			[styles.padding_ultraLTiny]: ultraLTiny,
+			[styles.padding_ultraVrTiny]: vrUltraTiny,
+			[styles.padding_ultraHrTiny]: hrUltraTiny,
+			[styles.padding_ultraTTiny]: tUltraTiny,
+			[styles.padding_ultraRTiny]: rUltraTiny,
+			[styles.padding_ultraBTiny]: bUltraTiny,
+			[styles.padding_ultraLTiny]: lUltraTiny,
 
             [styles.padding_vrTiny]: vrTiny,
             [styles.padding_hrTiny]: hrTiny,
@@ -63,25 +63,18 @@ const PaddingBox = ({ children,
     );
 };
 
-PaddingBox.defaultProps = {
-    tiny: false,
-    small: false,
-    normal: false,
-    large: false
-};
-
 PaddingBox.propTypes = {
     tiny: PropTypes.bool,
     small: PropTypes.bool,
     normal: PropTypes.bool,
     large: PropTypes.bool,
 
-	ultraVrTiny: PropTypes.bool,
-	ultraHrTiny: PropTypes.bool,
-	ultraTTiny: PropTypes.bool,
-	ultraRTiny: PropTypes.bool,
-	ultraBTiny: PropTypes.bool,
-	ultraLTiny: PropTypes.bool,
+	vrUltraTiny: PropTypes.bool,
+	hrUltraTiny: PropTypes.bool,
+	tUltraTiny: PropTypes.bool,
+	rUltraTiny: PropTypes.bool,
+	bUltraTiny: PropTypes.bool,
+	lUltraTiny: PropTypes.bool,
 
 	vrTiny: PropTypes.bool,
     hrTiny: PropTypes.bool,
