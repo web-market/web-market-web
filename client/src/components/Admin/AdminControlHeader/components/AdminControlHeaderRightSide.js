@@ -9,10 +9,12 @@ const AdminControlHeaderRightSide = ({
 									}) => {
 	return (
 		<>
-			<AdminControlHeaderRightSideActions
-				actions={actions}
-				onActionClick={onActionClick}
-			/>
+			{actions && (
+				<AdminControlHeaderRightSideActions
+					actions={actions}
+					onActionClick={onActionClick}
+				/>
+			)}
 		</>
 	);
 };

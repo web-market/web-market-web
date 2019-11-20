@@ -14,7 +14,8 @@ const Button = ({
 					transparent,
 					icon,
 					actionName,
-					actionHandler
+					actionHandler,
+					size
 				}) => {
 	const [hover, setHover] = useState(false);
 
@@ -39,6 +40,8 @@ const Button = ({
 			[classes.button_light__transparent]: transparent && type === 'light',
 			[classes.button_dark__transparent]: transparent && type === 'dark',
 
+			[classes.button_size__tiny]: size === 'tiny',
+
 			[classes.button_hasIcon]: icon,
 			[classes.button_onlyIcon]: !label
 		}
@@ -47,6 +50,14 @@ const Button = ({
 	const componentLabelClassName = classNames(
 		{
 			[classes.button_label]: icon,
+		}
+	);
+
+	const componentIconClassName = classNames(
+		classes.button_icon,
+		{
+			[classes.button_size__tiny]: size === 'tiny',
+			[classes.button_size__normal]: size === 'normal',
 		}
 	);
 
@@ -91,7 +102,7 @@ const Button = ({
 						onHover={hover}
 						color={iconColor.color}
 						onHoverColor={iconColor.onHoverColor}
-						className={classes.button_icon}
+						className={componentIconClassName}
 					/>
 				)
 			}
@@ -108,7 +119,8 @@ const Button = ({
 
 Button.defaultProps = {
 	transparent: false,
-	icon: ''
+	icon: '',
+	size: 'normal'
 };
 
 Button.propTypes = {
@@ -117,7 +129,8 @@ Button.propTypes = {
 	icon: PropTypes.string,
 	type: PropTypes.string,
 	actionName: PropTypes.string,
-	actionHandler: PropTypes.func
+	actionHandler: PropTypes.func,
+	size: PropTypes.string
 };
 
 export { Button };

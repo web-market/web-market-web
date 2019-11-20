@@ -9,3 +9,4 @@ export { filter } from './icons';
 export { settings } from './icons';
 export { angleRight } from './icons';
 export { alignJustify } from './icons';
+export { bell } from './icons';

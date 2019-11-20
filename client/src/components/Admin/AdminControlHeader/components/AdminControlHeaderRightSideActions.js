@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Button from '../../../../baseComponents/Button';
 import PropTypes from 'prop-types';
 
-const AdminControlHeaderRightSideActions = ({
+const AdminControlHeaderRightSideActions = memo(({
 												actions,
 												onActionClick
 											}) => {
@@ -30,7 +30,7 @@ const AdminControlHeaderRightSideActions = ({
 			{getActions()}
 		</>
 	);
-};
+});
 
 AdminControlHeaderRightSideActions.defaultProps = {};
 

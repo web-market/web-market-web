@@ -35,7 +35,7 @@ const AdminNavProfile = () => {
 		<>
 			<PaddingBox
 				hrSmall
-				vrTiny
+				vrSmall
 				className={classes.adminNavProfile}
 			>
 				<>

@@ -1,4 +1,4 @@
-import { chevronDown, chartBar, th, filter, settings, alignJustify } from '../../../../icons';
+import { bell, chartBar, th, filter, settings, alignJustify } from '../../../../icons';
 import { URL } from '../../consts';
 
 export const mainNavItem = [
@@ -67,7 +67,7 @@ export const bottomNavItem = [
 		hasRoute: true
 	},
 	{
-		icon: chevronDown,
+		icon: bell,
 		label: '!!!Уведомления',
 		link: '/TEST/',
 		hasRoute: true
