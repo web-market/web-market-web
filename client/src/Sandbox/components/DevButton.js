@@ -6,9 +6,10 @@ import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
 export const DevButton = () => {
 	return (
 		<GridLayout>
-			<GridLayoutRow
-				grid="1-1-1-1-1-1-1-1"
-				gapColumn={1}
+			<div style={{
+					display: 'flex',
+					justifyContent: 'space-between'
+				}}
 			>
 				<Button
 					type="primary"
@@ -50,7 +51,7 @@ export const DevButton = () => {
 					label="Dark"
 					transparent
 				/>
-			</GridLayoutRow>
+			</div>
 			<GridLayoutRow
 				grid="1-1-1-1-1-1-1-1"
 				gapColumn={1}

@@ -2,7 +2,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: 4px 0 5px rgba(0,0,0,0.08);
-	margin-bottom: 16px;
+	box-shadow: $bottom_shadow;
 	background-color: $default;
 }
