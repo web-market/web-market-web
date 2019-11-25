@@ -8,9 +8,19 @@ class CollapseContent extends Component {
 	}
 
 	render () {
+		const {
+			className,
+			style,
+			content
+		} = this.props;
+
 		return (
-			<div ref={this.componentRef}>
-				{this.props.content}
+			<div
+				className={className}
+				style={style}
+				ref={this.componentRef}
+			>
+				{content}
 			</div>
 		);
 	}

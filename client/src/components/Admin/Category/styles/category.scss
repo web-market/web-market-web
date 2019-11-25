@@ -4,10 +4,22 @@
 
 .category_item:hover {
 	@include hover-focus {
-		background-color: darken($metro_background, 10%) !important;
+		background-color: $light;
 	}
 }
 
 .category_item {
+	line-height: 3.3em;
+	border-bottom: 1px solid #dee2e6;
+	padding: 0 24px;
+	box-sizing: border-box;
+}
+
+.category_item__collapseContent {
+	border-left: 1px solid $primary;
+	margin-left: 1px;
+}
+
+.category_item:last-child {
 
 }

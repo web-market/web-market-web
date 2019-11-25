@@ -26,32 +26,35 @@ export const categories = [
 				sortOrder: 0,
 				childCategories: [
 					{
-						id: 12,
+						id: 21,
 						name: '!Футболки с принтами',
-						parentCategoryId: 1,
+						parentCategoryId: 2,
 						isActive: true,
 						sortOrder: 0,
+						childCategories: []
 					},
 					{
-						id: 13,
+						id: 22,
 						name: '!Футболки Marvel',
-						parentCategoryId: 1,
+						parentCategoryId: 2,
 						isActive: true,
 						sortOrder: 0,
 						childCategories: [
 							{
-								id: 12,
-								name: '!Свитшоты с принтами!!!',
-								parentCategoryId: 1,
+								id: 221,
+								name: '!Футболки с принтами!!!',
+								parentCategoryId: 22,
 								isActive: true,
 								sortOrder: 0,
+								childCategories: []
 							},
 							{
-								id: 13,
-								name: '!Свитшоты DC!!!!',
-								parentCategoryId: 1,
+								id: 222,
+								name: '!Футболки DC!!!!',
+								parentCategoryId: 22,
 								isActive: true,
 								sortOrder: 0,
+								childCategories: []
 							},
 						]
 					},
@@ -65,18 +68,20 @@ export const categories = [
 				sortOrder: 0,
 				childCategories: [
 					{
-						id: 12,
+						id: 31,
 						name: '!Свитшоты с принтами',
-						parentCategoryId: 1,
+						parentCategoryId: 3,
 						isActive: true,
 						sortOrder: 0,
+						childCategories: []
 					},
 					{
-						id: 13,
+						id: 32,
 						name: '!Свитшоты DC',
-						parentCategoryId: 1,
+						parentCategoryId: 3,
 						isActive: true,
 						sortOrder: 0,
+						childCategories: []
 					},
 				]
 			},
@@ -86,6 +91,7 @@ export const categories = [
 				parentCategoryId: 1,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			}
 		]
 	},
@@ -97,25 +103,28 @@ export const categories = [
 		sortOrder: 0,
 		childCategories: [
 			{
-				id: 6,
+				id: 51,
 				name: '!Футболки Для нее',
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			},
 			{
-				id: 7,
+				id: 52,
 				name: '!Юбки',
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			},
 			{
-				id: 8,
+				id: 53,
 				name: '!Шорты',
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			}
 		]
 	},
@@ -127,18 +136,20 @@ export const categories = [
 		sortOrder: 0,
 		childCategories: [
 			{
-				id: 10,
+				id: 91,
 				name: '!Осенняя распродажа',
 				parentCategoryId: 9,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			},
 			{
-				id: 11,
+				id: 92,
 				name: '!Лови скидки',
 				parentCategoryId: 9,
 				isActive: true,
 				sortOrder: 0,
+				childCategories: []
 			}
 		]
 	}

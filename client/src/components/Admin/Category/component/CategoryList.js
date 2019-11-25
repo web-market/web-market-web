@@ -12,7 +12,6 @@ const CategoryList = ({
 					}) => {
 	return (
 		<PaddingBox
-			normal
 			className={classes.category_list}
 		>
 			<CategoryItems

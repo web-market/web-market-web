@@ -10,7 +10,15 @@ import { isUndefined } from '../../utils';
 import classNames from 'classnames';
 import styles from './styles/index.scss';
 
-const Collapser = ({ label, open, content, labelClassName, className, transition }) => {
+const Collapser = ({
+					label,
+					open,
+					content,
+					labelClassName,
+					className,
+					transition,
+					collapseContentClassName
+}) => {
 	const [isOpen, setIsOpen] = useState(open);
 	const [height, setHeight] = useState(null);
 	const collapseContentRef = useRef(content.ref);
@@ -35,7 +43,10 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 		className
 	);
 
-	const collapseContentClassName = classNames(
+	const collapseHeight = transition ? { height } : { height: 'inherit' };
+
+	const collapseContentComponentClassName = classNames(
+		collapseContentClassName,
 		{
 			[styles.collapse_contentTransition]: transition,
 			[styles.collapse_content]: !transition && !isOpen
@@ -47,6 +58,8 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 			React.cloneElement(
 				<CollapseContent
 					content={content}
+					style={collapseHeight}
+					className={collapseContentComponentClassName}
 				/>,
 				{
 					ref: collapseContentRef
@@ -54,8 +67,6 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 			)
 		);
 	};
-
-	const collapseHeight = transition ? { height } : { height: 'inherit' };
 
 	return (
 		<>
@@ -70,12 +81,7 @@ const Collapser = ({ label, open, content, labelClassName, className, transition
 					/>
 				</div>
 			</div>
-			<div
-				style={collapseHeight}
-				className={collapseContentClassName}
-			>
-				{getCollapsedContent()}
-			</div>
+			{getCollapsedContent()}
 		</>
 	);
 };
@@ -90,6 +96,7 @@ Collapser.propTypes = {
 	transition: PropTypes.bool,
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
+	collapseContentClassName: PropTypes.string,
 	label: PropTypes.oneOfType([
 		PropTypes.object.isRequired,
 		PropTypes.string.isRequired,
