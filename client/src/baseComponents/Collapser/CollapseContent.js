@@ -28,6 +28,8 @@ class CollapseContent extends Component {
 
 CollapseContent.defaultProps = {};
 CollapseContent.propTypes = {
+	style: PropTypes.object,
+	className: PropTypes.string,
 	content: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object

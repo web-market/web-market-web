@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {} from 'react';
 import PropTypes from 'prop-types';
 
 import Collapser from '../../../../baseComponents/Collapser';
@@ -10,20 +10,51 @@ import { getSingleLevelCategoriesList } from '../utils';
 const CategoryItems = ({ categories }) => {
 	const singleLevelCategoriesList = getSingleLevelCategoriesList(categories);
 
-	const getSubCategory = (categoryList, label) => {
+	const getSubCategory = (category, label) => {
+		let isCategoryOpen;
+
 		const getCollapseContent = () => {
-			return categoryList.childCategories.map((category, index) => {
+			return category.childCategories.map((category, index) => {
 				return getCategory(category, index);
 			});
 		};
 
+		const onCollapseClick = (isOpen) => {
+			isCategoryOpen = isOpen;
+		};
+
+		const badgeColor = { borderColor: category.color, };
+		const badgeProcessColor = { backgroundColor: category.color, };
+
+		const title = (
+			<>
+				<span
+					className={classes.category_badge}
+					style={badgeColor}
+				>
+				</span>
+				{isCategoryOpen && (
+					<span
+						className={classes.category_badgeProcess}
+						style={badgeProcessColor}
+					>
+					</span>
+				)}
+				{label}
+			</>
+		);
+
+
 		return (
 			<Collapser
-				label={label}
+				label={title}
 				content={getCollapseContent()}
 				transition={false}
 				className={classes.category_item}
+				labelClassName={classes.category_label}
 				collapseContentClassName={classes.category_item__collapseContent}
+				collapseContentStyle={{ borderColor: category.color }}
+				onItemToggle={onCollapseClick}
 			/>
 		);
 	};
@@ -58,24 +89,18 @@ const CategoryItems = ({ categories }) => {
 
 		const label = getCategoryName(category.id);
 
-		console.log(label);
-
 		const key = `${category.name}-${index}`;
-
 		return hasChild
 			? (
 				<div key={key}>
-					{
-						getSubCategory(category, label)
-					}
+					{getSubCategory(category, label)}
 				</div>
 			)
 			: (
-				<div
-					key={key}
-					className={classes.category_item}
-				>
-					{label}
+				<div key={key}>
+					<div className={classes.category_item}>
+						{label}
+					</div>
 				</div>
 			);
 	};

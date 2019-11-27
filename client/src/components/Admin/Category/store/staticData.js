@@ -17,6 +17,7 @@ export const categories = [
 		parentCategoryId: 0,
 		isActive: true,
 		sortOrder: 0,
+		color: '#33cabb',
 		childCategories: [
 			{
 				id: 2,
@@ -24,6 +25,7 @@ export const categories = [
 				parentCategoryId: 1,
 				isActive: true,
 				sortOrder: 0,
+				color: '#ca1922',
 				childCategories: [
 					{
 						id: 21,
@@ -31,6 +33,7 @@ export const categories = [
 						parentCategoryId: 2,
 						isActive: true,
 						sortOrder: 0,
+						color: '#ca860e',
 						childCategories: []
 					},
 					{
@@ -39,6 +42,7 @@ export const categories = [
 						parentCategoryId: 2,
 						isActive: true,
 						sortOrder: 0,
+						color: '#3554ca',
 						childCategories: [
 							{
 								id: 221,
@@ -54,6 +58,7 @@ export const categories = [
 								parentCategoryId: 22,
 								isActive: true,
 								sortOrder: 0,
+								color: '#ca0071',
 								childCategories: []
 							},
 						]
@@ -66,6 +71,7 @@ export const categories = [
 				parentCategoryId: 1,
 				isActive: true,
 				sortOrder: 0,
+				color: '#1969ca',
 				childCategories: [
 					{
 						id: 31,
@@ -73,6 +79,7 @@ export const categories = [
 						parentCategoryId: 3,
 						isActive: true,
 						sortOrder: 0,
+						color: '#cac843',
 						childCategories: []
 					},
 					{
@@ -81,6 +88,7 @@ export const categories = [
 						parentCategoryId: 3,
 						isActive: true,
 						sortOrder: 0,
+						color: '#ca7518',
 						childCategories: []
 					},
 				]
@@ -91,6 +99,7 @@ export const categories = [
 				parentCategoryId: 1,
 				isActive: true,
 				sortOrder: 0,
+				color: '#ca0820',
 				childCategories: []
 			}
 		]
@@ -101,6 +110,7 @@ export const categories = [
 		parentCategoryId: 0,
 		isActive: true,
 		sortOrder: 0,
+		color: '#ca540d',
 		childCategories: [
 			{
 				id: 51,
@@ -108,6 +118,7 @@ export const categories = [
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				color: '#1949ca',
 				childCategories: []
 			},
 			{
@@ -116,6 +127,7 @@ export const categories = [
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				color: '#ca23a5',
 				childCategories: []
 			},
 			{
@@ -124,6 +136,7 @@ export const categories = [
 				parentCategoryId: 5,
 				isActive: true,
 				sortOrder: 0,
+				color: '#30ca24',
 				childCategories: []
 			}
 		]
@@ -134,6 +147,7 @@ export const categories = [
 		parentCategoryId: 0,
 		isActive: true,
 		sortOrder: 0,
+		color: '#363eca',
 		childCategories: [
 			{
 				id: 91,
@@ -141,6 +155,7 @@ export const categories = [
 				parentCategoryId: 9,
 				isActive: true,
 				sortOrder: 0,
+				color: '#b7ca45',
 				childCategories: []
 			},
 			{
@@ -149,6 +164,7 @@ export const categories = [
 				parentCategoryId: 9,
 				isActive: true,
 				sortOrder: 0,
+				color: '#ca635f',
 				childCategories: []
 			}
 		]

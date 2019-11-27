@@ -17,7 +17,9 @@ const Collapser = ({
 					labelClassName,
 					className,
 					transition,
-					collapseContentClassName
+					collapseContentClassName,
+					collapseContentStyle,
+					onItemToggle
 }) => {
 	const [isOpen, setIsOpen] = useState(open);
 	const [height, setHeight] = useState(null);
@@ -58,7 +60,7 @@ const Collapser = ({
 			React.cloneElement(
 				<CollapseContent
 					content={content}
-					style={collapseHeight}
+					style={{ ...collapseHeight, ...collapseContentStyle }}
 					className={collapseContentComponentClassName}
 				/>,
 				{
@@ -70,7 +72,10 @@ const Collapser = ({
 
 	return (
 		<>
-			<div className={componentClassName}>
+			<div
+				className={componentClassName}
+				onClick={onItemToggle(isOpen)}
+			>
 				<div
 					className={styles.collapse_header}
 					onClick={setOpen}
@@ -89,6 +94,7 @@ const Collapser = ({
 Collapser.defaultProps = {
 	open: false,
 	transition: true,
+	collapseContentStyle: {},
 };
 
 Collapser.propTypes = {
@@ -96,7 +102,9 @@ Collapser.propTypes = {
 	transition: PropTypes.bool,
 	className: PropTypes.string,
 	labelClassName: PropTypes.string,
+	collapseContentStyle: PropTypes.object,
 	collapseContentClassName: PropTypes.string,
+	onItemToggle: PropTypes.func,
 	label: PropTypes.oneOfType([
 		PropTypes.object.isRequired,
 		PropTypes.string.isRequired,
