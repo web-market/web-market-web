@@ -18,6 +18,26 @@
 .category_item__collapseContent {
 	border-left: 3px solid;
 	margin-left: 12px;
+	position: relative;
+}
+
+.category_item__collapseContentBadge {
+	height: 40px;
+	display: block;
+	top: -21px;
+	left: -3px;
+	position: absolute;
+	border-left: 3px solid;
+}
+
+.category_item__collapseContentBadgeOpen {
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	display: block;
+	top: -28px;
+	position: absolute;
+	left: -4px;
 }
 
 .category_label {
@@ -34,12 +54,4 @@
 	position: absolute;
 	top: calc(50% - 5px);
 	left: -3px;
-}
-
-.category_badgeProcess {
-	width: 3px;
-	height: 22px;
-	position: absolute;
-	bottom: -2px;
-	left: 0px;
 }

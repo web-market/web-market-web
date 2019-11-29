@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Collapser from '../../../../baseComponents/Collapser';
@@ -11,50 +11,51 @@ const CategoryItems = ({ categories }) => {
 	const singleLevelCategoriesList = getSingleLevelCategoriesList(categories);
 
 	const getSubCategory = (category, label) => {
-		let isCategoryOpen;
+		const badgeColor = { borderColor: category.color };
+		const badgeBackgroundColor = { backgroundColor: category.color };
 
-		const getCollapseContent = () => {
-			return category.childCategories.map((category, index) => {
-				return getCategory(category, index);
-			});
-		};
-
-		const onCollapseClick = (isOpen) => {
-			isCategoryOpen = isOpen;
-		};
-
-		const badgeColor = { borderColor: category.color, };
-		const badgeProcessColor = { backgroundColor: category.color, };
-
-		const title = (
+		const categoryLabel = (
 			<>
 				<span
 					className={classes.category_badge}
 					style={badgeColor}
 				>
 				</span>
-				{isCategoryOpen && (
-					<span
-						className={classes.category_badgeProcess}
-						style={badgeProcessColor}
-					>
-					</span>
-				)}
 				{label}
 			</>
 		);
 
+		const getCollapseContent = () => {
+			const collapseContent = category.childCategories.map((category, index) => {
+				return getCategory(category, index);
+			});
+
+			return (
+				<>
+					<span
+						style={badgeColor}
+						className={classes.category_item__collapseContentBadge}
+					>
+					</span>
+					<span
+						style={badgeBackgroundColor}
+						className={classes.category_item__collapseContentBadgeOpen}
+					>
+					</span>
+					{collapseContent}
+				</>
+			);
+		};
 
 		return (
 			<Collapser
-				label={title}
-				content={getCollapseContent()}
 				transition={false}
+				label={categoryLabel}
+				content={getCollapseContent()}
 				className={classes.category_item}
 				labelClassName={classes.category_label}
 				collapseContentClassName={classes.category_item__collapseContent}
 				collapseContentStyle={{ borderColor: category.color }}
-				onItemToggle={onCollapseClick}
 			/>
 		);
 	};
@@ -73,7 +74,6 @@ const CategoryItems = ({ categories }) => {
 
 	const getCategoryName = (categoryId) => {
 		const name = [];
-
 		const item = singleLevelCategoriesList.find(item => item.id === categoryId);
 
 		name.unshift(item.name);
@@ -86,10 +86,9 @@ const CategoryItems = ({ categories }) => {
 	const getCategory = (category, index = category.name) => {
 		const hasChild = !isNullOrUndefined(category.childCategories)
 			&& category.childCategories.length !== 0;
-
 		const label = getCategoryName(category.id);
-
 		const key = `${category.name}-${index}`;
+
 		return hasChild
 			? (
 				<div key={key}>

@@ -95,6 +95,7 @@ Collapser.defaultProps = {
 	open: false,
 	transition: true,
 	collapseContentStyle: {},
+	onItemToggle: () => {}
 };
 
 Collapser.propTypes = {
