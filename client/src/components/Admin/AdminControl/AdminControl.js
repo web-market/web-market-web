@@ -6,12 +6,12 @@ import UserProfile from '../UserProfile';
 import Category from '../Category';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 import { URL } from '../consts';
 
 const AdminControl = () => {
 	const componentClassName = classNames(
-		styles.adminControl
+		classes.adminControl
 	);
 
 	return (

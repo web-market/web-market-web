@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const List = ({
 	children,
@@ -10,9 +10,9 @@ const List = ({
 	className
 }) => {
 	const componentClassName = classNames(
-		styles.list,
+		classes.list,
 		{
-			[styles.list_inline]: inline,
+			[classes.list_inline]: inline,
 		},
 		className
 	);

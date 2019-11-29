@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const DropDownItem = ({ value, id, handleItemClick }) => {
 	return (
 		<div
 			onClick={() => handleItemClick(id)}
-			className={styles.dropdownItem}
+			className={classes.dropdownItem}
 		>
 			{value}
 		</div>

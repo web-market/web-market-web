@@ -1,11 +1,11 @@
-@import "../colors/colors";
-
-@mixin control-content-wrapper () {
-	margin: 24px;
+.adminControlContentBox {
 	border-radius: 2px;
 	background-color: $default;
 	box-sizing: border-box;
-	min-height: 87vh;
 	font-weight: 400;
 	box-shadow: $all_shadow;
+}
+
+.adminControlContentBox_large {
+	margin: 24px;
 }

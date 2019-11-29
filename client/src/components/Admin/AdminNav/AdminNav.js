@@ -7,7 +7,7 @@ import AdminNavItemList from './components/AdminNavItemList';
 import AdminNavBottomItemList from './components/AdminNavBottomItemList';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const AdminNav = () => {
 	const location = useLocation();
@@ -15,7 +15,7 @@ const AdminNav = () => {
 	const { activeMenu } = parsedLocation(location);
 
 	const componentClassName = classNames(
-		styles.adminNav
+		classes.adminNav
 	);
 
 	return (

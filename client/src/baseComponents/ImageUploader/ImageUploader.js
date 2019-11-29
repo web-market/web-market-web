@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getFileExtension, getFileName } from '../../utils';
 
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const ImageUploader = ({
 						name,
@@ -38,7 +38,7 @@ const ImageUploader = ({
 	return (
 		<div>
 			<input
-				className={styles.imageUploader_input}
+				className={classes.imageUploader_input}
 				type="file"
 				name={name}
 				onChange={handleImageUpload}
@@ -47,7 +47,7 @@ const ImageUploader = ({
 			/>
 			<div
 				onClick={() => inputRef.current.click()}
-				className={styles.imageUploader_uploadButton}
+				className={classes.imageUploader_uploadButton}
 			>
 				Upload file
 			</div>

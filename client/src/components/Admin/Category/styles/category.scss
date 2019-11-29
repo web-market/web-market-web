@@ -1,5 +1,6 @@
 .category_list {
-	@include control-content-wrapper
+	padding-bottom: 16px;
+	min-height: 87vh;
 }
 
 .category_item:hover {

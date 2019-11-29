@@ -8,7 +8,7 @@ import CollapseContent from './CollapseContent';
 import { isUndefined } from '../../utils';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const Collapser = ({
 					label,
@@ -50,8 +50,8 @@ const Collapser = ({
 	const collapseContentComponentClassName = classNames(
 		collapseContentClassName,
 		{
-			[styles.collapse_contentTransition]: transition,
-			[styles.collapse_content]: !transition && !isOpen
+			[classes.collapse_contentTransition]: transition,
+			[classes.collapse_content]: !transition && !isOpen
 		}
 	);
 
@@ -77,7 +77,7 @@ const Collapser = ({
 				onClick={onItemToggle(isOpen)}
 			>
 				<div
-					className={styles.collapse_header}
+					className={classes.collapse_header}
 					onClick={setOpen}
 				>
 					<div className={labelClassName}>{label}</div>

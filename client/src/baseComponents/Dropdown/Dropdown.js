@@ -5,7 +5,7 @@ import { isEmptyStirng } from '../../utils';
 
 import DropDownItem from './DropDownItem';
 
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons';
 
@@ -35,26 +35,26 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 
 	const getDisplayValue = () => {
 		return isEmptyStirng(displayValue)
-			? <span className={styles.dropdownItem_placeholder}>{placeholder}</span>
+			? <span className={classes.dropdownItem_placeholder}>{placeholder}</span>
 			: displayValue;
 	};
 
 	const dropDownContainer = classNames(
 		{
-			[styles.dropdown_containerOpen]: open
+			[classes.dropdown_containerOpen]: open
 		},
-		styles.dropdown_container
+		classes.dropdown_container
 	);
 
 	return (
-		<div className={styles.dropdown}>
+		<div className={classes.dropdown}>
 			<div
-				className={styles.dropdown_selectArea}
+				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
 			>
 				{getDisplayValue()}
 				<Icon
-					className={styles.dropdown_icon}
+					className={classes.dropdown_icon}
 					icon={open ? chevronUp : chevronDown}
 					color={COLORS.FIELD_ICON}
 				/>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Link as RouteLink, NavLink } from 'react-router-dom';
 
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const Link = (
 	{
@@ -38,7 +38,7 @@ const Link = (
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={styles.link} href={link}>{content}</a>;
+			: <a className={classes.link} href={link}>{content}</a>;
 	};
 
 	return getLink();

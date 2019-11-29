@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 import classNames from 'classnames';
 import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from './GridUtils';
 
 const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 	const componentClassName = classNames(
-		styles.gridLayout,
+		classes.gridLayout,
 		className
 	);
 	const gridItems = getGridItems(grid);
@@ -34,7 +34,7 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 };
 
 GridLayoutRow.defaultProps = {
-	gapColumn: 1,
+	gapColumn: 0,
 	grid: '',
 };
 

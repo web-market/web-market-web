@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import styles from './styles/index.scss';
+import classes from './styles/index.scss';
 
 const PaddingBox = ({ children,
                         tiny, small, normal, large,
@@ -15,45 +15,45 @@ const PaddingBox = ({ children,
 }) => {
     const componentClassName = classNames(
         {
-            [styles.padding_tiny]: tiny,
-            [styles.padding_small]: small,
-            [styles.padding_normal]: normal,
-            [styles.padding_large]: large,
+            [classes.padding_tiny]: tiny,
+            [classes.padding_small]: small,
+            [classes.padding_normal]: normal,
+            [classes.padding_large]: large,
 
-			[styles.padding_ultraVrTiny]: vrUltraTiny,
-			[styles.padding_ultraHrTiny]: hrUltraTiny,
-			[styles.padding_ultraTTiny]: tUltraTiny,
-			[styles.padding_ultraRTiny]: rUltraTiny,
-			[styles.padding_ultraBTiny]: bUltraTiny,
-			[styles.padding_ultraLTiny]: lUltraTiny,
+			[classes.padding_ultraVrTiny]: vrUltraTiny,
+			[classes.padding_ultraHrTiny]: hrUltraTiny,
+			[classes.padding_ultraTTiny]: tUltraTiny,
+			[classes.padding_ultraRTiny]: rUltraTiny,
+			[classes.padding_ultraBTiny]: bUltraTiny,
+			[classes.padding_ultraLTiny]: lUltraTiny,
 
-            [styles.padding_vrTiny]: vrTiny,
-            [styles.padding_hrTiny]: hrTiny,
-            [styles.padding_tTiny]: tTiny,
-            [styles.padding_rTiny]: rTiny,
-            [styles.padding_bTiny]: bTiny,
-            [styles.padding_lTiny]: lTiny,
+            [classes.padding_vrTiny]: vrTiny,
+            [classes.padding_hrTiny]: hrTiny,
+            [classes.padding_tTiny]: tTiny,
+            [classes.padding_rTiny]: rTiny,
+            [classes.padding_bTiny]: bTiny,
+            [classes.padding_lTiny]: lTiny,
 
-            [styles.padding_vrSmall]: vrSmall,
-            [styles.padding_hrSmall]: hrSmall,
-            [styles.padding_tSmall]: tSmall,
-            [styles.padding_rSmall]: rSmall,
-            [styles.padding_bSmall]: bSmall,
-            [styles.padding_lSmall]: lSmall,
+            [classes.padding_vrSmall]: vrSmall,
+            [classes.padding_hrSmall]: hrSmall,
+            [classes.padding_tSmall]: tSmall,
+            [classes.padding_rSmall]: rSmall,
+            [classes.padding_bSmall]: bSmall,
+            [classes.padding_lSmall]: lSmall,
 
-            [styles.padding_vrNormal]: vrNormal,
-            [styles.padding_hrNormal]: hrNormal,
-            [styles.padding_tNormal]: tNormal,
-            [styles.padding_rNormal]: rNormal,
-            [styles.padding_bNormal]: bNormal,
-            [styles.padding_lNormal]: lNormal,
+            [classes.padding_vrNormal]: vrNormal,
+            [classes.padding_hrNormal]: hrNormal,
+            [classes.padding_tNormal]: tNormal,
+            [classes.padding_rNormal]: rNormal,
+            [classes.padding_bNormal]: bNormal,
+            [classes.padding_lNormal]: lNormal,
 
-            [styles.padding_vrLarge]: vrLarge,
-            [styles.padding_hrLarge]: hrLarge,
-            [styles.padding_tLarge]: tLarge,
-            [styles.padding_rLarge]: rLarge,
-            [styles.padding_bLarge]: bLarge,
-            [styles.padding_lLarge]: lLarge,
+            [classes.padding_vrLarge]: vrLarge,
+            [classes.padding_hrLarge]: hrLarge,
+            [classes.padding_tLarge]: tLarge,
+            [classes.padding_rLarge]: rLarge,
+            [classes.padding_bLarge]: bLarge,
+            [classes.padding_lLarge]: lLarge,
         },
 		className
     );
