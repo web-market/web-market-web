@@ -6,7 +6,7 @@ import AddCategoryForm from './AddCategoryForm';
 
 const AddCategory = () => {
 	return (
-		<AdminControlContentBox>
+		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
 			<AddCategoryForm />
 		</AdminControlContentBox>
 	);

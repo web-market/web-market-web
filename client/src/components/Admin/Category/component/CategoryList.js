@@ -11,7 +11,7 @@ const CategoryList = ({
 					}) => {
 	return (
 		<AdminControlContentBox
-			margin="large"
+			margin={{ large: true }}
 			className={classes.category_list}
 		>
 			<CategoryItems categories={categories} />

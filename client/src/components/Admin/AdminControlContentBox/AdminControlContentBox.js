@@ -1,31 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import MarginBox from '../../../baseComponents/MarginBox';
+
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
 const AdminControlContentBox = ({ children, className, margin }) => {
 	const componentClass = classNames(
 		classes.adminControlContentBox,
-		{
-			[classes.adminControlContentBox_large]: margin === 'large',
-		},
 		className
 	);
 
 	return (
-		<div className={componentClass}>{children}</div>
+		<MarginBox {...margin}>
+			<div className={componentClass}>{children}</div>
+		</MarginBox>
 	);
 };
 
 AdminControlContentBox.defaultProps = {
 	className: '',
-	margin: ''
+	margin: {}
 };
 
 AdminControlContentBox.propTypes = {
 	className: PropTypes.string,
-	margin: PropTypes.string
+	margin: PropTypes.object
 };
 
 export { AdminControlContentBox };
