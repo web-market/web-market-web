@@ -13,7 +13,7 @@ import data from './dataModel';
 import classNames from 'classnames';
 import { COLORS } from '../../styles/baseColors';
 
-const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
+const Dropdown = ({ isOpen, items, placeholder, onFieldChange, multiSelect }) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
 
@@ -31,6 +31,10 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 		setDisplayValue(selectedItem.value);
 
 		onFieldChange(id);
+
+		if (!multiSelect) {
+			toggleDropdown();
+		}
 	};
 
 	const getDisplayValue = () => {
@@ -79,6 +83,7 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange }) => {
 
 Dropdown.defaultProps = {
 	isOpen: false,
+	multiSelect: false,
 	items: data,
 	placeholder: '###Select',
 };
@@ -86,6 +91,7 @@ Dropdown.defaultProps = {
 Dropdown.propTypes = {
 	items: PropTypes.array,
 	isOpen: PropTypes.bool,
+	multiSelect: PropTypes.bool,
 	placeholder: PropTypes.string,
 	onFieldChange: PropTypes.func,
 };

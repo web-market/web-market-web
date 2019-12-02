@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classes from './styles/index.scss';
+
 const Textbox = ({
 					onFieldChange,
 					name,
@@ -18,6 +20,7 @@ const Textbox = ({
 			onChange={e => handleInputChange(e.target.value)}
 			name={name}
 			value={value}
+			className={classes.textbox}
 		/>
 	);
 };
