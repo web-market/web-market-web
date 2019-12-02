@@ -23,7 +23,7 @@ const Category = () => {
 			/>
 			<GridLayout>
 				<GridLayoutRow
-					grid="8-4"
+					grid="7-5"
 				>
 					<CategoryList categories={categories} />
 					<AddCategory />

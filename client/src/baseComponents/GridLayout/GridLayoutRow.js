@@ -9,11 +9,14 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 		classes.gridLayout,
 		className
 	);
+
 	const gridItems = getGridItems(grid);
+
 	if (isValidGrid(gridItems)) {
 		const gridItemsStyles = getGridItemsStyles(gridItems, gapColumn);
+
 		return (
-			<div className={componentClassName} style={{ gridColumnGap: `${gapColumn}em` }}>
+			<div className={componentClassName} style={getBaseGridStyles(gapColumn)}>
 				{children.map((child, index) => {
 					const key = `griditem_${index}`;
 
@@ -26,6 +29,7 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 			</div>
 		);
 	}
+
 	return (
 		<div style={getBaseGridStyles(gapColumn)}>
 			{children.map(child => child)}
