@@ -2,6 +2,8 @@ import React from 'react';
 import Form, { Field } from '../../../../baseComponents/Form';
 import Textbox from '../../../../baseComponents/Form/Adapters/Textbox';
 import Dropdown from '../../../../baseComponents/Form/Adapters/Dropdown';
+import FormLayout, { FormLayoutItem } from '../../../../baseComponents/FormLayout';
+
 // import PropTypes from 'prop-types';
 
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
@@ -11,14 +13,20 @@ const AddCategoryForm = () => {
 		<Form
 			name={ADD_CATEGORY_FORM_NAME}
 		>
-			<Field
-				component={Textbox}
-				name="age"
-			/>
-			<Field
-				component={Dropdown}
-				name="dropdown"
-			/>
+			<FormLayout title="!!! Добавить категорию">
+				<FormLayoutItem>
+					<Field
+						component={Textbox}
+						name="age"
+					/>
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<Field
+						component={Dropdown}
+						name="dropdown"
+					/>
+				</FormLayoutItem>
+			</FormLayout>
 		</Form>
 	);
 };
