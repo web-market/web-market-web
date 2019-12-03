@@ -9,14 +9,14 @@ import classNames from 'classnames';
 import classes from './styles/index.scss';
 
 const Button = ({
-					label,
-					type,
-					transparent,
-					icon,
-					actionName,
-					actionHandler,
-					size
-				}) => {
+	label,
+	type,
+	transparent,
+	icon,
+	actionName,
+	actionHandler,
+	size
+}) => {
 	const [hover, setHover] = useState(false);
 
 	const componentClassName = classNames(
