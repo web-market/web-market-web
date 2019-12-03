@@ -1,0 +1,8 @@
+.leftButtons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.leftButtons > div:first-child {
+	margin-right: 8px;
+}
