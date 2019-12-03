@@ -120,7 +120,8 @@ const Button = ({
 Button.defaultProps = {
 	transparent: false,
 	icon: '',
-	size: 'normal'
+	size: 'normal',
+	actionHandler: () => {}
 };
 
 Button.propTypes = {

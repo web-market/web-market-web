@@ -6,9 +6,8 @@ import FormLayout, { FormLayoutHeader, FormLayoutFooter, FormLayoutItem, FormLay
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import Button from '../../../../baseComponents/Button';
 
-// import PropTypes from 'prop-types';
-
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
+import { number } from '../../../../utils/validators';
 
 const AddCategoryForm = () => {
 	const rightSectionButtons = (
@@ -31,6 +30,9 @@ const AddCategoryForm = () => {
 						<Field
 							component={Textbox}
 							name="age"
+							label="!Название категории"
+							required
+							validate={[number]}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
@@ -47,9 +49,5 @@ const AddCategoryForm = () => {
 		</Form>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export default AddCategoryForm;

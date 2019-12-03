@@ -8,7 +8,8 @@ import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
 import StoreModule from '../components/Store/StoreModule';
 
-import classes from '../styles/index.scss';
+import '../styles/index.scss';
+
 import {
 	faChevronDown,
 	faChevronLeft,
@@ -46,13 +47,11 @@ class App extends Component {
 		return (
 			<Router>
 				<RouteContext>
-					<div className={classes.generalStyles}>
-						<Switch>
-							<Route path="/sandbox" component={Sandbox} />
-							<Route path="/adminpanel" component={AdminPanel} />
-							<Route path="/" component={StoreModule} />
-						</Switch>
-					</div>
+					<Switch>
+						<Route path="/sandbox" component={Sandbox} />
+						<Route path="/adminpanel" component={AdminPanel} />
+						<Route path="/" component={StoreModule} />
+					</Switch>
 				</RouteContext>
 			</Router>
 		);
