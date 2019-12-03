@@ -11,17 +11,14 @@ import Button from '../../../../baseComponents/Button';
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
 
 const AddCategoryForm = () => {
-	const rightSectionButtons = [
-		<Button
-			label="!!добавить"
-			type="primary"
-		/>,
-		<Button
-			label="!!добавить"
-			type="secondary"
-			transparent
-		/>
-	];
+	const rightSectionButtons = (
+		<>
+			<Button
+				label="!!добавить"
+				type="primary"
+			/>
+		</>
+	);
 
 	return (
 		<Form

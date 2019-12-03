@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
+import { isUndefined } from '../../utils';
 
 const ButtonGroup = ({
 	className,
@@ -10,9 +11,9 @@ const ButtonGroup = ({
 	leftButtons,
 	rightButtons,
 }) => {
-	const hasSingleButton = singleButton.length !== 0;
-	const hasLeftButtons = leftButtons.length !== 0;
-	const hasRightButtons = rightButtons.length !== 0;
+	const hasSingleButton = !isUndefined(singleButton);
+	const hasLeftButtons = !isUndefined(leftButtons);
+	const hasRightButtons = !isUndefined(rightButtons);
 
 	const buttonGroupRowClassName = classNames(
 		classes.buttonGroupRow,
@@ -32,12 +33,12 @@ const ButtonGroup = ({
 				<div className={buttonGroupRowClassName}>
 					{
 						hasLeftButtons && (
-							<div className={classes.rightButtons}>{ leftButtons }</div>
+							<div className={classes.leftButtons}>{ leftButtons }</div>
 						)
 					}
 					{
 						hasRightButtons && (
-							<div className={classes.leftButtons}> { rightButtons }</div>
+							<div className={classes.rightButtons}> { rightButtons }</div>
 						)
 					}
 				</div>
@@ -47,16 +48,13 @@ const ButtonGroup = ({
 };
 
 ButtonGroup.defaultProps = {
-	singleButton: [],
-	leftButtons: [],
-	rightButtons: [],
 	className: ''
 };
 
 ButtonGroup.propTypes = {
-	singleButton: PropTypes.array,
-	leftButtons: PropTypes.array,
-	rightButtons: PropTypes.array,
+	singleButton: PropTypes.object,
+	leftButtons: PropTypes.object,
+	rightButtons: PropTypes.object,
 	className: PropTypes.string
 };
 
