@@ -12,9 +12,6 @@
 
 .button_primary {
 	@include bg-color($primary, $hover: true);
-		@include hover_focus {
-			@include box-shadow($primary_shadow);
-		};
 }
 
 .button_primary__transparent {
@@ -23,16 +20,12 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($primary_shadow);
 		@include bg-color($primary);
 	};
 }
 
 .button_secondary {
 	@include bg-color($secondary, $hover: true);
-	@include hover_focus {
-			@include box-shadow($secondary_shadow);
-		};
 }
 
 .button_secondary__transparent {
@@ -41,16 +34,12 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($secondary_shadow);
 		@include bg-color($secondary);
 	};
 }
 
 .button_success {
 	@include bg-color($success, $hover: true);
-	@include hover_focus {
-			@include box-shadow($success_shadow);
-		};
 }
 
 .button_success__transparent {
@@ -59,16 +48,12 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($success_shadow);
 		@include bg-color($success);
 	};
 }
 
 .button_danger {
 	@include bg-color($danger, $hover: true);
-		@include hover_focus {
-			@include box-shadow($danger_shadow);
-		};
  }
 
 .button_danger__transparent {
@@ -77,7 +62,6 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($danger_shadow);
 		@include bg-color($danger);
 	};
 }
@@ -85,9 +69,6 @@
 .button_warning {
 	@include bg-color($warning, $hover: true);
 	color: $dark;
-		@include hover_focus {
-			@include box-shadow($warning_shadow);
-		}
 }
 
 .button_warning__transparent {
@@ -96,16 +77,12 @@
 
 	@include hover_focus {
 		color: $dark;
-		@include box-shadow($warning_shadow);
 		@include bg-color($warning);
 	};
 }
 
 .button_info {
 	@include bg-color($info, $hover: true);
-		&:hover {
-			@include box-shadow($info_shadow);
-		};
 }
 
 .button_info__transparent {
@@ -114,7 +91,6 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($info_shadow);
 		@include bg-color($info);
 	};
 }
@@ -122,9 +98,6 @@
 .button_light {
 	@include bg-color($light, $hover: true);
 	color: $dark;
-		@include hover_focus {
-			@include box-shadow($light_shadow);
-		};
 }
 
 .button_light__transparent {
@@ -133,16 +106,12 @@
 
 	@include hover_focus {
 		color: $dark;
-		@include box-shadow($light_shadow);
 		@include bg-color($light);
 	};
 }
 
 .button_dark {
 	@include bg-color($dark, $hover: true);
-		@include hover_focus {
-			@include box-shadow($dark_shadow);
-		};
 }
 
 .button_dark__transparent {
@@ -151,7 +120,6 @@
 
 	@include hover_focus {
 		color: $light;
-		@include box-shadow($dark_shadow);
 		@include bg-color($dark);
 	};
 }
