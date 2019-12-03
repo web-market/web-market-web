@@ -1,23 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import PaddingBox from '../PaddingBox';
 import classes from './style/index.scss';
-// import PropTypes from 'prop-types';
 
-const FormLayoutFooter = () => {
+const FormLayoutFooter = ({ children }) => {
 	return (
 		<PaddingBox
 			vrTiny
-			hrNormal
+			hrSmall
 			className={classes.formLayoutFooter}
 		>
-			{/*use grids for buttons group*/}
-			{ 'save button' }
+			{ children }
 		</PaddingBox>
 	);
 };
 
-// FormLayoutFooter.defaultProps = {};
+FormLayoutFooter.propTypes = {
+	children: PropTypes.object
+};
 
-// FormLayoutFooter.propTypes = {};
-
-export default FormLayoutFooter;
+export { FormLayoutFooter };

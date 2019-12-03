@@ -15,10 +15,13 @@ const FormLayoutHeader = ({ title, padding }) => {
 	);
 };
 
-FormLayoutHeader.defaultProps = {};
-
-FormLayoutHeader.propTypes = {
-	title: PropTypes.string
+FormLayoutHeader.defaultProps = {
+	padding: { small: true }
 };
 
-export default FormLayoutHeader;
+FormLayoutHeader.propTypes = {
+	title: PropTypes.string,
+	padding: PropTypes.object,
+};
+
+export { FormLayoutHeader };
