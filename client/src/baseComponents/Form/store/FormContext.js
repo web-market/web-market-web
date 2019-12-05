@@ -203,10 +203,17 @@ function FormContextProvider (props) {
 		return Promise.resolve(_initFields(childrenArray));
 	}, [_initValidationRules, _initFields, _initFormName]);
 
+	const submitForm = (formName) => {
+		if (validateForm()) return null;
+
+		return state.formValues;
+	};
+
 	return (
 		<ContextForm.Provider value={{
 			...state,
 			initForm,
+			submitForm,
 			changeField,
 			validateForm,
 			setFormValues,

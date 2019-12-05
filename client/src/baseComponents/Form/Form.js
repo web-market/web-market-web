@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { ContextForm } from './store/FormContext';
 
-const Form = ({ children, name, onSubmit }) => {
+const Form = ({ children, name, onSubmit, submitForm }) => {
 	const { initForm, formValues, validateForm } = useContext(ContextForm);
 
 	useEffect(() => {
@@ -26,7 +26,10 @@ const Form = ({ children, name, onSubmit }) => {
 	};
 
 	return (
-		<form onSubmit={handleFormSubmit}>
+		<form
+			name={name}
+			onSubmit={handleFormSubmit}
+		>
 			{children}
 		</form>
 	);
