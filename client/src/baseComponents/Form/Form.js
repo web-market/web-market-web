@@ -24,7 +24,7 @@ const Form = ({ children, name, onSubmit }) => {
 	const submitForm = () => {
 		validateForm(fieldsRef.current)
 			.then(() => onSubmit(valuesRef.current))
-			.catch(e => console.log(e));
+			.catch(() => console.warn('Field validation error'));
 	};
 
 	useEffect(() => {
