@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext as GlobalContext } from '../../../../App/store/AppContext';
+
 import Form, { Field } from '../../../../baseComponents/Form';
 import Textbox from '../../../../baseComponents/Form/Adapters/Textbox';
 import Dropdown from '../../../../baseComponents/Form/Adapters/Dropdown';
@@ -12,15 +14,17 @@ import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import Button from '../../../../baseComponents/Button';
 
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
-import { number } from '../../../../utils/validators';
+import { number, required } from '../../../../utils/validators';
 
 const AddCategoryForm = () => {
+	const { forms } = useContext(GlobalContext);
+
 	const addCategory = (val) => {
-		console.log(val);
+
 	};
 
 	const remoteSubmit = () => {
-		// call from global context
+		forms.addCategoryForm.submitForm();
 	};
 
 	const rightSectionButtons = (
@@ -34,34 +38,63 @@ const AddCategoryForm = () => {
 	);
 
 	return (
+		<>
 		<Form
 			onSubmit={addCategory}
 			name={ADD_CATEGORY_FORM_NAME}
 		>
-			<FormLayout>
-				<FormLayoutHeader title="!!! Добавить категорию" />
-				<FormLayoutItemGroup>
-					<FormLayoutItem>
-						<Field
-							component={Textbox}
-							name="age"
-							label="!Название категории"
-							required
-							validate={[number]}
-						/>
-					</FormLayoutItem>
-					<FormLayoutItem>
-						<Field
-							component={Dropdown}
-							name="dropdown"
-						/>
-					</FormLayoutItem>
-				</FormLayoutItemGroup>
-				<FormLayoutFooter>
-					<ButtonGroup rightButtons={rightSectionButtons} />
-				</FormLayoutFooter>
-			</FormLayout>
+			<Field
+				component={Textbox}
+				name="age"
+				label="!Название категории"
+				required
+				validate={[number, required]}
+			/>
+			<Field
+				component={Dropdown}
+				name="dropdown"
+			/>
+			<Field
+				component={Dropdown}
+				name="dropeqweqwdown"
+			/>
+			<Field
+				component={Dropdown}
+				name="test"
+			/>
+			<FormLayoutFooter>
+				<ButtonGroup rightButtons={rightSectionButtons} />
+			</FormLayoutFooter>
 		</Form>
+			{/*<Form*/}
+				{/*onSubmit={addCategory}*/}
+				{/*name="TEST_FORM"*/}
+			{/*>*/}
+				{/*<FormLayout>*/}
+					{/*<FormLayoutHeader title="!!! Тестовая форма" />*/}
+					{/*<FormLayoutItemGroup>*/}
+						{/*<FormLayoutItem>*/}
+							{/*<Field*/}
+								{/*component={Textbox}*/}
+								{/*name="age"*/}
+								{/*label="!Название категории"*/}
+								{/*required*/}
+								{/*validate={[number]}*/}
+							{/*/>*/}
+						{/*</FormLayoutItem>*/}
+						{/*<FormLayoutItem>*/}
+							{/*<Field*/}
+								{/*component={Dropdown}*/}
+								{/*name="dropdown"*/}
+							{/*/>*/}
+						{/*</FormLayoutItem>*/}
+					{/*</FormLayoutItemGroup>*/}
+					{/*<FormLayoutFooter>*/}
+						{/*<ButtonGroup rightButtons={rightSectionButtons} />*/}
+					{/*</FormLayoutFooter>*/}
+				{/*</FormLayout>*/}
+			{/*</Form>*/}
+		</>
 	);
 };
 

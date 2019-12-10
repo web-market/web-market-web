@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-import { RouteContextProviderWithRouter as RouteContext } from './store/RouteContext';
+import { AppContextProvider } from './store/AppContext';
 
 import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
@@ -45,15 +45,15 @@ library.add(
 class App extends Component {
 	render () {
 		return (
-			<Router>
-				<RouteContext>
+			<AppContextProvider>
+				<Router>
 					<Switch>
 						<Route path="/sandbox" component={Sandbox} />
 						<Route path="/adminpanel" component={AdminPanel} />
 						<Route path="/" component={StoreModule} />
 					</Switch>
-				</RouteContext>
-			</Router>
+				</Router>
+			</AppContextProvider>
 		);
 	}
 }

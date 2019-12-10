@@ -32,24 +32,24 @@ const initialState = {
 	isFormValid: true,
 };
 
-const reducer = (state, action) => {
-	switch (action.type) {
+const reducer = (state, payload) => {
+	switch (payload.type) {
 		case INIT_FIELDS:
 			return {
 				...state,
-				fields: [...action.initialFields]
+				fields: [...payload.initialFields]
 			};
 		case INIT_FORM_NAME:
 			return {
 				...state,
-				formName: action.name
+				formName: payload.name
 			};
 		case CHANGE_FILED:
 			return {
 				...state,
 				fields: state.fields.map(f => {
-					if (f.name === action.obj.name) {
-						return action.obj;
+					if (f.name === payload.obj.name) {
+						return payload.obj;
 					}
 
 					return f;
@@ -58,24 +58,23 @@ const reducer = (state, action) => {
 		case SET_FORM_VALID:
 			return {
 				...state,
-				isFormValid: action.valid
+				isFormValid: payload.valid
 			};
 		case SET_FORM_VALIDATION_RULES:
 			return {
 				...state,
-				formValidationRules: action.initialValidationRules
+				formValidationRules: payload.initialValidationRules
 			};
 		case SET_FORM_VALUES:
 			return {
 				...state,
-				formValues: merge(state.formValues, action.formValues)
+				formValues: merge(state.formValues, payload.formValues)
 			};
 	}
 };
 
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
 
 	const setFormValues = (fields) => {
 		const formValues = fields.map(field => {
@@ -90,7 +89,7 @@ function FormContextProvider (props) {
 		});
 	};
 
-	const _initFields = useCallback((elems) => {
+	const _initFields = (elems) => {
 		const fields = elems.filter((e) => isFunction(e.type));
 
 		const initialFields = [];
@@ -113,8 +112,8 @@ function FormContextProvider (props) {
 			initialFields
 		});
 
-		return Promise.resolve(initialFields);
-	}, []);
+		return initialFields;
+	};
 
 	const _initValidationRules = useCallback((elems) => {
 		const fields = elems.filter((e) => isFunction(e.type));
@@ -164,7 +163,7 @@ function FormContextProvider (props) {
 		});
 	}, []);
 
-	const validateForm = (fields = state.fields, getPromise = true) => {
+	const validateForm = useCallback((fields = state.fields, getPromise = true) => {
 		const validationResult = fields.map(f => {
 			const { validationRules, value, name } = f;
 
@@ -192,28 +191,23 @@ function FormContextProvider (props) {
 				return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
 			});
 		}
-	};
+	}, [state.fields, changeField, setIsFormValid]);
 
-	const initForm = useCallback(({ children, name }) => {
-		const childrenArray = Array.isArray(children) ? children : new Array(children);
+	const initForm = ({ children, name }) => {
+		const childrenToArray = Array.isArray(children) ? children : new Array(children);
 
-		_initValidationRules(childrenArray);
+		_initValidationRules(childrenToArray);
 		_initFormName(name);
 
-		return Promise.resolve(_initFields(childrenArray));
-	}, [_initValidationRules, _initFields, _initFormName]);
+		const fields = _initFields(childrenToArray);
 
-	const submitForm = (formName) => {
-		if (validateForm()) return null;
-
-		return state.formValues;
+		return validateForm(fields, false);
 	};
 
 	return (
 		<ContextForm.Provider value={{
 			...state,
 			initForm,
-			submitForm,
 			changeField,
 			validateForm,
 			setFormValues,

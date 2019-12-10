@@ -1,22 +1,31 @@
 import React, { useEffect, useContext } from 'react';
 import { ContextForm } from './store/FormContext';
+import { AppContext as GlobalContext } from '../../App/store/AppContext';
+import { usePrevious } from '../../hooks';
 
-const Form = ({ children, name, onSubmit, submitForm }) => {
+const Form = ({ children, name, onSubmit }) => {
+	const { addFormToGlobalContext, forms } = useContext(GlobalContext);
 	const { initForm, formValues, validateForm } = useContext(ContextForm);
 
+	const prevFormValues = usePrevious(formValues);
+
 	useEffect(() => {
-		const initData = {
-			children,
-			name
-		};
+		initForm({ children, name });
+		}, []);
 
-		initForm(initData)
-			.then((fields) => {
-				return validateForm(fields, false);
-			})
-			.catch(e => { console.log(e); });
-	}, [name, initForm, children]);
+	const submitForm = () => {
+		validateForm()
+			.then(() => onSubmit(formValues))
+			.catch(e => console.log(e));
+	};
 
+	useEffect(() => {
+		if (formValues === prevFormValues) return;
+
+		addFormToGlobalContext({ [name]: { submitForm } });
+	}, [formValues]);
+
+	//submit for button type=submit
 	const handleFormSubmit = e => {
 		e.preventDefault();
 
