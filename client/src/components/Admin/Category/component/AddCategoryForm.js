@@ -23,16 +23,12 @@ const AddCategoryForm = () => {
 		console.log(val);
 	};
 
-	const remoteSubmit = () => {
-		forms.addCategoryForm.submitForm();
-	};
-
 	const rightSectionButtons = (
 		<>
 			<Button
 				label="!!добавить"
 				type="primary"
-				actionHandler={remoteSubmit}
+				actionHandler={() => forms.addCategoryForm.submitForm()}
 			/>
 		</>
 	);
