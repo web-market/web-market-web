@@ -163,7 +163,7 @@ function FormContextProvider (props) {
 		});
 	}, []);
 
-	const validateForm = useCallback((fields = state.fields, getPromise = true) => {
+	const validateForm = useCallback((fields, getPromise = true) => {
 		const validationResult = fields.map(f => {
 			const { validationRules, value, name } = f;
 

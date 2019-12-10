@@ -20,7 +20,7 @@ const AddCategoryForm = () => {
 	const { forms } = useContext(GlobalContext);
 
 	const addCategory = (val) => {
-
+		console.log(val);
 	};
 
 	const remoteSubmit = () => {

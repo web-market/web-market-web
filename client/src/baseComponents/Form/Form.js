@@ -1,21 +1,29 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useCallback, useRef } from 'react';
 import { ContextForm } from './store/FormContext';
 import { AppContext as GlobalContext } from '../../App/store/AppContext';
 import { usePrevious } from '../../hooks';
 
 const Form = ({ children, name, onSubmit }) => {
-	const { addFormToGlobalContext, forms } = useContext(GlobalContext);
-	const { initForm, formValues, validateForm } = useContext(ContextForm);
+	const { addFormToGlobalContext } = useContext(GlobalContext);
+	const { initForm, formValues, validateForm, fields } = useContext(ContextForm);
 
 	const prevFormValues = usePrevious(formValues);
 
+	const valuesRef = useRef();
+	const fieldsRef = useRef();
+
 	useEffect(() => {
 		initForm({ children, name });
-		}, []);
+	}, []);
+
+	useEffect(() => {
+		valuesRef.current = formValues;
+		fieldsRef.current = fields;
+	}, [formValues, fields]);
 
 	const submitForm = () => {
-		validateForm()
-			.then(() => onSubmit(formValues))
+		validateForm(fieldsRef.current)
+			.then(() => onSubmit(valuesRef.current))
 			.catch(e => console.log(e));
 	};
 
