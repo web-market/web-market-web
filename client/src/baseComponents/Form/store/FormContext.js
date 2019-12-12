@@ -17,7 +17,8 @@ import {
 	CHANGE_FILED,
 	SET_FORM_VALID,
 	SET_FORM_VALIDATION_RULES,
-	SET_FORM_VALUES
+	SET_FORM_VALUES,
+	SET_FORM_VALUE
 } from './consts';
 import { isFunction, isUndefined } from '../../../utils';
 import { merge } from './utils';
@@ -37,7 +38,7 @@ const reducer = (state, payload) => {
 		case INIT_FIELDS:
 			return {
 				...state,
-				fields: [...payload.initialFields]
+				fields: [payload.field, ...state.fields]
 			};
 		case INIT_FORM_NAME:
 			return {
@@ -65,10 +66,15 @@ const reducer = (state, payload) => {
 				...state,
 				formValidationRules: payload.initialValidationRules
 			};
+		case SET_FORM_VALUE:
+			return {
+				...state,
+				formValues: merge(state.formValues, payload.field)
+			};
 		case SET_FORM_VALUES:
 			return {
 				...state,
-				formValues: merge(state.formValues, payload.formValues)
+				formValues: [...payload.formValues]
 			};
 	}
 };
@@ -76,7 +82,14 @@ const reducer = (state, payload) => {
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const setFormValues = (fields) => {
+	const setFormValue = (field) => {
+		dispatch({
+			type: SET_FORM_VALUE,
+			field
+		});
+	};
+
+	const setFormValues = useCallback((fields) => {
 		const formValues = fields.map(field => {
 			return {
 				[field.name]: field.value
@@ -87,32 +100,15 @@ function FormContextProvider (props) {
 			type: SET_FORM_VALUES,
 			formValues
 		});
-	};
+	}, []);
 
-	const _initFields = (elems) => {
-		const fields = elems.filter((e) => isFunction(e.type));
-
-		const initialFields = [];
-
-		fields.forEach(field => {
-			const { name, validate } = field.props;
-
-			initialFields.push({
-				name,
-				validationRules: validate,
-				value: null,
-				isValid: true
-			});
-		});
-
-		setFormValues(initialFields);
-
+	const registerField = (field) => {
 		dispatch({
 			type: INIT_FIELDS,
-			initialFields
+			field
 		});
 
-		return initialFields;
+		return field;
 	};
 
 	const _initValidationRules = useCallback((elems) => {
@@ -193,16 +189,9 @@ function FormContextProvider (props) {
 		}
 	}, [state.fields, changeField, setIsFormValid]);
 
-	const initForm = ({ children, name }) => {
-		const childrenToArray = Array.isArray(children) ? children : new Array(children);
-
-		_initValidationRules(childrenToArray);
+	const initForm = useCallback(({ name }) => {
 		_initFormName(name);
-
-		const fields = _initFields(childrenToArray);
-
-		return validateForm(fields, false);
-	};
+	}, [_initFormName]);
 
 	return (
 		<ContextForm.Provider value={{
@@ -210,7 +199,9 @@ function FormContextProvider (props) {
 			initForm,
 			changeField,
 			validateForm,
-			setFormValues,
+			setFormValue,
+			setFormValues, // only on init
+			registerField,
 			setIsFormValid, //try not to use
 		}}
 		>

@@ -1,22 +1,20 @@
-export const merge = (prevValues, newValues) => {
+export const merge = (prevValues, newValue) => {
 	const mergeValues = [];
 
-	newValues.forEach(value => {
-		if (prevValues.length === 0) {
-			mergeValues.push(value);
-		} else {
-			prevValues.forEach(prevValue => {
-				const valueKey = Object.keys(value);
-				const prevValueKey = Object.keys(prevValue);
+	if (prevValues.length === 0) {
+		mergeValues.push(newValue);
+	} else {
+		prevValues.forEach(prevValue => {
+			const valueKey = Object.keys(newValue);
+			const prevValueKey = Object.keys(prevValue);
 
-				if (valueKey[0] === prevValueKey[0]) {
-					return mergeValues.push(value);
-				}
+			if (valueKey[0] === prevValueKey[0]) {
+				return mergeValues.push(newValue);
+			}
 
-				return mergeValues.push(prevValue);
-			});
-		}
-	});
+			return mergeValues.push(prevValue);
+		});
+	}
 
 	return [...mergeValues];
 };

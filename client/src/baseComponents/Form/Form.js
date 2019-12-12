@@ -5,14 +5,13 @@ import { usePrevious } from '../../hooks';
 
 const Form = ({ children, name, onSubmit }) => {
 	const { addFormToGlobalContext } = useContext(GlobalContext);
-	const { initForm, formValues, validateForm, fields } = useContext(ContextForm);
+	const { initForm, formValues, validateForm, fields, setFormValues } = useContext(ContextForm);
 
 	const valuesRef = useRef();
 	const fieldsRef = useRef();
 
-	useEffect(() => {
-		initForm({ children, name });
-	}, []);
+	useEffect(() => { initForm({ name }); }, [initForm, name]);
+	useEffect(() => { setFormValues(fields); }, [setFormValues, fields]);
 
 	useEffect(() => {
 		valuesRef.current = formValues;
