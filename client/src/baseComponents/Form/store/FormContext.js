@@ -111,9 +111,7 @@ function FormContextProvider (props) {
 		return field;
 	};
 
-	const _initValidationRules = useCallback((elems) => {
-		const fields = elems.filter((e) => isFunction(e.type));
-
+	const _initValidationRules = useCallback((fields) => {
 		const initialValidationRules = [];
 
 		fields.forEach(field => {
@@ -161,18 +159,18 @@ function FormContextProvider (props) {
 
 	const validateForm = useCallback((fields, getPromise = true) => {
 		const validationResult = fields.map(f => {
-			const { validationRules, value, name } = f;
+			const { validate, value, name } = f;
 
-			if (isUndefined(validationRules)) return true;
+			if (isUndefined(validate)) return true;
 
-			const intermediateResult = validationRules.map(r => {
-				return r(value);
+			const intermediateResult = validate.map(validateFunction => {
+				return validateFunction(value);
 			});
 
 			changeField({
 				name,
 				value,
-				validationRules,
+				validate,
 				isValid: !intermediateResult.includes(false)
 			});
 
