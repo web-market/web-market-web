@@ -34,48 +34,46 @@ const AddCategoryForm = () => {
 	);
 
 	return (
-		<>
-			<Form
-				onSubmit={addCategory}
-				name={ADD_CATEGORY_FORM_NAME}
-			>
-				<FormLayout>
-					<FormLayoutHeader title="!!Добавить категорию" />
-					<FormLayoutItemGroup>
-						<FormLayoutItem>
-							<Field
-								component={Textbox}
-								name="age"
-								label="!Название категории"
-								required
-								validate={[number, required]}
-							/>
-						</FormLayoutItem>
-						<FormLayoutItem>
-							<Field
-								component={Dropdown}
-								name="dropdown"
-							/>
-						</FormLayoutItem>
-						<FormLayoutItem>
-							<Field
-								component={Dropdown}
-								name="dropeqweqwdown"
-							/>
-						</FormLayoutItem>
-						<FormLayoutItem>
-							<Field
-								component={Dropdown}
-								name="test"
-							/>
-						</FormLayoutItem>
-					</FormLayoutItemGroup>
-					<FormLayoutFooter>
-						<ButtonGroup rightButtons={rightSectionButtons} />
-					</FormLayoutFooter>
-				</FormLayout>
-			</Form>
-		</>
+		<Form
+			onSubmit={addCategory}
+			name={ADD_CATEGORY_FORM_NAME}
+		>
+			<FormLayout>
+				<FormLayoutHeader title="!!Добавить категорию" />
+				<FormLayoutItemGroup>
+					<FormLayoutItem>
+						<Field
+							component={Textbox}
+							name="age"
+							label="!Название категории"
+							required
+							validate={[number, required]}
+						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
+						<Field
+							component={Dropdown}
+							name="dropdown"
+						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
+						<Field
+							component={Dropdown}
+							name="dropeqweqwdown"
+						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
+						<Field
+							component={Dropdown}
+							name="test"
+						/>
+					</FormLayoutItem>
+				</FormLayoutItemGroup>
+				<FormLayoutFooter>
+					<ButtonGroup rightButtons={rightSectionButtons} />
+				</FormLayoutFooter>
+			</FormLayout>
+		</Form>
 	);
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import { ContextForm } from './store/FormContext';
 import { AppContext as GlobalContext } from '../../App/store/AppContext';
-import { usePrevious } from '../../hooks';
+import { arrayToObject } from './utils';
 
 const Form = ({ children, name, onSubmit }) => {
 	const { addFormToGlobalContext } = useContext(GlobalContext);
@@ -20,7 +20,13 @@ const Form = ({ children, name, onSubmit }) => {
 
 	const submitForm = () => {
 		validateForm(fieldsRef.current)
-			.then(() => onSubmit(valuesRef.current))
+			.then(() => {
+				const formValues = arrayToObject(valuesRef.current);
+
+				console.log(formValues);
+
+				onSubmit(formValues);
+			})
 			.catch(() => console.warn('Field validation error'));
 	};
 

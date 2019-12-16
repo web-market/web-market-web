@@ -20,8 +20,8 @@ import {
 	SET_FORM_VALUES,
 	SET_FORM_VALUE
 } from './consts';
-import { isFunction, isUndefined } from '../../../utils';
-import { merge } from './utils';
+import { isUndefined } from '../../../utils';
+import { merge } from '../utils';
 
 const ContextForm = React.createContext();
 

@@ -18,3 +18,12 @@ export const merge = (prevValues, newValue) => {
 
 	return [...mergeValues];
 };
+
+
+export const arrayToObject = (array) => {
+	array.reduce((result, item, index) => {
+		result[index] = item;
+
+		return result;
+	}, {});
+};
