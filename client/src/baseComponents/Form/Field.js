@@ -1,20 +1,32 @@
 import React, { useContext, useRef, useCallback, useEffect } from 'react';
 import { ContextForm } from './store/FormContext';
 
+import { isUndefined } from '../../utils';
+
 const Field = (props) => {
-	const { name, component, validate } = props;
+	const { name, component, validate, value } = props;
 	const { registerField, changeField, setFormValue } = useContext(ContextForm);
 	const isValid = useRef(true);
 
 	useEffect(() => {
 		registerField({
 			name,
-			value: null,
+			value,
 			validate
 		});
 	}, []);
 
-	const handleChange = useCallback((value) => {
+	const validateField = useCallback((val) => {
+		if (isUndefined(validate)) return;
+
+		const r = validate.map(f => f(val));
+
+		isValid.current = !r.includes(false);
+	}, [validate]);
+
+	const handleChange = useCallback(value => {
+		validateField(value);
+
 		const field = {
 			name,
 			value,

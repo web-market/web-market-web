@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Texbox from '../../Textbox';
 
-import { FormFieldBox as Box } from '../../FormFieldBox';
+import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 
 class TextboxAdapter extends Component {
 	render () {
@@ -12,7 +12,7 @@ class TextboxAdapter extends Component {
 		} = this.props;
 
 		return (
-			<Box
+			<FieldBox
 				label={label}
 				required={required}
 				isValid={isValid}
@@ -20,7 +20,7 @@ class TextboxAdapter extends Component {
 				<Texbox
 					{...this.props}
 				/>
-			</Box>
+			</FieldBox>
 		);
 	}
 }
