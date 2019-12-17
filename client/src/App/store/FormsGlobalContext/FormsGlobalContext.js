@@ -3,9 +3,9 @@ import React, { createContext, useReducer } from 'react';
 import { reducer, initialState } from './reducer';
 import { ADD_FORM_IN_GLOBAL_CONTEXT } from './consts';
 
-export const FormsContext = createContext(initialState);
+export const FormsGlobalContext = createContext(initialState);
 
-export const FormsContextProvider = ({ children }) => {
+export const FormsGlobalContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	const addFormToGlobalContext = (form) => {
@@ -16,13 +16,13 @@ export const FormsContextProvider = ({ children }) => {
 	};
 
 	return (
-		<FormsContext.Provider
+		<FormsGlobalContext.Provider
 			value={{
 				...state,
 				addFormToGlobalContext
 			}}
 		>
 			{children}
-		</FormsContext.Provider>
+		</FormsGlobalContext.Provider>
 	);
 };

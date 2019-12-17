@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import { ContextForm } from './store/FormContext';
-import { FormsContext as GlobalFormsContext } from '../../App/store/FormsContext';
+import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
 import { arrayToObject } from './utils';
 
 const Form = ({ children, name, onSubmit }) => {
-	const { addFormToGlobalContext } = useContext(GlobalFormsContext);
+	const { addFormToGlobalContext } = useContext(FormsGlobalContext);
 	const {
 		initForm,
 		validateForm,

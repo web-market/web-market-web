@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FormsContext as GlobalFormsContext } from '../../../../App/store/FormsContext';
+import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import Form, { Field } from '../../../../baseComponents/Form';
 import Textbox from '../../../../baseComponents/Form/Adapters/Textbox';
@@ -17,7 +17,7 @@ import { ADD_CATEGORY_FORM_NAME } from '../consts';
 import { number, required } from '../../../../utils/validators';
 
 const AddCategoryForm = () => {
-	const { forms } = useContext(GlobalFormsContext);
+	const { forms } = useContext(FormsGlobalContext);
 
 	console.log(forms);
 
