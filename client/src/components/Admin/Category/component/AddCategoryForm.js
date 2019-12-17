@@ -19,8 +19,6 @@ import { number, required } from '../../../../utils/validators';
 const AddCategoryForm = () => {
 	const { forms } = useContext(FormsGlobalContext);
 
-	console.log(forms);
-
 	const addCategory = (val) => {
 		console.log(val);
 	};
@@ -40,7 +38,6 @@ const AddCategoryForm = () => {
 			onSubmit={addCategory}
 			name={ADD_CATEGORY_FORM_NAME}
 		>
-			<div onClick={() => { forms.addCategoryForm.changeField({ name: 'age', value: 1 }); }}>asdas</div>
 			<FormLayout>
 				<FormLayoutHeader title="!!Добавить категорию" />
 				<FormLayoutItemGroup>

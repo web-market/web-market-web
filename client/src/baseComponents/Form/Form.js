@@ -30,8 +30,6 @@ const Form = ({ children, name, onSubmit }) => {
 			.then(() => {
 				const formValues = arrayToObject(valuesRef.current);
 
-				console.log(formValues);
-
 				onSubmit(formValues);
 			})
 			.catch(() => console.warn('Field validation error'));
