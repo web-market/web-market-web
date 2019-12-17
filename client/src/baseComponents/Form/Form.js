@@ -1,11 +1,18 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import { ContextForm } from './store/FormContext';
-import { AppContext as GlobalContext } from '../../App/store/AppContext';
+import { FormsContext as GlobalFormsContext } from '../../App/store/FormsContext';
 import { arrayToObject } from './utils';
 
 const Form = ({ children, name, onSubmit }) => {
-	const { addFormToGlobalContext } = useContext(GlobalContext);
-	const { initForm, formValues, validateForm, fields, setFormValues } = useContext(ContextForm);
+	const { addFormToGlobalContext } = useContext(GlobalFormsContext);
+	const {
+		initForm,
+		validateForm,
+		setFormValues,
+		changeField,
+		formValues,
+		fields,
+	} = useContext(ContextForm);
 
 	const valuesRef = useRef();
 	const fieldsRef = useRef();
@@ -32,7 +39,7 @@ const Form = ({ children, name, onSubmit }) => {
 
 	//set submit function to global context
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm } });
+		addFormToGlobalContext({ [name]: { submitForm, changeField } });
 	}, []);
 
 	//submit for button type=submit

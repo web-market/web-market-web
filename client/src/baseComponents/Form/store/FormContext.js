@@ -50,7 +50,7 @@ const reducer = (state, payload) => {
 				...state,
 				fields: state.fields.map(f => {
 					if (f.name === payload.obj.name) {
-						return payload.obj;
+						return { ...f, ...payload.obj };
 					}
 
 					return f;
@@ -143,7 +143,7 @@ function FormContextProvider (props) {
 		});
 	}, []);
 
-	const changeField = useCallback(obj => {
+	const changeField = useCallback((obj) => {
 		dispatch({
 			type: CHANGE_FILED,
 			obj
@@ -159,22 +159,13 @@ function FormContextProvider (props) {
 
 	const validateForm = useCallback((fields, getPromise = true) => {
 		const validationResult = fields.map(f => {
-			const { validate, value, name } = f;
+			const { validate, value } = f;
 
 			if (isUndefined(validate)) return true;
 
-			const intermediateResult = validate.map(validateFunction => {
+			return validate.map(validateFunction => {
 				return validateFunction(value);
 			});
-
-			changeField({
-				name,
-				value,
-				validate,
-				isValid: !intermediateResult.includes(false)
-			});
-
-			return intermediateResult;
 		});
 
 		const hasError = validationResult.flat().includes(false);
@@ -185,7 +176,7 @@ function FormContextProvider (props) {
 				return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
 			});
 		}
-	}, [state.fields, changeField, setIsFormValid]);
+	}, [setIsFormValid]);
 
 	const initForm = useCallback(({ name }) => {
 		_initFormName(name);
