@@ -35,7 +35,7 @@ const Form = ({ children, name, onSubmit }) => {
 			.catch(() => console.warn('Field validation error'));
 	};
 
-	//set submit function to global context
+	//set submit function to global context on init
 	useEffect(() => {
 		addFormToGlobalContext({ [name]: { submitForm, changeField } });
 	}, []);

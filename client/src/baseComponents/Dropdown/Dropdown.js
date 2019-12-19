@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { isEmptyStirng } from '../../utils';
+import { isEmptyStirng, isUndefined } from '../../utils';
 
 import DropDownItem from './DropDownItem';
 
@@ -13,7 +13,14 @@ import data from './dataModel';
 import classNames from 'classnames';
 import { COLORS } from '../../styles/baseColors';
 
-const Dropdown = ({ isOpen, items, placeholder, onFieldChange, multiSelect }) => {
+const Dropdown = ({
+					isOpen,
+					items,
+					placeholder,
+					onFieldChange,
+					multiSelect,
+					initialValue
+}) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
 
@@ -21,21 +28,29 @@ const Dropdown = ({ isOpen, items, placeholder, onFieldChange, multiSelect }) =>
 		setOpen(isOpen);
 	}, [isOpen]);
 
-	const toggleDropdown = () => {
+	const toggleDropdown = useCallback(() => {
 		setOpen(!open);
-	};
+	}, [open]);
 
-	const handleItemClick = (id) => {
+	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);
 
 		setDisplayValue(selectedItem.value);
 
 		onFieldChange(id);
+	}, [items]);
+
+	const handleItemClick = useCallback((id) => {
+		onItemSelect(id);
 
 		if (!multiSelect) {
 			toggleDropdown();
 		}
-	};
+	}, [multiSelect, onItemSelect, toggleDropdown]);
+
+	useEffect(() => {
+		if (!isUndefined(initialValue)) onItemSelect(initialValue);
+	}, [initialValue, onItemSelect]);
 
 	const getDisplayValue = () => {
 		return isEmptyStirng(displayValue)

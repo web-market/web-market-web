@@ -161,6 +161,8 @@ function FormContextProvider (props) {
 		const validationResult = fields.map(f => {
 			const { validate, value } = f;
 
+			console.log(f);
+
 			if (isUndefined(validate)) return true;
 
 			return validate.map(validateFunction => {

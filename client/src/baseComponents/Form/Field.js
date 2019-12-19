@@ -6,13 +6,18 @@ import { isUndefined } from '../../utils';
 const Field = (props) => {
 	const { name, component, validate, value } = props;
 	const { registerField, changeField, setFormValue } = useContext(ContextForm);
+
 	const isValid = useRef(true);
+
+	const fieldValue = isUndefined(value) ? null : value;
 
 	useEffect(() => {
 		registerField({
 			name,
-			value,
-			validate
+			validate,
+			value: fieldValue,
+			isTouched: false,
+			hasValidationError: false
 		});
 	}, []);
 
@@ -30,7 +35,9 @@ const Field = (props) => {
 		const field = {
 			name,
 			value,
-			validate
+			validate,
+			isTouched: true,
+			hasValidationError: isValid
 		};
 
 		changeField(field);
@@ -38,6 +45,8 @@ const Field = (props) => {
 	}, [name, changeField, setFormValue, validate]);
 
 	const Component = component;
+
+	//initialValue develepment
 
 	return (
 		<Component
