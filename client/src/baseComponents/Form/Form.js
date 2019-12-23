@@ -1,9 +1,11 @@
 import React, { useEffect, useContext, useRef } from 'react';
+import PropTypes from 'prop-types';
+
 import { ContextForm } from './store/FormContext';
 import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
 import { arrayToObject } from './utils';
 
-const Form = ({ children, name, onSubmit }) => {
+const Form = ({ children, name, onSubmit, initialValues }) => {
 	const { addFormToGlobalContext } = useContext(FormsGlobalContext);
 	const {
 		initForm,
@@ -57,6 +59,13 @@ const Form = ({ children, name, onSubmit }) => {
 			{children}
 		</form>
 	);
+};
+
+Form.propTypes = {
+	initialValues: PropTypes.object,
+	children: PropTypes.object.isRequired,
+	name: PropTypes.string.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
 export { Form };

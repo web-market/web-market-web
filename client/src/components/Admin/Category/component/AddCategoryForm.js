@@ -33,10 +33,16 @@ const AddCategoryForm = () => {
 		</>
 	);
 
+	const initialValues = {
+		age: 1,
+		dropdown: 13263
+	};
+
 	return (
 		<Form
 			onSubmit={addCategory}
 			name={ADD_CATEGORY_FORM_NAME}
+			initialValues={initialValues}
 		>
 			<FormLayout>
 				<FormLayoutHeader title="!!Добавить категорию" />
