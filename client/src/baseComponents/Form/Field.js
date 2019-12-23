@@ -5,7 +5,7 @@ import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate, value } = props;
-	const { registerField, changeField, setFormValue } = useContext(ContextForm);
+	const { registerField, changeField, setFormFieldValue } = useContext(ContextForm);
 
 	const isValid = useRef(true);
 
@@ -41,8 +41,8 @@ const Field = (props) => {
 		};
 
 		changeField(field);
-		setFormValue(field);
-	}, [name, changeField, setFormValue, validate]);
+		setFormFieldValue(field);
+	}, [name, changeField, setFormFieldValue, validate]);
 
 	const Component = component;
 
