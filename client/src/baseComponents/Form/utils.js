@@ -5,10 +5,7 @@ export const merge = (prevValues, newValue) => {
 		mergeValues.push(newValue);
 	} else {
 		prevValues.forEach(prevValue => {
-			const valueKey = Object.keys(newValue);
-			const prevValueKey = Object.keys(prevValue);
-
-			if (valueKey[0] === prevValueKey[0]) {
+			if (prevValue.name === newValue.name) {
 				return mergeValues.push(newValue);
 			}
 
@@ -16,9 +13,24 @@ export const merge = (prevValues, newValue) => {
 		});
 	}
 
-	return [...mergeValues];
+	return [mergeValues];
 };
 
 export const arrayToObject = (array) => array.reduce((memo, item) => {
 	return { ...memo, ...item };
 }, {});
+
+export const objectToArray = (obj) => {
+	const array = [];
+
+	for (const item in obj) {
+		if (obj.hasOwnProperty(item)) {
+			array.push({
+				name: item,
+				value: obj[item]
+			});
+		}
+	}
+
+	return array;
+};
