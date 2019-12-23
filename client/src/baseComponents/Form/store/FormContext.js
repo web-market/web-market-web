@@ -18,7 +18,7 @@ import {
 	SET_FORM_VALID,
 	SET_FORM_VALIDATION_RULES,
 	SET_FORM_VALUES,
-	SET_FORM_VALUE
+	SET_FORM_FIELD_VALUE
 } from './consts';
 import { isUndefined } from '../../../utils';
 import { merge } from '../utils';
@@ -66,7 +66,7 @@ const reducer = (state, payload) => {
 				...state,
 				formValidationRules: payload.initialValidationRules
 			};
-		case SET_FORM_VALUE:
+		case SET_FORM_FIELD_VALUE:
 			return {
 				...state,
 				formValues: merge(state.formValues, payload.field)
@@ -82,9 +82,9 @@ const reducer = (state, payload) => {
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const setFormValue = (field) => {
+	const setFormFieldValue = (field) => {
 		dispatch({
-			type: SET_FORM_VALUE,
+			type: SET_FORM_FIELD_VALUE,
 			field
 		});
 	};
@@ -188,7 +188,7 @@ function FormContextProvider (props) {
 			initForm,
 			changeField,
 			validateForm,
-			setFormValue,
+			setFormFieldValue,
 			setFormValues, // only on init
 			registerField,
 			setIsFormValid, //try not to use
