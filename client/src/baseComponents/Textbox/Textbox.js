@@ -1,14 +1,14 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
 
-const Textbox = memo(({
-					onFieldChange,
-					name,
-					onChange,
-					initialValue
-				}) => {
+const Textbox = ({
+	onFieldChange,
+	name,
+	onChange,
+	value
+}) => {
 	const handleInputChange = (value) => {
 		onFieldChange(value);
 		onChange(value);
@@ -19,21 +19,22 @@ const Textbox = memo(({
 			type="textbox"
 			onChange={e => handleInputChange(e.target.value)}
 			name={name}
-			value={initialValue}
+			value={value}
 			className={classes.textbox}
 		/>
 	);
-});
+};
 
 Textbox.defaultProps = {
-	onChange: () => {}
+	onChange: () => {},
+	value: ''
 };
 
 Textbox.propTypes = {
 	onFieldChange: PropTypes.func,
 	onChange: PropTypes.func,
 	name: PropTypes.string,
-	initialValue: PropTypes.string,
+	value: PropTypes.string,
 };
 
 export { Textbox };

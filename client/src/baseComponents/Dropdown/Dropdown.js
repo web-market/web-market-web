@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { isEmptyStirng, isUndefined } from '../../utils';
+import { isEmptyStirng, isNullOrUndefined } from '../../utils';
 
 import DropDownItem from './DropDownItem';
 
@@ -19,7 +19,7 @@ const Dropdown = ({
 					placeholder,
 					onFieldChange,
 					multiSelect,
-					initialValue
+					value
 }) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
@@ -49,8 +49,8 @@ const Dropdown = ({
 	}, [multiSelect, onItemSelect, toggleDropdown]);
 
 	useEffect(() => {
-		if (!isUndefined(initialValue)) onItemSelect(initialValue);
-	}, [initialValue, onItemSelect]);
+		if (!isNullOrUndefined(value)) onItemSelect(value);
+	}, [value, onItemSelect]);
 
 	const getDisplayValue = () => {
 		return isEmptyStirng(displayValue)

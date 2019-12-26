@@ -4,18 +4,16 @@ import { ContextForm } from './store/FormContext';
 import { isUndefined } from '../../utils';
 
 const Field = (props) => {
-	const { name, component, validate, value } = props;
-	const { registerField, setFieldValue } = useContext(ContextForm);
+	const { name, component, validate } = props;
+	const { registerField, setFieldValue, formValues } = useContext(ContextForm);
 
 	const isValid = useRef(true);
-
-	const fieldValue = isUndefined(value) ? null : value;
 
 	useEffect(() => {
 		registerField({
 			name,
 			validate,
-			value: fieldValue,
+			value: null,
 			isTouched: false,
 			hasValidationError: false
 		});
@@ -45,6 +43,7 @@ const Field = (props) => {
 		<Component
 			isValid={isValid.current}
 			onFieldChange={handleChange}
+			value={formValues[name]}
 			{...props}
 		/>
 	);

@@ -8,8 +8,7 @@ class TextboxAdapter extends Component {
 		const {
 			label,
 			required,
-			isValid,
-			initialValue
+			isValid
 		} = this.props;
 
 		return (
@@ -17,7 +16,6 @@ class TextboxAdapter extends Component {
 				label={label}
 				required={required}
 				isValid={isValid}
-				initialValue={initialValue}
 			>
 				<Texbox
 					{...this.props}
