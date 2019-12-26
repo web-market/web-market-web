@@ -5,7 +5,7 @@ import { isUndefined } from '../../utils';
 
 const Field = (props) => {
 	const { name, component, validate, value } = props;
-	const { registerField, changeField, setFormFieldValue } = useContext(ContextForm);
+	const { registerField, setFieldValue } = useContext(ContextForm);
 
 	const isValid = useRef(true);
 
@@ -32,17 +32,10 @@ const Field = (props) => {
 	const handleChange = useCallback(value => {
 		validateField(value);
 
-		const field = {
-			name,
-			value,
-			validate,
-			isTouched: true,
-			hasValidationError: isValid
-		};
-
-		changeField(field);
-		setFormFieldValue(field);
-	}, [name, changeField, setFormFieldValue, validate]);
+		setFieldValue({
+			[name]: value
+		});
+	}, [name, setFieldValue, validate, validateField]);
 
 	const Component = component;
 

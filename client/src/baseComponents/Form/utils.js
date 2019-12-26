@@ -19,18 +19,3 @@ export const merge = (prevValues, newValue) => {
 export const arrayToObject = (array) => array.reduce((memo, item) => {
 	return { ...memo, ...item };
 }, {});
-
-export const objectToArray = (obj) => {
-	const array = [];
-
-	for (const item in obj) {
-		if (obj.hasOwnProperty(item)) {
-			array.push({
-				name: item,
-				value: obj[item]
-			});
-		}
-	}
-
-	return array;
-};

@@ -34,7 +34,7 @@ const AddCategoryForm = () => {
 	);
 
 	const initialValues = {
-		age: 1,
+		age: '12',
 		dropdown: 13263
 	};
 

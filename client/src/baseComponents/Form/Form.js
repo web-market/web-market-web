@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import { ContextForm } from './store/FormContext';
 import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
-import { arrayToObject } from './utils';
+
+import { isNull } from '../../utils';
 
 const Form = ({ children, name, onSubmit, initialValues }) => {
 	const { addFormToGlobalContext } = useContext(FormsGlobalContext);
@@ -11,7 +12,6 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 		initForm,
 		validateForm,
 		setFormValues,
-		changeField,
 		formValues,
 		fields,
 	} = useContext(ContextForm);
@@ -20,7 +20,11 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 	const fieldsRef = useRef();
 
 	useEffect(() => { initForm({ name }); }, [initForm, name]);
-	useEffect(() => { setFormValues(fields); }, [setFormValues, fields]);
+	useEffect(() => {
+		if (!isNull(initialValues)) {
+			setFormValues(initialValues);
+		}
+	}, [setFormValues, initialValues]);
 
 	useEffect(() => {
 		valuesRef.current = formValues;
@@ -28,18 +32,16 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 	}, [formValues, fields]);
 
 	const submitForm = () => {
-		validateForm(fieldsRef.current)
+		validateForm(fieldsRef.current, valuesRef.current)
 			.then(() => {
-				const formValues = arrayToObject(valuesRef.current);
-
-				onSubmit(formValues);
+				onSubmit(valuesRef.current);
 			})
 			.catch(() => console.warn('Field validation error'));
 	};
 
 	//set submit function to global context on init
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm, changeField } });
+		addFormToGlobalContext({ [name]: { submitForm } });
 	}, []);
 
 	//submit for button type=submit
@@ -59,6 +61,10 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 			{children}
 		</form>
 	);
+};
+
+Form.defaultProps = {
+	initialValues: null,
 };
 
 Form.propTypes = {
