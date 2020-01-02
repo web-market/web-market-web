@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
-const FormFieldBox = ({ children, label, required, isValid }) => {
+const FormFieldBox = ({ children, label, required, isValid, errorMessages }) => {
 	const fieldWrapperClassName = classNames(
 		classes.formFieldBox_fieldWrapper,
 		{
@@ -23,6 +23,20 @@ const FormFieldBox = ({ children, label, required, isValid }) => {
 				}
 			</div>
 			<div className={fieldWrapperClassName}>{ children }</div>
+			{
+				!isValid && (
+					<div>
+						{
+							errorMessages.map(message => {
+								return (
+									<div key={message}>{message}</div>
+								);
+							})
+						}
+
+					</div>
+				)
+			}
 		</>
 	);
 };

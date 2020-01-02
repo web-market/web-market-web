@@ -8,7 +8,8 @@ class TextboxAdapter extends Component {
 		const {
 			label,
 			required,
-			isValid
+			isValid,
+			errorMessages
 		} = this.props;
 
 		return (
@@ -16,6 +17,7 @@ class TextboxAdapter extends Component {
 				label={label}
 				required={required}
 				isValid={isValid}
+				errorMessages={errorMessages}
 			>
 				<Texbox
 					{...this.props}

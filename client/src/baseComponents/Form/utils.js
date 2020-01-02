@@ -1,21 +1,50 @@
-export const merge = (prevValues, newValue) => {
-	const mergeValues = [];
+import validators from '../../utils/validators';
+import { isUndefined } from '../../utils';
 
-	if (prevValues.length === 0) {
-		mergeValues.push(newValue);
-	} else {
-		prevValues.forEach(prevValue => {
-			if (prevValue.name === newValue.name) {
-				return mergeValues.push(newValue);
-			}
+//TODO: need memoization
+let validationRules;
 
-			return mergeValues.push(prevValue);
-		});
+//TODO: need memoization
+const _getValidationRules = (fieldValidations) => {
+	const validationRules = [];
+
+	for (const func in fieldValidations) {
+		if (fieldValidations.hasOwnProperty(func)) {
+			validationRules.push({
+				function: validators[func],
+				params: fieldValidations[func]
+			});
+		}
 	}
 
-	return [mergeValues];
+	return validationRules;
 };
 
-export const arrayToObject = (array) => array.reduce((memo, item) => {
-	return { ...memo, ...item };
-}, {});
+const _validateValue = (value, fieldValidations) => {
+	if (isUndefined(validationRules)) {
+		validationRules = _getValidationRules(fieldValidations);
+	}
+
+	return validationRules.map(validate => {
+		return validate.function(value, validate.params);
+	});
+};
+
+export const getValidationResult = (value, fieldValidations) => {
+	const validationResult = _validateValue(value, fieldValidations);
+	const errorMessages = [];
+	let isValid = true;
+
+	validationResult.forEach(result => {
+		if (!result.isValid) {
+			isValid = result.isValid;
+
+			errorMessages.push(result.errorMessage);
+		}
+	});
+
+	return {
+		isValid,
+		errorMessages
+	};
+};

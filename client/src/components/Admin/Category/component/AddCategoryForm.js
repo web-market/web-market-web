@@ -14,7 +14,6 @@ import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import Button from '../../../../baseComponents/Button';
 
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
-import { number, required } from '../../../../utils/validators';
 
 const AddCategoryForm = () => {
 	const { forms } = useContext(FormsGlobalContext);
@@ -38,6 +37,11 @@ const AddCategoryForm = () => {
 		dropdown: 13263
 	};
 
+	const numberValidation = {
+		min: 4,
+		max: 10
+	};
+
 	return (
 		<Form
 			onSubmit={addCategory}
@@ -53,7 +57,10 @@ const AddCategoryForm = () => {
 							name="age"
 							label="!Название категории"
 							required
-							validate={[number, required]}
+							validate={{
+								number: numberValidation,
+								required: {}
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

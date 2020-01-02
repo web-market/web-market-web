@@ -1,2 +1,7 @@
-export { required } from './required';
-export { number } from './number';
+import { required } from './required';
+import { number } from './number';
+
+export default {
+	required,
+	number
+};

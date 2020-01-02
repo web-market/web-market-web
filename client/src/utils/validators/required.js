@@ -3,5 +3,8 @@ import { isNull } from '../isNull';
 export const required = (value) => {
 	if (isNull(value)) return false;
 
-	return value.toString().trim().length !== 0;
+	return {
+		isValid: value.toString().trim().length !== 0,
+		errorMessage: '!Не должно быть пусты'
+	};
 };

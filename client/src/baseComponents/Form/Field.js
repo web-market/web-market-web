@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useCallback, useEffect } from 'react';
 import { ContextForm } from './store/FormContext';
 
+import { getValidationResult } from './utils';
 import { isUndefined } from '../../utils';
 
 const Field = (props) => {
@@ -8,6 +9,7 @@ const Field = (props) => {
 	const { registerField, setFieldValue, formValues } = useContext(ContextForm);
 
 	const isValid = useRef(true);
+	const errorMessages = useRef([]);
 
 	useEffect(() => {
 		registerField({
@@ -22,9 +24,10 @@ const Field = (props) => {
 	const validateField = useCallback((val) => {
 		if (isUndefined(validate)) return;
 
-		const r = validate.map(f => f(val));
+		const validationResult = getValidationResult(val, validate);
 
-		isValid.current = !r.includes(false);
+		isValid.current = validationResult.isValid;
+		errorMessages.current = validationResult.errorMessages;
 	}, [validate]);
 
 	const handleChange = useCallback(value => {
@@ -42,6 +45,7 @@ const Field = (props) => {
 	return (
 		<Component
 			isValid={isValid.current}
+			errorMessages={errorMessages.current}
 			onFieldChange={handleChange}
 			value={formValues[name]}
 			{...props}
