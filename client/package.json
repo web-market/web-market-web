@@ -1,64 +1,64 @@
 {
-	"name": "webmarket",
-	"version": "1.0.1",
-	"description": "webmarke paltform",
-	"sideEffects": [
-		"*.css",
-		"*.scss"
-	],
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specifed\" && exit 1",
-		"start": "cross-env NODE_ENV=dev webpack-dev-server --mode development --open --hot",
-		"build": "cross-env NODE_ENV=prod webpack --mode production",
-		"eslint": "eslint src"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/web-market/webmarket-web.git"
-	},
-	"author": "dKostreba",
-	"bugs": {
-		"url": "https://github.com/web-market/webmarket-web/issues"
-	},
-	"homepage": "https://github.com/web-market/webmarket-web#readme",
-	"devDependencies": {
-		"@babel/core": "^7.6.4",
-		"@babel/plugin-proposal-class-properties": "^7.5.5",
-		"@babel/preset-env": "^7.6.3",
-		"@babel/preset-react": "^7.6.3",
-		"babel-eslint": "^10.0.2",
-		"babel-loader": "^8.0.6",
-		"cross-env": "^6.0.3",
-		"css-loader": "^3.1.0",
-		"eslint": "^5.3.0",
-		"eslint-config-airbnb": "^17.1.1",
-		"eslint-plugin-import": "^2.18.1",
-		"eslint-plugin-jsx-a11y": "^6.2.3",
-		"eslint-plugin-react": "^7.16.0",
-		"eslint-plugin-react-hooks": "^1.6.1",
-		"file-loader": "^4.2.0",
-		"html-webpack-plugin": "^3.2.0",
-		"mini-css-extract-plugin": "^0.8.0",
-		"node-sass": "^4.13.0",
-		"sass-loader": "^8.0.0",
-		"style-loader": "^0.23.1",
-		"webpack": "^4.41.2",
-		"webpack-cli": "^3.3.6",
-		"webpack-dev-server": "^3.9.0"
-	},
-	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^1.2.25",
-		"@fortawesome/free-solid-svg-icons": "^5.11.2",
-		"@fortawesome/react-fontawesome": "^0.1.7",
-		"classnames": "^2.2.6",
-		"express": "^4.17.1",
-		"prop-types": "^15.7.2",
-		"react": "^16.11.0",
-		"react-dom": "^16.11.0",
-		"react-router-dom": "^5.1.2"
-	},
-	"engines": {
-		"node": "10.16.0"
-	}
+  "name": "webmarket",
+  "version": "1.0.1",
+  "description": "webmarke paltform",
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specifed\" && exit 1",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --mode development --open --hot",
+    "build": "cross-env NODE_ENV=prod webpack --mode production",
+    "eslint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-market/webmarket-web.git"
+  },
+  "author": "dKostreba",
+  "bugs": {
+    "url": "https://github.com/web-market/webmarket-web/issues"
+  },
+  "homepage": "https://github.com/web-market/webmarket-web#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.1.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "engines": {
+    "node": "10.16.0"
+  }
 }
