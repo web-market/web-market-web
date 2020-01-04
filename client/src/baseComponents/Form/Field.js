@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useCallback, useEffect } from 'react';
 import { ContextForm } from './store/FormContext';
 
-import { getValidationResult } from './utils';
+import { validate as validateFromUtils } from './utils';
 import { isUndefined } from '../../utils';
 
 const Field = (props) => {
@@ -24,7 +24,7 @@ const Field = (props) => {
 	const validateField = useCallback((val) => {
 		if (isUndefined(validate)) return;
 
-		const validationResult = getValidationResult(val, validate);
+		const validationResult = validateFromUtils(val, validate);
 
 		isValid.current = validationResult.isValid;
 		errorMessages.current = validationResult.errorMessages;

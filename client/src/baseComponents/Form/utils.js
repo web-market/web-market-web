@@ -1,10 +1,5 @@
 import validators from '../../utils/validators';
-import { isUndefined } from '../../utils';
 
-//TODO: need memoization
-let validationRules;
-
-//TODO: need memoization
 const _getValidationRules = (fieldValidations) => {
 	const validationRules = [];
 
@@ -20,18 +15,16 @@ const _getValidationRules = (fieldValidations) => {
 	return validationRules;
 };
 
-const _validateValue = (value, fieldValidations) => {
-	if (isUndefined(validationRules)) {
-		validationRules = _getValidationRules(fieldValidations);
-	}
+const _getValidateResult = (value, fieldValidations) => {
+	const validationRules = _getValidationRules(fieldValidations);
 
 	return validationRules.map(validate => {
 		return validate.function(value, validate.params);
 	});
 };
 
-export const getValidationResult = (value, fieldValidations) => {
-	const validationResult = _validateValue(value, fieldValidations);
+export const validate = (value, fieldValidations) => {
+	const validationResult = _getValidateResult(value, fieldValidations);
 	const errorMessages = [];
 	let isValid = true;
 

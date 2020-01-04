@@ -6,3 +6,4 @@ export { isEmptyStirng } from './isEmptyStirng';
 export { getFileExtension } from './getFileExtension';
 export { getFileName } from './getFileName';
 export { isNullOrUndefined } from './isNullOrUndefined';
+export { memoize } from './memoize';

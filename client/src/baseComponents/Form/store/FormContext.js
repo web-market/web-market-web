@@ -18,6 +18,7 @@ import {
 	SET_FORM_VALIDATION_RULES,
 	SET_FIELD_VALUE
 } from './consts';
+import { validate as validateFromutils } from '../utils';
 import { isUndefined } from '../../../utils';
 
 const ContextForm = React.createContext();
@@ -95,32 +96,6 @@ function FormContextProvider (props) {
 		}
 	}, []);
 
-
-	const _initValidationRules = useCallback((fields) => {
-		const initialValidationRules = [];
-
-		fields.forEach(field => {
-			if (isUndefined(field.props.validate)) return;
-
-			field.props.validate.forEach(f => {
-				if (initialValidationRules.length === 0) {
-					initialValidationRules.push(f);
-				} else {
-					initialValidationRules.forEach(t => {
-						if (t.name !== f.name) {
-							initialValidationRules.push(f);
-						}
-					});
-				}
-			});
-		});
-
-		dispatch({
-			type: SET_FORM_VALIDATION_RULES,
-			initialValidationRules
-		});
-	}, []);
-
 	const _initFormName = useCallback((name) => {
 		dispatch({
 			type: INIT_FORM_NAME,
@@ -141,10 +116,10 @@ function FormContextProvider (props) {
 
 			if (isUndefined(validate)) return true;
 
-			return validate.map(validateFunction => {
-				return validateFunction(values[name]);
-			});
+			return validateFromutils(values[name], validate);
 		});
+
+		console.log(validationResult);
 
 		const hasError = validationResult.flat().includes(false);
 		setIsFormValid(!hasError);

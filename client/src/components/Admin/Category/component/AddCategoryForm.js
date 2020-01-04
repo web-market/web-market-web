@@ -33,8 +33,7 @@ const AddCategoryForm = () => {
 	);
 
 	const initialValues = {
-		age: '12',
-		dropdown: 13263
+		age: '12'
 	};
 
 	const numberValidation = {
@@ -67,6 +66,9 @@ const AddCategoryForm = () => {
 						<Field
 							component={Dropdown}
 							name="dropdown"
+							validate={{
+								required: {}
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
