@@ -18,14 +18,17 @@ import {
 	SET_FIELD_VALUE,
 	SET_FIELD_VALIDATION_RESULT
 } from './consts';
-import { validate as validateFromutils } from '../utils';
+import {
+	validate as validateFromUtils,
+	setValidationResult as setValidationResultFromUtils
+} from '../utils';
 import { isUndefined } from '../../../utils';
 
 const ContextForm = React.createContext();
 
 const initialState = {
 	formName: '',
-	fields: [],
+	fields: {},
 	formValidationRules: [],
 	formValues: {},
 	isFormValid: true,
@@ -41,7 +44,7 @@ const reducer = (state, payload) => {
 		case INIT_FIELDS:
 			return {
 				...state,
-				fields: [...state.fields, payload.field]
+				fields: { ...state.fields, ...payload.field }
 			};
 		case SET_FIELD_VALUE:
 			return {
@@ -134,17 +137,35 @@ function FormContextProvider (props) {
 	}, []);
 
 	const validateForm = useCallback((fields, values) => {
-		const validationResult = fields.map(f => {
-			const { validate, name } = f;
+		const validationResult = [];
 
-			if (isUndefined(validate)) return true;
+		for (const field in fields) {
+			if (fields.hasOwnProperty(field)) {
+				const { validate } = fields[field];
 
-			return validateFromutils(values[name], validate);
-		});
+				if (isUndefined(validate)) {
+					validationResult.push(true);
+				} else {
+					const { isValid, errorMessages } = validateFromUtils(values[field], validate);
 
-		console.log(validationResult);
+					const payload = {
+						name: field,
+						isValid,
+						errorMessages
+					};
 
-		const hasError = validationResult.flat().includes(false);
+					dispatch({
+						type: SET_FIELD_VALIDATION_RESULT,
+						payload
+					});
+
+					validationResult.push({ isValid, errorMessages });
+				}
+			}
+		}
+
+		const hasError = validationResult.some(result => result.isValid === false);
+
 		setIsFormValid(!hasError);
 
 		return new Promise((resolve, reject) => {

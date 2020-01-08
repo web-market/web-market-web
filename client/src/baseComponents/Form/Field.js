@@ -50,8 +50,6 @@ const Field = (props) => {
 
 	const Component = component;
 
-	//initialValue develepment
-
 	return (
 		<>
 			{
