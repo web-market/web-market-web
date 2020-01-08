@@ -15,8 +15,8 @@ import {
 	INIT_FIELDS,
 	INIT_FORM_NAME,
 	SET_FORM_VALID,
-	SET_FORM_VALIDATION_RULES,
-	SET_FIELD_VALUE
+	SET_FIELD_VALUE,
+	SET_FIELD_VALIDATION_RESULT
 } from './consts';
 import { validate as validateFromutils } from '../utils';
 import { isUndefined } from '../../../utils';
@@ -53,10 +53,12 @@ const reducer = (state, payload) => {
 				...state,
 				isFormValid: payload.valid
 			};
-		case SET_FORM_VALIDATION_RULES:
+		case SET_FIELD_VALIDATION_RESULT:
+			const field = setValidationResultFromUtils(state.fields, payload);
+
 			return {
 				...state,
-				formValidationRules: payload.initialValidationRules
+				fields: { ...state.fields, ...field }
 			};
 	}
 };
@@ -64,15 +66,21 @@ const reducer = (state, payload) => {
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const registerField = (field) => {
+	console.log(state.fields);
+
+	const registerField = (fieldObject) => {
 		dispatch({
 			type: INIT_FIELDS,
-			field
+			field: {
+				[fieldObject.name]: {
+					...fieldObject
+				}
+			}
 		});
 
 		dispatch({
 			type: SET_FIELD_VALUE,
-			field: { [field.name]: field.value }
+			field: { [fieldObject.name]: fieldObject.value }
 		});
 	};
 
@@ -80,6 +88,21 @@ function FormContextProvider (props) {
 		dispatch({
 			type: SET_FIELD_VALUE,
 			field
+		});
+	};
+
+	const setFieldValidationResult = (validationResult, name) => {
+		const { isValid, errorMessages } = validationResult;
+
+		const payload = {
+			name,
+			isValid,
+			errorMessages
+		};
+
+		dispatch({
+			type: SET_FIELD_VALIDATION_RESULT,
+			payload
 		});
 	};
 
@@ -141,6 +164,7 @@ function FormContextProvider (props) {
 			setFieldValue,
 			setFormValues, // only on init
 			registerField,
+			setFieldValidationResult,
 			setIsFormValid, //try not to use
 		}}
 		>

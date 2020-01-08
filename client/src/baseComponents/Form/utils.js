@@ -41,3 +41,11 @@ export const validate = (value, fieldValidations) => {
 		errorMessages
 	};
 };
+
+export const setValidationResult = (fields, { payload }) => {
+	const { isValid, errorMessages, name } = payload;
+
+	return {
+		[name]: { ...fields[name], isValid, errorMessages }
+	};
+};
