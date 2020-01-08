@@ -1,7 +1,7 @@
-import { isNull } from '../isNull';
+import { isNullOrUndefined } from '../isNullOrUndefined';
 
 export const required = (value) => {
-	if (isNull(value)) {
+	if (isNullOrUndefined(value)) {
 		return {
 			isValid: false,
 			errorMessage: '!Не должно быть пусты'

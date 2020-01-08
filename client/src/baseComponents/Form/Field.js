@@ -22,7 +22,6 @@ const Field = (props) => {
 			name,
 			validate,
 			isValid: true,
-			value: null,
 			isTouched: false,
 			errorMessages: [],
 			hasValidationError: false

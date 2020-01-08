@@ -69,8 +69,6 @@ const reducer = (state, payload) => {
 function FormContextProvider (props) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	console.log(state.fields);
-
 	const registerField = (fieldObject) => {
 		dispatch({
 			type: INIT_FIELDS,

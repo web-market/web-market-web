@@ -32,10 +32,6 @@ const AddCategoryForm = () => {
 		</>
 	);
 
-	const initialValues = {
-		age: '12'
-	};
-
 	const numberValidation = {
 		min: 4,
 		max: 10
@@ -45,7 +41,6 @@ const AddCategoryForm = () => {
 		<Form
 			onSubmit={addCategory}
 			name={ADD_CATEGORY_FORM_NAME}
-			initialValues={initialValues}
 		>
 			<FormLayout>
 				<FormLayoutHeader title="!!Добавить категорию" />
