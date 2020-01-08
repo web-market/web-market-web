@@ -61,6 +61,7 @@ const AddCategoryForm = () => {
 						<Field
 							component={Dropdown}
 							name="dropdown"
+							label="!Родительская категория"
 							validate={{
 								required: {}
 							}}
@@ -70,12 +71,7 @@ const AddCategoryForm = () => {
 						<Field
 							component={Dropdown}
 							name="dropeqweqwdown"
-						/>
-					</FormLayoutItem>
-					<FormLayoutItem>
-						<Field
-							component={Dropdown}
-							name="test"
+							label="!Родительская категория 2"
 						/>
 					</FormLayoutItem>
 				</FormLayoutItemGroup>
