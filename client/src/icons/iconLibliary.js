@@ -10,8 +10,11 @@ import {
 	faTh,
 	faFilter,
 	faCogs,
+	faCog,
 	faAngleRight,
-	faAlignJustify
+	faAlignJustify,
+	faBell,
+	faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -24,8 +27,11 @@ library.add(
 	faTh,
 	faFilter,
 	faCogs,
+	faCog,
 	faAngleRight,
-	faAlignJustify
+	faAlignJustify,
+	faBell,
+	faCheck
 );
 
 dom.watch();

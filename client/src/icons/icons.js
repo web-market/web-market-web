@@ -10,3 +10,5 @@ export const settings = 'cogs';
 export const angleRight = 'angle-right';
 export const alignJustify = 'align-justify';
 export const bell = 'bell';
+export const cog = 'cog';
+export const check = 'check';

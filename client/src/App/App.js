@@ -23,7 +23,8 @@ import {
 	faCog,
 	faAngleRight,
 	faAlignJustify,
-	faBell
+	faBell,
+	faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -39,7 +40,8 @@ library.add(
 	faCogs,
 	faAngleRight,
 	faAlignJustify,
-	faBell
+	faBell,
+	faCheck
 );
 
 class App extends Component {

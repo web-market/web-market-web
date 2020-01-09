@@ -2,8 +2,13 @@ import React, { useContext } from 'react';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import Form, { Field } from '../../../../baseComponents/Form';
-import Textbox from '../../../../baseComponents/Form/Adapters/Textbox';
-import Dropdown from '../../../../baseComponents/Form/Adapters/Dropdown';
+
+import {
+	Checkbox,
+	Textbox,
+	Dropdown
+} from '../../../../baseComponents/Form/Adapters';
+
 import FormLayout, {
 	FormLayoutHeader,
 	FormLayoutFooter,
@@ -32,10 +37,10 @@ const AddCategoryForm = () => {
 		</>
 	);
 
-	const numberValidation = {
-		min: 4,
-		max: 10
-	};
+	// const numberValidation = {
+	// 	min: 4,
+	// 	max: 10
+	// };
 
 	return (
 		<Form
@@ -51,10 +56,10 @@ const AddCategoryForm = () => {
 							name="age"
 							label="!Название категории"
 							required
-							validate={{
-								number: numberValidation,
-								required: {}
-							}}
+							// validate={{
+							// 	number: numberValidation,
+							// 	required: {}
+							// }}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
@@ -62,16 +67,13 @@ const AddCategoryForm = () => {
 							component={Dropdown}
 							name="dropdown"
 							label="!Родительская категория"
-							validate={{
-								required: {}
-							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
 						<Field
-							component={Dropdown}
-							name="dropeqweqwdown"
-							label="!Родительская категория 2"
+							component={Checkbox}
+							name="isActive"
+							label="!Активная категория"
 						/>
 					</FormLayoutItem>
 				</FormLayoutItemGroup>
