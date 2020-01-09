@@ -5,5 +5,6 @@ export const actions = {
 };
 
 export const ENDPOINT = {
-	GET_ALL_CATEGORIES: '/categories/sideMenu'
+	GET_CATEGORIES_ITEMS: '/categories/getCategoriesItems',
+	GET_ALL_CATEGORIES: '/categories/getAllCategories'
 };
