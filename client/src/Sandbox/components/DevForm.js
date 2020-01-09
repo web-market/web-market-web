@@ -1,8 +1,7 @@
 import React from 'react';
 
 import Form, { Field } from '../../baseComponents/Form';
-import Textbox from '../../baseComponents/Form/Adapters/Textbox';
-import Dropdown from '../../baseComponents/Form/Adapters/Dropdown';
+import { Dropdown, Textbox } from '../../baseComponents/Form/Adapters';
 import ImageUploader from '../../baseComponents/Form/Adapters/ImageUploader';
 
 import PaddingBox from '../../baseComponents/PaddingBox';

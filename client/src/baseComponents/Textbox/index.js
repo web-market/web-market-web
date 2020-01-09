@@ -1,1 +1,1 @@
-export { Textbox as default } from './Textbox';
+export { Textbox } from './Textbox';

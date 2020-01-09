@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Textarea from '../../TextArea';
+import { Textarea as TextareaComponent } from '../../Textarea';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 
-class TextareaAdapter extends Component {
+class Textarea extends Component {
 	render () {
 		const {
 			label,
@@ -19,7 +19,7 @@ class TextareaAdapter extends Component {
 				isValid={isValid}
 				errorMessages={errorMessages}
 			>
-				<Textarea
+				<TextareaComponent
 					{...this.props}
 				/>
 			</FieldBox>
@@ -27,4 +27,4 @@ class TextareaAdapter extends Component {
 	}
 }
 
-export default TextareaAdapter;
+export { Textarea };

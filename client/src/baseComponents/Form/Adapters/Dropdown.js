@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Dropdown from '../../Dropdown';
+import { Dropdown as DropdownComponent } from '../../Dropdown';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 
-class DropdownAdapter extends Component {
+class Dropdown extends Component {
 	render () {
 		const {
 			label,
@@ -19,7 +19,7 @@ class DropdownAdapter extends Component {
 				isValid={isValid}
 				errorMessages={errorMessages}
 			>
-				<Dropdown
+				<DropdownComponent
 					{...this.props}
 				/>
 			</FieldBox>
@@ -27,4 +27,4 @@ class DropdownAdapter extends Component {
 	}
 }
 
-export default DropdownAdapter;
+export { Dropdown };
