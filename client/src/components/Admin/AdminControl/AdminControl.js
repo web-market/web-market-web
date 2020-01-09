@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 import UserProfile from '../UserProfile';
-import Category from '../Category';
+import Categories from '../Categories';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -18,7 +18,7 @@ const AdminControl = () => {
 		<div className={componentClassName}>
 			<Switch>
 				<Route path={URL.USER_PROFILE} component={UserProfile} />
-				<Route path={URL.CATEGORY} component={Category} />
+				<Route path={URL.CATEGORY} component={Categories} />
 			</Switch>
 		</div>
 	);

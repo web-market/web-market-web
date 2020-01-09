@@ -9,7 +9,7 @@ import AddCategory from './component/AddCategory';
 
 import { actions, categories } from './store/staticData';
 
-const Category = () => {
+const Categories = () => {
 	const handleActionClick = (action) => {
 		console.log(action);
 	};
@@ -38,4 +38,4 @@ const Category = () => {
 
 // NAME.propTypes = {};
 
-export { Category };
+export { Categories };
