@@ -1,5 +1,7 @@
+import { isNull } from '../../../utils';
+
 const _getNestedCategories = (categories, list) => {
-	if (categories.childCategories.length !== 0) {
+	if (!isNull(categories.childCategories)) {
 		categories.childCategories.forEach(category => {
 			list.push(category);
 

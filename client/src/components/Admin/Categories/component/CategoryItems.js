@@ -61,12 +61,12 @@ const CategoryItems = ({ categories }) => {
 	};
 
 	const getParentCategoryName = (category, name) => {
-		if (category.parentCategoryId !== 0) {
+		if (!isNullOrUndefined(category.parentCategoryId)) {
 			const item = singleLevelCategoriesList.find(item => item.id === category.parentCategoryId);
 
 			name.unshift(item.name);
 
-			if (item.parentCategoryId !== 0) {
+			if (!isNullOrUndefined(item.parentCategoryId)) {
 				getParentCategoryName(item, name);
 			}
 		}
