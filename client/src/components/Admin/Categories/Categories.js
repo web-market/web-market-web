@@ -13,11 +13,15 @@ import { ENDPOINT } from './consts';
 
 const Categories = () => {
 	const [categories, setCategories] = useState([]);
+	const [isPending, setIsPending] = useState(false);
 
 	useEffect(() => {
+		setIsPending(true);
+
 		GET(ENDPOINT.GET_ALL_CATEGORIES)
 			.then(({ data }) => {
 				setCategories(data);
+				setIsPending(false);
 			})
 			.catch(error => console.log(error));
 	}, []);
@@ -37,15 +41,13 @@ const Categories = () => {
 				<GridLayoutRow
 					grid="7-5"
 				>
-					{
-						categories.length !== 0 && (
-							<CategoryList categories={categories} />
-						)
-					}
+					<CategoryList
+						isPending={isPending}
+						categories={categories}
+					/>
 					<AddCategory />
 				</GridLayoutRow>
 			</GridLayout>
-
 		</>
 	);
 };

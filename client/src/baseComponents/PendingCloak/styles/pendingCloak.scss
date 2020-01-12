@@ -1,0 +1,75 @@
+.pendingCloak {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(1,1,1, 0.3);
+	position: absolute;
+}
+
+.pendingCloak_container {
+	position: absolute;
+	width: 25px;
+	display: flex;
+	justify-content: space-between;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	top: 50%;
+}
+
+@keyframes changewidth1 {
+	from {
+		transform: scale(1, 1);
+	}
+
+	to {
+		transform: scale(10, 10);
+	}
+}
+
+@keyframes changewidth2 {
+	from {
+		transform: scale(.3, .3);
+	}
+
+	to {
+		transform: scale(10, 10);
+	}
+}
+
+@keyframes changewidth3 {
+	from {
+		transform: scale(.5, .5);
+	}
+
+	to {
+		transform: scale(10, 10);
+	}
+}
+
+.pendingCloak_point {
+	border-radius: 50%;
+	width: 1px;
+	height: 1px;
+	background-color: $primary;
+}
+
+.pendingCloak_point_1 {
+	-webkit-animation: changewidth1 500ms infinite alternate;
+	animation: changewidth1 500ms infinite alternate;
+}
+
+.pendingCloak_point_2 {
+	-webkit-animation: changewidth2 500ms infinite alternate;
+	animation: changewidth2 500ms infinite alternate;
+
+	animation-delay: 300ms;
+}
+
+.pendingCloak_point_3 {
+	-webkit-animation: changewidth3 500ms infinite alternate;
+	animation: changewidth3 500ms infinite alternate;
+
+	animation-delay: 800ms;
+}
