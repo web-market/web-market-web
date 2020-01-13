@@ -1,5 +1,9 @@
 .dropdownItem {
 	padding: 8px 1em 8px 1em;
+	word-spacing: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .dropdownItem:hover {

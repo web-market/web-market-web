@@ -12,6 +12,9 @@
 	box-shadow: none;
 	position: relative;
 	cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .dropdown_icon {

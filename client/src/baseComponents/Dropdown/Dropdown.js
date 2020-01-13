@@ -75,7 +75,7 @@ const Dropdown = ({
 					handleItemClick={handleItemClick}
 				/>
 			);
-		})
+		});
 	};
 
 	const dropdownItems = () => {
