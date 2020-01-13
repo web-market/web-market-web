@@ -54,7 +54,7 @@ const Dropdown = ({
 
 	const getDisplayValue = () => {
 		return isEmptyStirng(displayValue)
-			? <span className={classes.dropdownItem_placeholder}>{placeholder}</span>
+			? <div className={classes.dropdownItem_placeholder}>{placeholder}</div>
 			: displayValue;
 	};
 

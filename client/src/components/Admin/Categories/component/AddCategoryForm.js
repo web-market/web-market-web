@@ -70,6 +70,7 @@ const AddCategoryForm = () => {
 							name="dropdown"
 							label="!Родительская категория"
 							items={categoriesItems()}
+							placeholder="!Выберите категорию"
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
