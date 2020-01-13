@@ -9,7 +9,6 @@ import classes from './styles/index.scss';
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons';
 
-import data from './dataModel';
 import classNames from 'classnames';
 import { COLORS } from '../../styles/baseColors';
 
@@ -23,6 +22,7 @@ const Dropdown = ({
 }) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
+	const hasItems = items.length !== 0;
 
 	useEffect(() => {
 		setOpen(isOpen);
@@ -58,12 +58,37 @@ const Dropdown = ({
 			: displayValue;
 	};
 
-	const dropDownContainer = classNames(
+	const dropdownContainer = classNames(
 		{
 			[classes.dropdown_containerOpen]: open
 		},
 		classes.dropdown_container
 	);
+
+	const getDropdownItems = () => {
+		return items.map(item => {
+			return (
+				<DropDownItem
+					key={item.id}
+					value={item.value || 'пусто'}
+					id={item.id}
+					handleItemClick={handleItemClick}
+				/>
+			);
+		})
+	};
+
+	const dropdownItems = () => {
+		return hasItems
+			? getDropdownItems()
+			: (
+				<DropDownItem
+					key={-1}
+					value="!пусто"
+					id={-1}
+				/>
+			);
+	};
 
 	return (
 		<div className={classes.dropdown}>
@@ -78,19 +103,8 @@ const Dropdown = ({
 					color={COLORS.FIELD_ICON}
 				/>
 			</div>
-			<div className={dropDownContainer}>
-				{
-					items.map(item => {
-						return (
-							<DropDownItem
-								key={item.id}
-								value={item.value}
-								id={item.id}
-								handleItemClick={handleItemClick}
-							/>
-						);
-					})
-				}
+			<div className={dropdownContainer}>
+				{dropdownItems()}
 			</div>
 		</div>
 	);
@@ -99,7 +113,7 @@ const Dropdown = ({
 Dropdown.defaultProps = {
 	isOpen: false,
 	multiSelect: false,
-	items: data,
+	items: [],
 	placeholder: '###Select',
 };
 
