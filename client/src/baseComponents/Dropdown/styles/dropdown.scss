@@ -12,8 +12,6 @@
 	box-shadow: none;
 	position: relative;
 	cursor: pointer;
-	box-sizing: border-box;
-	width: 100%;
 }
 
 .dropdown_icon {
@@ -28,16 +26,18 @@
 	overflow-y: auto;
 	border-bottom-left-radius: 2px;
 	border-bottom-right-radius: 2px;
-	padding-top: 1em;
+	padding-top: .5em;
 	padding-bottom: .5em;
 	font-size: .95rem;
 	background-color: #fff;
 	border: 1px solid $secondary;
-	box-sizing: border-box;
 	position: absolute;
 	top: 32px;
 	z-index: 1;
 	display: none;
+
+	//because of border on parent element. add box shadow
+	left: -1px;
 }
 
 
