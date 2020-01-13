@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
+import { CategoriesContext } from '../store';
 
 import Form, { Field } from '../../../../baseComponents/Form';
 
@@ -22,6 +23,7 @@ import { ADD_CATEGORY_FORM_NAME } from '../consts';
 
 const AddCategoryForm = () => {
 	const { forms } = useContext(FormsGlobalContext);
+	const { categories } = useContext(CategoriesContext);
 
 	const addCategory = (val) => {
 		console.log(val);
@@ -37,10 +39,14 @@ const AddCategoryForm = () => {
 		</>
 	);
 
-	// const numberValidation = {
-	// 	min: 4,
-	// 	max: 10
-	// };
+	const categoriesItems = () => {
+		return categories.map(category => {
+			return {
+				id: category.id,
+				value: category.name
+			};
+		});
+	};
 
 	return (
 		<Form
@@ -56,10 +62,6 @@ const AddCategoryForm = () => {
 							name="age"
 							label="!Название категории"
 							required
-							// validate={{
-							// 	number: numberValidation,
-							// 	required: {}
-							// }}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
@@ -67,6 +69,7 @@ const AddCategoryForm = () => {
 							component={Dropdown}
 							name="dropdown"
 							label="!Родительская категория"
+							items={categoriesItems()}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

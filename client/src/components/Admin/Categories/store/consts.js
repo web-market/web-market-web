@@ -1,0 +1,5 @@
+const ADD_CATEGORIES = 'ADD_CATEGORIES';
+
+export {
+	ADD_CATEGORIES
+};

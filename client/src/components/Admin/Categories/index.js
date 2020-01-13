@@ -1,1 +1,1 @@
-export { Categories as default } from './Categories';
+export { CategoriesWithContext as default } from './Categories';
