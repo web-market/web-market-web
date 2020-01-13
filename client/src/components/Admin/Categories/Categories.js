@@ -8,8 +8,7 @@ import CategoryList from './component/CategoryList';
 import AddCategory from './component/AddCategory';
 
 import { actions } from './store/staticData';
-import { GET } from '../../../baseComponents/Api';
-import { ENDPOINT } from './consts';
+import { getAllCategories } from './api';
 
 const Categories = () => {
 	const [isPending, setIsPending] = useState(false);
@@ -18,7 +17,7 @@ const Categories = () => {
 	useEffect(() => {
 		setIsPending(true);
 
-		GET(ENDPOINT.GET_ALL_CATEGORIES)
+		getAllCategories()
 			.then(({ data }) => {
 				addCategories(data);
 				setIsPending(false);

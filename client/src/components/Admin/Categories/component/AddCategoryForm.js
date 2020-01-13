@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
-import { CategoriesContext } from '../store';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Form, { Field } from '../../../../baseComponents/Form';
 
@@ -17,37 +16,14 @@ import FormLayout, {
 	FormLayoutItemGroup
 } from '../../../../baseComponents/FormLayout';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
-import Button from '../../../../baseComponents/Button';
 
 import { ADD_CATEGORY_FORM_NAME } from '../consts';
 
-const AddCategoryForm = () => {
-	const { forms } = useContext(FormsGlobalContext);
-	const { categories } = useContext(CategoriesContext);
-
-	const addCategory = (val) => {
-		console.log(val);
-	};
-
-	const rightSectionButtons = (
-		<>
-			<Button
-				label="!!добавить"
-				type="primary"
-				actionHandler={() => forms.addCategoryForm.submitForm()}
-			/>
-		</>
-	);
-
-	const categoriesItems = () => {
-		return categories.map(category => {
-			return {
-				id: category.id,
-				value: category.name
-			};
-		});
-	};
-
+const AddCategoryForm = ({
+							addCategory,
+							categoriesItems,
+							rightSectionButtons
+}) => {
 	return (
 		<Form
 			onSubmit={addCategory}
@@ -59,17 +35,20 @@ const AddCategoryForm = () => {
 					<FormLayoutItem>
 						<Field
 							component={Textbox}
-							name="age"
+							name="name"
 							label="!Название категории"
 							required
+							validate={{
+								required: true
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
 						<Field
 							component={Dropdown}
-							name="dropdown"
+							name="id"
 							label="!Родительская категория"
-							items={categoriesItems()}
+							items={categoriesItems}
 							placeholder="!Выберите категорию"
 						/>
 					</FormLayoutItem>
@@ -87,6 +66,12 @@ const AddCategoryForm = () => {
 			</FormLayout>
 		</Form>
 	);
+};
+
+AddCategoryForm.propTypes = {
+	addCategory: PropTypes.func,
+	categoriesItems: PropTypes.array,
+	rightSectionButtons: PropTypes.object
 };
 
 export default AddCategoryForm;

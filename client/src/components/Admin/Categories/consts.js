@@ -5,6 +5,6 @@ export const actions = {
 };
 
 export const ENDPOINT = {
-	GET_CATEGORIES_ITEMS: '/categories/getCategoriesItems',
+	ADD_CATEGORY: '/categories/',
 	GET_ALL_CATEGORIES: '/categories/getAllCategories'
 };

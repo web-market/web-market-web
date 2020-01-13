@@ -8,6 +8,11 @@ const GET = (url) => {
 	return axiosInstance.get(url);
 };
 
+const POST = (url, data) => {
+	return axiosInstance.post(url, data);
+};
+
 export {
-	GET
+	GET,
+	POST
 };
