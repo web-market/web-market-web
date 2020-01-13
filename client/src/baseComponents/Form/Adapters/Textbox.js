@@ -9,7 +9,10 @@ class Textbox extends Component {
 			label,
 			required,
 			isValid,
-			errorMessages
+			errorMessages,
+			hasTooltip,
+			toolTipMessage,
+			toolTipIcon,
 		} = this.props;
 
 		return (
@@ -18,6 +21,9 @@ class Textbox extends Component {
 				required={required}
 				isValid={isValid}
 				errorMessages={errorMessages}
+				hasTooltip={hasTooltip}
+				toolTipIcon={toolTipIcon}
+				toolTipMessage={toolTipMessage}
 			>
 				<TexboxComponent
 					{...this.props}

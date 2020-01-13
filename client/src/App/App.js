@@ -24,7 +24,8 @@ import {
 	faAngleRight,
 	faAlignJustify,
 	faBell,
-	faCheck
+	faCheck,
+	faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -41,7 +42,8 @@ library.add(
 	faAngleRight,
 	faAlignJustify,
 	faBell,
-	faCheck
+	faCheck,
+	faExclamationCircle
 );
 
 class App extends Component {

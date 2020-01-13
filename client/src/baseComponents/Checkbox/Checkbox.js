@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 import { check } from '../../icons';
-import { Icon } from '../Icon/Icon';
+import Icon from '../Icon';
 
 const Checkbox = ({ value, onFieldChange }) => {
 	const [checkboxValue, setCheckboxValue] = useState(value);

@@ -2,10 +2,15 @@
 
 }
 
-.formFieldBox_label {
+.formFieldBox_labelWrapper {
 	font-weight: 400;
 	font-size: 14px;
 	margin-bottom: 4px;
+	display: flex;
+}
+
+.formFieldBox_label {
+	margin-right: 4px;
 }
 
 .formFieldBox_required {

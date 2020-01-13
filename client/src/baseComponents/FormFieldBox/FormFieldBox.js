@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Tooltip from '../Tooltip';
+
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
@@ -10,7 +12,10 @@ const FormFieldBox = ({
 						required,
 						isValid,
 						errorMessages,
-						hasBorder
+						hasBorder,
+						hasTooltip,
+						toolTipIcon,
+						toolTipMessage
 }) => {
 	const fieldWrapperClassName = classNames(
 		{
@@ -21,11 +26,19 @@ const FormFieldBox = ({
 
 	return (
 		<>
-			<div className={classes.formFieldBox_label}>
-				{label}
+			<div className={classes.formFieldBox_labelWrapper}>
+				<span className={classes.formFieldBox_label}>{label}</span>
 				{
 					required && (
 						<span className={classes.formFieldBox_required}>*</span>
+					)
+				}
+				{
+					hasTooltip && (
+						<Tooltip
+							icon={toolTipIcon}
+							message={toolTipMessage}
+						/>
 					)
 				}
 			</div>
@@ -49,7 +62,8 @@ const FormFieldBox = ({
 };
 
 FormFieldBox.defaultProps = {
-	hasBorder: true
+	hasBorder: true,
+	hasTooltip: false
 };
 
 FormFieldBox.propTypes = {
@@ -58,6 +72,9 @@ FormFieldBox.propTypes = {
 	required: PropTypes.bool,
 	isValid: PropTypes.bool,
 	hasBorder: PropTypes.bool,
+	hasTooltip: PropTypes.bool,
+	toolTipIcon: PropTypes.string,
+	toolTipMessage: PropTypes.string,
 };
 
 export { FormFieldBox };

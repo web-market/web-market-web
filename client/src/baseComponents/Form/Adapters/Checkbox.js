@@ -6,7 +6,10 @@ import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 class Checkbox extends Component {
 	render () {
 		const {
-			label
+			label,
+			hasTooltip,
+			toolTipMessage,
+			toolTipIcon,
 		} = this.props;
 
 		return (
@@ -14,6 +17,9 @@ class Checkbox extends Component {
 				label={label}
 				isValid
 				hasBorder={false}
+				hasTooltip={hasTooltip}
+				toolTipIcon={toolTipIcon}
+				toolTipMessage={toolTipMessage}
 			>
 				<CheckboxComponent
 					{...this.props}

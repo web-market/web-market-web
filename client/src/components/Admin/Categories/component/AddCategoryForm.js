@@ -50,6 +50,7 @@ const AddCategoryForm = ({
 							label="!Родительская категория"
 							items={categoriesItems}
 							placeholder="!Выберите категорию"
+							hasTooltip
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
