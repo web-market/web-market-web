@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import FormsContextProvider from './store/FormsGlobalContext';
+import TooltipGlobalContextProvider from './store/TooltipGlobalContext';
 
 import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
@@ -50,13 +51,15 @@ class App extends Component {
 	render () {
 		return (
 			<FormsContextProvider>
-				<Router>
-					<Switch>
-						<Route path="/sandbox" component={Sandbox} />
-						<Route path="/adminpanel" component={AdminPanel} />
-						<Route path="/" component={StoreModule} />
-					</Switch>
-				</Router>
+				<TooltipGlobalContextProvider>
+					<Router>
+						<Switch>
+							<Route path="/sandbox" component={Sandbox} />
+							<Route path="/adminpanel" component={AdminPanel} />
+							<Route path="/" component={StoreModule} />
+						</Switch>
+					</Router>
+				</TooltipGlobalContextProvider>
 			</FormsContextProvider>
 		);
 	}

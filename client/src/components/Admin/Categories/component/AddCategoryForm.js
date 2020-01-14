@@ -46,11 +46,24 @@ const AddCategoryForm = ({
 					<FormLayoutItem>
 						<Field
 							component={Dropdown}
-							name="id"
+							name="parentCategoryId"
 							label="!Родительская категория"
 							items={categoriesItems}
 							placeholder="!Выберите категорию"
 							hasTooltip
+							toolTipMessage="!Если оставить пустым, то будет создана корневая каттегория"
+						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
+						<Field
+							component={Textbox}
+							name="sortOrder"
+							label="!Порядок отображения категории"
+							hasTooltip
+							toolTipMessage="!Место категории в общем списке категорий (например: 5)"
+							validate={{
+								number: true
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

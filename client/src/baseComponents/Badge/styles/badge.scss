@@ -1,18 +1,23 @@
 .badge {
 	padding: 2px 4px;
+	border-radius: 2px;
+	font-size: 12px;
 	@include bg-color($secondary);
 }
 
 .badge_primary {
 	@include bg-color($primary);
+	color: $light;
 }
 
 .badge_success {
 	@include bg-color($success);
+	color: $light;
 }
 
 .badge_info {
 	@include bg-color($info);
+	color: $light;
 }
 
 .badge_warning {
@@ -21,4 +26,5 @@
 
 .badge_danger {
 	@include bg-color($danger);
+	color: $light;
 }

@@ -12,15 +12,17 @@ const AddCategory = () => {
 	const { categories } = useContext(CategoriesContext);
 
 	const addCategory = (val) => {
-		const { isActive, name, id } = val;
+		const { isActive, name, iparentCategoryIdd, sortOrder } = val;
 
 		const requestData = {
 			isActive,
 			name,
-			parentCategory: { id }
+			parentCategoryId,
+			sortOrder
 		};
 
-		addCategoryAPI(requestData);
+		addCategoryAPI(requestData)
+			.then(e => console.log(e));
 	};
 
 	const rightSectionButtons = (

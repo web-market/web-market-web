@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
-const Badge = ({
-					message,
-					danger,
-					info,
-					primary,
-					success,
-					warning
-}) => {
+const Badge = forwardRef((
+	{
+		message,
+		danger,
+		info,
+		primary,
+		success,
+		warning
+	},
+	ref
+) => {
 	const componentClassName = classNames(
 		classes.badge,
 		{
@@ -23,8 +26,13 @@ const Badge = ({
 	);
 
 	return (
-		<div className={componentClassName}>{message}</div>
+		<div
+			ref={ref}
+			className={componentClassName}
+		>
+			{message}
+		</div>
 	);
-};
+});
 
 export { Badge };
