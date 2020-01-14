@@ -1,0 +1,24 @@
+.badge {
+	padding: 2px 4px;
+	@include bg-color($secondary);
+}
+
+.badge_primary {
+	@include bg-color($primary);
+}
+
+.badge_success {
+	@include bg-color($success);
+}
+
+.badge_info {
+	@include bg-color($info);
+}
+
+.badge_warning {
+	@include bg-color($warning);
+}
+
+.badge_danger {
+	@include bg-color($danger);
+}
