@@ -12,7 +12,7 @@ const AddCategory = () => {
 	const { categories } = useContext(CategoriesContext);
 
 	const addCategory = (val) => {
-		const { isActive, name, iparentCategoryIdd, sortOrder } = val;
+		const { isActive, name, parentCategoryId, sortOrder } = val;
 
 		const requestData = {
 			isActive,

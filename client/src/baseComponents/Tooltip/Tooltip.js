@@ -10,19 +10,25 @@ import { exclamationCircle } from '../../icons';
 
 import classes from './styles/index.scss';
 
-const Tooltip = ({ icon, message, tooltip }) => {
+const Tooltip = ({ icon, message, tooltip, position }) => {
 	const { createTooltip, destroyTooltip } = useContext(TooltipGlobalContext);
 	const tooltipContentRef = useRef(null);
-	const tipMessageComponentRef = useRef(null);
+	const tooltipMessageComponentRef = useRef(null);
 
-	const tipMessageComponent = (<Badge ref={tipMessageComponentRef} message={message} />);
+	const tooltipMessageComponent = (
+		<Badge ref={tooltipMessageComponentRef} message={message} />
+	);
 
 	const handleTooltipEnter = () => {
-		createTooltip(tooltipContentRef.current, tipMessageComponent);
+		createTooltip(
+			tooltipContentRef.current,
+			tooltipMessageComponent,
+			position
+		);
 	};
 
 	const handleTooltipLeave = () => {
-		destroyTooltip(tipMessageComponent);
+		destroyTooltip();
 	};
 
 	const defaultContent = (
@@ -46,6 +52,7 @@ const Tooltip = ({ icon, message, tooltip }) => {
 
 Tooltip.defaultProps = {
 	icon: exclamationCircle,
+	position: 'top-center'
 };
 
 Tooltip.propTypes = {
@@ -55,7 +62,8 @@ Tooltip.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 		PropTypes.object
-	])
+	]),
+	position: PropTypes.string
 };
 
 export { Tooltip };

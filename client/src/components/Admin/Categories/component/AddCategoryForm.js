@@ -51,7 +51,7 @@ const AddCategoryForm = ({
 							items={categoriesItems}
 							placeholder="!Выберите категорию"
 							hasTooltip
-							toolTipMessage="!Если оставить пустым, то будет создана корневая каттегория"
+							toolTipMessage="!Если оставить "
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
