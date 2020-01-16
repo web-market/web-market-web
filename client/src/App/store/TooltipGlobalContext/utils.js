@@ -41,25 +41,24 @@ const _setTooltipPosition = (tooltipRef, tooltipContentPosition) => {
 	const tooltipContentElem = tooltipContentWrapperElem[0].children;
 
 	console.log(tooltipContentWrapperElem);
+	console.log(tooltipContentElem);
 
 	const tooltipContentElemWidth = tooltipContentElem[0].offsetWidth;
 	const tooltipContentElemHeight = tooltipContentElem[0].offsetHeight;
 
-	console.log(tooltipContentElemWidth);
-
-	const toolTipposition = _getTooltipPosition(
+	const tooltipPosition = _getTooltipPosition(
 								tooltipRef,
 								tooltipContentElemWidth,
 								tooltipContentElemHeight,
 								tooltipContentPosition
 							);
 
-	console.log(toolTipposition);
+	console.log(tooltipPosition);
 
 	const position = `
-		top: ${toolTipposition.top}px;
-		left: ${toolTipposition.left}px;
-		position: absolute;
+		top: ${tooltipPosition.top}px;
+		left: ${tooltipPosition.left}px;
+		position: fixed;
 		z-index: 1;
 	`;
 
@@ -79,10 +78,7 @@ const createTooltip = (
 };
 
 const destroyTooltip = () => {
-	ReactDOM.render(
-		null,
-		tooltipPortalElem[0]
-	);
+	ReactDOM.unmountComponentAtNode(tooltipPortalElem[0]);
 };
 
 export {
