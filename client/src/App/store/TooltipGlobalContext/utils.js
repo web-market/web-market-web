@@ -19,14 +19,6 @@ const _getTooltipPosition = (tooltipRef, contentWidth, contentHeight, position) 
 		top: null
 	};
 
-	console.log(position);
-
-	console.log(width);
-	console.log(height);
-	console.log(contentWidth);
-	console.log(contentHeight);
-
-
 	switch (position) {
 		case 'top-center':
 			definedPosition.left = left - (contentWidth / 2) + (width / 2);
@@ -52,8 +44,6 @@ const _setTooltipPosition = (tooltipRef, tooltipContentPosition) => {
 								tooltipContentElemHeight,
 								tooltipContentPosition
 							);
-
-	console.log(tooltipPosition);
 
 	const position = `
 		top: ${tooltipPosition.top}px;
