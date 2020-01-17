@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import LayoutPoint from '../LayoutPoint';
+import OverlayPoint from '../OverlayPoint';
 import Icon from '../Icon';
 import Badge from '../Badge';
 
@@ -38,7 +38,7 @@ const Tooltip = ({ icon, message, tooltip, position }) => {
 			{tooltip || defaultContent}
 			{
 				show && (
-					<LayoutPoint
+					<OverlayPoint
 						position={position}
 						componentRef={tooltipRef.current}
 						render={() => <Badge message={message} />}

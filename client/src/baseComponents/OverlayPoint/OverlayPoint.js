@@ -8,7 +8,7 @@ import { getOverlayPosition } from './utils';
 
 const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL);
 
-class LayoutPoint extends Component {
+class OverlayPoint extends Component {
 	constructor () {
 		super();
 
@@ -48,30 +48,9 @@ class LayoutPoint extends Component {
 	}
 }
 
-// const LayoutPoint = (
-// {
-// 	children,
-// 	position,
-// 	componentRef,
-// 	contentRef
-// }
-// ) => {
-// 	getOverlayPosition(componentRef, contentRef, position);
-//
-// 	return ReactDOM.createPortal(
-// 		<div
-// 			className={classes.layout}
-// 		>
-//
-// 		</div>,
-// 		overlayPortalNode[0]
-// 	);
-// };
-
-LayoutPoint.propTypes = {
+OverlayPoint.propTypes = {
 	position: PropTypes.string,
-	componentRef: PropTypes.object,
-	contentRef: PropTypes.object
+	componentRef: PropTypes.object
 };
 
-export { LayoutPoint };
+export { OverlayPoint };
