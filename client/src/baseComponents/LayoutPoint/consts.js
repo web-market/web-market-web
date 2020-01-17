@@ -1,7 +1,7 @@
-const TOOLTIP_PORTAL = 'tooltipPortal';
+const OVERLAY_PORTAL = 'overlayPortal';
 const TOOLTIP_WRAPPER = 'tooltipWrapper';
 
 export {
-	TOOLTIP_PORTAL,
+	OVERLAY_PORTAL,
 	TOOLTIP_WRAPPER
 };

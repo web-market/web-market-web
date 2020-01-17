@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import LayoutPoint from '../LayoutPoint';
 import Icon from '../Icon';
 import Badge from '../Badge';
 
@@ -10,12 +11,7 @@ import classes from './styles/index.scss';
 
 const Tooltip = ({ icon, message, tooltip, position }) => {
 	const [show, setShow] = useState(false);
-	const tooltipContentRef = useRef(null);
-	const tooltipMessageComponentRef = useRef(null);
-
-	const tooltipContent = (
-		<Badge ref={tooltipMessageComponentRef} message={message} />
-	);
+	const tooltipRef = useRef(null);
 
 	const handleTooltipEnter = () => {
 		setShow(!show);
@@ -34,19 +30,28 @@ const Tooltip = ({ icon, message, tooltip, position }) => {
 
 	return (
 		<div
-			ref={tooltipContentRef}
+			ref={tooltipRef}
 			onMouseEnter={handleTooltipEnter}
 			onMouseLeave={handleTooltipLeave}
 			className={classes.tooltip}
 		>
 			{tooltip || defaultContent}
+			{
+				show && (
+					<LayoutPoint
+						position={position}
+						componentRef={tooltipRef.current}
+						render={() => <Badge message={message} />}
+					/>
+				)
+			}
 		</div>
 	);
 };
 
 Tooltip.defaultProps = {
 	icon: exclamationCircle,
-	position: 'top-center'
+	position: 'top-right'
 };
 
 Tooltip.propTypes = {
