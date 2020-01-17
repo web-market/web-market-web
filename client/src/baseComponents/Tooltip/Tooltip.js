@@ -1,7 +1,5 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-
-import { TooltipGlobalContext } from '../../App/store/TooltipGlobalContext';
 
 import Icon from '../Icon';
 import Badge from '../Badge';
@@ -11,24 +9,20 @@ import { exclamationCircle } from '../../icons';
 import classes from './styles/index.scss';
 
 const Tooltip = ({ icon, message, tooltip, position }) => {
-	const { createTooltip, destroyTooltip } = useContext(TooltipGlobalContext);
+	const [show, setShow] = useState(false);
 	const tooltipContentRef = useRef(null);
 	const tooltipMessageComponentRef = useRef(null);
 
-	const tooltipMessageComponent = (
+	const tooltipContent = (
 		<Badge ref={tooltipMessageComponentRef} message={message} />
 	);
 
 	const handleTooltipEnter = () => {
-		createTooltip(
-			tooltipContentRef.current,
-			tooltipMessageComponent,
-			position
-		);
+		setShow(!show);
 	};
 
 	const handleTooltipLeave = () => {
-		destroyTooltip();
+		setShow(!show);
 	};
 
 	const defaultContent = (
