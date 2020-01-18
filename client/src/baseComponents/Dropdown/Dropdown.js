@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { isEmptyStirng, isNullOrUndefined } from '../../utils';
 
+import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
 
 import classes from './styles/index.scss';
@@ -22,6 +23,7 @@ const Dropdown = ({
 }) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
+	const dropdownRef = useRef(null);
 	const hasItems = items.length !== 0;
 
 	useEffect(() => {
@@ -58,19 +60,12 @@ const Dropdown = ({
 			: displayValue;
 	};
 
-	const dropdownContainer = classNames(
-		{
-			[classes.dropdown_containerOpen]: open
-		},
-		classes.dropdown_container
-	);
-
 	const getDropdownItems = () => {
 		return items.map(item => {
 			return (
 				<DropDownItem
 					key={item.id}
-					value={item.value || 'пусто'}
+					value={item.value}
 					id={item.id}
 					handleItemClick={handleItemClick}
 				/>
@@ -93,6 +88,7 @@ const Dropdown = ({
 	return (
 		<div className={classes.dropdown}>
 			<div
+				ref={dropdownRef}
 				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
 			>
@@ -103,9 +99,23 @@ const Dropdown = ({
 					color={COLORS.FIELD_ICON}
 				/>
 			</div>
-			<div className={dropdownContainer}>
-				{dropdownItems()}
-			</div>
+			{
+				open && (
+					<OverlayPoint
+						componentRef={dropdownRef.current}
+						render={
+							({ parentWidth }) => {
+								return (
+									<div style={{ width: parentWidth - 2 }} className={classes.dropdown_container}>
+										{dropdownItems()}
+									</div>
+
+								);
+							}
+						}
+					/>
+				)
+			}
 		</div>
 	);
 };

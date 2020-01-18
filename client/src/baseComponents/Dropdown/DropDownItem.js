@@ -14,7 +14,9 @@ const DropDownItem = ({ value, id, handleItemClick }) => {
 	);
 };
 
-DropDownItem.defaultProps = {};
+DropDownItem.defaultProps = {
+	handleItemClick: () => {}
+};
 
 DropDownItem.propTypes = {
 	value: PropTypes.oneOfType([

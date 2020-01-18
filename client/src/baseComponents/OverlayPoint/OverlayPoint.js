@@ -31,6 +31,8 @@ class OverlayPoint extends Component {
 
 		let style;
 
+		const { width: parentWidth } = componentRef.getBoundingClientRect();
+
 		if (this.state.hasMounted) {
 			style = getOverlayPosition(componentRef, this.layoutRef.current, position);
 		}
@@ -41,7 +43,7 @@ class OverlayPoint extends Component {
 				className={classes.layout}
 				style={style}
 			>
-				{ render() }
+				{ render({ parentWidth }) }
 			</div>,
 			overlayPortalNode[0]
 		);
