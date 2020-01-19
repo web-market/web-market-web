@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
 import { OVERLAY_PORTAL } from './consts';
-import { getOverlayPosition } from './utils';
+import { getOverlayPosition, noScroll } from './utils';
 
 const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL);
 
@@ -19,7 +19,12 @@ class OverlayPoint extends Component {
 	}
 
 	componentDidMount () {
+		noScroll(true);
 		this.setState({ hasMounted: true });
+	}
+
+	componentWillUnmount() {
+		noScroll(false);
 	}
 
 	render () {
