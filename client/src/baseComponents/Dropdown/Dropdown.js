@@ -103,10 +103,11 @@ const Dropdown = ({
 				open && (
 					<OverlayPoint
 						componentRef={dropdownRef.current}
+						overlayBehavior="dropdown"
 						render={
 							({ parentWidth }) => {
 								return (
-									<div style={{ width: parentWidth - 2 }} className={classes.dropdown_container}>
+									<div style={{ width: parentWidth }} className={classes.dropdown_container}>
 										{dropdownItems()}
 									</div>
 

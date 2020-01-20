@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
 import { OVERLAY_PORTAL } from './consts';
-import { getOverlayPosition, noScroll } from './utils';
+import { getGeneralPosition, getDropdownPosition, noScroll } from './utils';
 
 const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL);
 
@@ -31,7 +31,8 @@ class OverlayPoint extends Component {
 		const {
 			render,
 			componentRef,
-			position
+			position,
+			overlayBehavior
 		} = this.props;
 
 		let style;
@@ -39,7 +40,11 @@ class OverlayPoint extends Component {
 		const { width: parentWidth } = componentRef.getBoundingClientRect();
 
 		if (this.state.hasMounted) {
-			style = getOverlayPosition(componentRef, this.layoutRef.current, position);
+			if (overlayBehavior === 'dropdown') {
+				style = getDropdownPosition(componentRef, this.layoutRef.current);
+			} else {
+				style = getGeneralPosition(componentRef, this.layoutRef.current, position);
+			}
 		}
 
 		return createPortal(
@@ -57,6 +62,7 @@ class OverlayPoint extends Component {
 
 OverlayPoint.propTypes = {
 	position: PropTypes.string,
+	overlayBehavior: PropTypes.string,
 	componentRef: PropTypes.object
 };
 

@@ -11,7 +11,7 @@ const noScroll = (addStyle) => {
 	}
 };
 
-const getOverlayPosition = (componentRef, layoutRef, position) => {
+const _getPositionValues = (componentRef, layoutRef) => {
 	const {
 		top,
 		left,
@@ -23,6 +23,26 @@ const getOverlayPosition = (componentRef, layoutRef, position) => {
 		width: contentWidth,
 		height: contentHeight
 	} = layoutRef.getBoundingClientRect();
+
+	return {
+		top,
+		left,
+		width,
+		height,
+		contentWidth,
+		contentHeight
+	};
+};
+
+const getGeneralPosition = (componentRef, layoutRef, position) => {
+	const {
+		top,
+		left,
+		width,
+		height,
+		contentWidth,
+		contentHeight
+	} = _getPositionValues(componentRef, layoutRef);
 
 	const definedPosition = {
 		left: null,
@@ -70,7 +90,22 @@ const getOverlayPosition = (componentRef, layoutRef, position) => {
 	return definedPosition;
 };
 
+const getDropdownPosition = (componentRef, layoutRef) => {
+	const {
+		top,
+		left,
+		height
+	} = _getPositionValues(componentRef, layoutRef);
+
+	// -1 --magic number to set dropddown container position based on dropdown component
+	return {
+		left: left - 1,
+		top: top + height
+	};
+};
+
 export {
-	getOverlayPosition,
+	getGeneralPosition,
+	getDropdownPosition,
 	noScroll
 };
