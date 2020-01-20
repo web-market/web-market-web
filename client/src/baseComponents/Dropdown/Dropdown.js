@@ -110,7 +110,6 @@ const Dropdown = ({
 									<div style={{ width: parentWidth }} className={classes.dropdown_container}>
 										{dropdownItems()}
 									</div>
-
 								);
 							}
 						}

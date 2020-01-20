@@ -15,11 +15,11 @@ const _getNestedCategories = (categories, list) => {
 export const getSingleLevelCategoriesList = (categories) => {
 	const list = [];
 
-	categories.forEach((category) => {
-		_getNestedCategories(category, list);
-
-		list.push({ ...category });
-	});
+	// categories.forEach((category) => {
+	// 	_getNestedCategories(category, list);
+	//
+	// 	list.push({ ...category });
+	// });
 
 	return list;
 };

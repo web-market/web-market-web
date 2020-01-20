@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AdminControlContentBox from '../../AdminControlContentBox';
-import CategoryItems from './CategoryItems';
+import CategoryItem from './CategoryItem';
 
 import classes from '../styles/index.scss';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
@@ -17,7 +17,19 @@ const CategoryList = ({
 			className={classes.category_list}
 		>
 			{isPending && (<PendingCloak />)}
-			<CategoryItems categories={categories} />
+			{
+				categories.map((category, index) => {
+					const key = `${category.name}-${index}`;
+
+					return (
+						<CategoryItem
+							key={key}
+							category={category}
+						/>
+					);
+				})
+
+			}
 		</AdminControlContentBox>
 	);
 };
