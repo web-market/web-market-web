@@ -10,7 +10,7 @@ import { isNull } from '../../../../utils';
 
 import { getSubCategories } from '../api';
 
-const CategoryItem = ({ category, hasParentCategories }) => {
+const CategoryItem = ({ category }) => {
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
 	const [hasFetched, setHasFetched] = useState(false);
@@ -21,7 +21,7 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 	const handleParentCategories = (e) => {
 		e.stopPropagation();
 
-		if (hasParentCategories) {
+		if (category.hasSubCategories) {
 			setShowCategories(!showCategories);
 		}
 	};
@@ -43,7 +43,7 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 	const componentClassName = ClassNames(
 		classes.category_item,
 		{
-			[classes.category_item__hasChild]: hasParentCategories
+			[classes.category_item__hasChild]: category.hasSubCategories
 		}
 	);
 
@@ -67,7 +67,7 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 				<div className={classes.category_item_detail}>
 					<div className={classes.category_item_labelSection}>
 						{
-							hasParentCategories && (
+							category.hasSubCategories && (
 								<div
 									className={classes.category_item_labelBadge}
 									style={{
@@ -84,7 +84,7 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 					</div>
 					<div className={classes.category_item_actionSection}>
 						{
-							hasParentCategories && (
+							category.hasSubCategories && (
 								<Icon
 									icon={showCategories ? chevronUp : chevronDown}
 									color={COLORS.FIELD_ICON}
@@ -136,13 +136,8 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 	);
 };
 
-CategoryItem.defaultProps = {
-	hasParentCategories: true
-};
-
 CategoryItem.propTypes = {
 	category: PropTypes.object.isRequired,
-	hasParentCategories: PropTypes.bool
 };
 
 export default CategoryItem;
