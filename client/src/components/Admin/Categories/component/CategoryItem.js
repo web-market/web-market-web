@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import ClassNames from 'classnames';
@@ -14,6 +14,9 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
 	const [hasFetched, setHasFetched] = useState(false);
+	const [subCategoryHeight, setSubCategoryHeight] = useState(false);
+
+	const subCategoryRef = useRef(null);
 
 	const handleParentCategories = (e) => {
 		e.stopPropagation();
@@ -40,26 +43,58 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 		}
 	);
 
+	useEffect(() => {
+		let h;
+
+		if (isNull(subCategoryRef.current)) {
+			h = 0;
+		} else {
+			const { height: subCategoryHeight } = subCategoryRef.current.getBoundingClientRect();
+
+			h = subCategoryHeight + 50;
+		}
+
+		setSubCategoryHeight(h);
+	}, [showCategories, subCategoryRef.current]);
+
 	return (
 		<>
-			<div
-				onClick={handleParentCategories}
-				className={componentClassName}
-			>
-				<div>
-					{category.name}
+			<div className={componentClassName}>
+				<div className={classes.category_item_detail}>
+					<div className={classes.category_item_labelSection}>
+						{
+							hasParentCategories && (
+								<div
+									className={classes.category_item_labelBadge}
+									style={{
+										backgroundColor: category.color,
+										height: subCategoryHeight
+									}}
+								>
+								</div>
+							)
+						}
+						<span className={classes.category_itemLabel}>
+							{category.name}
+						</span>
+					</div>
 					{
 						hasParentCategories && (
 							<Icon
 								icon={showCategories ? chevronUp : chevronDown}
 								color={COLORS.FIELD_ICON}
+								onClick={handleParentCategories}
+								className={classes.category_item_collapseButton}
 							/>
 						)
 					}
 				</div>
 				{
 					!isNull(subCategories) && showCategories && (
-						<div>
+						<div
+							ref={subCategoryRef}
+							className={classes.category_item_subCategoryItem}
+						>
 							{
 								subCategories.map((category, index) => {
 									const key = `${category.name}-${index}`;
