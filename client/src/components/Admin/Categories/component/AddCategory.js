@@ -21,8 +21,10 @@ const AddCategory = () => {
 			sortOrder
 		};
 
+		console.log(requestData);
+
 		addCategoryAPI(requestData)
-			.then(e => console.log(e));
+			.then(e => console.log(e, 'Добавлено'));
 	};
 
 	const rightSectionButtons = (

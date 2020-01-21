@@ -6,7 +6,7 @@ import Form, { Field } from '../../../../baseComponents/Form';
 import {
 	Checkbox,
 	Textbox,
-	Dropdown
+	AjaxDropdown
 } from '../../../../baseComponents/Form/Adapters';
 
 import FormLayout, {
@@ -17,7 +17,7 @@ import FormLayout, {
 } from '../../../../baseComponents/FormLayout';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 
-import { ADD_CATEGORY_FORM_NAME } from '../consts';
+import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../consts';
 
 const AddCategoryForm = ({
 							addCategory,
@@ -45,13 +45,17 @@ const AddCategoryForm = ({
 					</FormLayoutItem>
 					<FormLayoutItem>
 						<Field
-							component={Dropdown}
+							component={AjaxDropdown}
 							name="parentCategoryId"
 							label="!Родительская категория"
 							items={categoriesItems}
 							placeholder="!Выберите категорию"
 							hasTooltip
 							toolTipMessage="!Если оставить "
+							url={ENDPOINT.GET_ALL_CATEGORIES}
+							validate={{
+								required: true
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
@@ -64,6 +68,13 @@ const AddCategoryForm = ({
 							validate={{
 								number: true
 							}}
+						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
+						<Field
+							component={Textbox}
+							name="sortOrder"
+							label="!Цвет"
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

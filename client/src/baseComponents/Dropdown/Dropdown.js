@@ -9,8 +9,6 @@ import DropDownItem from './DropDownItem';
 import classes from './styles/index.scss';
 import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons';
-
-import classNames from 'classnames';
 import { COLORS } from '../../styles/baseColors';
 
 const Dropdown = ({
@@ -19,7 +17,8 @@ const Dropdown = ({
 					placeholder,
 					onFieldChange,
 					multiSelect,
-					value
+					value,
+					onDropdownClick
 }) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
@@ -31,13 +30,14 @@ const Dropdown = ({
 	}, [isOpen]);
 
 	const toggleDropdown = useCallback(() => {
+		onDropdownClick();
 		setOpen(!open);
 	}, [open]);
 
 	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);
 
-		setDisplayValue(selectedItem.value);
+		setDisplayValue(selectedItem.name);
 
 		onFieldChange(id);
 	}, [items]);
@@ -65,7 +65,7 @@ const Dropdown = ({
 			return (
 				<DropDownItem
 					key={item.id}
-					value={item.value}
+					value={item.name}
 					id={item.id}
 					handleItemClick={handleItemClick}
 				/>
@@ -125,6 +125,7 @@ Dropdown.defaultProps = {
 	multiSelect: false,
 	items: [],
 	placeholder: '###Select',
+	onDropdownClick: () => {}
 };
 
 Dropdown.propTypes = {
@@ -133,6 +134,7 @@ Dropdown.propTypes = {
 	multiSelect: PropTypes.bool,
 	placeholder: PropTypes.string,
 	onFieldChange: PropTypes.func,
+	onDropdownClick: PropTypes.func,
 };
 
 export { Dropdown };
