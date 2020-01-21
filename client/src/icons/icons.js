@@ -13,3 +13,4 @@ export const bell = 'bell';
 export const cog = 'cog';
 export const check = 'check';
 export const exclamationCircle = 'exclamation-circle';
+export const pen = 'pen';

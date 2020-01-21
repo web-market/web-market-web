@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ClassNames from 'classnames';
 import classes from '../styles/index.scss';
-import { chevronDown, chevronUp } from '../../../../icons';
+import { chevronDown, chevronUp, pen } from '../../../../icons';
 import { COLORS } from '../../../../styles/baseColors';
 import Icon from '../../../../baseComponents/Icon';
 import { isNull } from '../../../../utils';
@@ -26,13 +26,17 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 		}
 	};
 
+	const handleEditCategory = (id) => {
+		console.log(id);
+	};
+
 	useEffect(() => {
 		if (!hasFetched && showCategories) {
 			getSubCategories(category.id)
-			.then(({ data }) => {
-				setSubCategories(data);
-				setHasFetched(true);
-			});
+				.then(({ data }) => {
+					setSubCategories(data);
+					setHasFetched(true);
+				});
 		}
 	}, [showCategories, category.id, hasFetched]);
 
@@ -57,9 +61,9 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 		setSubCategoryHeight(h);
 	}, [showCategories, subCategoryRef.current]);
 
-	return (
-		<>
-			<div className={componentClassName}>
+	const categoryItemDetail = () => {
+		return (
+
 				<div className={classes.category_item_detail}>
 					<div className={classes.category_item_labelSection}>
 						{
@@ -78,39 +82,55 @@ const CategoryItem = ({ category, hasParentCategories }) => {
 							{category.name}
 						</span>
 					</div>
-					{
-						hasParentCategories && (
-							<Icon
-								icon={showCategories ? chevronUp : chevronDown}
-								color={COLORS.FIELD_ICON}
-								onClick={handleParentCategories}
-								className={classes.category_item_collapseButton}
-							/>
-						)
-					}
+					<div className={classes.category_item_actionSection}>
+						{
+							hasParentCategories && (
+								<Icon
+									icon={showCategories ? chevronUp : chevronDown}
+									color={COLORS.FIELD_ICON}
+									onClick={handleParentCategories}
+									className={classes.category_item_collapseButton}
+								/>
+							)
+						}
+						<Icon
+							icon={pen}
+							color={COLORS.FIELD_ICON}
+							onClick={() => handleEditCategory(category.id)}
+							className={classes.category_item_editButton}
+						/>
+					</div>
 				</div>
+		);
+	};
+
+	const subCategoryItemDetail = () => {
+		return subCategories.map((category, index) => {
+			const key = `${category.name}-${index}`;
+
+			return (
+				<CategoryItem
+					key={key}
+					category={category}
+				/>
+			);
+		});
+	};
+
+	return (
+		<>
+			<div className={componentClassName}>
+			{categoryItemDetail()}
 				{
-					!isNull(subCategories) && showCategories && (
+					showCategories && !isNull(subCategories) && (
 						<div
 							ref={subCategoryRef}
 							className={classes.category_item_subCategoryItem}
 						>
-							{
-								subCategories.map((category, index) => {
-									const key = `${category.name}-${index}`;
-
-									return (
-										<CategoryItem
-											key={key}
-											category={category}
-										/>
-									);
-								})
-							}
+							{subCategoryItemDetail()}
 						</div>
 					)
 				}
-
 			</div>
 		</>
 	);

@@ -16,7 +16,7 @@
 	box-sizing: border-box;
 }
 
-.category_item_labelSection {
+.category_item_labelSection, .category_item_actionSection {
 	display: flex;
 	position: relative;
 }
@@ -30,7 +30,7 @@
 	margin-left: 8px;
 }
 
-.category_item_collapseButton {
+.category_item_collapseButton, .category_item_editButton {
 	cursor: pointer;
 	padding: 5px 6px;
 	border-radius: 50%;
@@ -38,6 +38,11 @@
 	@include hover-focus {
 		background-color: $secondary;
 	}
+}
+
+.category_item_editButton {
+	margin-left: 4px;
+	padding: 5px;
 }
 
 .category_item_subCategoryItem > .category_item:last-child {

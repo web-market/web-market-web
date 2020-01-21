@@ -15,7 +15,8 @@ import {
 	faAlignJustify,
 	faBell,
 	faCheck,
-	faExclamationCircle
+	faExclamationCircle,
+	faPen
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -33,7 +34,8 @@ library.add(
 	faAlignJustify,
 	faBell,
 	faCheck,
-	faExclamationCircle
+	faExclamationCircle,
+	faPen
 );
 
 dom.watch();

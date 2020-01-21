@@ -13,3 +13,4 @@ export { check } from './icons';
 export { cog } from './icons';
 export { bell } from './icons';
 export { exclamationCircle } from './icons';
+export { pen } from './icons';
