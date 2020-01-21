@@ -2,11 +2,11 @@ import { GET, POST } from '../../../baseComponents/Api';
 import { ENDPOINT } from './consts';
 
 const getAllCategories = () => {
-	return GET(ENDPOINT.GET_ALL_CATEGORIES);
+	return GET(ENDPOINT.CATEGORY_BASE_CONTROLLER);
 };
 
 const getSubCategories = (id) => {
-	return GET(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}?id=${id}`);
+	return GET(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
 };
 
 
