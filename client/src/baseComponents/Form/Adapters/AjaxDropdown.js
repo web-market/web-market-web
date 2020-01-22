@@ -19,7 +19,7 @@ class AjaxDropdown extends Component {
 			<FieldBox
 				label={label}
 				required={required}
-				isValid={isValid}
+				hasErrors={!isValid}
 				errorMessages={errorMessages}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}

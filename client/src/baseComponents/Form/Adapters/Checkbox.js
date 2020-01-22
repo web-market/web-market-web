@@ -10,12 +10,13 @@ class Checkbox extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
+			isValid
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
-				isValid
+				hasErrors={!isValid}
 				hasBorder={false}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
