@@ -3,8 +3,12 @@
 	position: relative;
 }
 
-.tooltip_defaultContent {
+.tooltip_defaultIcon {
 	font-size: 16px;
 	cursor: pointer;
 	color: $grey;
+}
+
+.tooltip_defaultIcon__danger {
+	color: $danger;
 }

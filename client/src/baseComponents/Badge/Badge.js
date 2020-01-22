@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -6,22 +7,18 @@ import classes from './styles/index.scss';
 const Badge = forwardRef((
 	{
 		message,
-		danger,
-		info,
-		primary,
-		success,
-		warning
+		type
 	},
 	ref
 ) => {
 	const componentClassName = classNames(
 		classes.badge,
 		{
-			[classes.badge_primary]: primary,
-			[classes.badge_success]: success,
-			[classes.badge_info]: info,
-			[classes.badge_warning]: warning,
-			[classes.badge_danger]: danger
+			[classes.badge_primary]: type === 'primary',
+			[classes.badge_success]: type === 'success',
+			[classes.badge_info]: type === 'info',
+			[classes.badge_warning]: type === 'warning',
+			[classes.badge_danger]: type === 'danger'
 		}
 	);
 
@@ -34,5 +31,15 @@ const Badge = forwardRef((
 		</div>
 	);
 });
+
+Badge.propTypes = {
+	type: PropTypes.string,
+	message: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.number,
+	])
+};
 
 export { Badge };

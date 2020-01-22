@@ -4,14 +4,36 @@ import PropTypes from 'prop-types';
 import OverlayPoint from '../OverlayPoint';
 import Icon from '../Icon';
 import Badge from '../Badge';
-
 import { exclamationCircle } from '../../icons';
-
+import Classnames from 'classnames';
 import classes from './styles/index.scss';
 
-const Tooltip = ({ icon, message, tooltip, position }) => {
+const Tooltip = (
+	{
+		icon,
+		type,
+		message,
+		tooltip,
+		position,
+		tooltipIconClassName: iconClassName,
+		tooltipClassName
+	}
+) => {
 	const [show, setShow] = useState(false);
 	const tooltipRef = useRef(null);
+
+	const componentClassName = Classnames(
+		classes.tooltip,
+		tooltipClassName
+	);
+
+	const tooltipIconClassname = Classnames(
+		classes.tooltip_defaultIcon,
+		{
+			[classes.tooltip_defaultIcon__danger]: type === 'danger'
+		},
+		iconClassName
+	);
 
 	const handleTooltipEnter = () => {
 		setShow(!show);
@@ -24,7 +46,7 @@ const Tooltip = ({ icon, message, tooltip, position }) => {
 	const defaultContent = (
 		<Icon
 			icon={icon}
-			className={classes.tooltip_defaultContent}
+			className={tooltipIconClassname}
 		/>
 	);
 
@@ -33,7 +55,7 @@ const Tooltip = ({ icon, message, tooltip, position }) => {
 			ref={tooltipRef}
 			onMouseEnter={handleTooltipEnter}
 			onMouseLeave={handleTooltipLeave}
-			className={classes.tooltip}
+			className={componentClassName}
 		>
 			{tooltip || defaultContent}
 			{
@@ -41,7 +63,7 @@ const Tooltip = ({ icon, message, tooltip, position }) => {
 					<OverlayPoint
 						position={position}
 						componentRef={tooltipRef.current}
-						render={() => <Badge message={message} />}
+						render={() => <Badge type={type} message={message} />}
 					/>
 				)
 			}
@@ -56,13 +78,16 @@ Tooltip.defaultProps = {
 
 Tooltip.propTypes = {
 	icon: PropTypes.string,
-	message: PropTypes.string,
+	message: PropTypes.any,
 	tooltip: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 		PropTypes.object
 	]),
-	position: PropTypes.string
+	type: PropTypes.string,
+	position: PropTypes.string,
+	tooltipClassName: PropTypes.string,
+	tooltipIconClassName: PropTypes.string
 };
 
 export { Tooltip };

@@ -9,10 +9,6 @@
 	display: flex;
 }
 
-.formFieldBox_label {
-	margin-right: 4px;
-}
-
 .formFieldBox_required {
 	margin-left: 2px;
 	color: $danger;
@@ -20,11 +16,22 @@
 
 .formFieldBox_fieldWrapper {
 	border-radius: 2px;
-	-webkit-box-shadow: 0px 0px 0px 1px $secondary;
-	-moz-box-shadow: 0px 0px 0px 1px $secondary;
-	box-shadow: 0px 0px 0px 1px $secondary;
+	border: 1px solid $secondary;
+	box-shadow: none;
+	position: relative;
+}
+
+.formFieldBox_tooltip {
+	margin-left: 4px;
 }
 
 .formFieldBox_fieldWrapper__hasError {
 	border-color: $danger;
+}
+
+.formFieldBox_ErrorTooltip {
+	position: absolute;
+	right: -7px;
+	top: -10px;
+	z-index: 1;
 }

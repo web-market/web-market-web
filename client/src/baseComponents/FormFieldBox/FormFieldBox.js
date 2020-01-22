@@ -10,7 +10,7 @@ const FormFieldBox = ({
 						children,
 						label,
 						required,
-						isValid,
+						hasErrors,
 						errorMessages,
 						hasBorder,
 						hasTooltip,
@@ -19,15 +19,23 @@ const FormFieldBox = ({
 }) => {
 	const fieldWrapperClassName = classNames(
 		{
-			[classes.formFieldBox_fieldWrapper__hasError]: !isValid,
+			[classes.formFieldBox_fieldWrapper__hasError]: hasErrors,
 			[classes.formFieldBox_fieldWrapper]: hasBorder
 		}
 	);
 
+	const getErrors = () => {
+		return errorMessages.map(message => {
+			return (
+				<div key={message}>{message}</div>
+			);
+		});
+	};
+
 	return (
 		<>
 			<div className={classes.formFieldBox_labelWrapper}>
-				<span className={classes.formFieldBox_label}>{label}</span>
+				{label}
 				{
 					required && (
 						<span className={classes.formFieldBox_required}>*</span>
@@ -38,25 +46,25 @@ const FormFieldBox = ({
 						<Tooltip
 							icon={toolTipIcon}
 							message={toolTipMessage}
+							tooltipClassName={classes.formFieldBox_tooltip}
 						/>
 					)
 				}
 			</div>
-			<div className={fieldWrapperClassName}>{children}</div>
-			{
-				!isValid && (
-					<div>
-						{
-							errorMessages.map(message => {
-								return (
-									<div key={message}>{message}</div>
-								);
-							})
-						}
-
-					</div>
-				)
-			}
+			<div className={fieldWrapperClassName}>
+				{
+					hasErrors && (
+						<Tooltip
+							icon={toolTipIcon}
+							message={getErrors()}
+							tooltipClassName={classes.formFieldBox_ErrorTooltip}
+							position="left"
+							type="danger"
+						/>
+					)
+				}
+				{children}
+			</div>
 		</>
 	);
 };
@@ -70,7 +78,7 @@ FormFieldBox.propTypes = {
 	label: PropTypes.string.isRequired,
 	children: PropTypes.object.isRequired,
 	required: PropTypes.bool,
-	isValid: PropTypes.bool,
+	hasErrors: PropTypes.bool,
 	hasBorder: PropTypes.bool,
 	hasTooltip: PropTypes.bool,
 	toolTipIcon: PropTypes.string,
