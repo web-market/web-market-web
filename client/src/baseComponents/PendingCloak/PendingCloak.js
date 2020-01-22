@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -30,9 +29,5 @@ const PendingCloak = () => {
 		</div>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { PendingCloak };
