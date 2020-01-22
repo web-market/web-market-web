@@ -1,8 +1,15 @@
-import { isUndefined } from '../isUndefined';
+import { isNullOrUndefined } from '../isNullOrUndefined';
 import { prepareValidationResult, prepareValidationMessage } from './helpers';
 
 export const number = (value, validationRules) => {
 	const { min, max, equal, integer } = validationRules;
+
+	if (isNullOrUndefined(value)) {
+		return {
+			isValid: true,
+			errorMessage: ''
+		};
+	}
 
 	const validationTemplate = {
 		min: true,
@@ -17,16 +24,16 @@ export const number = (value, validationRules) => {
 
 		const numValue = +value;
 
-		if (!isUndefined(min)) {
+		if (!isNullOrUndefined(min)) {
 			validationTemplate.min = min < numValue;
 		}
-		if (!isUndefined(max)) {
+		if (!isNullOrUndefined(max)) {
 			validationTemplate.max = max > numValue;
 		}
-		if (!isUndefined(equal)) {
+		if (!isNullOrUndefined(equal)) {
 			validationTemplate.equal = equal === numValue;
 		}
-		if (!isUndefined(integer)) {
+		if (!isNullOrUndefined(integer)) {
 			validationTemplate.integer = Number.isInteger(numValue);
 		}
 	}
