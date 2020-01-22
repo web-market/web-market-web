@@ -19,7 +19,7 @@ const Textbox = ({
 			type="textbox"
 			onChange={e => handleInputChange(e.target.value)}
 			name={name}
-			value={value}
+			value={value || ''}
 			className={classes.textbox}
 		/>
 	);

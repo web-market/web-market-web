@@ -24,7 +24,8 @@ const Field = (props) => {
 			isValid: true,
 			isTouched: false,
 			errorMessages: [],
-			hasValidationError: false
+			hasValidationError: false,
+			value: null
 		});
 
 		isRegistered.current = true;

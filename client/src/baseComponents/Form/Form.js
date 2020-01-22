@@ -19,7 +19,10 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 	const valuesRef = useRef();
 	const fieldsRef = useRef();
 
-	useEffect(() => { initForm({ name }); }, [initForm, name]);
+	useEffect(() => {
+		initForm({ name });
+	}, [initForm, name]);
+
 	useEffect(() => {
 		if (!isNull(initialValues)) {
 			setFormValues(initialValues);
