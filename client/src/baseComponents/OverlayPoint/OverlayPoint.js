@@ -6,7 +6,7 @@ import classes from './styles/index.scss';
 import { OVERLAY_PORTAL } from './consts';
 import { getGeneralPosition, getDropdownPosition, noScroll } from './utils';
 
-const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL);
+const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL)[0];
 
 class OverlayPoint extends Component {
 	constructor () {
@@ -55,7 +55,7 @@ class OverlayPoint extends Component {
 			>
 				{ render({ parentWidth }) }
 			</div>,
-			overlayPortalNode[0]
+			overlayPortalNode
 		);
 	}
 }
