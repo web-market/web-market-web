@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import CategoriesContextProvider, { CategoriesContext } from './store';
 
 import GridLayout, { GridLayoutRow } from '../../../baseComponents/GridLayout';
+import Modal from '../../../baseComponents/Modal';
 import AdminControlHeader from '../AdminControlHeader';
 import CategoryList from './component/CategoryList';
 import AddCategory from './component/AddCategory';
@@ -12,6 +13,7 @@ import { getAllCategories } from './api';
 
 const Categories = () => {
 	const [isPending, setIsPending] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { categories, addCategories } = useContext(CategoriesContext);
 
 	useEffect(() => {
@@ -27,6 +29,11 @@ const Categories = () => {
 
 	const handleActionClick = (action) => {
 		console.log(action);
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
 	};
 
 	return (
@@ -47,6 +54,11 @@ const Categories = () => {
 					<AddCategory />
 				</GridLayoutRow>
 			</GridLayout>
+			<Modal
+				handleClose={handleCloseModal}
+				isOpen={isModalOpen}
+				render={() => <div>Modal content</div>}
+			/>
 		</>
 	);
 };
