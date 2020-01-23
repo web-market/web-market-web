@@ -5,12 +5,17 @@ import classNames from 'classnames';
 import classes from './styles/index.scss';
 import { check } from '../../icons';
 import Icon from '../Icon';
+import { isNull } from '../../utils';
 
 const Checkbox = ({ value, onFieldChange }) => {
 	const [checkboxValue, setCheckboxValue] = useState(value);
 
 	useEffect(() => {
-		onFieldChange(value);
+		if (isNull(value)) {
+			onFieldChange(false);
+		} else {
+			onFieldChange(value);
+		}
 	}, []);
 
 	const ToggleCheckbox = () => {
