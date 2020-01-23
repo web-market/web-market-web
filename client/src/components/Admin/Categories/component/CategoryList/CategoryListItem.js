@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import ClassNames from 'classnames';
-import classes from '../styles/index.scss';
-import { chevronDown, chevronUp, pen } from '../../../../icons';
-import { COLORS } from '../../../../styles/baseColors';
-import Icon from '../../../../baseComponents/Icon';
-import { isNull } from '../../../../utils';
+import classes from './styles/index.scss';
+import { chevronDown, chevronUp, pen } from '../../../../../icons';
+import { COLORS } from '../../../../../styles/baseColors';
+import Icon from '../../../../../baseComponents/Icon';
+import { isNull } from '../../../../../utils';
 
-import { getSubCategories } from '../api';
+import { getSubCategories } from '../../api';
 
-const CategoryItem = ({ category }) => {
+const CategoryListItem = ({ category }) => {
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
 	const [hasFetched, setHasFetched] = useState(false);
@@ -109,7 +109,7 @@ const CategoryItem = ({ category }) => {
 			const key = `${category.name}-${index}`;
 
 			return (
-				<CategoryItem
+				<CategoryListItem
 					key={key}
 					category={category}
 				/>
@@ -136,8 +136,8 @@ const CategoryItem = ({ category }) => {
 	);
 };
 
-CategoryItem.propTypes = {
+CategoryListItem.propTypes = {
 	category: PropTypes.object.isRequired,
 };
 
-export default CategoryItem;
+export default CategoryListItem;

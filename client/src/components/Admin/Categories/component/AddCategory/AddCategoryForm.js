@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Form, { Field } from '../../../../baseComponents/Form';
+import Form, { Field } from '../../../../../baseComponents/Form';
 
 import {
 	Checkbox,
 	Textbox,
 	AjaxDropdown
-} from '../../../../baseComponents/Form/Adapters';
+} from '../../../../../baseComponents/Form/Adapters';
 
 import FormLayout, {
 	FormLayoutHeader,
 	FormLayoutFooter,
 	FormLayoutItem,
 	FormLayoutItemGroup
-} from '../../../../baseComponents/FormLayout';
-import ButtonGroup from '../../../../baseComponents/ButtonGroup';
+} from '../../../../../baseComponents/FormLayout';
+import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
 
-import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../consts';
+import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../../consts';
 
 const AddCategoryForm = ({
 							addCategory,

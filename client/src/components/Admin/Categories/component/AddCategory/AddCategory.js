@@ -1,11 +1,11 @@
 import React, { useContext, useMemo } from 'react';
 
-import AdminControlContentBox from '../../AdminControlContentBox';
+import AdminControlContentBox from '../../../AdminControlContentBox';
 import AddCategoryForm from './AddCategoryForm';
-import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
-import { CategoriesContext } from '../store';
-import Button from '../../../../baseComponents/Button';
-import { addCategory as addCategoryAPI } from '../api';
+import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
+import { CategoriesContext } from '../../store';
+import Button from '../../../../../baseComponents/Button';
+import { addCategory as addCategoryAPI } from '../../api';
 
 const AddCategory = () => {
 	const { forms } = useContext(FormsGlobalContext);
@@ -47,4 +47,4 @@ const AddCategory = () => {
 	);
 };
 
-export default AddCategory;
+export { AddCategory };

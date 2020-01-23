@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AdminControlContentBox from '../../AdminControlContentBox';
-import CategoryItem from './CategoryItem';
+import AdminControlContentBox from '../../../AdminControlContentBox';
+import CategoryListItem from './CategoryListItem';
 
-import classes from '../styles/index.scss';
-import PendingCloak from '../../../../baseComponents/PendingCloak';
+import classes from './styles/index.scss';
+import PendingCloak from '../../../../../baseComponents/PendingCloak';
 
 const CategoryList = ({
 						categories,
@@ -22,7 +22,7 @@ const CategoryList = ({
 					const key = `${category.name}-${index}`;
 
 					return (
-						<CategoryItem
+						<CategoryListItem
 							key={key}
 							category={category}
 						/>
@@ -40,4 +40,4 @@ CategoryList.propTypes = {
 	categories: PropTypes.array
 };
 
-export default CategoryList;
+export { CategoryList };
