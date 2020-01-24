@@ -18,7 +18,7 @@ const ButtonGroup = ({
 	const buttonGroupRowClassName = classNames(
 		classes.buttonGroupRow,
 		{
-			[classes.buttonGroupRow_onlyRight]: hasRightButtons && !hasLeftButtons
+			[classes.buttonGroupRow_right]: hasRightButtons && !hasLeftButtons
 		}
 	);
 
