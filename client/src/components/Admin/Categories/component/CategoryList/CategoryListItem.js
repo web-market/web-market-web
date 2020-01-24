@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import { CategoriesModalsContext } from '../CategoriesModalsProvider';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { chevronDown, chevronUp, pen } from '../../../../../icons';
 import { COLORS } from '../../../../../styles/baseColors';
 import Icon from '../../../../../baseComponents/Icon';
 import { isNull } from '../../../../../utils';
-
 import { getSubCategories } from '../../api';
+import { MODALS } from '../../consts';
 
 const CategoryListItem = ({ category }) => {
+	const { openModal } = useContext(CategoriesModalsContext);
+
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
 	const [hasFetched, setHasFetched] = useState(false);
@@ -27,7 +30,7 @@ const CategoryListItem = ({ category }) => {
 	};
 
 	const handleEditCategory = (id) => {
-		console.log(id);
+		openModal(MODALS.EDIT_CATEGORY_MODAL, { id });
 	};
 
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -12,13 +12,9 @@ const modalPortalNode = document.getElementsByClassName(MODAL_PORTAL)[0];
 const Modal = (
 	{
 		render,
-		isOpen,
-		handleClose
+		isOpen
 	}
 ) => {
-	// const [open, setOpen] = useState(isOpen);
-	const modalRef = useRef(null);
-
 	const componentClassName = className(
 		classes.modal
 	);
@@ -26,7 +22,7 @@ const Modal = (
 	const ModalComponent = isOpen
 		? (
 			<div className={componentClassName}>
-				{ render({ handleClose }) }
+				{ render() }
 			</div>
 		) : null;
 
@@ -42,8 +38,7 @@ Modal.defaultProps = {
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
-	render: PropTypes.func,
-	handleClose: PropTypes.func,
+	render: PropTypes.func
 };
 
 export { Modal };
