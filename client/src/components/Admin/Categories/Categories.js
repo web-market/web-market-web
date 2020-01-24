@@ -8,23 +8,12 @@ import AdminControlHeader from '../AdminControlHeader';
 import CategoryList from './component/CategoryList';
 import AddCategory from './component/AddCategory';
 
-import { actions } from './store/staticData';
-import { getAllCategories } from './api';
-
 const Categories = () => {
-	const [isPending, setIsPending] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const { categories, addCategories } = useContext(CategoriesContext);
+	const { categories, getCategoriesList, isPending } = useContext(CategoriesContext);
 
 	useEffect(() => {
-		setIsPending(true);
-
-		getAllCategories()
-			.then(({ data }) => {
-				addCategories(data);
-				setIsPending(false);
-			})
-			.catch(error => console.log(error));
+		getCategoriesList();
 	}, []);
 
 	const handleActionClick = (action) => {
@@ -40,7 +29,6 @@ const Categories = () => {
 		<>
 			<AdminControlHeader
 				label="!!!Категории"
-				actions={actions}
 				onActionClick={handleActionClick}
 			/>
 			<GridLayout>

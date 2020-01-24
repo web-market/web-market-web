@@ -7,10 +7,12 @@ import CategoryListItem from './CategoryListItem';
 import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
 
-const CategoryList = ({
-						categories,
-						isPending
-					}) => {
+const CategoryList = (
+	{
+		categories,
+		isPending
+	}
+) => {
 	return (
 		<AdminControlContentBox
 			margin={{ large: true }}

@@ -20,7 +20,9 @@ const PendingCloak = () => {
 	);
 
 	return (
-		<div className={classes.pendingCloak}>
+		<div
+			className={classes.pendingCloak}
+		>
 			<div className={classes.pendingCloak_container}>
 				<span className={FirstPoint}></span>
 				<span className={SecondPoint}></span>

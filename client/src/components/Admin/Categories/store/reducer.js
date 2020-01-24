@@ -1,15 +1,21 @@
-import { ADD_CATEGORIES } from './consts';
+import { SET_CATEGORIES, SET_PENDING } from './consts';
 
 export const initialState = {
-	categories: []
+	categories: [],
+	isPending: false
 };
 
 export const reducer = (state, payload) => {
 	switch (payload.type) {
-		case ADD_CATEGORIES:
+		case SET_CATEGORIES:
 			return {
 				...state,
-				categories: [...payload.categories, ...state.categories]
+				categories: [...payload.categories]
+			};
+		case SET_PENDING:
+			return {
+				...state,
+				isPending: payload.pending
 			};
 		default:
 			throw new Error();

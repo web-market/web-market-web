@@ -9,7 +9,6 @@ import { PaddingBox } from '../../../baseComponents/PaddingBox/PaddingBox';
 
 const AdminControlHeader = ({
 								label,
-								actions,
 								onActionClick
 							}) => {
 	return (
@@ -22,7 +21,7 @@ const AdminControlHeader = ({
 				label={label}
 			/>
 			<AdminControlHeaderRightSide
-				actions={actions}
+				actions={[]}
 				onActionClick={onActionClick}
 			/>
 		</PaddingBox>
@@ -33,7 +32,7 @@ AdminControlHeader.defaultProps = {};
 
 AdminControlHeader.propTypes = {
 	label: PropTypes.string,
-	actions: PropTypes.array,
+	// actions: PropTypes.array,
 	onActionClick: PropTypes.func
 };
 

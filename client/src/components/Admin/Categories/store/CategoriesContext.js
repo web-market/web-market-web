@@ -1,25 +1,40 @@
 import React, { createContext, useReducer } from 'react';
 
 import { reducer, initialState } from './reducer';
-import { ADD_CATEGORIES } from './consts';
+import { SET_CATEGORIES, SET_PENDING } from './consts';
+import moduleActions from './actions';
 
 export const CategoriesContext = createContext(initialState);
 
 export const CategoriesContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const addCategories = (categories) => {
+	const setCategories = (categories) => {
 		dispatch({
-			type: ADD_CATEGORIES,
+			type: SET_CATEGORIES,
 			categories
 		});
+	};
+
+	const setPending = (pending) => {
+		dispatch({
+			type: SET_PENDING,
+			pending
+		});
+	};
+
+	const reducerActions = {
+		setPending,
+		setCategories
 	};
 
 	return (
 		<CategoriesContext.Provider
 			value={{
 				...state,
-				addCategories
+				...reducerActions,
+				...moduleActions(reducerActions),
+				dispatch,
 			}}
 		>
 			{children}

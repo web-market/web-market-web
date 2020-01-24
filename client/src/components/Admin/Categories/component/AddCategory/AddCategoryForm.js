@@ -21,7 +21,6 @@ import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../../consts';
 
 const AddCategoryForm = ({
 							addCategory,
-							categoriesItems,
 							rightSectionButtons
 }) => {
 	return (
@@ -48,7 +47,6 @@ const AddCategoryForm = ({
 							component={AjaxDropdown}
 							name="parentCategoryId"
 							label="!!!Родительская категория"
-							items={categoriesItems}
 							placeholder="!Выберите категорию"
 							hasTooltip
 							toolTipMessage="!Если оставить "
@@ -92,7 +90,6 @@ const AddCategoryForm = ({
 
 AddCategoryForm.propTypes = {
 	addCategory: PropTypes.func,
-	categoriesItems: PropTypes.array,
 	rightSectionButtons: PropTypes.object
 };
 
