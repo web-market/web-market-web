@@ -11,7 +11,7 @@ import { isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
 
-const CategoryListItem = ({ category }) => {
+const CategoriesListItem = ({ category }) => {
 	const { openModal } = useContext(CategoriesModalsContext);
 
 	const [showCategories, setShowCategories] = useState(false);
@@ -112,7 +112,7 @@ const CategoryListItem = ({ category }) => {
 			const key = `${category.name}-${index}`;
 
 			return (
-				<CategoryListItem
+				<CategoriesListItem
 					key={key}
 					category={category}
 				/>
@@ -139,8 +139,8 @@ const CategoryListItem = ({ category }) => {
 	);
 };
 
-CategoryListItem.propTypes = {
+CategoriesListItem.propTypes = {
 	category: PropTypes.object.isRequired,
 };
 
-export default CategoryListItem;
+export default CategoriesListItem;

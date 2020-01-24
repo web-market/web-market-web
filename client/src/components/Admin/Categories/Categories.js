@@ -4,7 +4,7 @@ import CategoriesModalsProvider from './component/CategoriesModalsProvider';
 
 import GridLayout, { GridLayoutRow } from '../../../baseComponents/GridLayout';
 import AdminControlHeader from '../AdminControlHeader';
-import CategoryList from './component/CategoryList';
+import CategoriesList from './component/CategoriesList';
 import AddCategory from './component/AddCategory';
 
 const Categories = () => {
@@ -23,7 +23,7 @@ const Categories = () => {
 				<GridLayoutRow
 					grid="7-5"
 				>
-					<CategoryList
+					<CategoriesList
 						isPending={isPending}
 						categories={categories}
 					/>
