@@ -12,12 +12,16 @@ const modalPortalNode = document.getElementsByClassName(MODAL_PORTAL)[0];
 const Modal = (
 	{
 		render,
-		isOpen
+		isOpen,
+		handleClose
 	}
 ) => {
 	const componentClassName = className(
 		classes.modal
 	);
+
+	//use to close modal on overlay click
+	console.log(handleClose);
 
 	const ModalComponent = isOpen
 		? (
@@ -38,7 +42,8 @@ Modal.defaultProps = {
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
-	render: PropTypes.func
+	render: PropTypes.func,
+	handleClose: PropTypes.func,
 };
 
 export { Modal };
