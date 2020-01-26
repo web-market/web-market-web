@@ -7,7 +7,8 @@ import {
 	DevForm,
 	DevGridLayout,
 	DevCollapser,
-	DevButton
+	DevButton,
+	DevModal
 } from './components';
 
 class Sandbox extends Component {
@@ -31,6 +32,9 @@ class Sandbox extends Component {
 						<ListItem
 							component={<Link to="/sandbox/button">Button</Link>}
 						/>
+						<ListItem
+							component={<Link to="/sandbox/modal">Modal</Link>}
+						/>
 					</List>
 				</div>
 				<Switch>
@@ -39,6 +43,7 @@ class Sandbox extends Component {
 					<Route path="/sandbox/gridlayout" component={DevGridLayout} />
 					<Route path="/sandbox/collapser" component={DevCollapser} />
 					<Route path="/sandbox/button" component={DevButton} />
+					<Route path="/sandbox/modal" component={DevModal} />
 				</Switch>
 			</>
 		);

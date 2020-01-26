@@ -13,20 +13,28 @@ const Modal = (
 	{
 		render,
 		isOpen,
-		handleClose
+		handleClose,
+		size
 	}
 ) => {
 	const componentClassName = className(
-		classes.modal
+		classes.modal,
+		{
+			[classes.modal_small]: size === 'small',
+			[classes.modal_medium]: size === 'medium',
+			[classes.modal_large]: size === 'large'
+		}
 	);
-
-	//use to close modal on overlay click
-	console.log(handleClose);
 
 	const ModalComponent = isOpen
 		? (
-			<div className={componentClassName}>
-				{ render() }
+			<div
+				className={classes.modal_overlay}
+				onClick={handleClose}
+			>
+				<div className={componentClassName}>
+					{ render({ handleClose }) }
+				</div>
 			</div>
 		) : null;
 
@@ -37,13 +45,15 @@ const Modal = (
 };
 
 Modal.defaultProps = {
-	isOpen: false
+	isOpen: false,
+	size: 'medium',
 };
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
 	render: PropTypes.func,
 	handleClose: PropTypes.func,
+	size: PropTypes.string
 };
 
 export { Modal };
