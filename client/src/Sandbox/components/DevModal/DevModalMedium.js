@@ -1,8 +1,12 @@
 import React from 'react';
+import { ModalHeader } from '../../../baseComponents/Modal';
 
 const DevModalMedium = () => {
     return (
-        <div>DevModalMedium</div>
+        <>
+            <ModalHeader label="Modal header text" />
+            <div>medium modal</div>
+        </>
     );
 };
 
