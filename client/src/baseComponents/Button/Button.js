@@ -121,7 +121,8 @@ Button.defaultProps = {
 	transparent: false,
 	icon: '',
 	size: 'normal',
-	actionHandler: () => {}
+	actionHandler: () => {},
+	type: 'secondary'
 };
 
 Button.propTypes = {

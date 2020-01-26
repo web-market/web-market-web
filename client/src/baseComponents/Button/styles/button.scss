@@ -6,6 +6,7 @@
 	color: $light;
 	position: relative;
 	height: 40px;
+	text-align: center;
 
 	@include transition(background-color .3s, box-shadow .3s, color .3s);
 }
@@ -25,15 +26,21 @@
 }
 
 .button_secondary {
-	@include bg-color($secondary, $hover: true);
+	color: $dark;
+	@include bg-color($secondary);
+
+	@include hover_focus {
+		color: $dark;
+		@include bg-color(darken($secondary, 10%));
+	};
 }
 
 .button_secondary__transparent {
-	color: $secondary;
+	color: $dark;
 	@include border ($secondary);
 
 	@include hover_focus {
-		color: $light;
+		color: $dark;
 		@include bg-color($secondary);
 	};
 }
