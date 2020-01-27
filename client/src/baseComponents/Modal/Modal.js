@@ -22,6 +22,8 @@ const Modal = (
 	useEffect(() => {
 		if (isOpen) {
 			setHandleClose(() => handleClose);
+		} else {
+			setHandleClose(() => {});
 		}
 
 		handleShowOverlayCloak(isOpen);
