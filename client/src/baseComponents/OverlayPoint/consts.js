@@ -1,4 +1,4 @@
-const OVERLAY_PORTAL = 'overlayPortal';
+const OVERLAY_PORTAL = 'overlayPointPortal';
 
 export {
 	OVERLAY_PORTAL

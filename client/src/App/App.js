@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import FormsContextProvider from './store/FormsGlobalContext';
+import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
 
+import OverlayCloak from '../baseComponents/OverlayCloak';
 import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
 import StoreModule from '../components/Store/StoreModule';
@@ -49,7 +51,11 @@ library.add(
 );
 
 class App extends Component {
+	static contextType = AppGlobalContext;
+
 	render () {
+		const context = this.context;
+
 		return (
 			<FormsContextProvider>
 				<Router>
@@ -59,9 +65,21 @@ class App extends Component {
 						<Route path="/" component={StoreModule} />
 					</Switch>
 				</Router>
+				<OverlayCloak
+					show={context.showOverlayCloak}
+					handleClose={context.handleClose}
+				/>
 			</FormsContextProvider>
 		);
 	}
 }
 
-export { App };
+const AppWithGlobalContext = () => {
+	return (
+		<AppContextProvider>
+			<App />
+		</AppContextProvider>
+	);
+};
+
+export { AppWithGlobalContext };

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
 import className from 'classnames';
 import classes from './styles/index.scss';
+import { MODAL_PORTAL_CLASS } from './consts';
+import { AppGlobalContext } from '../../App/store/AppGlobalContext';
 
-import { MODAL_PORTAL } from './const';
-
-const modalPortalNode = document.getElementsByClassName(MODAL_PORTAL)[0];
+const modalPortalNode = document.getElementsByClassName(MODAL_PORTAL_CLASS)[0];
 
 const Modal = (
 	{
@@ -17,6 +17,16 @@ const Modal = (
 		size
 	}
 ) => {
+	const { handleShowOverlayCloak, setHandleClose } = useContext(AppGlobalContext);
+
+	useEffect(() => {
+		if (isOpen) {
+			setHandleClose(() => handleClose);
+		}
+
+		handleShowOverlayCloak(isOpen);
+	}, [isOpen]);
+
 	const componentClassName = className(
 		classes.modal,
 		{
@@ -28,14 +38,12 @@ const Modal = (
 
 	const ModalComponent = isOpen
 		? (
-			<div
-				className={classes.modal_overlay}
-				onClick={handleClose}
-			>
+			<>
 				<div className={componentClassName}>
 					{ render({ handleClose }) }
 				</div>
-			</div>
+			</>
+
 		) : null;
 
 	return createPortal(
