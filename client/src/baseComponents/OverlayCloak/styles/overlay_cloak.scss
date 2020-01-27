@@ -1,5 +1,5 @@
 .overlay_cloak {
-	transition: background-color .3s ease-out;
+	transition: background-color .2s ease-out;
 }
 
 .overlay_cloak__show {
@@ -7,5 +7,5 @@
 	height: 100vh;
 	top: 0;
 	position: absolute;
-	background-color: rgba(0,0,0, .3);
+	background-color: rgba(0,0,0, .4);
 }

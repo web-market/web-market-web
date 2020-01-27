@@ -17,7 +17,7 @@ const Modal = (
 		size
 	}
 ) => {
-	const { handleShowOverlayCloak, setHandleClose } = useContext(AppGlobalContext);
+	const { handleShowOverlayCloak, setHandleClose, showOverlayCloak } = useContext(AppGlobalContext);
 
 	useEffect(() => {
 		if (isOpen) {
@@ -38,7 +38,7 @@ const Modal = (
 		}
 	);
 
-	const ModalComponent = isOpen
+	const ModalComponent = isOpen && showOverlayCloak
 		? (
 			<>
 				<div className={componentClassName}>

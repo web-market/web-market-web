@@ -16,7 +16,8 @@ import {
 	faBell,
 	faCheck,
 	faExclamationCircle,
-	faPen
+	faPen,
+	faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -35,7 +36,8 @@ library.add(
 	faBell,
 	faCheck,
 	faExclamationCircle,
-	faPen
+	faPen,
+	faTimes
 );
 
 dom.watch();

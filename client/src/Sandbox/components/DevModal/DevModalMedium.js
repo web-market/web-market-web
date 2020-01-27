@@ -1,10 +1,13 @@
 import React from 'react';
 import { ModalHeader } from '../../../baseComponents/Modal';
 
-const DevModalMedium = () => {
+const DevModalMedium = ({ handleClose }) => {
     return (
         <>
-            <ModalHeader label="Modal header text" />
+            <ModalHeader
+				handleClose={handleClose}
+				label="Modal header text"
+			/>
             <div>medium modal</div>
         </>
     );

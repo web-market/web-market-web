@@ -2,8 +2,17 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
+import { noScroll } from '../../utils';
 
 class OverlayCloak extends PureComponent {
+	componentDidUpdate () {
+		if (this.props.show) {
+			noScroll(true);
+		} else {
+			noScroll(false);
+		}
+	}
+
 	render () {
 		const componentClassName = ClassNames(
 			classes.overlay_cloak,

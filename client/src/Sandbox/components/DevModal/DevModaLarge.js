@@ -1,8 +1,15 @@
 import React from 'react';
+import { ModalHeader } from '../../../baseComponents/Modal';
 
-const DevModalLarge = () => {
+const DevModalLarge = ({ handleClose }) => {
     return (
-        <div>DevModalLarge</div>
+		<>
+			<ModalHeader
+				handleClose={handleClose}
+				label="Modal header text"
+			/>
+			<div>large modal</div>
+		</>
     );
 };
 

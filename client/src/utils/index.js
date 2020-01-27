@@ -7,3 +7,4 @@ export { getFileExtension } from './getFileExtension';
 export { getFileName } from './getFileName';
 export { isNullOrUndefined } from './isNullOrUndefined';
 export { memoize } from './memoize';
+export { noScroll } from './noScroll';
