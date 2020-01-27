@@ -15,7 +15,7 @@ const CategoriesEditCategoryModal = (
 		<Modal
 			handleClose={handleClose}
 			isOpen={isOpen}
-			render={() => <CategoriesEditCategoryModalContent modalData={modalData} />}
+			render={renderData => <CategoriesEditCategoryModalContent {...renderData} modalData={modalData} />}
 		/>
 	);
 };
