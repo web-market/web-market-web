@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -18,12 +18,15 @@ const Modal = (
 	}
 ) => {
 	const { handleShowOverlayCloak, setHandleClose, showOverlayCloak } = useContext(AppGlobalContext);
+	const [hasMounted, setHasMounted] = useState(false);
 
 	useEffect(() => {
 		if (isOpen) {
 			setHandleClose(() => handleClose);
+			setTimeout(() => setHasMounted(isOpen), 50);
 		} else {
 			setHandleClose(() => {});
+			setTimeout(() => setHasMounted(isOpen), 50);
 		}
 
 		handleShowOverlayCloak(isOpen);
@@ -32,6 +35,7 @@ const Modal = (
 	const componentClassName = className(
 		classes.modal,
 		{
+			[classes.modal_open]: isOpen && hasMounted,
 			[classes.modal_small]: size === 'small',
 			[classes.modal_medium]: size === 'medium',
 			[classes.modal_large]: size === 'large'
@@ -40,11 +44,9 @@ const Modal = (
 
 	const ModalComponent = isOpen && showOverlayCloak
 		? (
-			<>
-				<div className={componentClassName}>
-					{ render({ handleClose }) }
-				</div>
-			</>
+			<div className={componentClassName}>
+				{ render({ handleClose }) }
+			</div>
 
 		) : null;
 
