@@ -11,11 +11,23 @@ const CategoriesEditCategoryModal = (
 		modalData
 	}
 ) => {
+	const handleEditCategory = (values) => {
+		console.log(values);
+	};
+
 	return (
 		<Modal
-			handleClose={handleClose}
 			isOpen={isOpen}
-			render={renderData => <CategoriesEditCategoryModalContent {...renderData} modalData={modalData} />}
+			handleClose={handleClose}
+			render={renderData => {
+				return (
+					<CategoriesEditCategoryModalContent
+						{...renderData}
+						modalData={modalData}
+						handleEditCategory={handleEditCategory}
+					/>
+				);
+			}}
 		/>
 	);
 };

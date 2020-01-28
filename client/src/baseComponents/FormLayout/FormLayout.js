@@ -5,7 +5,10 @@ const FormLayout = ({ children }) => {
 };
 
 FormLayout.propTypes = {
-	children: PropTypes.array,
+	children: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object
+		]),
 };
 
 export { FormLayout };

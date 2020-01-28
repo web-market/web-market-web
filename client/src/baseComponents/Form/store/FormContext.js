@@ -157,17 +157,17 @@ function FormContextProvider (props) {
 						payload
 					});
 
-					validationResult.push({ isValid, errorMessages });
+					validationResult.push({ isValid, errorMessages, field });
 				}
 			}
 		}
 
 		const hasError = validationResult.some(result => result.isValid === false);
 
-		setIsFormValid(!hasError);
+		const errorFields = validationResult.filter(result => result.isValid === false);
 
 		return new Promise((resolve, reject) => {
-			return hasError ? reject(new Error('Validation errors')) : resolve(hasError);
+			return hasError ? reject(errorFields) : resolve(hasError);
 		});
 	}, [setIsFormValid]);
 

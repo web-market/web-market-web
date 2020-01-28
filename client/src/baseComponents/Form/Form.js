@@ -34,12 +34,20 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 		fieldsRef.current = fields;
 	}, [formValues, fields]);
 
+	const handleErrors = (fields) => {
+		const errors = fields.map(field => {
+			return `\n${field.field}: ${field.errorMessages}`;
+		});
+
+		console.warn(`Field validation error: ${errors.join(';')};`);
+	};
+
 	const submitForm = () => {
 		validateForm(fieldsRef.current, valuesRef.current)
 			.then(() => {
 				onSubmit(valuesRef.current);
 			})
-			.catch(() => console.warn('Field validation error'));
+			.catch(fields => handleErrors(fields));
 	};
 
 	//set submit function to global context on init
