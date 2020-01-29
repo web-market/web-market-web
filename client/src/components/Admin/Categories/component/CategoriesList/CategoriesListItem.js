@@ -126,6 +126,7 @@ const CategoriesListItem = (
 				<CategoriesListItem
 					key={key}
 					category={category}
+					handleDeleteCategory={handleDeleteCategory}
 				/>
 			);
 		});
