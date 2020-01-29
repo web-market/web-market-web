@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { CategoriesModalsContext } from '../CategoriesModalsProvider';
@@ -10,6 +10,7 @@ import Icon from '../../../../../baseComponents/Icon';
 import { isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
+import { CategoriesContext } from '../../store';
 
 const CategoriesListItem = (
 	{
@@ -18,6 +19,7 @@ const CategoriesListItem = (
 	}
 	) => {
 	const { openModal } = useContext(CategoriesModalsContext);
+	const { updatedCategoryId, resetUpdateCategory } = useContext(CategoriesContext);
 
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
@@ -25,6 +27,8 @@ const CategoriesListItem = (
 	const [subCategoryHeight, setSubCategoryHeight] = useState(false);
 
 	const subCategoryRef = useRef(null);
+
+	const updateSubCategory = showCategories && updatedCategoryId === category.id;
 
 	const handleParentCategories = (e) => {
 		e.stopPropagation();
@@ -38,15 +42,30 @@ const CategoriesListItem = (
 		openModal(MODALS.EDIT_CATEGORY_MODAL, { id });
 	};
 
+	const handleGetSubCategories = useCallback(() => {
+		getSubCategories(category.id)
+			.then(({ data }) => {
+				setSubCategories(data);
+				setHasFetched(true);
+			});
+	}, [category.id]);
+
 	useEffect(() => {
-		if (!hasFetched && showCategories) {
-			getSubCategories(category.id)
-				.then(({ data }) => {
-					setSubCategories(data);
-					setHasFetched(true);
-				});
+		if (!hasFetched && showCategories && !updateSubCategory) {
+			handleGetSubCategories();
 		}
-	}, [showCategories, category.id, hasFetched]);
+	}, [updateSubCategory, showCategories, hasFetched, handleGetSubCategories]);
+
+	useEffect(() => {
+		if (updateSubCategory) {
+			handleGetSubCategories();
+			resetUpdateCategory();
+		}
+	}, [
+		updateSubCategory,
+		handleGetSubCategories,
+		resetUpdateCategory
+	]);
 
 	const componentClassName = ClassNames(
 		classes.category_item,
@@ -127,6 +146,7 @@ const CategoriesListItem = (
 					key={key}
 					category={category}
 					handleDeleteCategory={handleDeleteCategory}
+					updatedCategoryId={updatedCategoryId}
 				/>
 			);
 		});

@@ -1,5 +1,9 @@
 import { addCategory, getAllCategories, deleteCategory } from '../api';
-import { SET_CATEGORIES, SET_PENDING } from './consts';
+import {
+	SET_CATEGORIES,
+	SET_PENDING,
+	SET_UPDATED_CATEGORY
+} from './consts';
 
 export default (dispatch) => {
 	const setCategories = (categories) => {
@@ -16,7 +20,22 @@ export default (dispatch) => {
 		});
 	};
 
+	const setUpdateCategory = (id) => {
+		dispatch({
+			type: SET_UPDATED_CATEGORY,
+			id
+		});
+	};
+
+	const resetUpdateCategory = () => {
+		dispatch({
+			type: SET_UPDATED_CATEGORY,
+			id: null
+		});
+	};
+
 	return {
+		resetUpdateCategory,
 		getCategoriesList: () => {
 			setPending(true);
 
@@ -29,6 +48,7 @@ export default (dispatch) => {
 			setPending(true);
 
 			return addCategory(val)
+				.then(() => setUpdateCategory(val.parentCategoryId))
 				.catch(error => console.log(error))
 				.finally(() => setPending(false));
 		},
