@@ -30,7 +30,9 @@
 	margin-left: 8px;
 }
 
-.category_item_collapseButton, .category_item_editButton {
+.category_item_collapseButton,
+.category_item_editButton,
+.category_item_deleteButton {
 	cursor: pointer;
 	padding: 5px 6px;
 	border-radius: 50%;
@@ -44,6 +46,13 @@
 	margin-left: 4px;
 	padding: 5px;
 }
+
+.category_item_deleteButton {
+	margin-left: 4px;
+	padding: 5px 6px;
+	color: $danger;
+}
+
 
 .category_item_subCategoryItem > .category_item:last-child {
 	border-bottom: none;

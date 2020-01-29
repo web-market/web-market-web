@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
@@ -6,6 +6,7 @@ import CategoriesListItem from './CategoriesListItem';
 
 import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
+import { CategoriesContext } from '../../store';
 
 const CategoriesList = (
 	{
@@ -13,6 +14,13 @@ const CategoriesList = (
 		isPending
 	}
 ) => {
+	const { deleteCategory, getCategoriesList } = useContext(CategoriesContext);
+
+	const handleDeleteCategory = (id) => {
+		deleteCategory(id)
+			.then(() => getCategoriesList());
+	};
+
 	return (
 		<AdminControlContentBox
 			margin={{ large: true }}
@@ -27,6 +35,7 @@ const CategoriesList = (
 						<CategoriesListItem
 							key={key}
 							category={category}
+							handleDeleteCategory={handleDeleteCategory}
 						/>
 					);
 				})

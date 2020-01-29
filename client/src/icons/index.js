@@ -15,3 +15,4 @@ export { bell } from './icons';
 export { exclamationCircle } from './icons';
 export { pen } from './icons';
 export { close } from './icons';
+export { trash } from './icons';

@@ -12,7 +12,12 @@ const POST = (url, data) => {
 	return axiosInstance.post(url, data);
 };
 
+const DELETE = (url) => {
+	return axiosInstance.delete(url);
+};
+
 export {
 	GET,
-	POST
+	POST,
+	DELETE
 };

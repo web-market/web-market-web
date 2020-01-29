@@ -51,9 +51,6 @@ const AddCategoryForm = ({
 							hasTooltip
 							toolTipMessage="!Если оставить "
 							url={ENDPOINT.GET_ALL_CATEGORIES}
-							validate={{
-								required: true
-							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

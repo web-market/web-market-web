@@ -4,14 +4,19 @@ import PropTypes from 'prop-types';
 import { CategoriesModalsContext } from '../CategoriesModalsProvider';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
-import { chevronDown, chevronUp, pen } from '../../../../../icons';
+import { chevronDown, chevronUp, pen, trash } from '../../../../../icons';
 import { COLORS } from '../../../../../styles/baseColors';
 import Icon from '../../../../../baseComponents/Icon';
 import { isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
 
-const CategoriesListItem = ({ category }) => {
+const CategoriesListItem = (
+	{
+		category,
+		handleDeleteCategory
+	}
+	) => {
 	const { openModal } = useContext(CategoriesModalsContext);
 
 	const [showCategories, setShowCategories] = useState(false);
@@ -102,6 +107,12 @@ const CategoriesListItem = ({ category }) => {
 							onClick={() => handleEditCategory(category.id)}
 							className={classes.category_item_editButton}
 						/>
+						<Icon
+							icon={trash}
+							color={COLORS.FIELD_ICON}
+							onClick={() => handleDeleteCategory(category.id)}
+							className={classes.category_item_deleteButton}
+						/>
 					</div>
 				</div>
 		);
@@ -141,6 +152,7 @@ const CategoriesListItem = ({ category }) => {
 
 CategoriesListItem.propTypes = {
 	category: PropTypes.object.isRequired,
+	handleDeleteCategory: PropTypes.func.isRequired,
 };
 
 export default CategoriesListItem;

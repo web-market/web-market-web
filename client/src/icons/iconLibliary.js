@@ -17,7 +17,8 @@ import {
 	faCheck,
 	faExclamationCircle,
 	faPen,
-	faTimes
+	faTimes,
+	faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -37,7 +38,8 @@ library.add(
 	faCheck,
 	faExclamationCircle,
 	faPen,
-	faTimes
+	faTimes,
+	faTrashAlt
 );
 
 dom.watch();

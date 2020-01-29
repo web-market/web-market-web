@@ -1,4 +1,4 @@
-import { addCategory, getAllCategories } from '../api';
+import { addCategory, getAllCategories, deleteCategory } from '../api';
 import { SET_CATEGORIES, SET_PENDING } from './consts';
 
 export default (dispatch) => {
@@ -29,6 +29,13 @@ export default (dispatch) => {
 			setPending(true);
 
 			return addCategory(val)
+				.catch(error => console.log(error))
+				.finally(() => setPending(false));
+		},
+		deleteCategory: (id) => {
+			setPending(true);
+
+			return deleteCategory(id)
 				.catch(error => console.log(error))
 				.finally(() => setPending(false));
 		}

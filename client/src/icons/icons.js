@@ -15,3 +15,4 @@ export const check = 'check';
 export const exclamationCircle = 'exclamation-circle';
 export const pen = 'pen';
 export const close = 'times';
+export const trash = 'trash-alt';
