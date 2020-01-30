@@ -30,9 +30,10 @@ const Dropdown = ({
 	}, [isOpen]);
 
 	const toggleDropdown = useCallback(() => {
-		onDropdownClick();
+		if (!open) onDropdownClick();
+
 		setOpen(!open);
-	}, [open]);
+	}, [open, onDropdownClick]);
 
 	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);
