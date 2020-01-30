@@ -13,15 +13,15 @@ const AjaxDropdown = (
 	}
 ) => {
 	const [items, setItems] = useState([]);
-	const hasFetched = useRef(false);
+	const hasFetchedRef = useRef(false);
 
 	const handleDropdownClick = () => {
-		if (hasFetched.current && !allowRequest) return;
+		if (hasFetchedRef.current && !allowRequest) return;
 
 		GET(url)
 			.then(({ data }) => {
 				setItems(data);
-				hasFetched.current = true;
+				hasFetchedRef.current = true;
 			});
 	};
 
