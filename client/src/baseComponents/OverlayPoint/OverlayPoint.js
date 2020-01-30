@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
+import { AppGlobalContext } from '../../App/store/AppGlobalContext';
 import classes from './styles/index.scss';
 import { OVERLAY_PORTAL } from './consts';
 import { getGeneralPosition, getDropdownPosition } from './utils';
@@ -10,6 +11,8 @@ import { noScroll } from '../../utils';
 const overlayPortalNode = document.getElementsByClassName(OVERLAY_PORTAL)[0];
 
 class OverlayPoint extends Component {
+	static contextType = AppGlobalContext;
+
 	constructor () {
 		super();
 
@@ -20,12 +23,17 @@ class OverlayPoint extends Component {
 	}
 
 	componentDidMount () {
-		noScroll(true);
+		const { showOverlayCloak } = this.context;
+
+		if (!showOverlayCloak) noScroll(true);
+
 		this.setState({ hasMounted: true });
 	}
 
 	componentWillUnmount () {
-		noScroll(false);
+		const { showOverlayCloak } = this.context;
+
+		if (!showOverlayCloak) noScroll(false);
 	}
 
 	render () {
