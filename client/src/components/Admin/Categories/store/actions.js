@@ -20,6 +20,7 @@ export default (dispatch) => {
 		});
 	};
 
+	//TODO: deprecate method after categories list refactoring(to one level list)
 	const setUpdateCategory = (id) => {
 		dispatch({
 			type: SET_UPDATED_CATEGORY,
@@ -27,6 +28,7 @@ export default (dispatch) => {
 		});
 	};
 
+	//TODO: deprecate method after categories list refactoring(to one level list)
 	const resetUpdateCategory = () => {
 		dispatch({
 			type: SET_UPDATED_CATEGORY,

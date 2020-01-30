@@ -51,6 +51,7 @@ const AddCategoryForm = ({
 							hasTooltip
 							toolTipMessage="!Если оставить "
 							url={ENDPOINT.GET_ALL_CATEGORIES}
+							allowRequest
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>
