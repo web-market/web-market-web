@@ -5,6 +5,7 @@ import { isEmptyStirng, isNullOrUndefined } from '../../utils';
 
 import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
+import DropDownSpinner from './DropDownSpinner';
 
 import classes from './styles/index.scss';
 import Icon from '../Icon';
@@ -20,6 +21,7 @@ const Dropdown = (
 		multiSelect,
 		value,
 		onDropdownClick,
+		isItemPending,
 		onFieldFocus
 	}
 ) => {
@@ -90,6 +92,21 @@ const Dropdown = (
 			);
 	};
 
+	const getIcon = () => {
+		return !isItemPending
+			? (
+				<Icon
+					className={classes.dropdown_icon}
+					icon={open ? chevronUp : chevronDown}
+					color={COLORS.FIELD_ICON}
+				/>
+			) : (
+				<DropDownSpinner
+					className={classes.dropdown_icon}
+				/>
+			);
+	};
+
 	return (
 		<div className={classes.dropdown}>
 			<div
@@ -98,14 +115,11 @@ const Dropdown = (
 				onClick={toggleDropdown}
 			>
 				{getDisplayValue()}
-				<Icon
-					className={classes.dropdown_icon}
-					icon={open ? chevronUp : chevronDown}
-					color={COLORS.FIELD_ICON}
-				/>
+				{getIcon()}
+
 			</div>
 			{
-				open && (
+				open && !isItemPending && (
 					<OverlayPoint
 						componentRef={dropdownRef.current}
 						overlayBehavior="dropdown"
@@ -138,6 +152,7 @@ Dropdown.propTypes = {
 	items: PropTypes.array,
 	isOpen: PropTypes.bool,
 	multiSelect: PropTypes.bool,
+	isItemPending: PropTypes.bool,
 	placeholder: PropTypes.string,
 	onFieldChange: PropTypes.func,
 	onDropdownClick: PropTypes.func,

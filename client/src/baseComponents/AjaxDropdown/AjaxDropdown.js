@@ -13,16 +13,19 @@ const AjaxDropdown = (
 	}
 ) => {
 	const [items, setItems] = useState([]);
+	const [isPending, setIsPending] = useState(false);
 	const hasFetchedRef = useRef(false);
 
 	const handleDropdownClick = () => {
 		if (hasFetchedRef.current && !allowRequest) return;
+		setIsPending(true);
 
 		GET(url)
 			.then(({ data }) => {
 				setItems(data);
 				hasFetchedRef.current = true;
-			});
+			})
+			.finally(() => setIsPending(false));
 	};
 
 	return (
@@ -31,6 +34,7 @@ const AjaxDropdown = (
 			items={items}
 			onFieldChange={onFieldChange}
 			onFieldFocus={onFieldFocus}
+			isItemPending={isPending}
 		/>
 	);
 };
