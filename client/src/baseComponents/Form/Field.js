@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useCallback, useEffect } from 'react';
+import React, { useContext, useRef, useCallback, useEffect, useState } from 'react';
 import { ContextForm } from './store/FormContext';
 
 import { validate as validateFromUtils } from './utils';
@@ -13,7 +13,7 @@ const Field = (props) => {
 		fields,
 		setFieldValidationResult
 	} = useContext(ContextForm);
-
+	const [hasFocus, setHasFocus] = useState(false);
 	const isRegistered = useRef(false);
 	const prevValue = useRef(null);
 
@@ -48,6 +48,10 @@ const Field = (props) => {
 		});
 	}, [name, setFieldValue, validate, validateField]);
 
+	const handleFieldFocus = (hasFocus) => {
+		setHasFocus(hasFocus);
+	};
+
 	const Component = component;
 
 	return (
@@ -58,7 +62,9 @@ const Field = (props) => {
 						isValid={fields[name].isValid}
 						errorMessages={fields[name].errorMessages}
 						onFieldChange={handleChange}
+						onFieldFocus={handleFieldFocus}
 						value={formValues[name]}
+						hasFocus={hasFocus}
 						{...props}
 					/>
 				)

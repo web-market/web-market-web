@@ -8,7 +8,8 @@ const AjaxDropdown = (
 	{
 		url,
 		onFieldChange,
-		allowRequest
+		allowRequest,
+		onFieldFocus
 	}
 ) => {
 	const [items, setItems] = useState([]);
@@ -29,6 +30,7 @@ const AjaxDropdown = (
 			onDropdownClick={handleDropdownClick}
 			items={items}
 			onFieldChange={onFieldChange}
+			onFieldFocus={onFieldFocus}
 		/>
 	);
 };

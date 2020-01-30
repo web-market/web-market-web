@@ -29,6 +29,10 @@
 	border-color: $danger;
 }
 
+.formFieldBox_fieldWrapper__hasFocus {
+	border-color: $primary;
+}
+
 .formFieldBox_ErrorTooltip {
 	position: absolute;
 	right: -7px;

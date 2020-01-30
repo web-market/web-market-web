@@ -13,6 +13,7 @@ class Textbox extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
+			hasFocus
 		} = this.props;
 
 		return (
@@ -24,6 +25,7 @@ class Textbox extends Component {
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}
+				hasFocus={hasFocus}
 			>
 				<TexboxComponent
 					{...this.props}

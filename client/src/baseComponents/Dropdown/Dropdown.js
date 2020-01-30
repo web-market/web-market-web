@@ -11,15 +11,18 @@ import Icon from '../Icon';
 import { chevronDown, chevronUp } from '../../icons';
 import { COLORS } from '../../styles/baseColors';
 
-const Dropdown = ({
-					isOpen,
-					items,
-					placeholder,
-					onFieldChange,
-					multiSelect,
-					value,
-					onDropdownClick
-}) => {
+const Dropdown = (
+	{
+		isOpen,
+		items,
+		placeholder,
+		onFieldChange,
+		multiSelect,
+		value,
+		onDropdownClick,
+		onFieldFocus
+	}
+) => {
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
 	const dropdownRef = useRef(null);
@@ -32,8 +35,9 @@ const Dropdown = ({
 	const toggleDropdown = useCallback(() => {
 		if (!open) onDropdownClick();
 
+		onFieldFocus(!open);
 		setOpen(!open);
-	}, [open, onDropdownClick]);
+	}, [open, onDropdownClick, onFieldFocus]);
 
 	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);
@@ -126,7 +130,8 @@ Dropdown.defaultProps = {
 	multiSelect: false,
 	items: [],
 	placeholder: '###Select',
-	onDropdownClick: () => {}
+	onDropdownClick: () => {},
+	onFieldFocus: () => {}
 };
 
 Dropdown.propTypes = {
@@ -136,6 +141,7 @@ Dropdown.propTypes = {
 	placeholder: PropTypes.string,
 	onFieldChange: PropTypes.func,
 	onDropdownClick: PropTypes.func,
+	onFieldFocus: PropTypes.func,
 };
 
 export { Dropdown };

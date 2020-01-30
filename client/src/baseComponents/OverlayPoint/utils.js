@@ -87,9 +87,10 @@ const getDropdownPosition = (componentRef, layoutRef) => {
 	} = _getPositionValues(componentRef, layoutRef);
 
 	// -1 --magic number to set dropddown container position based on dropdown component
+	// (because of border)
 	return {
 		left: left - 1,
-		top: top + height
+		top: top + height + 1
 	};
 };
 
