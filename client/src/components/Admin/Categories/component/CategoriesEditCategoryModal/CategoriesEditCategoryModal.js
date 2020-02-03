@@ -11,10 +11,6 @@ const CategoriesEditCategoryModal = (
 		modalData
 	}
 ) => {
-	const handleEditCategory = (values) => {
-		console.log(values);
-	};
-
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -24,7 +20,6 @@ const CategoriesEditCategoryModal = (
 					<CategoriesEditCategoryModalContent
 						{...renderData}
 						modalData={modalData}
-						handleEditCategory={handleEditCategory}
 					/>
 				);
 			}}

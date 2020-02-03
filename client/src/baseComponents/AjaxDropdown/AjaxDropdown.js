@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { GET } from '../Api';
+import { GET } from '../../utils/api';
 
 import { Dropdown } from '../Dropdown';
 

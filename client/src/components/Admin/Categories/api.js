@@ -1,4 +1,4 @@
-import { GET, POST, DELETE } from '../../../baseComponents/Api';
+import { GET, POST, DELETE, PUT } from '../../../utils/api';
 import { ENDPOINT } from './consts';
 
 const getAllCategories = () => {
@@ -18,9 +18,19 @@ const deleteCategory = (id) => {
 	return DELETE(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
 };
 
+const getCategory = (id) => {
+	return GET(`${ENDPOINT.GET_CATEGORY}/${id}`);
+};
+
+const updateCategory = (id) => {
+	return PUT(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
+};
+
 export {
 	getAllCategories,
 	getSubCategories,
 	addCategory,
-	deleteCategory
+	deleteCategory,
+	updateCategory,
+	getCategory
 };

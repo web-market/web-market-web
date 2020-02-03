@@ -8,6 +8,7 @@ export const actions = {
 export const ENDPOINT = {
 	CATEGORY_BASE_CONTROLLER: '/categories',
 	GET_ALL_CATEGORIES: '/categories/all',
+	GET_CATEGORY: '/categories/category',
 };
 
 export const MODALS = {

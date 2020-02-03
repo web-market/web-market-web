@@ -12,6 +12,10 @@ const POST = (url, data) => {
 	return axiosInstance.post(url, data);
 };
 
+const PUT = (url, data) => {
+	return axiosInstance.put(url, data);
+};
+
 const DELETE = (url) => {
 	return axiosInstance.delete(url);
 };
@@ -19,5 +23,6 @@ const DELETE = (url) => {
 export {
 	GET,
 	POST,
-	DELETE
+	DELETE,
+	PUT
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalFooter, ModalContent } from '../../../../../baseComponents/Modal';
 import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
@@ -11,15 +11,25 @@ import FormLayout, {
 import { AjaxDropdown, Checkbox, Textbox } from '../../../../../baseComponents/Form/Adapters';
 import Form, { Field } from '../../../../../baseComponents/Form';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
+import { CategoriesContext } from '../../store';
 
 const CategoriesEditCategoryModalContent = (
 	{
 		modalData,
-		handleClose,
-		handleEditCategory
+		handleClose
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
+
+	const { updateCategory, getCategory } = useContext(CategoriesContext);
+
+	useEffect(() => {
+		getCategory(modalData.id);
+	}, [modalData.id, getCategory]);
+
+	const handleEditCategory = (values) => {
+		updateCategory(values);
+	};
 
 	const leftButtons = (
 		<Button
