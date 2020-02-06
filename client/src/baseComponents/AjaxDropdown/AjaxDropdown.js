@@ -9,7 +9,8 @@ const AjaxDropdown = (
 		url,
 		onFieldChange,
 		allowRequest,
-		onFieldFocus
+		onFieldFocus,
+		displayValue
 	}
 ) => {
 	const [items, setItems] = useState([]);
@@ -35,6 +36,7 @@ const AjaxDropdown = (
 			onFieldChange={onFieldChange}
 			onFieldFocus={onFieldFocus}
 			isItemPending={isPending}
+			displayValue={displayValue}
 		/>
 	);
 };

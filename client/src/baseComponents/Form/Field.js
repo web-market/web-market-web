@@ -29,6 +29,10 @@ const Field = (props) => {
 		});
 
 		isRegistered.current = true;
+
+		return () => {
+			isRegistered.current = false;
+		};
 	}, []);
 
 	const validateField = useCallback((value) => {

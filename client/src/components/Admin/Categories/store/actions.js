@@ -2,7 +2,7 @@ import {
 	addCategory as addCategoryAPI,
 	getAllCategories as getAllCategoriesAPI,
 	deleteCategory as deleteCategoryAPI,
-	updateCategory,
+	updateCategory as updateCategoryAPI,
 	getCategory
 } from '../api';
 import {
@@ -26,7 +26,7 @@ export default (dispatch) => {
 		});
 	};
 
-	//TODO: deprecate method after categories list refactoring(to one level list)
+	//for other child category fetch if add some category into parent
 	const setUpdateCategory = (id) => {
 		dispatch({
 			type: SET_UPDATED_CATEGORY,
@@ -34,7 +34,7 @@ export default (dispatch) => {
 		});
 	};
 
-	//TODO: deprecate method after categories list refactoring(to one level list)
+	//for other child category fetch if add some category into parent
 	const resetUpdateCategory = () => {
 		dispatch({
 			type: SET_UPDATED_CATEGORY,
@@ -42,32 +42,44 @@ export default (dispatch) => {
 		});
 	};
 
+	const getCategoriesList = () => {
+		setPending(true);
+
+		return getAllCategoriesAPI()
+			.then(({ data }) => setCategories(data))
+			.catch(error => console.log(error))
+			.finally(() => setPending(false));
+	};
+
+	const addCategory = (val) => {
+		setPending(true);
+
+		return addCategoryAPI(val)
+			.then(() => setUpdateCategory(val.parentCategoryId))
+			.catch(error => console.log(error))
+			.finally(() => setPending(false));
+	};
+
+	const updateCategory = (data) => {
+		return updateCategoryAPI(data)
+	.then(() => getCategoriesList())
+		.catch(error => console.log(error));
+	};
+
+	const deleteCategory = (id) => {
+		setPending(true);
+
+		return deleteCategoryAPI(id)
+		.catch(error => console.log(error))
+		.finally(() => setPending(false));
+	};
+
 	return {
-		updateCategory,
 		getCategory,
 		resetUpdateCategory,
-		getCategoriesList: () => {
-			setPending(true);
-
-			return getAllCategoriesAPI()
-				.then(({ data }) => setCategories(data))
-				.catch(error => console.log(error))
-				.finally(() => setPending(false));
-		},
-		addCategory: (val) => {
-			setPending(true);
-
-			return addCategoryAPI(val)
-				.then(() => setUpdateCategory(val.parentCategoryId))
-				.catch(error => console.log(error))
-				.finally(() => setPending(false));
-		},
-		deleteCategory: (id) => {
-			setPending(true);
-
-			return deleteCategoryAPI(id)
-				.catch(error => console.log(error))
-				.finally(() => setPending(false));
-		}
+		getCategoriesList,
+		addCategory,
+		deleteCategory,
+		updateCategory,
 	};
 };

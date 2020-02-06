@@ -1,4 +1,4 @@
-import React, { useState, createContext, useRef } from 'react';
+import React, { useState, createContext } from 'react';
 
 import CategoriesEditCategoryModal from '../CategoriesEditCategoryModal';
 import { MODALS } from '../../consts';
@@ -6,21 +6,23 @@ import { MODALS } from '../../consts';
 export const CategoriesModalsContext = createContext();
 
 export const CategoriesModalsProvider = ({ children }) => {
-	const [modalData, setModalData] = useState(null);
-	const modalState = useRef({
-		[MODALS.EDIT_CATEGORY_MODAL]: false
-	});
+	const [modalData, setModalData] = useState({});
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+	const modalState = {
+		[MODALS.EDIT_CATEGORY_MODAL]: setIsEditModalOpen
+	};
 
 	const openModal = (modalName, data) => {
-		modalState.current[modalName] = true;
+		modalState[modalName](true);
 
 		if (data) setModalData(data);
 	};
 
 	const closeModal = (modalName) => {
-		modalState.current[modalName] = false;
+		modalState[modalName](false);
 
-		if (modalData) setModalData(null);
+		if (modalData) setModalData({});
 	};
 
 	const modalProviderActions = {
@@ -36,7 +38,7 @@ export const CategoriesModalsProvider = ({ children }) => {
 			<CategoriesEditCategoryModal
 				handleClose={() => closeModal(MODALS.EDIT_CATEGORY_MODAL)}
 				modalData={modalData}
-				isOpen={modalState.current[MODALS.EDIT_CATEGORY_MODAL]}
+				isOpen={isEditModalOpen}
 			/>
 		</>
 	);

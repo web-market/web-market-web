@@ -8,15 +8,16 @@ import Icon from '../Icon';
 import { isNull } from '../../utils';
 
 const Checkbox = ({ value, onFieldChange }) => {
-	const [checkboxValue, setCheckboxValue] = useState(value);
+	const [checkboxValue, setCheckboxValue] = useState(false);
 
 	useEffect(() => {
 		if (isNull(value)) {
 			onFieldChange(false);
 		} else {
 			onFieldChange(value);
+			setCheckboxValue(value);
 		}
-	}, []);
+	}, [value]);
 
 	const ToggleCheckbox = () => {
 		setCheckboxValue(!checkboxValue);

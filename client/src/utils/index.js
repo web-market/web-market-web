@@ -8,3 +8,4 @@ export { getFileName } from './getFileName';
 export { isNullOrUndefined } from './isNullOrUndefined';
 export { memoize } from './memoize';
 export { noScroll } from './noScroll';
+export { omitProperty } from './omitProperty';

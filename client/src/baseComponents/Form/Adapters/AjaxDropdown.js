@@ -13,7 +13,7 @@ class AjaxDropdown extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
-			hasFocus
+			hasFocus,
 		} = this.props;
 
 		return (

@@ -14,25 +14,30 @@ import { COLORS } from '../../styles/baseColors';
 
 const Dropdown = (
 	{
-		isOpen,
 		items,
-		placeholder,
-		onFieldChange,
-		multiSelect,
 		value,
-		onDropdownClick,
+		isOpen,
+		placeholder,
+		multiSelect,
+		displayValue: displayValueFromProp,
+		onFieldFocus,
+		onFieldChange,
 		isItemPending,
-		onFieldFocus
+		onDropdownClick
 	}
 ) => {
+	const dropdownRef = useRef(null);
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
-	const dropdownRef = useRef(null);
+
 	const hasItems = items.length !== 0;
 
 	useEffect(() => {
 		setOpen(isOpen);
-	}, [isOpen]);
+		if (displayValueFromProp !== '') {
+			setDisplayValue(displayValueFromProp);
+		}
+	}, [isOpen, displayValueFromProp]);
 
 	const toggleDropdown = useCallback(() => {
 		if (!open) onDropdownClick();
@@ -144,6 +149,7 @@ Dropdown.defaultProps = {
 	multiSelect: false,
 	items: [],
 	placeholder: '###Select',
+	displayValue: '',
 	onDropdownClick: () => {},
 	onFieldFocus: () => {}
 };
@@ -154,6 +160,7 @@ Dropdown.propTypes = {
 	multiSelect: PropTypes.bool,
 	isItemPending: PropTypes.bool,
 	placeholder: PropTypes.string,
+	displayValue: PropTypes.string,
 	onFieldChange: PropTypes.func,
 	onDropdownClick: PropTypes.func,
 	onFieldFocus: PropTypes.func,

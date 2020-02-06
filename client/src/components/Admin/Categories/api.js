@@ -22,8 +22,8 @@ const getCategory = (id) => {
 	return GET(`${ENDPOINT.GET_CATEGORY}/${id}`);
 };
 
-const updateCategory = (id) => {
-	return PUT(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
+const updateCategory = (data) => {
+	return PUT(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
 };
 
 export {

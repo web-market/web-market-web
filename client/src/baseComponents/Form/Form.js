@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from 'react';
+import React, { useEffect, useContext, useRef, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { ContextForm } from './store/FormContext';
@@ -6,8 +6,8 @@ import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
 
 import { isNull } from '../../utils';
 
-const Form = ({ children, name, onSubmit, initialValues }) => {
-	const { addFormToGlobalContext } = useContext(FormsGlobalContext);
+const Form = memo(({ children, name, onSubmit, initialValues }) => {
+	const { addFormToGlobalContext, removeFormFromGlobalContext } = useContext(FormsGlobalContext);
 	const {
 		initForm,
 		validateForm,
@@ -21,13 +21,18 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 
 	useEffect(() => {
 		initForm({ name });
-	}, [initForm, name]);
+
+		return () => {
+			setFormValues({});
+			initForm({});
+		};
+	}, []);
 
 	useEffect(() => {
 		if (!isNull(initialValues)) {
 			setFormValues(initialValues);
 		}
-	}, [setFormValues, initialValues]);
+	}, [initialValues]);
 
 	useEffect(() => {
 		valuesRef.current = formValues;
@@ -44,23 +49,25 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 
 	const submitForm = () => {
 		validateForm(fieldsRef.current, valuesRef.current)
-			.then(() => {
-				onSubmit(valuesRef.current);
-			})
+			.then(values => onSubmit(values))
 			.catch(fields => handleErrors(fields));
 	};
 
 	//set submit function to global context on init
 	useEffect(() => {
 		addFormToGlobalContext({ [name]: { submitForm } });
+
+		return () => {
+			removeFormFromGlobalContext(name);
+		};
 	}, []);
 
 	//submit for button type=submit
 	const handleFormSubmit = e => {
 		e.preventDefault();
 
-		validateForm()
-			.then(() => onSubmit(formValues))
+		validateForm(fieldsRef.current, valuesRef.current)
+			.then((values) => onSubmit(values))
 			.catch(e => console.log(e));
 	};
 
@@ -72,7 +79,7 @@ const Form = ({ children, name, onSubmit, initialValues }) => {
 			{children}
 		</form>
 	);
-};
+});
 
 Form.defaultProps = {
 	initialValues: null,
@@ -80,9 +87,12 @@ Form.defaultProps = {
 
 Form.propTypes = {
 	initialValues: PropTypes.object,
-	children: PropTypes.object.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	]),
 	name: PropTypes.string.isRequired,
-	onSubmit: PropTypes.func.isRequired
+	onSubmit: PropTypes.func
 };
 
 export { Form };

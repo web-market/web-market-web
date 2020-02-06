@@ -10,7 +10,7 @@
 //validateForm: validate form. call on init and before send. signature => [{field}, {...}]
 //setIsFormValid: manually set form validation state. try no to use. signature => bool
 
-import React, { useReducer, useCallback } from 'react';
+import React, { useReducer } from 'react';
 import {
 	INIT_FIELDS,
 	INIT_FORM_NAME,
@@ -107,7 +107,7 @@ function FormContextProvider (props) {
 		});
 	};
 
-	const setFormValues = useCallback((initialValues) => {
+	const setFormValues = (initialValues) => {
 		for (const item in initialValues) {
 			if (initialValues.hasOwnProperty(item)) {
 				const field = { [item]: initialValues[item] };
@@ -118,23 +118,23 @@ function FormContextProvider (props) {
 				});
 			}
 		}
-	}, []);
+	};
 
-	const _initFormName = useCallback((name) => {
+	const _initFormName = (name) => {
 		dispatch({
 			type: INIT_FORM_NAME,
 			name
 		});
-	}, []);
+	};
 
-	const setIsFormValid = useCallback(valid => {
+	const setIsFormValid = valid => {
 		dispatch({
 			type: SET_FORM_VALID,
 			valid
 		});
-	}, []);
+	};
 
-	const validateForm = useCallback((fields, values) => {
+	const validateForm = (fields, values) => {
 		const validationResult = [];
 
 		for (const field in fields) {
@@ -167,13 +167,13 @@ function FormContextProvider (props) {
 		const errorFields = validationResult.filter(result => result.isValid === false);
 
 		return new Promise((resolve, reject) => {
-			return hasError ? reject(errorFields) : resolve(hasError);
+			return hasError ? reject(errorFields) : resolve(values);
 		});
-	}, [setIsFormValid]);
+	};
 
-	const initForm = useCallback(({ name }) => {
+	const initForm = ({ name }) => {
 		_initFormName(name);
-	}, [_initFormName]);
+	};
 
 	return (
 		<ContextForm.Provider value={{

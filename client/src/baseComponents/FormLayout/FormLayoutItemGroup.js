@@ -16,7 +16,10 @@ FormLayoutItemGroup.defaultProps = {
 
 FormLayoutItemGroup.propTypes = {
 	padding: PropTypes.object,
-	children: PropTypes.array,
+	children: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	]),
 };
 
 export { FormLayoutItemGroup };

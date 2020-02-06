@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalFooter, ModalContent } from '../../../../../baseComponents/Modal';
 import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
@@ -12,23 +12,46 @@ import { AjaxDropdown, Checkbox, Textbox } from '../../../../../baseComponents/F
 import Form, { Field } from '../../../../../baseComponents/Form';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
 import { CategoriesContext } from '../../store';
+import { isNull } from '../../../../../utils';
 
 const CategoriesEditCategoryModalContent = (
 	{
 		modalData,
-		handleClose
+		handleClose: handleCloseFromProps
 	}
 ) => {
+	const [data, setData] = useState(null);
+	const [isPending, setIsPending] = useState(false);
 	const { forms } = useContext(FormsGlobalContext);
 
 	const { updateCategory, getCategory } = useContext(CategoriesContext);
 
-	useEffect(() => {
-		getCategory(modalData.id);
-	}, [modalData.id, getCategory]);
+	const handleClose = useCallback(() => {
+		setData(null);
+		handleCloseFromProps();
+	}, [handleCloseFromProps]);
 
-	const handleEditCategory = (values) => {
-		updateCategory(values);
+	useEffect(() => {
+		setIsPending(true);
+
+			getCategory(modalData.id)
+			.then(({ data }) => setData(data))
+			.catch(e => {
+				console.log(e);
+				handleClose();
+			})
+			.finally(() => setIsPending(false));
+	}, [modalData.id, getCategory, handleClose]);
+
+	const handleUpdateCategory = (values) => {
+		setIsPending(true);
+
+		updateCategory({ ...values, id: modalData.id })
+			.then(() => handleClose())
+			.catch(e => {
+				console.log(e);
+				handleClose();
+			});
 	};
 
 	const leftButtons = (
@@ -47,15 +70,58 @@ const CategoriesEditCategoryModalContent = (
 		/>
 	);
 
+	const initialValues = useMemo(() => {
+		if (isNull(data)) return null;
+
+		const {
+			name,
+			sortOrder,
+			color,
+			isActive,
+			parentCategory
+			} = data;
+
+		const parentCategoryId = isNull(parentCategory) ? null : parentCategory.id;
+
+		return {
+			name,
+			sortOrder,
+			color,
+			isActive,
+			parentCategoryId
+		};
+	}, [data]);
+
+	const fieldsMetadata = useMemo(() => {
+		if (isNull(data) || isNull(data.parentCategory)) {
+			return {
+				parentCategoryMetadata: {
+					displayValue: ''
+				}
+			};
+		}
+
+		const {
+			parentCategory
+		} = data;
+
+		return {
+			parentCategoryMetadata: {
+				displayValue: parentCategory.name
+			}
+		};
+	}, [data]);
+
 	return (
 		<>
 			<ModalHeader
 				handleClose={handleClose}
 				label="!!!Редактирование категории"
 			/>
-			<ModalContent>
+			<ModalContent isPending={isPending}>
 				<Form
-					onSubmit={handleEditCategory}
+					initialValues={initialValues}
+					onSubmit={handleUpdateCategory}
 					name={EDIT_CATEGORY_FORM_NAME}
 				>
 					<FormLayout>
@@ -80,6 +146,7 @@ const CategoriesEditCategoryModalContent = (
 									hasTooltip
 									toolTipMessage="!Если оставить "
 									url={ENDPOINT.GET_ALL_CATEGORIES}
+									displayValue={fieldsMetadata.parentCategoryMetadata.displayValue}
 								/>
 							</FormLayoutItem>
 							<FormLayoutItem>
@@ -110,6 +177,7 @@ const CategoriesEditCategoryModalContent = (
 							</FormLayoutItem>
 						</FormLayoutItemGroup>
 					</FormLayout>
+					<button type="submit">asdasdas</button>
 				</Form>
 			</ModalContent>
 			<ModalFooter>
@@ -121,8 +189,6 @@ const CategoriesEditCategoryModalContent = (
 		</>
 	);
 };
-
-CategoriesEditCategoryModalContent.defaultProps = {};
 
 CategoriesEditCategoryModalContent.propTypes = {
 	modalData: PropTypes.object
