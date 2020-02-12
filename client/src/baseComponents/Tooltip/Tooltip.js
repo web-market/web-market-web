@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OverlayPoint from '../OverlayPoint';
 import Icon from '../Icon';
 import Badge from '../Badge';
-import { exclamationCircle } from '../../icons';
+import { exclamation } from '../../icons';
 import Classnames from 'classnames';
 import classes from './styles/index.scss';
 
@@ -72,7 +72,7 @@ const Tooltip = (
 };
 
 Tooltip.defaultProps = {
-	icon: exclamationCircle,
+	icon: exclamation,
 	position: 'top-right'
 };
 

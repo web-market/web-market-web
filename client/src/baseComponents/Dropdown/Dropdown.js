@@ -9,7 +9,7 @@ import DropDownSpinner from './DropDownSpinner';
 
 import classes from './styles/index.scss';
 import Icon from '../Icon';
-import { chevronDown, chevronUp } from '../../icons';
+import { angleDown, angleUp } from '../../icons';
 import { COLORS } from '../../styles/baseColors';
 
 const Dropdown = (
@@ -102,7 +102,7 @@ const Dropdown = (
 			? (
 				<Icon
 					className={classes.dropdown_icon}
-					icon={open ? chevronUp : chevronDown}
+					icon={open ? angleUp : angleDown}
 					color={COLORS.FIELD_ICON}
 				/>
 			) : (

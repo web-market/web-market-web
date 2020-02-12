@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
 import FormsContextProvider from './store/FormsGlobalContext';
 import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
@@ -11,48 +10,6 @@ import AdminPanel from '../components/Admin/AdminPanel';
 import StoreModule from '../components/Store/StoreModule';
 
 import '../styles/index.scss';
-
-import {
-	faChevronDown,
-	faChevronLeft,
-	faChevronRight,
-	faChevronUp,
-	faPlus,
-	faChartBar,
-	faTh,
-	faFilter,
-	faCogs,
-	faCog,
-	faAngleRight,
-	faAlignJustify,
-	faBell,
-	faCheck,
-	faExclamationCircle,
-	faPen,
-	faTimes,
-	faTrashAlt
-} from '@fortawesome/free-solid-svg-icons';
-
-library.add(
-	faChevronDown,
-	faChevronLeft,
-	faChevronRight,
-	faChevronUp,
-	faPlus,
-	faChartBar,
-	faTh,
-	faFilter,
-	faCog,
-	faCogs,
-	faAngleRight,
-	faAlignJustify,
-	faBell,
-	faCheck,
-	faExclamationCircle,
-	faPen,
-	faTimes,
-	faTrashAlt
-);
 
 class App extends Component {
 	static contextType = AppGlobalContext;

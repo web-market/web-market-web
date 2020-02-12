@@ -1,15 +1,22 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Classnames from 'classnames';
+import classes from '../../styles/index.scss';
 
 const Icon = ({ icon, className, onClick }) => {
+	const componentClassName = Classnames(
+		className,
+		icon,
+		classes.ti
+	);
+
 	return (
-		<FontAwesomeIcon
-			className={className}
-			icon={icon}
+		<span
+			className={componentClassName}
 			onClick={onClick}
-		/>
+		>
+		</span>
 	);
 };
 
