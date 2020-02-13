@@ -1,7 +1,6 @@
 import {
 	SET_CATEGORIES,
-	SET_PENDING,
-	SET_UPDATED_CATEGORY
+	SET_PENDING
 } from './consts';
 
 export const initialState = {
@@ -23,11 +22,6 @@ export const reducer = (state, payload) => {
 			return {
 				...state,
 				isPending: payload.pending
-			};
-		case SET_UPDATED_CATEGORY:
-			return {
-				...state,
-				updatedCategoryId: payload.id
 			};
 		default:
 			throw new Error();

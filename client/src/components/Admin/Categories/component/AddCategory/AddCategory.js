@@ -10,7 +10,6 @@ const AddCategory = () => {
 	const { forms } = useContext(FormsGlobalContext);
 	const { addCategory, getCategoriesList } = useContext(CategoriesContext);
 
-	//todo: discuss does getCategoriesList call need if add to parent category
 	const handleAddCategory = (val) => {
 		addCategory(val)
 			.then(() => getCategoriesList());

@@ -10,7 +10,6 @@ import Icon from '../../../../../baseComponents/Icon';
 import { isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
-import { CategoriesContext } from '../../store';
 
 const CategoriesListItem = (
 	{
@@ -19,7 +18,6 @@ const CategoriesListItem = (
 	}
 	) => {
 	const { openModal } = useContext(CategoriesModalsContext);
-	const { updatedCategoryId, resetUpdateCategory } = useContext(CategoriesContext);
 
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
@@ -27,8 +25,6 @@ const CategoriesListItem = (
 	const [subCategoryHeight, setSubCategoryHeight] = useState(false);
 
 	const subCategoryRef = useRef(null);
-
-	const updateSubCategory = showCategories && updatedCategoryId === category.id;
 
 	const handleParentCategories = (e) => {
 		e.stopPropagation();
@@ -51,21 +47,10 @@ const CategoriesListItem = (
 	}, [category.id]);
 
 	useEffect(() => {
-		if (!hasFetched && showCategories && !updateSubCategory) {
+		if (!hasFetched && showCategories) {
 			handleGetSubCategories();
 		}
-	}, [updateSubCategory, showCategories, hasFetched, handleGetSubCategories]);
-
-	useEffect(() => {
-		if (updateSubCategory) {
-			handleGetSubCategories();
-			resetUpdateCategory();
-		}
-	}, [
-		updateSubCategory,
-		handleGetSubCategories,
-		resetUpdateCategory
-	]);
+	}, [showCategories, hasFetched, handleGetSubCategories]);
 
 	const componentClassName = ClassNames(
 		classes.category_item,
@@ -86,7 +71,7 @@ const CategoriesListItem = (
 		}
 
 		setSubCategoryHeight(h);
-	}, [showCategories, subCategoryRef.current]);
+	}, [showCategories]);
 
 	const categoryItemDetail = () => {
 		return (
@@ -146,28 +131,25 @@ const CategoriesListItem = (
 					key={key}
 					category={category}
 					handleDeleteCategory={handleDeleteCategory}
-					updatedCategoryId={updatedCategoryId}
 				/>
 			);
 		});
 	};
 
 	return (
-		<>
-			<div className={componentClassName}>
+		<div className={componentClassName}>
 			{categoryItemDetail()}
-				{
-					showCategories && !isNull(subCategories) && (
-						<div
-							ref={subCategoryRef}
-							className={classes.category_item_subCategoryItem}
-						>
-							{subCategoryItemDetail()}
-						</div>
-					)
-				}
-			</div>
-		</>
+			{
+				showCategories && !isNull(subCategories) && (
+					<div
+						ref={subCategoryRef}
+						className={classes.category_item_subCategoryItem}
+					>
+						{subCategoryItemDetail()}
+					</div>
+				)
+			}
+		</div>
 	);
 };
 
