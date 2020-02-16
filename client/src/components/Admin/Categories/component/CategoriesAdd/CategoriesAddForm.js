@@ -19,7 +19,7 @@ import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
 
 import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../../consts';
 
-const AddCategoryForm = ({
+const CategoriesAddForm = ({
 							addCategory,
 							rightSectionButtons
 }) => {
@@ -89,9 +89,9 @@ const AddCategoryForm = ({
 	);
 };
 
-AddCategoryForm.propTypes = {
+CategoriesAddForm.propTypes = {
 	addCategory: PropTypes.func,
 	rightSectionButtons: PropTypes.object
 };
 
-export default AddCategoryForm;
+export default CategoriesAddForm;

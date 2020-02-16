@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
-import AddCategoryForm from './AddCategoryForm';
+import CategoriesAddForm from './CategoriesAddForm';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
 import { CategoriesContext } from '../../store';
 import Button from '../../../../../baseComponents/Button';
 
-const AddCategory = () => {
+const CategoriesAdd = () => {
 	const { forms } = useContext(FormsGlobalContext);
 	const { addCategory, getCategoriesList } = useContext(CategoriesContext);
 
@@ -27,7 +27,7 @@ const AddCategory = () => {
 
 	return (
 		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
-			<AddCategoryForm
+			<CategoriesAddForm
 				addCategory={handleAddCategory}
 				rightSectionButtons={rightSectionButtons}
 			/>
@@ -35,4 +35,4 @@ const AddCategory = () => {
 	);
 };
 
-export { AddCategory };
+export { CategoriesAdd };

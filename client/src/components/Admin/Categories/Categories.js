@@ -5,7 +5,7 @@ import CategoriesModalsProvider from './component/CategoriesModalsProvider';
 import GridLayout, { GridLayoutRow } from '../../../baseComponents/GridLayout';
 import AdminControlHeader from '../AdminControlHeader';
 import CategoriesList from './component/CategoriesList';
-import AddCategory from './component/AddCategory';
+import CategoriesAdd from './component/CategoriesAdd';
 
 const Categories = () => {
 	const { categories, getCategoriesList, isPending } = useContext(CategoriesContext);
@@ -27,7 +27,7 @@ const Categories = () => {
 						isPending={isPending}
 						categories={categories}
 					/>
-					<AddCategory />
+					<CategoriesAdd />
 				</GridLayoutRow>
 			</GridLayout>
 		</>
