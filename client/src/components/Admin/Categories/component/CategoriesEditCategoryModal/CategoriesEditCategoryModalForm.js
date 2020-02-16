@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModalContent, ModalFooter, ModalHeader } from '../../../../../baseComponents/Modal';
 import Form, { Field } from '../../../../../baseComponents/Form';
-import { EDIT_CATEGORY_FORM_NAME, ENDPOINT } from '../../consts';
+import { EDIT_CATEGORY_FORM, ENDPOINT } from '../../consts';
 import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../../baseComponents/FormLayout';
 import { AjaxDropdown, Checkbox, Textbox } from '../../../../../baseComponents/Form/Adapters';
 import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
@@ -28,7 +28,7 @@ const CategoriesEditCategoryModalForm = (
 				<Form
 					initialValues={initialValues}
 					onSubmit={handleUpdateCategory}
-					name={EDIT_CATEGORY_FORM_NAME}
+					name={EDIT_CATEGORY_FORM}
 				>
 					<FormLayout>
 						<FormLayoutItemGroup>

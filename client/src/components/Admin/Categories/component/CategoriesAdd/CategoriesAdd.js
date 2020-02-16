@@ -20,7 +20,7 @@ const CategoriesAdd = () => {
 			<Button
 				label="!!добавить"
 				type="primary"
-				actionHandler={() => forms.addCategoryForm.submitForm()}
+				actionHandler={() => forms.ADD_CATEGORY_FORM.submitForm()}
 			/>
 		</>
 	);

@@ -56,7 +56,7 @@ const CategoriesEditCategoryModalContent = (
 
 	const rightButtons = (
 		<Button
-			actionHandler={() => forms.editCategoryForm.submitForm()}
+			actionHandler={() => forms.EDIT_CATEGORY_FORM.submitForm()}
 			label="!!Редактировать"
 			type="primary"
 		/>

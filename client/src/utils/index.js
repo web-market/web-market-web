@@ -10,3 +10,4 @@ export { memoize } from './memoize';
 export { noScroll } from './noScroll';
 export { omitProperty } from './omitProperty';
 export { actionLogger } from './actionLogger';
+export { actionLoggerWarning } from './actionLogger';

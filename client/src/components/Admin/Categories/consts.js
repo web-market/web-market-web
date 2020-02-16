@@ -1,5 +1,5 @@
-export const ADD_CATEGORY_FORM_NAME = 'addCategoryForm';
-export const EDIT_CATEGORY_FORM_NAME = 'editCategoryForm';
+export const ADD_CATEGORY_FORM = 'ADD_CATEGORY_FORM';
+export const EDIT_CATEGORY_FORM = 'EDIT_CATEGORY_FORM';
 
 export const actions = {
 	ADD_CATEGORY: 'ADD_CATEGORY'

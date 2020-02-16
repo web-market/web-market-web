@@ -17,7 +17,7 @@ import FormLayout, {
 } from '../../../../../baseComponents/FormLayout';
 import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
 
-import { ADD_CATEGORY_FORM_NAME, ENDPOINT } from '../../consts';
+import { ADD_CATEGORY_FORM, ENDPOINT } from '../../consts';
 
 const CategoriesAddForm = ({
 							addCategory,
@@ -26,7 +26,7 @@ const CategoriesAddForm = ({
 	return (
 		<Form
 			onSubmit={addCategory}
-			name={ADD_CATEGORY_FORM_NAME}
+			name={ADD_CATEGORY_FORM}
 		>
 			<FormLayout>
 				<FormLayoutHeader title="!!!Добавить категорию" />

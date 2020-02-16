@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ContextForm } from './store/FormContext';
 import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
 
-import { isNull } from '../../utils';
+import { isNull, actionLoggerWarning, actionLogger } from '../../utils';
 
 const Form = memo(({ children, name, onSubmit, initialValues }) => {
 	const { addFormToGlobalContext, removeFormFromGlobalContext } = useContext(FormsGlobalContext);
@@ -44,12 +44,17 @@ const Form = memo(({ children, name, onSubmit, initialValues }) => {
 			return `\n${field.field}: ${field.errorMessages}`;
 		});
 
-		console.warn(`Field validation error: ${errors.join(';')};`);
+		actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
+	};
+
+	const handleSuccess = (values) => {
+		onSubmit(values);
+		actionLogger(`FROM "${name}" SUBMITTED`);
 	};
 
 	const submitForm = () => {
 		validateForm(fieldsRef.current, valuesRef.current)
-			.then(values => onSubmit(values))
+			.then(values => handleSuccess(values))
 			.catch(fields => handleErrors(fields));
 	};
 
