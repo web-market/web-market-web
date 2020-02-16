@@ -6,14 +6,27 @@ import { FormsGlobalContext } from '../../App/store/FormsGlobalContext';
 
 import { isNull, actionLoggerWarning, actionLogger } from '../../utils';
 
-const Form = memo(({ children, name, onSubmit, initialValues }) => {
-	const { addFormToGlobalContext, removeFormFromGlobalContext } = useContext(FormsGlobalContext);
+const Form = memo((
+	{
+		name,
+		children,
+		onSubmit,
+		initialValues,
+		restFormValues
+	}
+	) => {
 	const {
+		addFormToGlobalContext,
+		removeFormFromGlobalContext
+	} = useContext(FormsGlobalContext);
+
+	const {
+		fields,
 		initForm,
+		formValues,
 		validateForm,
 		setFormValues,
-		formValues,
-		fields,
+		resetFormValues
 	} = useContext(ContextForm);
 
 	const valuesRef = useRef();
@@ -49,7 +62,12 @@ const Form = memo(({ children, name, onSubmit, initialValues }) => {
 
 	const handleSuccess = (values) => {
 		onSubmit(values);
-		actionLogger(`FROM "${name}" SUBMITTED`);
+		actionLogger(`FROM "${name}" HAS SUBMITTED`);
+
+		if (restFormValues) {
+			resetFormValues();
+			actionLogger(`FROM "${name}" HAS RESETED`);
+		}
 	};
 
 	const submitForm = () => {
@@ -88,6 +106,7 @@ const Form = memo(({ children, name, onSubmit, initialValues }) => {
 
 Form.defaultProps = {
 	initialValues: null,
+	restFormValues: true,
 };
 
 Form.propTypes = {
@@ -97,7 +116,8 @@ Form.propTypes = {
 		PropTypes.array
 	]),
 	name: PropTypes.string.isRequired,
-	onSubmit: PropTypes.func
+	onSubmit: PropTypes.func,
+	restFormValues: PropTypes.bool,
 };
 
 export { Form };

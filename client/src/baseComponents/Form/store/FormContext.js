@@ -16,6 +16,7 @@ import {
 	INIT_FORM_NAME,
 	SET_FORM_VALID,
 	SET_FIELD_VALUE,
+	RESET_FORM_VALUES,
 	SET_FIELD_VALIDATION_RESULT
 } from './consts';
 import {
@@ -62,6 +63,11 @@ const reducer = (state, payload) => {
 			return {
 				...state,
 				fields: { ...state.fields, ...field }
+			};
+		case RESET_FORM_VALUES:
+			return {
+				...state,
+				formValues: {}
 			};
 	}
 };
@@ -134,6 +140,10 @@ function FormContextProvider (props) {
 		});
 	};
 
+	const resetFormValues = () => {
+		dispatch({ type: RESET_FORM_VALUES });
+	};
+
 	const validateForm = (fields, values) => {
 		const validationResult = [];
 
@@ -181,6 +191,7 @@ function FormContextProvider (props) {
 			initForm,
 			validateForm,
 			setFieldValue,
+			resetFormValues,
 			setFormValues, // only on init
 			registerField,
 			setFieldValidationResult,
