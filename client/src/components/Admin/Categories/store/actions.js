@@ -7,6 +7,7 @@ import {
 } from '../api';
 import {
 	SET_CATEGORIES,
+	RESET_CATEGORIES,
 	SET_PENDING
 } from './consts';
 
@@ -20,8 +21,7 @@ export default (dispatch) => {
 
 	const resetCategories = () => {
 		dispatch({
-			type: SET_CATEGORIES,
-			categories: []
+			type: RESET_CATEGORIES
 		});
 	};
 
@@ -52,6 +52,7 @@ export default (dispatch) => {
 
 	const updateCategory = (data) => {
 		return updateCategoryAPI(data)
+			.then(() => resetCategories())
 			.then(() => getCategoriesList())
 			.catch(error => console.log(error));
 	};

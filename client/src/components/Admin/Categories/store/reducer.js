@@ -1,5 +1,6 @@
 import {
 	SET_CATEGORIES,
+	RESET_CATEGORIES,
 	SET_PENDING
 } from './consts';
 
@@ -17,6 +18,11 @@ export const reducer = (state, payload) => {
 			return {
 				...state,
 				categories: [...payload.categories]
+			};
+		case RESET_CATEGORIES:
+			return {
+				...state,
+				categories: []
 			};
 		case SET_PENDING:
 			return {
