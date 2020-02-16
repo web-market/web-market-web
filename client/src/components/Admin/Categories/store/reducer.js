@@ -1,3 +1,5 @@
+import { actionLogger } from '../../../../utils';
+
 import {
 	SET_CATEGORIES,
 	RESET_CATEGORIES,
@@ -11,7 +13,7 @@ export const initialState = {
 };
 
 export const reducer = (state, payload) => {
-	if (payload.type !== SET_PENDING) console.log(payload.type);
+	actionLogger(payload.type, SET_PENDING);
 
 	switch (payload.type) {
 		case SET_CATEGORIES:
