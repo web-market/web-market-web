@@ -21,7 +21,8 @@ import {
 } from './consts';
 import {
 	validate as validateFromUtils,
-	setValidationResult as setValidationResultFromUtils
+	setValidationResult as setValidationResultFromUtils,
+	resetFormValues as resetFormValuesFromUtils
 } from '../utils';
 import { isUndefined } from '../../../utils';
 
@@ -67,7 +68,7 @@ const reducer = (state, payload) => {
 		case RESET_FORM_VALUES:
 			return {
 				...state,
-				formValues: {}
+				formValues: resetFormValuesFromUtils(state.formValues)
 			};
 	}
 };

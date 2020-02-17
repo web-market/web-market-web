@@ -7,6 +7,7 @@ import { Dropdown } from '../Dropdown';
 const AjaxDropdown = (
 	{
 		url,
+		value,
 		onFieldChange,
 		allowRequest,
 		onFieldFocus,
@@ -37,6 +38,7 @@ const AjaxDropdown = (
 			onFieldFocus={onFieldFocus}
 			isItemPending={isPending}
 			displayValue={displayValue}
+			value={value}
 		/>
 	);
 };

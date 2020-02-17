@@ -49,3 +49,17 @@ export const setValidationResult = (fields, { payload }) => {
 		[name]: { ...fields[name], isValid, errorMessages }
 	};
 };
+
+export const resetFormValues = (values) => {
+	const resetedValues = {};
+
+	for (const value in values) {
+		if (values.hasOwnProperty(value)) {
+			resetedValues[value] = null;
+		}
+	}
+
+	console.log(resetedValues);
+
+	return resetedValues;
+};

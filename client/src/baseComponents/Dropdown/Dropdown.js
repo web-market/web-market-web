@@ -63,14 +63,12 @@ const Dropdown = (
 	}, [multiSelect, onItemSelect, toggleDropdown]);
 
 	useEffect(() => {
-		if (!isNullOrUndefined(value)) onItemSelect(value);
-	}, [value, onItemSelect]);
-
-	const getDisplayValue = () => {
-		return isEmptyStirng(displayValue)
-			? <div className={classes.dropdownItem_placeholder}>{placeholder}</div>
-			: displayValue;
-	};
+		if (!isNullOrUndefined(value)) {
+			onItemSelect(value);
+		} else {
+			setDisplayValue(placeholder);
+		}
+	}, [value]);
 
 	const getDropdownItems = () => {
 		return items.map(item => {
@@ -119,7 +117,7 @@ const Dropdown = (
 				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
 			>
-				{getDisplayValue()}
+				{displayValue}
 				{getIcon()}
 
 			</div>
