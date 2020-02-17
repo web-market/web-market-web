@@ -51,6 +51,7 @@ const FormFieldBox = (
 							icon={toolTipIcon}
 							message={toolTipMessage}
 							tooltipClassName={classes.formFieldBox_tooltip}
+							tooltipIconClassName={classes.formFieldBox_tooltipIcon}
 						/>
 					)
 				}
@@ -61,7 +62,8 @@ const FormFieldBox = (
 						<Tooltip
 							icon={toolTipIcon}
 							message={getErrors()}
-							tooltipClassName={classes.formFieldBox_ErrorTooltip}
+							tooltipClassName={classes.formFieldBox_errorTooltip}
+							tooltipIconClassName={classes.formFieldBox_errorTooltipIcon}
 							position="left"
 							type="danger"
 						/>

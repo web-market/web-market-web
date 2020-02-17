@@ -25,6 +25,14 @@
 	margin-left: 4px;
 }
 
+.formFieldBox_tooltipIcon {
+	font-size: 10px;
+	border-radius: 50%;
+	padding: 2px;
+	color: $light;
+	background-color: $primary;
+}
+
 .formFieldBox_fieldWrapper__hasError {
 	border-color: $danger;
 }
@@ -33,9 +41,17 @@
 	border-color: $primary;
 }
 
-.formFieldBox_ErrorTooltip {
+.formFieldBox_errorTooltip {
 	position: absolute;
 	right: -7px;
 	top: -10px;
 	z-index: 1;
+}
+
+.formFieldBox_errorTooltipIcon {
+	font-size: 10px;
+	border-radius: 50%;
+	padding: 2px;
+	color: $light;
+	background-color: $danger;
 }
