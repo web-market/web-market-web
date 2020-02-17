@@ -63,9 +63,7 @@ const Dropdown = (
 	}, [multiSelect, onItemSelect, toggleDropdown]);
 
 	useEffect(() => {
-		if (!isNullOrUndefined(value)) {
-			onItemSelect(value);
-		} else {
+		if (isNullOrUndefined(value)) {
 			setDisplayValue(placeholder);
 		}
 	}, [value]);
@@ -117,7 +115,7 @@ const Dropdown = (
 				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
 			>
-				{displayValue}
+				<div className={classes.dropdownItem_placeholder}>{displayValue}</div>
 				{getIcon()}
 
 			</div>
