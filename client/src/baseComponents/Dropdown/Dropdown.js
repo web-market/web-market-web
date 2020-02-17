@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { isEmptyStirng, isNullOrUndefined } from '../../utils';
+import { isNullOrUndefined } from '../../utils';
 
 import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
@@ -23,7 +23,8 @@ const Dropdown = (
 		onFieldFocus,
 		onFieldChange,
 		isItemPending,
-		onDropdownClick
+		onDropdownClick,
+		hasDefaultValue
 	}
 ) => {
 	const dropdownRef = useRef(null);
@@ -68,7 +69,14 @@ const Dropdown = (
 		}
 	}, [value]);
 
-	const getDropdownItems = () => {
+	const getDropdownItems = useMemo(() => {
+		if (hasDefaultValue) {
+			items.unshift({
+				name: '!!пусто',
+				id: null
+			});
+		}
+
 		return items.map(item => {
 			return (
 				<DropDownItem
@@ -79,19 +87,19 @@ const Dropdown = (
 				/>
 			);
 		});
-	};
+	}, [items]);
 
-	const dropdownItems = () => {
+	const dropdownItems = useMemo(() => {
 		return hasItems
-			? getDropdownItems()
+			? getDropdownItems
 			: (
 				<DropDownItem
 					key={-1}
 					value="!пусто"
-					id={-1}
+					id={null}
 				/>
 			);
-	};
+	}, [getDropdownItems, hasItems]);
 
 	const getIcon = () => {
 		return !isItemPending
@@ -128,7 +136,7 @@ const Dropdown = (
 							({ parentWidth }) => {
 								return (
 									<div style={{ width: parentWidth }} className={classes.dropdown_container}>
-										{dropdownItems()}
+										{dropdownItems}
 									</div>
 								);
 							}
@@ -143,8 +151,9 @@ const Dropdown = (
 Dropdown.defaultProps = {
 	isOpen: false,
 	multiSelect: false,
+	hasDefaultValue: false,
 	items: [],
-	placeholder: '###Select',
+	placeholder: '###пусто',
 	displayValue: '',
 	onDropdownClick: () => {},
 	onFieldFocus: () => {}
@@ -155,6 +164,7 @@ Dropdown.propTypes = {
 	isOpen: PropTypes.bool,
 	multiSelect: PropTypes.bool,
 	isItemPending: PropTypes.bool,
+	hasDefaultValue: PropTypes.bool,
 	placeholder: PropTypes.string,
 	displayValue: PropTypes.string,
 	onFieldChange: PropTypes.func,

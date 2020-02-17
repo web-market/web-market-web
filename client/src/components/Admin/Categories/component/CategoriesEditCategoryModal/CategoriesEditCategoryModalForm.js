@@ -53,6 +53,7 @@ const CategoriesEditCategoryModalForm = (
 									toolTipMessage="!Если оставить "
 									url={ENDPOINT.GET_ALL_CATEGORIES}
 									displayValue={fieldsMetadata.parentCategoryMetadata.displayValue}
+									hasDefaultValue
 								/>
 							</FormLayoutItem>
 							<FormLayoutItem>
