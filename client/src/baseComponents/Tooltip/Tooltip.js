@@ -28,11 +28,11 @@ const Tooltip = (
 	);
 
 	const tooltipIconClassname = Classnames(
-		classes.tooltip_defaultIcon,
+		iconClassName,
 		{
 			[classes.tooltip_defaultIcon__danger]: type === 'danger'
 		},
-		iconClassName
+		classes.tooltip_defaultIcon,
 	);
 
 	const handleTooltipEnter = () => {
