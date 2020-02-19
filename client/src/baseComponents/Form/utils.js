@@ -59,7 +59,5 @@ export const resetFormValues = (values) => {
 		}
 	}
 
-	console.log(resetedValues);
-
 	return resetedValues;
 };

@@ -39,12 +39,14 @@ const FormFieldBox = (
 	return (
 		<>
 			<div className={classes.formFieldBox_labelWrapper}>
-				{label}
-				{
-					required && (
-						<span className={classes.formFieldBox_required}>*</span>
-					)
-				}
+				<div>
+					{label}
+					{
+						required && (
+							<span className={classes.formFieldBox_required}>*</span>
+						)
+					}
+				</div>
 				{
 					hasTooltip && (
 						<Tooltip

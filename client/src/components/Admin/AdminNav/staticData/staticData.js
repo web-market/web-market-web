@@ -35,27 +35,14 @@ export const mainNavItem = [
 	{
 		icon: th,
 		label: '!!!Категории',
-		link: URL.CATEGORY,
+		link: URL.CATEGORY.ROOT,
 		hasRoute: true,
 	},
 	{
 		icon: filter,
 		label: '!!!Фильтры',
-		link: '/TEST/',
-		hasRoute: true,
-		menuRoute: URL.FILTERS.ROOT,
-		items: [
-			{
-				label: 'qweqweqwe',
-				link: URL.FILTERS.PRODUCT_MANAGER,
-				hasRoute: true
-			},
-			{
-				label: 'qwewqe',
-				link: URL.FILTERS.TOP_SALE,
-				hasRoute: true
-			}
-		]
+		link: URL.FILTERS.ROOT,
+		hasRoute: true
 	}
 ];
 

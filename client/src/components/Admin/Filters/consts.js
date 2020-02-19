@@ -1,0 +1,1 @@
+export const ADD_FILTER_FORM = 'ADD_FILTER_FORM';
