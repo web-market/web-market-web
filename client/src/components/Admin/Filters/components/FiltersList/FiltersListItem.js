@@ -13,7 +13,7 @@ const FiltersList = (
 		name,
 		displayName,
 		handleFilterEdit,
-		handleDeleteEdit
+		handleFilterDelete
 	}
 ) => {
 	const displayNameValue = useMemo(() => {
@@ -44,7 +44,7 @@ const FiltersList = (
 				<FiltersListItemTooltipActions
 					id={id}
 					handleFilterEdit={handleFilterEdit}
-					handleDeleteEdit={handleDeleteEdit}
+					handleFilterDelete={handleFilterDelete}
 				/>
 			</div>
 		</div>
@@ -56,7 +56,7 @@ FiltersList.propTypes = {
 	name: PropTypes.string,
 	displayName: PropTypes.string,
 	handleFilterEdit: PropTypes.func,
-	handleDeleteEdit: PropTypes.func
+	handleFilterDelete: PropTypes.func
 };
 
 export default FiltersList;

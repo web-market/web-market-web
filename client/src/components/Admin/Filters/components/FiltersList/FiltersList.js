@@ -8,7 +8,12 @@ import PendingCloak from '../../../../../baseComponents/PendingCloak';
 import classes from './styles/index.scss';
 
 const FiltersList = () => {
-	const { getFiltersList, isPending, filtersItems } = useContext(FiltersContext);
+	const {
+		isPending,
+		filtersItems,
+		deleteFilter,
+		getFiltersList
+	} = useContext(FiltersContext);
 
 	useEffect(() => {
 		getFiltersList();
@@ -18,8 +23,8 @@ const FiltersList = () => {
 		console.log(id);
 	};
 
-	const handleDeleteEdit = (id) => {
-		console.log(id);
+	const handleFilterDelete = (id) => {
+		deleteFilter(id);
 	};
 
 	return (
@@ -39,7 +44,7 @@ const FiltersList = () => {
 							name={filter.name}
 							displayName={filter.displayName}
 							handleFilterEdit={handleFilterEdit}
-							handleDeleteEdit={handleDeleteEdit}
+							handleFilterDelete={handleFilterDelete}
 						/>
 					);
 				})

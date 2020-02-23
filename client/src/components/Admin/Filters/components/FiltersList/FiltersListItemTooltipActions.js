@@ -9,7 +9,7 @@ const FiltersListItemTooltipActions = (
 	{
 		id,
 		handleFilterEdit,
-		handleDeleteEdit
+		handleFilterDelete
 	}
 ) => {
 	const actions = useMemo(() => {
@@ -18,7 +18,7 @@ const FiltersListItemTooltipActions = (
 				name: '!!Удалить',
 				icon: trash,
 				iconClass: classes.filtersListItemTooltipActions_deleteIcon,
-				action: () => handleDeleteEdit(id)
+				action: () => handleFilterDelete(id)
 			},
 			{
 				name: '!!Редактировать',
@@ -27,7 +27,7 @@ const FiltersListItemTooltipActions = (
 				action: () => handleFilterEdit(id)
 			},
 		];
-	}, [id, handleDeleteEdit, handleFilterEdit]);
+	}, [id, handleFilterDelete, handleFilterEdit]);
 
 	return (
 		<TooltipAction actionList={actions} />
@@ -37,7 +37,7 @@ const FiltersListItemTooltipActions = (
 FiltersListItemTooltipActions.propTypes = {
 	id: PropTypes.number,
 	handleFilterEdit: PropTypes.func,
-	handleDeleteEdit: PropTypes.func
+	handleFilterDelete: PropTypes.func
 };
 
 export default FiltersListItemTooltipActions;

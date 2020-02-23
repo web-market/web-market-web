@@ -1,6 +1,7 @@
 import {
 	getFilters as getFiltersAPI,
-	addFilter as addFilterAPI
+	addFilter as addFilterAPI,
+	deleteFilter as deleteFilterAPI
 } from '../api';
 
 import {
@@ -41,8 +42,14 @@ export default (dispatch) => {
 			.finally(() => setPending(false));
 	};
 
+	const deleteFilter = (id) => {
+		deleteFilterAPI(id)
+			.then(() => getFiltersList());
+	};
+
 	return {
 		addFilter,
-		getFiltersList
+		getFiltersList,
+		deleteFilter
 	};
 };
