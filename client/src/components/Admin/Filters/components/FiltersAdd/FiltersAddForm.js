@@ -14,14 +14,14 @@ import ButtonGroup from '../../../../../baseComponents/ButtonGroup';
 
 const FiltersAddForm = (
 	{
-		addFilter,
+		handleAddFilter,
 		rightSectionButtons
 	}
 ) => {
 	return (
 		<Form
-			onSubmit={addFilter}
 			name={ADD_FILTER_FORM}
+			onSubmit={handleAddFilter}
 		>
 			<FormLayout>
 				<FormLayoutHeader title="!!!Добавить фильтр" />
@@ -30,7 +30,16 @@ const FiltersAddForm = (
 						<Field
 							component={Textbox}
 							name="name"
-							label="!!!Название фильтра"
+							label="!!!Название фильтра в магазине"
+							required
+							validate={{
+								required: true
+							}}
+						/>
+						<Field
+							component={Textbox}
+							name="displayName"
+							label="!!!Название фильтра а админ панеле"
 							required
 							validate={{
 								required: true
@@ -59,7 +68,7 @@ const FiltersAddForm = (
 };
 
 FiltersAddForm.propTypes = {
-	addFilter: PropTypes.func,
+	handleAddFilter: PropTypes.func,
 	rightSectionButtons: PropTypes.object
 };
 

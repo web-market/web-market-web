@@ -5,12 +5,14 @@ import AdminControlContentBox from '../../../AdminControlContentBox';
 import { FiltersAddForm } from './FiltersAddForm';
 import Button from '../../../../../baseComponents/Button';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
+import { FiltersContext } from '../../store';
 
 const FiltersAdd = () => {
 	const { forms } = useContext(FormsGlobalContext);
+	const { addFilter } = useContext(FiltersContext);
 
-	const addFilter = (val) => {
-		console.log(val);
+	const handleAddFilter = (val) => {
+		addFilter(val);
 	};
 
 	const rightSectionButtons = (
@@ -26,7 +28,7 @@ const FiltersAdd = () => {
 	return (
 		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
 			<FiltersAddForm
-				addFilter={addFilter}
+				handleAddFilter={handleAddFilter}
 				rightSectionButtons={rightSectionButtons}
 			/>
 		</AdminControlContentBox>

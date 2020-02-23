@@ -1,0 +1,7 @@
+const SET_FILTERS = 'SET_FILTERS';
+const SET_PENDING = 'SET_PENDING';
+
+export {
+	SET_FILTERS,
+	SET_PENDING,
+};
