@@ -2,21 +2,25 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import Tooltip from '../../../../../baseComponents/Tooltip';
+import FiltersListItemTooltipActions from './FiltersListItemTooltipActions';
 import Icon from '../../../../../baseComponents/Icon';
 import { exclamation } from '../../../../../icons';
 import classes from './styles/index.scss';
 
 const FiltersList = (
 	{
+		id,
 		name,
-		displayName
+		displayName,
+		handleFilterEdit,
+		handleDeleteEdit
 	}
 ) => {
 	const displayNameValue = useMemo(() => {
 			return (
 				<>
 						<span className={classes.filtersListItem_displayName_separator}>|</span>
-						${displayName}
+							{displayName}
 						<Icon
 							icon={exclamation}
 							className={classes.filtersListItem_displayName_iconClassName}
@@ -36,13 +40,23 @@ const FiltersList = (
 						/>
 				</div>
 			</div>
+			<div className={classes.filtersListItem_right}>
+				<FiltersListItemTooltipActions
+					id={id}
+					handleFilterEdit={handleFilterEdit}
+					handleDeleteEdit={handleDeleteEdit}
+				/>
+			</div>
 		</div>
 	);
 };
 
 FiltersList.propTypes = {
+	id: PropTypes.number,
 	name: PropTypes.string,
-	displayName: PropTypes.string
+	displayName: PropTypes.string,
+	handleFilterEdit: PropTypes.func,
+	handleDeleteEdit: PropTypes.func
 };
 
 export default FiltersList;

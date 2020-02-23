@@ -6,6 +6,7 @@ import CategoriesListItem from './CategoriesListItem';
 
 import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
+import { getUniqueKey } from '../../../../../utils';
 
 const CategoriesList = () => {
 	const { deleteCategory, getCategoriesList, isPending, categories } = useContext(CategoriesContext);
@@ -27,7 +28,7 @@ const CategoriesList = () => {
 			{isPending && (<PendingCloak />)}
 			{
 				categories.map((category, index) => {
-					const key = `${category.name}-${index}`;
+					const key = getUniqueKey(category.name, index);
 
 					return (
 						<CategoriesListItem

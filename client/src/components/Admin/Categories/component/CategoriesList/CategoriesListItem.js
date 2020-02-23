@@ -7,7 +7,7 @@ import classes from './styles/index.scss';
 import { chevronDown, chevronUp, pencil, trash } from '../../../../../icons';
 import { COLORS } from '../../../../../styles/baseColors';
 import Icon from '../../../../../baseComponents/Icon';
-import { isNull } from '../../../../../utils';
+import { getUniqueKey, isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
 
@@ -124,7 +124,7 @@ const CategoriesListItem = (
 
 	const subCategoryItemDetail = () => {
 		return subCategories.map((category, index) => {
-			const key = `${category.name}-${index}`;
+			const key = getUniqueKey(category.name, index);
 
 			return (
 				<CategoriesListItem

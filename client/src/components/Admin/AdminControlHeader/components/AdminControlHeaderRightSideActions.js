@@ -3,10 +3,12 @@ import React, { memo } from 'react';
 import Button from '../../../../baseComponents/Button';
 import PropTypes from 'prop-types';
 
-const AdminControlHeaderRightSideActions = memo(({
-												actions,
-												onActionClick
-											}) => {
+const AdminControlHeaderRightSideActions = memo((
+	{
+		actions,
+		onActionClick
+	}
+) => {
 	const getSingleAction = () => {
 		return (
 			<Button

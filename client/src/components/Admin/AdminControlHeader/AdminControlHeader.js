@@ -13,7 +13,6 @@ const AdminControlHeader = ({
 							}) => {
 	return (
 		<PaddingBox
-			vrSmall
 			hrTiny
 			className={classes.adminControlHeader}
 		>

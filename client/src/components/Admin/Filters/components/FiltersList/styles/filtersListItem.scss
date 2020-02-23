@@ -1,8 +1,9 @@
 .filtersListItem {
 	border-bottom: 1px solid $secondary;
-	padding: 16px 12px;
+	padding: 16px 4px 16px 12px;
 	box-sizing: border-box;
-	//font-size: 14px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .filtersListItem_left {
@@ -27,4 +28,8 @@
 	position: absolute;
 	right: -12px;
 	top: 0;
+}
+
+.filtersListItem_right {
+
 }

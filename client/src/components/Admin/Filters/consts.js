@@ -4,3 +4,4 @@ export const ENDPOINT = {
     FILTERS_BASE_CONTROLLER: '/filters',
     GET_ALL_FILTERS: '/filters/all'
 };
+

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { getUniqueKey } from '../../utils';
+import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from './GridUtils';
 import classes from './styles/index.scss';
 import classNames from 'classnames';
-import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from './GridUtils';
 
 const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 	const componentClassName = classNames(
@@ -18,7 +20,7 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 		return (
 			<div className={componentClassName} style={getBaseGridStyles(gapColumn)}>
 				{children.map((child, index) => {
-					const key = `griditem_${index}`;
+					const key = getUniqueKey('griditem', index);
 
 					return (
 						<div key={key} style={gridItemsStyles[index]}>

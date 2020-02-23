@@ -1,0 +1,15 @@
+.tooltipActionListItem {
+	padding: 8px;
+	border-bottom: 1px solid $secondary;
+	cursor: pointer;
+
+	@include hover_focus {
+		@include bg-color(lighten($grey, 40%));
+	};
+
+	@include transition(background-color .3s);
+}
+
+.tooltipActionListItem:last-child {
+	border-bottom: none;
+}
