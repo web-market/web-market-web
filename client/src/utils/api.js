@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const axiosInstance = axios.create({
-	baseURL: 'http://192.168.1.102:8081/',
+	baseURL: 'http://localhost:8081/',
 });
 
 const GET = (url) => {

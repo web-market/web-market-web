@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
@@ -8,13 +8,12 @@ import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
 import { CategoriesContext } from '../../store';
 
-const CategoriesList = (
-	{
-		categories,
-		isPending
-	}
-) => {
-	const { deleteCategory, getCategoriesList } = useContext(CategoriesContext);
+const CategoriesList = () => {
+	const { deleteCategory, getCategoriesList, isPending, categories } = useContext(CategoriesContext);
+
+	useEffect(() => {
+		getCategoriesList();
+	}, []);
 
 	const handleDeleteCategory = (id) => {
 		deleteCategory(id)

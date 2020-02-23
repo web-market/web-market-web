@@ -8,12 +8,6 @@ import CategoriesList from './component/CategoriesList';
 import CategoriesAdd from './component/CategoriesAdd';
 
 const Categories = () => {
-	const { categories, getCategoriesList, isPending } = useContext(CategoriesContext);
-
-	useEffect(() => {
-		getCategoriesList();
-	}, []);
-
 	return (
 		<>
 			<AdminControlHeader
@@ -23,10 +17,7 @@ const Categories = () => {
 				<GridLayoutRow
 					grid="7-5"
 				>
-					<CategoriesList
-						isPending={isPending}
-						categories={categories}
-					/>
+					<CategoriesList	/>
 					<CategoriesAdd />
 				</GridLayoutRow>
 			</GridLayout>
