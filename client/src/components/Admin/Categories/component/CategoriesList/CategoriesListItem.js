@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
-
 import { CategoriesModalsContext } from '../CategoriesModalsProvider';
+
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { chevronDown, chevronUp, pencil, trash } from '../../../../../icons';

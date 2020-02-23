@@ -16,10 +16,10 @@ export default (dispatch) => {
 		});
 	};
 
-	const setFilters = (filters) => {
+	const setFilters = (filtersItems) => {
 		dispatch({
 			type: SET_FILTERS,
-			filters
+			filtersItems
 		});
 	};
 

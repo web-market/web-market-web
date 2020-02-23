@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
+import { CategoriesContext } from '../../store';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
 import CategoriesAddForm from './CategoriesAddForm';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
-import { CategoriesContext } from '../../store';
 import Button from '../../../../../baseComponents/Button';
 
 const CategoriesAdd = () => {

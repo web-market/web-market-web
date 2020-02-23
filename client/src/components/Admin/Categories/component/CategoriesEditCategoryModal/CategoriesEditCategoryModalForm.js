@@ -1,5 +1,6 @@
 import React from 'react';
 import { ModalContent, ModalFooter, ModalHeader } from '../../../../../baseComponents/Modal';
+
 import Form, { Field } from '../../../../../baseComponents/Form';
 import { EDIT_CATEGORY_FORM, ENDPOINT } from '../../consts';
 import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../../baseComponents/FormLayout';

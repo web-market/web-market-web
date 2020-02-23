@@ -1,0 +1,30 @@
+.filtersListItem {
+	border-bottom: 1px solid $secondary;
+	padding: 16px 12px;
+	box-sizing: border-box;
+	//font-size: 14px;
+}
+
+.filtersListItem_left {
+	display: flex;
+}
+
+.filtersListItem_displayName {
+	position: relative;
+}
+
+.filtersListItem_displayName_separator {
+	margin: 0 4px;
+	color: $secondary;
+}
+
+.filtersListItem_displayName_iconClassName {
+	border-radius: 50%;
+	background-color: $fieldIcon;
+	font-size: 8px;
+	padding: 1px;
+	color: $light;
+	position: absolute;
+	right: -12px;
+	top: 0;
+}

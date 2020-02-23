@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-// import PropTypes from 'prop-types';
-
-import classes from './styles/index.scss';
-import AdminControlContentBox from '../../../AdminControlContentBox';
 import { FiltersContext } from '../../store';
+
+import AdminControlContentBox from '../../../AdminControlContentBox';
+import FiltersListItem from './FiltersListItem';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
+import classes from './styles/index.scss';
 
 const FiltersList = () => {
-	const { getFiltersList, isPending } = useContext(FiltersContext);
+	const { getFiltersList, isPending, filtersItems } = useContext(FiltersContext);
 
 	useEffect(() => {
 		getFiltersList();
@@ -19,13 +19,21 @@ const FiltersList = () => {
 			className={classes.filtersList}
 		>
 			{isPending && (<PendingCloak />)}
-			test
+			{
+				filtersItems.map((filter, index) => {
+					const key = `${filter.name}-${index}`;
+
+					return (
+						<FiltersListItem
+							key={key}
+							name={filter.name}
+							displayName={filter.displayName}
+						/>
+					);
+				})
+			}
 		</AdminControlContentBox>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { FiltersList };

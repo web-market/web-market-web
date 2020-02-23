@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-// import PropTypes from 'prop-types';
+import { FiltersContext } from '../../store';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
 import { FiltersAddForm } from './FiltersAddForm';
 import Button from '../../../../../baseComponents/Button';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
-import { FiltersContext } from '../../store';
 
 const FiltersAdd = () => {
 	const { forms } = useContext(FormsGlobalContext);
@@ -34,9 +33,5 @@ const FiltersAdd = () => {
 		</AdminControlContentBox>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { FiltersAdd };

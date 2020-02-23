@@ -6,19 +6,18 @@ import {
 } from './consts';
 
 export const initialState = {
-	categories: [],
-	isPending: false,
-	updatedCategoryId: null
+	filtersItems: [],
+	isPending: false
 };
 
 export const reducer = (state, payload) => {
 	actionLogger(payload.type, SET_PENDING);
-	console.log(payload.filters);
+
 	switch (payload.type) {
 		case SET_FILTERS:
 			return {
 				...state,
-				filters: [...payload.filters]
+				filtersItems: [...payload.filtersItems]
 			};
 		case SET_PENDING:
 			return {

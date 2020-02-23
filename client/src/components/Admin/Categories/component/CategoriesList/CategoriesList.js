@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { CategoriesContext } from '../../store';
 
 import AdminControlContentBox from '../../../AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
 
 import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
-import { CategoriesContext } from '../../store';
 
 const CategoriesList = () => {
 	const { deleteCategory, getCategoriesList, isPending, categories } = useContext(CategoriesContext);
@@ -42,12 +41,6 @@ const CategoriesList = () => {
 			}
 		</AdminControlContentBox>
 	);
-};
-
-CategoriesList.defaultProps = {};
-
-CategoriesList.propTypes = {
-	categories: PropTypes.array
 };
 
 export { CategoriesList };

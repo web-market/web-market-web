@@ -30,7 +30,7 @@ const FiltersAddForm = (
 						<Field
 							component={Textbox}
 							name="name"
-							label="!!!Название фильтра в магазине"
+							label="!!!Название фильтра а админ панеле"
 							required
 							validate={{
 								required: true
@@ -39,7 +39,7 @@ const FiltersAddForm = (
 						<Field
 							component={Textbox}
 							name="displayName"
-							label="!!!Название фильтра а админ панеле"
+							label="!!!Название фильтра в магазине"
 							required
 							validate={{
 								required: true

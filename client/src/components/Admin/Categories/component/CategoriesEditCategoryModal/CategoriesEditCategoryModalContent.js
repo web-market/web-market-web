@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { CategoriesContext } from '../../store';
+
 import Button from '../../../../../baseComponents/Button';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
-import { CategoriesContext } from '../../store';
 import CategoriesEditCategoryModalForm from './CategoriesEditCategoryModalForm';
 import { isNull } from '../../../../../utils';
 
