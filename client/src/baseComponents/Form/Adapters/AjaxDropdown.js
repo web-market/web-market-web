@@ -7,13 +7,13 @@ class AjaxDropdown extends Component {
 	render () {
 		const {
 			label,
-			required,
 			isValid,
-			errorMessages,
+			required,
+			hasFocus,
 			hasTooltip,
-			toolTipMessage,
 			toolTipIcon,
-			hasFocus
+			errorMessages,
+			toolTipMessage
 		} = this.props;
 
 		return (

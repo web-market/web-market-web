@@ -10,13 +10,14 @@ import PropTypes from 'prop-types';
 
 const CategoriesEditCategoryModalForm = (
 	{
+		id,
 		isPending,
 		handleClose,
-		initialValues,
-		handleUpdateCategory,
-		fieldsMetadata,
 		leftButtons,
-		rightButtons
+		rightButtons,
+		initialValues,
+		fieldsMetadata,
+		handleUpdateCategory
 	}
 ) => {
 	return (
@@ -52,7 +53,7 @@ const CategoriesEditCategoryModalForm = (
 									placeholder="!Выберите категорию"
 									hasTooltip
 									toolTipMessage="!Если оставить "
-									url={ENDPOINT.GET_ALL_CATEGORIES}
+									url={`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`}
 									displayValue={fieldsMetadata.parentCategoryMetadata.displayValue}
 									hasDefaultValue
 								/>
@@ -102,6 +103,7 @@ const CategoriesEditCategoryModalForm = (
 CategoriesEditCategoryModalForm.defaultProps = {};
 
 CategoriesEditCategoryModalForm.propTypes = {
+	id: PropTypes.number,
 	isPending: PropTypes.bool,
 	handleClose: PropTypes.func,
 	initialValues: PropTypes.object,

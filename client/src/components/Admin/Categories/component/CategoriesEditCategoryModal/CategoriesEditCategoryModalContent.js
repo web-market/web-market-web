@@ -114,6 +114,7 @@ const CategoriesEditCategoryModalContent = (
 			fieldsMetadata={fieldsMetadata}
 			leftButtons={leftButtons}
 			rightButtons={rightButtons}
+			id={modalData.id}
 		/>
 	);
 };

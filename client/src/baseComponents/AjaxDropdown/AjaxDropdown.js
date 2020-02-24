@@ -7,6 +7,7 @@ import { Dropdown } from '../Dropdown';
 const AjaxDropdown = (
 	{
 		url,
+		data,
 		value,
 		allowRequest,
 		onFieldFocus,
@@ -50,8 +51,9 @@ AjaxDropdown.defaultProps = {
 };
 
 AjaxDropdown.propTypes = {
+	data: PropTypes.object,
+	allowRequest: PropTypes.bool,
 	url: PropTypes.string.isRequired,
-	allowRequest: PropTypes.bool
 };
 
 export { AjaxDropdown };
