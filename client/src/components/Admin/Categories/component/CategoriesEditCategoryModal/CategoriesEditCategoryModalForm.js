@@ -53,7 +53,7 @@ const CategoriesEditCategoryModalForm = (
 									placeholder="!Выберите категорию"
 									hasTooltip
 									toolTipMessage="!Если оставить "
-									url={`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`}
+									url={`${ENDPOINT.GET_AVAILABLE_PARENT_CATEGORIES}/${id}`}
 									displayValue={fieldsMetadata.parentCategoryMetadata.displayValue}
 									hasDefaultValue
 								/>
@@ -103,7 +103,10 @@ const CategoriesEditCategoryModalForm = (
 CategoriesEditCategoryModalForm.defaultProps = {};
 
 CategoriesEditCategoryModalForm.propTypes = {
-	id: PropTypes.number,
+	id: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]),
 	isPending: PropTypes.bool,
 	handleClose: PropTypes.func,
 	initialValues: PropTypes.object,

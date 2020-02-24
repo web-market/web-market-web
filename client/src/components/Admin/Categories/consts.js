@@ -9,7 +9,7 @@ export const actions = {
 export const ENDPOINT = {
 	CATEGORY_BASE_CONTROLLER: '/categories',
 	GET_ALL_CATEGORIES: '/categories/all',
-	GET_AVAILABLE_PARENT_CATEGORIES: '/categories//availableParent/{id}',
+	GET_AVAILABLE_PARENT_CATEGORIES: '/categories/availableParent',
 	GET_CATEGORY: '/categories/category',
 };
 
