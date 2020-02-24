@@ -53,8 +53,7 @@ const Tooltip = (
 	return (
 		<div
 			ref={tooltipRef}
-			onMouseEnter={handleTooltipEnter}
-			onMouseLeave={handleTooltipLeave}
+			onClick={handleTooltipEnter}
 			className={componentClassName}
 		>
 			{tooltip || defaultContent}
@@ -63,6 +62,7 @@ const Tooltip = (
 					<OverlayPoint
 						position={position}
 						componentRef={tooltipRef.current}
+						onClose={handleTooltipLeave}
 						render={() => <Badge type={type} message={message} />}
 					/>
 				)

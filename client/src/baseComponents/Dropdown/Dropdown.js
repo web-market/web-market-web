@@ -132,6 +132,7 @@ const Dropdown = (
 					<OverlayPoint
 						componentRef={dropdownRef.current}
 						overlayBehavior="dropdown"
+						onClose={toggleDropdown}
 						render={
 							({ parentWidth }) => {
 								return (

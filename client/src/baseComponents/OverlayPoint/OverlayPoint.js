@@ -39,9 +39,10 @@ class OverlayPoint extends Component {
 	render () {
 		const {
 			render,
-			componentRef,
+			onClose,
 			position,
-			overlayBehavior
+			componentRef,
+			overlayBehavior,
 		} = this.props;
 
 		let style;
@@ -57,13 +58,20 @@ class OverlayPoint extends Component {
 		}
 
 		return createPortal(
-			<div
-				ref={this.layoutRef}
-				className={classes.layout}
-				style={style}
-			>
-				{ render({ parentWidth }) }
-			</div>,
+			<>
+				<div
+					ref={this.layoutRef}
+					className={classes.layout}
+					style={style}
+				>
+					{ render({ parentWidth }) }
+				</div>
+				<div
+					onClick={onClose}
+					className={classes.substrate}
+				>
+				</div>
+			</>,
 			overlayPortalNode
 		);
 	}
@@ -72,7 +80,8 @@ class OverlayPoint extends Component {
 OverlayPoint.propTypes = {
 	position: PropTypes.string,
 	overlayBehavior: PropTypes.string,
-	componentRef: PropTypes.object
+	componentRef: PropTypes.object,
+	onClose: PropTypes.func
 };
 
 export { OverlayPoint };

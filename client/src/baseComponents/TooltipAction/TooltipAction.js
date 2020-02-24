@@ -29,6 +29,7 @@ const TooltipAction = (
 			{
 				show && (
 					<OverlayPoint
+						onClose={handleTooltipActionClick}
 						position="bottom-left"
 						componentRef={tooltipActionRef.current}
 						render={() => <TooltipActionList actionList={actionList} />}
