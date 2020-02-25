@@ -5,7 +5,7 @@ import FormsContextProvider from './store/FormsGlobalContext';
 import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
 
 import OverlayCloak from '../baseComponents/OverlayCloak';
-import AdminPanel from '../components/Admin/AdminPanel';
+import AdminPanel from '../components/AdminPanel';
 
 import Link from '../baseComponents/Link';
 
