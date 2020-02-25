@@ -1,13 +1,18 @@
 import React, { useContext, useEffect } from 'react';
-import { FiltersContext } from '../../store';
 
-import { getUniqueKey } from '../../../../utils';
+import { FiltersContext } from '../../store';
+import { FiltersModalsContext } from '../FiltersModalsProvider';
+
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import FiltersListItem from './FiltersListItem';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
+import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
+import { MODALS } from '../../consts';
 
 const FiltersList = () => {
+	const { openModal } = useContext(FiltersModalsContext);
+
 	const {
 		isPending,
 		filtersItems,
@@ -24,7 +29,15 @@ const FiltersList = () => {
 	};
 
 	const handleFilterDelete = (id) => {
-		deleteFilter(id);
+		openModal(
+			MODALS.DELETE_FILTER_MODAL,
+			{
+				modalTitle: '!!Удалить фильтр',
+				rightButtonLabel: '!!Удалить',
+				handleSubmit: () => deleteFilter(id),
+				content: '!!Вы уверены, что хотите удалить фильтр?'
+			}
+		);
 	};
 
 	return (

@@ -31,7 +31,8 @@ const CategoriesDeleteCategoryModal = (
 
 CategoriesDeleteCategoryModal.propTypes = {
 	handleClose: PropTypes.func,
-	isOpen: PropTypes.bool
+	isOpen: PropTypes.bool,
+	modalData: PropTypes.object
 };
 
 export { CategoriesDeleteCategoryModal };

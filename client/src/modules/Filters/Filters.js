@@ -1,5 +1,8 @@
 import React from 'react';
+
 import FiltersContextProvider from './store';
+import FiltersModalsProvider from './components/FiltersModalsProvider';
+
 
 import AdminControlHeader from '../../components/AdminControlHeader';
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
@@ -13,14 +16,16 @@ const Filters = () => {
 				label="!!!Фильтры"
 			/>
 			<FiltersContextProvider>
-				<GridLayout>
-					<GridLayoutRow
-						grid="7-5"
-					>
-						<FiltersList />
-						<FiltersAdd />
-					</GridLayoutRow>
-				</GridLayout>
+				<FiltersModalsProvider>
+					<GridLayout>
+						<GridLayoutRow
+							grid="7-5"
+						>
+							<FiltersList />
+							<FiltersAdd />
+						</GridLayoutRow>
+					</GridLayout>
+				</FiltersModalsProvider>
 			</FiltersContextProvider>
 		</>
 	);

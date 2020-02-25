@@ -43,7 +43,7 @@ export default (dispatch) => {
 	};
 
 	const deleteFilter = (id) => {
-		deleteFilterAPI(id)
+		return deleteFilterAPI(id)
 			.then(() => getFiltersList());
 	};
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CategoriesContextProvider from './store';
 import CategoriesModalsProvider from './components/CategoriesModalsProvider';
 

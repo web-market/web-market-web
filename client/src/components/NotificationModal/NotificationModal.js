@@ -1,15 +1,39 @@
 import React from 'react';
-import { Modal } from '../../baseComponents/Modal/Modal';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const NotificationModal = () => {
+import Modal from '../../baseComponents/Modal';
+import NotificationModalContent from './NotificationModalContent';
+
+const NotificationModal = (
+	{
+		isOpen,
+		modalData,
+		handleClose
+	}
+) => {
 	return (
-		<Modal />
+		<Modal
+			size="small"
+			isOpen={isOpen}
+			handleClose={handleClose}
+			render={renderData => {
+				return (
+					<NotificationModalContent
+						{...renderData}
+						modalData={modalData}
+						handleClose={handleClose}
+					/>
+				);
+			}}
+		/>
 	);
 };
 
-// NAME.defaultProps = {};
 
-// NAME.propTypes = {};
+NotificationModal.propTypes = {
+	isOpen: PropTypes.bool,
+	modalData: PropTypes.object,
+	handleClose: PropTypes.func
+};
 
-export default NotificationModal;
+export { NotificationModal };

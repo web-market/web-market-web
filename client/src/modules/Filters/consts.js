@@ -5,3 +5,6 @@ export const ENDPOINT = {
     GET_ALL_FILTERS: '/filters/all'
 };
 
+export const MODALS = {
+	DELETE_FILTER_MODAL: 'DELETE_FILTER_MODAL'
+};
