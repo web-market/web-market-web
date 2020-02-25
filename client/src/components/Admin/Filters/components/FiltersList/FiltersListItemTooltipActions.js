@@ -30,7 +30,10 @@ const FiltersListItemTooltipActions = (
 	}, [id, handleFilterDelete, handleFilterEdit]);
 
 	return (
-		<TooltipAction actionList={actions} />
+		<TooltipAction
+			className={classes.filtersListItemTooltipActions}
+			actionList={actions}
+		/>
 	);
 };
 

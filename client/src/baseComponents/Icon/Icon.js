@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import Classnames from 'classnames';
+import ClassNames from 'classnames';
 import classes from '../../styles/index.scss';
 
 const Icon = ({ icon, className, onClick }) => {
-	const componentClassName = Classnames(
+	const componentClassName = ClassNames(
 		className,
 		icon,
 		classes.ti

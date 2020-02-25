@@ -7,11 +7,15 @@ import classes from './styles/index.scss';
 
 const TooltipActionList = (
 	{
-		actionList
+		actionList,
+		handleOnClick
 	}
 ) => {
 	return (
-		<div className={classes.tooltipActionList}>
+		<div
+			onClick={handleOnClick}
+			className={classes.tooltipActionList}
+		>
 			{
 				actionList.map((actionItem, index) => {
 					const key = getUniqueKey(actionItem.name, index);
@@ -36,7 +40,8 @@ TooltipActionList.defaultProps = {
 };
 
 TooltipActionList.propTypes = {
-	actionList: PropTypes.array
+	actionList: PropTypes.array,
+	handleOnClick: PropTypes.func
 };
 
 export default TooltipActionList;

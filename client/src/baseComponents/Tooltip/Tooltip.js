@@ -5,7 +5,7 @@ import OverlayPoint from '../OverlayPoint';
 import Icon from '../Icon';
 import Badge from '../Badge';
 import { exclamation } from '../../icons';
-import Classnames from 'classnames';
+import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 
 const Tooltip = (
@@ -22,12 +22,12 @@ const Tooltip = (
 	const [show, setShow] = useState(false);
 	const tooltipRef = useRef(null);
 
-	const componentClassName = Classnames(
+	const componentClassName = ClassNames(
 		classes.tooltip,
 		tooltipClassName
 	);
 
-	const tooltipIconClassname = Classnames(
+	const tooltipIconClassname = ClassNames(
 		iconClassName,
 		{
 			[classes.tooltip_defaultIcon__danger]: type === 'danger'

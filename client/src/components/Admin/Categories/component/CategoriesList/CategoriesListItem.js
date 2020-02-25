@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
+
 import { CategoriesModalsContext } from '../CategoriesModalsProvider';
+import CategoriesListItemTooltipActions from './CategoriesListItemTooltipActions';
+import Icon from '../../../../../baseComponents/Icon';
 
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
-import { chevronDown, chevronUp, pencil, trash } from '../../../../../icons';
+import { chevronDown, chevronUp } from '../../../../../icons';
 import { COLORS } from '../../../../../styles/baseColors';
-import Icon from '../../../../../baseComponents/Icon';
 import { getUniqueKey, isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
 import { MODALS } from '../../consts';
@@ -105,17 +107,10 @@ const CategoriesListItem = (
 								/>
 							)
 						}
-						<Icon
-							icon={pencil}
-							color={COLORS.FIELD_ICON}
-							onClick={() => handleEditCategory(category.id)}
-							className={classes.category_item_editButton}
-						/>
-						<Icon
-							icon={trash}
-							color={COLORS.FIELD_ICON}
-							onClick={() => handleDeleteCategory(category.id)}
-							className={classes.category_item_deleteButton}
+						<CategoriesListItemTooltipActions
+							id={category.id}
+							handleEditCategory={handleEditCategory}
+							handleDeleteCategory={handleDeleteCategory}
 						/>
 					</div>
 				</div>
