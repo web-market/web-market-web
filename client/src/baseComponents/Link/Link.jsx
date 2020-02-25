@@ -44,6 +44,10 @@ const Link = (
 	return getLink();
 };
 
+Link.defaultProps = {
+	hasRoute: true
+};
+
 Link.propTypes = {
 	content: PropTypes.oneOfType([
 		PropTypes.string.isRequired,

@@ -44,7 +44,7 @@ const CategoriesDeleteCategoryModalContent = (
 		<Button
 			actionHandler={() => forms.DELETE_CATEGORY_FORM.submitForm()}
 			label="!!Удалить"
-			type="primary"
+			type="danger"
 		/>
 	);
 

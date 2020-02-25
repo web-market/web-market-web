@@ -5,9 +5,9 @@ import FormsContextProvider from './store/FormsGlobalContext';
 import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
 
 import OverlayCloak from '../baseComponents/OverlayCloak';
-import Sandbox from '../Sandbox/Sandbox';
 import AdminPanel from '../components/Admin/AdminPanel';
-import StoreModule from '../components/Store/StoreModule';
+
+import Link from '../baseComponents/Link';
 
 import '../styles/index.scss';
 
@@ -21,9 +21,10 @@ class App extends Component {
 			<FormsContextProvider>
 				<Router>
 					<Switch>
-						<Route path="/sandbox" component={Sandbox} />
 						<Route path="/adminpanel" component={AdminPanel} />
-						<Route path="/" component={StoreModule} />
+						<Route path="/">
+							<Link link="/adminpanel" content="Admin panel" />
+						</Route>
 					</Switch>
 				</Router>
 				<OverlayCloak
