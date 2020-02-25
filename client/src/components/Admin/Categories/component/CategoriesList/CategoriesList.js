@@ -7,17 +7,23 @@ import CategoriesListItem from './CategoriesListItem';
 import classes from './styles/index.scss';
 import PendingCloak from '../../../../../baseComponents/PendingCloak';
 import { getUniqueKey } from '../../../../../utils';
+import { MODALS } from '../../consts';
+import { CategoriesModalsContext } from '../CategoriesModalsProvider';
 
 const CategoriesList = () => {
-	const { deleteCategory, getCategoriesList, isPending, categories } = useContext(CategoriesContext);
+	const { getCategoriesList, isPending, categories } = useContext(CategoriesContext);
+	const { openModal } = useContext(CategoriesModalsContext);
 
 	useEffect(() => {
 		getCategoriesList();
 	}, []);
 
 	const handleDeleteCategory = (id) => {
-		deleteCategory(id)
-			.then(() => getCategoriesList());
+		openModal(MODALS.DELETE_CATEGORY_MODAL, { id });
+	};
+
+	const handleEditCategory = (id) => {
+		openModal(MODALS.EDIT_CATEGORY_MODAL, { id });
 	};
 
 	return (
@@ -35,6 +41,7 @@ const CategoriesList = () => {
 							key={key}
 							category={category}
 							handleDeleteCategory={handleDeleteCategory}
+							handleEditCategory={handleEditCategory}
 						/>
 					);
 				})

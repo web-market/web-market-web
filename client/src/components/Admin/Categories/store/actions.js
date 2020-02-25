@@ -62,6 +62,7 @@ export default (dispatch) => {
 
 		return deleteCategoryAPI(id)
 			.then(() => resetCategories())
+			.then(() => getCategoriesList())
 			.catch(error => console.log(error))
 			.finally(() => setPending(false));
 	};

@@ -1,6 +1,7 @@
 import React, { useState, createContext } from 'react';
 
 import CategoriesEditCategoryModal from '../CategoriesEditCategoryModal';
+import CategoriesDeleteCategoryModal from '../CategoriesDeleteCategoryModal';
 import { MODALS } from '../../consts';
 
 export const CategoriesModalsContext = createContext();
@@ -8,9 +9,11 @@ export const CategoriesModalsContext = createContext();
 export const CategoriesModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
 	const modalState = {
-		[MODALS.EDIT_CATEGORY_MODAL]: setIsEditModalOpen
+		[MODALS.EDIT_CATEGORY_MODAL]: setIsEditModalOpen,
+		[MODALS.DELETE_CATEGORY_MODAL]: setIsDeleteModalOpen
 	};
 
 	const openModal = (modalName, data) => {
@@ -39,6 +42,11 @@ export const CategoriesModalsProvider = ({ children }) => {
 				handleClose={() => closeModal(MODALS.EDIT_CATEGORY_MODAL)}
 				modalData={modalData}
 				isOpen={isEditModalOpen}
+			/>
+			<CategoriesDeleteCategoryModal
+				handleClose={() => closeModal(MODALS.DELETE_CATEGORY_MODAL)}
+				modalData={modalData}
+				isOpen={isDeleteModalOpen}
 			/>
 		</>
 	);

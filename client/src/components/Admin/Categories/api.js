@@ -14,8 +14,8 @@ const addCategory = (data) => {
 	return POST(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
 };
 
-const deleteCategory = (id) => {
-	return DELETE(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
+const deleteCategory = (data) => {
+	return DELETE(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
 };
 
 const getCategory = (id) => {
@@ -27,10 +27,10 @@ const updateCategory = (data) => {
 };
 
 export {
-	getAllCategories,
-	getSubCategories,
+	getCategory,
 	addCategory,
-	deleteCategory,
 	updateCategory,
-	getCategory
+	deleteCategory,
+	getAllCategories,
+	getSubCategories
 };

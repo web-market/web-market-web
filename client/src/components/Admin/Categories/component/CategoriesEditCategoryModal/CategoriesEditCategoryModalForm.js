@@ -86,14 +86,12 @@ const CategoriesEditCategoryModalForm = (
 							</FormLayoutItem>
 						</FormLayoutItemGroup>
 					</FormLayout>
-					<button type="submit">asdasdas</button>
 				</Form>
 			</ModalContent>
 			<ModalFooter>
 				<ButtonGroup
 					leftButtons={leftButtons}
 					rightButtons={rightButtons}
-					initialValues={initialValues}
 				/>
 			</ModalFooter>
 		</>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { CategoriesModalsContext } from '../CategoriesModalsProvider';
 import CategoriesListItemTooltipActions from './CategoriesListItemTooltipActions';
 import Icon from '../../../../../baseComponents/Icon';
 
@@ -11,16 +10,14 @@ import { chevronDown, chevronUp } from '../../../../../icons';
 import { COLORS } from '../../../../../styles/baseColors';
 import { getUniqueKey, isNull } from '../../../../../utils';
 import { getSubCategories } from '../../api';
-import { MODALS } from '../../consts';
 
 const CategoriesListItem = (
 	{
 		category,
+		handleEditCategory,
 		handleDeleteCategory
 	}
 	) => {
-	const { openModal } = useContext(CategoriesModalsContext);
-
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
 	const [hasFetched, setHasFetched] = useState(false);
@@ -34,10 +31,6 @@ const CategoriesListItem = (
 		if (category.hasSubCategories) {
 			setShowCategories(!showCategories);
 		}
-	};
-
-	const handleEditCategory = (id) => {
-		openModal(MODALS.EDIT_CATEGORY_MODAL, { id });
 	};
 
 	const handleGetSubCategories = useCallback(() => {
@@ -151,6 +144,7 @@ const CategoriesListItem = (
 CategoriesListItem.propTypes = {
 	category: PropTypes.object.isRequired,
 	handleDeleteCategory: PropTypes.func.isRequired,
+	handleEditCategory: PropTypes.func.isRequired,
 };
 
 export default CategoriesListItem;
