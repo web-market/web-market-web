@@ -3,7 +3,7 @@ import CategoriesContextProvider from './store';
 import CategoriesModalsProvider from './component/CategoriesModalsProvider';
 
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
-import AdminControlHeader from '../AdminControlHeader';
+import AdminControlHeader from '../../components/AdminControlHeader';
 import CategoriesList from './component/CategoriesList';
 import CategoriesAdd from './component/CategoriesAdd';
 

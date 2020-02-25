@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { FiltersContext } from '../../store';
 
 import { getUniqueKey } from '../../../../utils';
-import AdminControlContentBox from '../../../AdminControlContentBox';
+import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import FiltersListItem from './FiltersListItem';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
 import classes from './styles/index.scss';

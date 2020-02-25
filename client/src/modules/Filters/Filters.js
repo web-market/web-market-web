@@ -1,7 +1,7 @@
 import React from 'react';
 import FiltersContextProvider from './store';
 
-import AdminControlHeader from '../AdminControlHeader';
+import AdminControlHeader from '../../components/AdminControlHeader';
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
 import FiltersList from './components/FiltersList';
 import FiltersAdd from './components/FiltersAdd';

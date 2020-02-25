@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CategoriesContext } from '../../store';
 
-import AdminControlContentBox from '../../../AdminControlContentBox';
+import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesAddForm from './CategoriesAddForm';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 import Button from '../../../../baseComponents/Button';

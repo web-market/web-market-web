@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { CategoriesContext } from '../../store';
 
-import AdminControlContentBox from '../../../AdminControlContentBox';
+import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
 
 import classes from './styles/index.scss';
