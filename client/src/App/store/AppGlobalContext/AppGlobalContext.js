@@ -4,7 +4,7 @@ export const AppGlobalContext = createContext();
 
 export const AppGlobalContextProvider = ({ children }) => {
 	const [showOverlayCloak, setShowOverlayCloak] = useState(false);
-	const [handleClose, setHandleClose] = useState(() => {});
+	const [handleOverlayClose, setHandleOverlayClose] = useState(() => {});
 
 	const handleShowOverlayCloak = (show) => {
 		setShowOverlayCloak(show);
@@ -14,9 +14,9 @@ export const AppGlobalContextProvider = ({ children }) => {
 		<AppGlobalContext.Provider
 			value={{
 				showOverlayCloak,
-				handleShowOverlayCloak,
-				handleClose,
-				setHandleClose
+				handleOverlayClose,
+				setHandleOverlayClose,
+				handleShowOverlayCloak
 			}}
 		>
 			{children}

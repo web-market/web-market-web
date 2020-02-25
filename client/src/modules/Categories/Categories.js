@@ -1,11 +1,11 @@
 import React from 'react';
 import CategoriesContextProvider from './store';
-import CategoriesModalsProvider from './component/CategoriesModalsProvider';
+import CategoriesModalsProvider from './components/CategoriesModalsProvider';
 
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
 import AdminControlHeader from '../../components/AdminControlHeader';
-import CategoriesList from './component/CategoriesList';
-import CategoriesAdd from './component/CategoriesAdd';
+import CategoriesList from './components/CategoriesList';
+import CategoriesAdd from './components/CategoriesAdd';
 
 const Categories = () => {
 	return (

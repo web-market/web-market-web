@@ -17,15 +17,15 @@ const Modal = (
 		size
 	}
 ) => {
-	const { handleShowOverlayCloak, setHandleClose, showOverlayCloak } = useContext(AppGlobalContext);
+	const { handleShowOverlayCloak, setHandleOverlayClose, showOverlayCloak } = useContext(AppGlobalContext);
 	const [hasMounted, setHasMounted] = useState(false);
 
 	useEffect(() => {
 		if (isOpen) {
-			setHandleClose(() => handleClose);
+			setHandleOverlayClose(() => handleClose);
 			setTimeout(() => setHasMounted(isOpen), 50);
 		} else {
-			setHandleClose(() => {});
+			setHandleOverlayClose(() => {});
 			setTimeout(() => setHasMounted(isOpen), 50);
 		}
 

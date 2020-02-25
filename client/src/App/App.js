@@ -15,7 +15,7 @@ class App extends Component {
 	static contextType = AppGlobalContext;
 
 	render () {
-		const { showOverlayCloak, handleClose } = this.context;
+		const { showOverlayCloak, handleOverlayClose } = this.context;
 
 		return (
 			<FormsContextProvider>
@@ -29,7 +29,7 @@ class App extends Component {
 				</Router>
 				<OverlayCloak
 					show={showOverlayCloak}
-					handleClose={handleClose}
+					handleOverlayClose={handleOverlayClose}
 				/>
 			</FormsContextProvider>
 		);

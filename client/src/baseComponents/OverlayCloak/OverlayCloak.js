@@ -42,8 +42,8 @@ class OverlayCloak extends PureComponent {
 
 		return (
 			<div
-				onClick={this.props.handleClose}
 				className={componentClassName}
+				onClick={this.props.handleOverlayClose}
 			>
 			</div>
 		);
@@ -51,12 +51,12 @@ class OverlayCloak extends PureComponent {
 }
 
 OverlayCloak.defaultProps = {
-	handleClose: () => {}
+	handleOverlayClose: () => {}
 };
 
 OverlayCloak.propTypes = {
 	show: PropTypes.bool,
-	handleClose: PropTypes.func
+	handleOverlayClose: PropTypes.func
 };
 
 export { OverlayCloak };
