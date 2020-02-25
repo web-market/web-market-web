@@ -13,6 +13,7 @@ class Dropdown extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
+			displayInline,
 			hasFocus
 		} = this.props;
 
@@ -26,6 +27,7 @@ class Dropdown extends Component {
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}
 				hasFocus={hasFocus}
+				displayInline={displayInline}
 			>
 				<DropdownComponent
 					{...this.props}

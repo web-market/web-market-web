@@ -2,6 +2,12 @@
 
 }
 
+.formFieldBox_displayInline {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
 .formFieldBox_labelWrapper {
 	font-weight: 400;
 	font-size: 14px;
@@ -47,6 +53,10 @@
 	right: -7px;
 	top: -10px;
 	z-index: 1;
+}
+
+.formFieldBox_fieldWrapper__displayInline {
+	margin-right: 4px;
 }
 
 .formFieldBox_errorTooltipIcon {

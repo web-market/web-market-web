@@ -24,7 +24,7 @@ const CategoriesEditCategoryModalForm = (
 		<>
 			<ModalHeader
 				handleClose={handleClose}
-				label="!!!Редактирование категории"
+				label="!!!Редактировать категорию"
 			/>
 			<ModalContent isPending={isPending}>
 				<Form

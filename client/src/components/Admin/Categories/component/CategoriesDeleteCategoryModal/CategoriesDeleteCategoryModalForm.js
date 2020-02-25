@@ -21,7 +21,7 @@ const CategoriesDeleteCategoryModalForm = (
 		<>
 			<ModalHeader
 				handleClose={handleClose}
-				label="!!!Удаление категории"
+				label="!!!Удалить категорию"
 			/>
 			<ModalContent isPending={isPending}>
 				<Form
@@ -32,6 +32,7 @@ const CategoriesDeleteCategoryModalForm = (
 						<FormLayoutItemGroup>
 							<FormLayoutItem>
 								<Field
+									displayInline
 									component={Checkbox}
 									name="deleteChildCategories"
 									label="!!!Удалить дочернии категории?"

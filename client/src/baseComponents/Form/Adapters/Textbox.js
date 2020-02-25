@@ -13,6 +13,7 @@ class Textbox extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
+			displayInline,
 			hasFocus
 		} = this.props;
 
@@ -21,6 +22,7 @@ class Textbox extends Component {
 				label={label}
 				required={required}
 				hasErrors={!isValid}
+				displayInline={displayInline}
 				errorMessages={errorMessages}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}

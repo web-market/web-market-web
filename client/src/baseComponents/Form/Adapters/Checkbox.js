@@ -7,19 +7,21 @@ class Checkbox extends Component {
 	render () {
 		const {
 			label,
+			isValid,
 			hasTooltip,
-			toolTipMessage,
 			toolTipIcon,
-			isValid
+			displayInline,
+			toolTipMessage
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
-				hasErrors={!isValid}
 				hasBorder={false}
+				hasErrors={!isValid}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
+				displayInline={displayInline}
 				toolTipMessage={toolTipMessage}
 			>
 				<CheckboxComponent

@@ -17,14 +17,22 @@ const FormFieldBox = (
 		hasTooltip,
 		toolTipIcon,
 		toolTipMessage,
-		hasFocus
+		hasFocus,
+		displayInline
 	}
 ) => {
+	const componentClassName = classNames(
+		{
+			[classes.formFieldBox_displayInline]: displayInline
+		}
+	);
+
 	const fieldWrapperClassName = classNames(
 		{
 			[classes.formFieldBox_fieldWrapper__hasError]: hasErrors,
 			[classes.formFieldBox_fieldWrapper]: hasBorder,
-			[classes.formFieldBox_fieldWrapper__hasFocus]: hasFocus
+			[classes.formFieldBox_fieldWrapper__hasFocus]: hasFocus,
+			[classes.formFieldBox_fieldWrapper__displayInline]: displayInline
 		}
 	);
 
@@ -37,7 +45,7 @@ const FormFieldBox = (
 	};
 
 	return (
-		<>
+		<div className={componentClassName}>
 			<div className={classes.formFieldBox_labelWrapper}>
 				<div>
 					{label}
@@ -73,14 +81,15 @@ const FormFieldBox = (
 				}
 				{children}
 			</div>
-		</>
+		</div>
 	);
 };
 
 FormFieldBox.defaultProps = {
 	hasBorder: true,
-	hasTooltip: false,
 	hasFocus: false,
+	hasTooltip: false,
+	displayInline: false,
 };
 
 FormFieldBox.propTypes = {
@@ -91,6 +100,7 @@ FormFieldBox.propTypes = {
 	hasBorder: PropTypes.bool,
 	hasFocus: PropTypes.bool,
 	hasTooltip: PropTypes.bool,
+	displayInline: PropTypes.bool,
 	toolTipIcon: PropTypes.string,
 	toolTipMessage: PropTypes.string,
 };

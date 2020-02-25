@@ -13,6 +13,7 @@ class Textarea extends Component {
 			hasTooltip,
 			toolTipMessage,
 			toolTipIcon,
+			displayInline,
 			hasFocus
 		} = this.props;
 
@@ -22,6 +23,7 @@ class Textarea extends Component {
 				required={required}
 				hasErrors={!isValid}
 				errorMessages={errorMessages}
+				displayInline={displayInline}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}

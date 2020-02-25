@@ -13,7 +13,8 @@ class AjaxDropdown extends Component {
 			hasTooltip,
 			toolTipIcon,
 			errorMessages,
-			toolTipMessage
+			toolTipMessage,
+			displayInline
 		} = this.props;
 
 		return (
@@ -25,6 +26,7 @@ class AjaxDropdown extends Component {
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}
+				displayInline={displayInline}
 				hasFocus={hasFocus}
 			>
 				<AjaxDropdownComponent
