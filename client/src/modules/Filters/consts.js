@@ -3,6 +3,7 @@ export const EDIT_FILTER_FORM = 'EDIT_FILTER_FORM';
 
 export const ENDPOINT = {
     FILTERS_BASE_CONTROLLER: '/filters',
+    FILTER_VALUE_BASE_CONTROLLER: '/filterValues',
     GET_ALL_FILTERS: '/filters/all'
 };
 

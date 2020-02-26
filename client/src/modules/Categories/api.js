@@ -2,20 +2,19 @@ import { GET, POST, DELETE, PUT } from '../../utils/api';
 import { ENDPOINT } from './consts';
 
 const getAllCategories = () => {
-	return GET(ENDPOINT.CATEGORY_BASE_CONTROLLER);
+	return GET(ENDPOINT.GET_CATEGORY_LIST);
 };
 
 const getSubCategories = (id) => {
-	return GET(`${ENDPOINT.CATEGORY_BASE_CONTROLLER}/${id}`);
+	return GET(`${ENDPOINT.GET_SUB_CATEGORIES_LIST}/${id}`);
 };
 
-
 const addCategory = (data) => {
-	return POST(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
+	return POST(ENDPOINT.ADD_CATEGORY, data);
 };
 
 const deleteCategory = (data) => {
-	return DELETE(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
+	return DELETE(ENDPOINT.ADD_CATEGORY, data);
 };
 
 const getCategory = (id) => {
@@ -23,7 +22,7 @@ const getCategory = (id) => {
 };
 
 const updateCategory = (data) => {
-	return PUT(ENDPOINT.CATEGORY_BASE_CONTROLLER, data);
+	return PUT(ENDPOINT.ADD_CATEGORY, data);
 };
 
 export {

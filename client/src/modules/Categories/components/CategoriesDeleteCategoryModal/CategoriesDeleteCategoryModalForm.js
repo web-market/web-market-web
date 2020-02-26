@@ -34,7 +34,7 @@ const CategoriesDeleteCategoryModalForm = (
 								<Field
 									displayInline
 									component={Checkbox}
-									name="deleteChildCategories"
+									name="deleteSubCategories"
 									label="!!!Удалить дочернии категории?"
 								/>
 							</FormLayoutItem>

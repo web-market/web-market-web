@@ -7,10 +7,12 @@ export const actions = {
 };
 
 export const ENDPOINT = {
-	CATEGORY_BASE_CONTROLLER: '/categories',
-	GET_ALL_CATEGORIES: '/categories/all',
-	GET_AVAILABLE_PARENT_CATEGORIES: '/categories/availableParent',
-	GET_CATEGORY: '/categories/category',
+	ADD_CATEGORY: '/category-management/categories',
+	GET_CATEGORY: '/category-management/categories',
+	GET_CATEGORY_LIST: '/category-management/root-categories',
+	GET_ALL_CATEGORIES: '/category-management/categories/fill-dropdown',
+	GET_SUB_CATEGORIES_LIST: '/category-management/root-categories',
+	GET_AVAILABLE_PARENT_CATEGORIES: '/category-management/available-parent-categories/',
 };
 
 export const MODALS = {

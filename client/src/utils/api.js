@@ -16,8 +16,8 @@ const PUT = (url, data) => {
 	return axiosInstance.put(url, data);
 };
 
-const DELETE = (url) => {
-	return axiosInstance.delete(url);
+const DELETE = (url, data = {}) => {
+	return axiosInstance.delete(url, data);
 };
 
 export {

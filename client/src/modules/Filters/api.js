@@ -13,9 +13,14 @@ const deleteFilter = (id) => {
 	return DELETE(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/${id}`);
 };
 
+const addFilterValue = (data) => {
+	return POST(ENDPOINT.FILTER_VALUE_BASE_CONTROLLER, data);
+};
+
 
 export {
     getFilters,
     addFilter,
-	deleteFilter
+	deleteFilter,
+	addFilterValue
 };

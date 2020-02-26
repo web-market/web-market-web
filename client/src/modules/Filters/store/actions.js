@@ -1,7 +1,8 @@
 import {
 	getFilters as getFiltersAPI,
 	addFilter as addFilterAPI,
-	deleteFilter as deleteFilterAPI
+	deleteFilter as deleteFilterAPI,
+	addFilterValue as addFilterValueAPI
 } from '../api';
 
 import {
@@ -47,9 +48,14 @@ export default (dispatch) => {
 			.then(() => getFiltersList());
 	};
 
+	const addFilterValue = (data) => {
+		return addFilterValueAPI(data);
+	};
+
 	return {
 		addFilter,
 		getFiltersList,
-		deleteFilter
+		deleteFilter,
+		addFilterValue
 	};
 };
