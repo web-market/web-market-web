@@ -36,6 +36,8 @@ const FiltersAddForm = (
 								required: true
 							}}
 						/>
+					</FormLayoutItem>
+					<FormLayoutItem>
 						<Field
 							component={Textbox}
 							name="displayName"

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../../../../baseComponents/Modal';
-import CategoriesEditCategoryModalContent from './CategoriesEditCategoryModalContent';
+import FiltersEditFilterModalContent from './FiltersEditFilterModalContent';
 
-const CategoriesEditCategoryModal = (
+const FiltersEditFilterModal = (
 	{
 		isOpen,
 		modalData,
@@ -17,7 +17,7 @@ const CategoriesEditCategoryModal = (
 			handleClose={handleClose}
 			render={renderData => {
 				return (
-					<CategoriesEditCategoryModalContent
+					<FiltersEditFilterModalContent
 						{...renderData}
 						modalData={modalData}
 					/>
@@ -27,11 +27,10 @@ const CategoriesEditCategoryModal = (
 	);
 };
 
-
-CategoriesEditCategoryModal.propTypes = {
-	handleClose: PropTypes.func,
+FiltersEditFilterModal.propTypes = {
 	isOpen: PropTypes.bool,
+	handleClose: PropTypes.func,
 	modalData: PropTypes.object
 };
 
-export { CategoriesEditCategoryModal };
+export { FiltersEditFilterModal };

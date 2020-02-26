@@ -25,7 +25,7 @@ const FiltersList = () => {
 	}, []);
 
 	const handleFilterEdit = (id) => {
-		console.log(id);
+		openModal(MODALS.EDIT_FILTER_MODAL, { id });
 	};
 
 	const handleFilterDelete = (id) => {
