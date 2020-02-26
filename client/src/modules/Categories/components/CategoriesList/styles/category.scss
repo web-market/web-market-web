@@ -10,8 +10,9 @@
 }
 
 .category_item {
+	line-height: 3.35em;
 	border-bottom: 1px solid $secondary;
-	padding: 16px 4px 16px 12px;
+	padding: 0 4px 0 12px;
 	box-sizing: border-box;
 }
 
@@ -23,10 +24,6 @@
 .category_item_labelBadge {
 	width: 2px;
 	position: absolute;
-}
-
-.category_itemLabel {
-	margin-left: 8px;
 }
 
 .category_item_collapseButton,
@@ -61,7 +58,7 @@
 }
 
 .category_item_subCategoryItem {
-	margin-right: -12px;
+	margin-right: -4px;
 }
 
 .category_item__hasChild {

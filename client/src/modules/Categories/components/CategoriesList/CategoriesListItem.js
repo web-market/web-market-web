@@ -85,9 +85,7 @@ const CategoriesListItem = (
 								</div>
 							)
 						}
-						<span className={classes.category_itemLabel}>
-							{category.name}
-						</span>
+						{category.name}
 					</div>
 					<div className={classes.category_item_actionSection}>
 						{
@@ -119,6 +117,7 @@ const CategoriesListItem = (
 					key={key}
 					category={category}
 					handleDeleteCategory={handleDeleteCategory}
+					handleEditCategory={handleEditCategory}
 				/>
 			);
 		});
