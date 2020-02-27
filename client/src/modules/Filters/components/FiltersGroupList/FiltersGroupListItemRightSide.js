@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+
+import { FiltersContext } from '../../store';
 
 import Button from '../../../../baseComponents/Button';
 import FiltersGroupListItemTooltipActions from './FiltersGroupListItemTooltipActions';
@@ -17,10 +19,12 @@ const FiltersListItemLeftSide = (
 		handleShowFilterGroupValues
 	}
 ) => {
+	const { hasFilterGroupValues } = useContext(FiltersContext);
+
 	return (
 		<div className={classes.filtersGroupListItem_right}>
 			{
-				hasFilterValues && (
+				(hasFilterValues || hasFilterGroupValues[id]) && (
 					<Button
 						size="tiny"
 						type="secondary"

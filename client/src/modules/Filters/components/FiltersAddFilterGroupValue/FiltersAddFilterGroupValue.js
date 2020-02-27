@@ -9,11 +9,14 @@ import { ADD_FILTER_VALUE_FORM } from '../../consts';
 
 const FiltersAddFilterGroupValue = ({ id }) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addFilterGroupValue, filterGroupValueHandler } = useContext(FiltersContext);
+	const { addFilterGroupValue, filterGroupValueHandler, setFilterGroupHasValue } = useContext(FiltersContext);
 
 	const handleAddFilterValue = (values) => {
 		addFilterGroupValue({ filterId: id, ...values })
-			.then(() => filterGroupValueHandler[id]());
+			.then(() => {
+				filterGroupValueHandler[id]();
+				setFilterGroupHasValue(true, id);
+			});
 	};
 
 	return (

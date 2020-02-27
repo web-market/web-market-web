@@ -10,7 +10,8 @@ import {
 import {
 	SET_FILTERS,
 	SET_PENDING,
-	SET_FILTER_GROUP_VALUE_HANDLER
+	SET_FILTER_GROUP_HAS_ADDED_VALUE,
+	SET_FILTER_GROUP_GET_VALUES_HANDLER
 } from './consts';
 
 export default (dispatch) => {
@@ -30,7 +31,7 @@ export default (dispatch) => {
 
 	const setFilterGroupValueHandler = (handler, handlerId) => {
 		dispatch({
-			type: SET_FILTER_GROUP_VALUE_HANDLER,
+			type: SET_FILTER_GROUP_GET_VALUES_HANDLER,
 			handlerMetadata: {
 				handler,
 				handlerId,
@@ -38,6 +39,15 @@ export default (dispatch) => {
 		});
 	};
 
+	const setFilterGroupHasValue = (hasValue, filterGroupId) => {
+		dispatch({
+			type: SET_FILTER_GROUP_HAS_ADDED_VALUE,
+			filterGroupMetadata: {
+				hasValue,
+				filterGroupId
+			}
+		});
+	};
 
 	const getFiltersList = () => {
 		setPending(true);
@@ -82,6 +92,7 @@ export default (dispatch) => {
 		addFilterValue,
 		addFilterGroupValue,
 		getFilterGroupValue,
+		setFilterGroupHasValue,
 		setFilterGroupValueHandler
 	};
 };
