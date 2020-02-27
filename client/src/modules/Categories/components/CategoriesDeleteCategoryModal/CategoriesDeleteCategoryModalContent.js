@@ -15,7 +15,7 @@ const CategoriesDeleteCategoryModalContent = (
 ) => {
 	const [isPending, setIsPending] = useState(false);
 	const { forms } = useContext(FormsGlobalContext);
-	const { deleteCategory } = useContext(CategoriesContext);
+	const { deleteCategory, getCategoriesList } = useContext(CategoriesContext);
 
 	const handleClose = useCallback(() => {
 		handleCloseFromProps();
@@ -25,6 +25,7 @@ const CategoriesDeleteCategoryModalContent = (
 		setIsPending(true);
 
 		deleteCategory({ id: modalData.id, ...values })
+			.then(() => getCategoriesList())
 			.then(() => handleClose())
 			.catch(e => {
 				console.log(e);

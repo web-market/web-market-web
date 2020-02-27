@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import ClassNames from 'classnames';
 
 import CategoriesListItemTooltipActions from './CategoriesListItemTooltipActions';
-import Icon from '../../../../baseComponents/Icon';
+import Button from '../../../../baseComponents/Button';
 
-import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { chevronDown, chevronUp } from '../../../../icons';
-import { COLORS } from '../../../../styles/baseColors';
 import { getUniqueKey, isNull } from '../../../../utils';
 import { getSubCategories } from '../../api';
 
@@ -25,9 +24,7 @@ const CategoriesListItem = (
 
 	const subCategoryRef = useRef(null);
 
-	const handleParentCategories = (e) => {
-		e.stopPropagation();
-
+	const handleParentCategories = () => {
 		if (category.hasSubCategories) {
 			setShowCategories(!showCategories);
 		}
@@ -90,11 +87,11 @@ const CategoriesListItem = (
 					<div className={classes.category_item_actionSection}>
 						{
 							category.hasSubCategories && (
-								<Icon
+								<Button
+									size="tiny"
+									type="secondary"
 									icon={showCategories ? chevronUp : chevronDown}
-									color={COLORS.FIELD_ICON}
-									onClick={handleParentCategories}
-									className={classes.category_item_collapseButton}
+									actionHandler={handleParentCategories}
 								/>
 							)
 						}

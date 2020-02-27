@@ -1,25 +1,25 @@
-.filtersListItem {
+.filtersGroupListItem {
 	border-bottom: 1px solid $secondary;
-	padding: 16px 4px 16px 12px;
+	padding: 14.5px 4px 14.5px 12px;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: space-between;
 }
 
-.filtersListItem_left {
+.filtersGroupListItem_left {
 	display: flex;
 }
 
-.filtersListItem_displayName {
+.filtersGroupListItem_displayName {
 	position: relative;
 }
 
-.filtersListItem_displayName_separator {
+.filtersGroupListItem_displayName_separator {
 	margin: 0 4px;
 	color: $secondary;
 }
 
-.filtersListItem_displayName_iconClassName {
+.filtersGroupListItem_displayName_iconClassName {
 	border-radius: 50%;
 	background-color: $fieldIcon;
 	font-size: 8px;
@@ -30,6 +30,10 @@
 	top: 0;
 }
 
-.filtersListItem_right {
+.filtersGroupListItem_right {
 	display: flex;
+}
+
+.filtersGroupListItem_addFilterGroupValueButton {
+	margin-left: 6px;
 }

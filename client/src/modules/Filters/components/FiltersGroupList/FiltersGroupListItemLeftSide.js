@@ -15,20 +15,20 @@ const FiltersGroupListItemLeftSide = (
 	const displayNameValue = useMemo(() => {
 		return (
 			<>
-				<span className={classes.filtersListItem_displayName_separator}>|</span>
+				<span className={classes.filtersGroupListItem_displayName_separator}>|</span>
 				{displayName}
 				<Icon
 					icon={exclamation}
-					className={classes.filtersListItem_displayName_iconClassName}
+					className={classes.filtersGroupListItem_displayName_iconClassName}
 				/>
 			</>
 		);
 	}, [displayName]);
 
 	return (
-		<div className={classes.filtersListItem_left}>
+		<div className={classes.filtersGroupListItem_left}>
 			{name}
-			<div className={classes.filtersListItem_displayName}>
+			<div className={classes.filtersGroupListItem_displayName}>
 				<Tooltip
 					tooltip={displayNameValue}
 					message="Имя фильтра в магазине"

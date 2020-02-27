@@ -8,19 +8,33 @@ import classes from './styles/index.scss';
 const FiltersListItemLeftSide = (
 	{
 		id,
+		hasFilterValues,
 		handleFilterEdit,
 		handleFilterDelete,
-		addFilterValuesIcon,
-		handleAddFilterValue,
+		addFilterGroupValuesIcon,
+		showFilterGroupValuesIcon,
+		handleAddFilterGroupValue,
+		handleShowFilterGroupValues
 	}
 ) => {
 	return (
-		<div className={classes.filtersListItem_right}>
+		<div className={classes.filtersGroupListItem_right}>
+			{
+				hasFilterValues && (
+					<Button
+						size="tiny"
+						type="secondary"
+						icon={showFilterGroupValuesIcon}
+						actionHandler={handleShowFilterGroupValues}
+					/>
+				)
+			}
 			<Button
 				size="tiny"
 				type="primary"
-				icon={addFilterValuesIcon}
-				actionHandler={handleAddFilterValue}
+				icon={addFilterGroupValuesIcon}
+				actionHandler={handleAddFilterGroupValue}
+				className={classes.filtersGroupListItem_addFilterGroupValueButton}
 			/>
 			<FiltersGroupListItemTooltipActions
 				id={id}
@@ -35,7 +49,10 @@ FiltersListItemLeftSide.propTypes = {
 	id: PropTypes.number,
 	handleFilterEdit: PropTypes.func,
 	handleFilterDelete: PropTypes.func,
-	addFilterValuesIcon: PropTypes.string
+	handleAddFilterGroupValue: PropTypes.func,
+	handleShowFilterGroupValues: PropTypes.func,
+	addFilterGroupValuesIcon: PropTypes.string,
+	showFilterGroupValuesIcon: PropTypes.string
 };
 
 export default FiltersListItemLeftSide;

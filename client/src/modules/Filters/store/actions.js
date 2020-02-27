@@ -4,6 +4,7 @@ import {
 	deleteFilterGroup as deleteFilterGroupAPI,
 	addFilterValueGroup as addFilterValueGroupAPI,
 	addFilterGroupValue as addFilterGroupValueAPI,
+	getFilterGroupValue as getFilterGroupValueAPI,
 } from '../api';
 
 import {
@@ -54,16 +55,20 @@ export default (dispatch) => {
 	};
 
 	//FilterGroupValue
+	const getFilterGroupValue = (id) => {
+		return getFilterGroupValueAPI(id);
+	};
 
 	const addFilterGroupValue = (data) => {
-		addFilterGroupValueAPI(data);
+		return addFilterGroupValueAPI(data);
 	};
 
 	return {
 		addFilter,
-		getFiltersList,
 		deleteFilter,
+		getFiltersList,
 		addFilterValue,
-		addFilterGroupValue
+		addFilterGroupValue,
+		getFilterGroupValue
 	};
 };

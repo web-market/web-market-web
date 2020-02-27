@@ -8,15 +8,18 @@ import { TYPE } from './consts';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
-const Button = ({
-	size,
-	label,
-	type,
-	icon,
-	actionName,
-	transparent,
-	actionHandler,
-}) => {
+const Button = (
+	{
+		size,
+		label,
+		type,
+		icon,
+		className,
+		actionName,
+		transparent,
+		actionHandler,
+	}
+) => {
 	const [hover, setHover] = useState(false);
 
 	const componentClassName = classNames(
@@ -45,7 +48,8 @@ const Button = ({
 
 			[classes.button_hasIcon]: icon,
 			[classes.button_onlyIcon]: !label
-		}
+		},
+		className
 	);
 
 	const componentLabelClassName = classNames(
@@ -119,21 +123,23 @@ const Button = ({
 };
 
 Button.defaultProps = {
-	transparent: false,
 	icon: '',
+	className: '',
 	size: 'normal',
-	actionHandler: () => {},
-	type: 'secondary'
+	type: 'secondary',
+	transparent: false,
+	actionHandler: () => {}
 };
 
 Button.propTypes = {
-	label: PropTypes.string,
-	transparent: PropTypes.bool,
+	size: PropTypes.string,
 	icon: PropTypes.string,
 	type: PropTypes.string,
+	label: PropTypes.string,
+	className: PropTypes.string,
 	actionName: PropTypes.string,
-	actionHandler: PropTypes.func,
-	size: PropTypes.string
+	transparent: PropTypes.bool,
+	actionHandler: PropTypes.func
 };
 
 export { Button };

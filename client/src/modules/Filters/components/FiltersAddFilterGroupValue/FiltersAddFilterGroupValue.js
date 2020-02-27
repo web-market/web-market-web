@@ -8,10 +8,11 @@ import FiltersAddFilterGroupValueForm from './FiltersAddFilterGroupValueForm';
 
 const FiltersAddFilterGroupValue = ({ id }) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addFilterGroupValue } = useContext(FiltersContext);
+	const { addFilterGroupValue, getFilterGroupValue } = useContext(FiltersContext);
 
 	const handleAddFilterValue = (values) => {
-		addFilterGroupValue({ filterId: id, ...values });
+		addFilterGroupValue({ filterId: id, ...values })
+			.then(() => getFilterGroupValue(id));
 	};
 
 	return (

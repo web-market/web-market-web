@@ -43,7 +43,7 @@ const FiltersGroupList = () => {
 	return (
 		<AdminControlContentBox
 			margin={{ large: true }}
-			className={classes.filtersList}
+			className={classes.filtersGroupList}
 		>
 			{isPending && (<PendingCloak />)}
 			{
@@ -58,6 +58,7 @@ const FiltersGroupList = () => {
 							displayName={filter.displayName}
 							handleFilterEdit={handleFilterEdit}
 							handleFilterDelete={handleFilterDelete}
+							hasFilterValues={filter.hasFilterValues}
 						/>
 					);
 				})

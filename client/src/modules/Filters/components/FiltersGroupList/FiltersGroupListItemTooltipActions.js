@@ -23,7 +23,7 @@ const FiltersGroupListItemTooltipActions = (
 			{
 				name: '!!Удалить',
 				icon: trash,
-				iconClass: classes.filtersListItemTooltipActions_deleteIcon,
+				iconClass: classes.filtersGroupListItemTooltipActions_deleteIcon,
 				action: () => handleFilterDelete(id)
 			}
 		];
@@ -31,7 +31,7 @@ const FiltersGroupListItemTooltipActions = (
 
 	return (
 		<TooltipAction
-			className={classes.filtersListItemTooltipActions}
+			className={classes.filtersGroupListItemTooltipActions}
 			actionList={actions}
 		/>
 	);

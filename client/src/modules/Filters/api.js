@@ -18,6 +18,10 @@ const addFilterValueGroup = (data) => {
 };
 
 //FilterGroupValue
+const getFilterGroupValue = (id) => {
+	return GET(`${ENDPOINT.CREATE_FILTER_GROUP_VALUE}/${id}`);
+};
+
 const addFilterGroupValue = (data) => {
 	return POST(ENDPOINT.CREATE_FILTER_GROUP_VALUE, data);
 };
@@ -28,5 +32,6 @@ export {
     addFilterGroup,
 	deleteFilterGroup,
 	addFilterValueGroup,
-	addFilterGroupValue
+	addFilterGroupValue,
+	getFilterGroupValue
 };
