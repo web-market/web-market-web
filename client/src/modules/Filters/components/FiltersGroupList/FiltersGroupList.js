@@ -34,7 +34,7 @@ const FiltersGroupList = () => {
 			{
 				modalTitle: '!!Удалить фильтр',
 				rightButtonLabel: '!!Удалить',
-				handleSubmit: () => deleteFilter(id),
+				handleSubmit: () => deleteFilter({ id }),
 				content: '!!Вы уверены, что хотите удалить фильтр?'
 			}
 		);

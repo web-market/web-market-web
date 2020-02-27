@@ -5,20 +5,22 @@ import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import FiltersAddFilterGroupValueForm from './FiltersAddFilterGroupValueForm';
+import { ADD_FILTER_VALUE_FORM } from '../../consts';
 
 const FiltersAddFilterGroupValue = ({ id }) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addFilterGroupValue, getFilterGroupValue } = useContext(FiltersContext);
+	const { addFilterGroupValue, filterGroupValueHandler } = useContext(FiltersContext);
 
 	const handleAddFilterValue = (values) => {
 		addFilterGroupValue({ filterId: id, ...values })
-			.then(() => getFilterGroupValue(id));
+			.then(() => filterGroupValueHandler[id]());
 	};
 
 	return (
 		<FiltersAddFilterGroupValueForm
+			id={id}
 			handleAddFilterValue={handleAddFilterValue}
-			handleSubmit={() => forms.ADD_FILTER_VALUE_FORM.submitForm()}
+			handleSubmit={() => forms[`${ADD_FILTER_VALUE_FORM}-${id}`].submitForm()}
 		/>
 	);
 };

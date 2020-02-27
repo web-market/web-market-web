@@ -2,12 +2,14 @@ import { actionLogger } from '../../../utils';
 
 import {
 	SET_FILTERS,
-	SET_PENDING
+	SET_PENDING,
+	SET_FILTER_GROUP_VALUE_HANDLER
 } from './consts';
 
 export const initialState = {
 	filtersItems: [],
-	isPending: false
+	isPending: false,
+	filterGroupValueHandler: {}
 };
 
 export const reducer = (state, payload) => {
@@ -18,6 +20,13 @@ export const reducer = (state, payload) => {
 			return {
 				...state,
 				filtersItems: [...payload.filtersItems]
+			};
+		case SET_FILTER_GROUP_VALUE_HANDLER:
+			state.filterGroupValueHandler[payload.handlerMetadata.handlerId] = payload.handlerMetadata.handler;
+
+			return {
+				...state,
+				filterGroupValueHandler: { ...state.filterGroupValueHandler }
 			};
 		case SET_PENDING:
 			return {

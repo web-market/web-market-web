@@ -9,7 +9,8 @@ import {
 
 import {
 	SET_FILTERS,
-	SET_PENDING
+	SET_PENDING,
+	SET_FILTER_GROUP_VALUE_HANDLER
 } from './consts';
 
 export default (dispatch) => {
@@ -26,6 +27,17 @@ export default (dispatch) => {
 			filtersItems
 		});
 	};
+
+	const setFilterGroupValueHandler = (handler, handlerId) => {
+		dispatch({
+			type: SET_FILTER_GROUP_VALUE_HANDLER,
+			handlerMetadata: {
+				handler,
+				handlerId,
+			}
+		});
+	};
+
 
 	const getFiltersList = () => {
 		setPending(true);
@@ -69,6 +81,7 @@ export default (dispatch) => {
 		getFiltersList,
 		addFilterValue,
 		addFilterGroupValue,
-		getFilterGroupValue
+		getFilterGroupValue,
+		setFilterGroupValueHandler
 	};
 };

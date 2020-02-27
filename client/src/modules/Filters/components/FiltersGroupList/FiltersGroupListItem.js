@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { FiltersContext } from '../../store';
@@ -20,21 +20,31 @@ const FiltersGroupListItem = (
 		handleFilterDelete
 	}
 ) => {
-	const { getFilterGroupValue } = useContext(FiltersContext);
+	const { getFilterGroupValue, setFilterGroupValueHandler } = useContext(FiltersContext);
 
 	const [showAddFilterSection, setShowAddFilterSection] = useState(false);
 	const [showFilterGroupValues, setShowFilterGroupValues] = useState(false);
 	const [filterGroupValues, setFilterGroupValues] = useState([]);
+
+	const handleGetFilterGroupValue = useCallback(() => {
+		getFilterGroupValue(id)
+			.then(({ data }) => {
+				setFilterGroupValues(data);
+			});
+	}, [getFilterGroupValue, id]);
+
+	useEffect(() => {
+		setFilterGroupValueHandler(handleGetFilterGroupValue, id);
+	}, []);
 
 	const handleAddFilterGroupValue = () => {
 		setShowAddFilterSection(!showAddFilterSection);
 	};
 
 	const handleShowFilterGroupValues = () => {
-		getFilterGroupValue(id)
-			.then(({ data }) => {
-				setFilterGroupValues(data);
-			});
+		if (!showFilterGroupValues) {
+			handleGetFilterGroupValue();
+		}
 
 		setShowFilterGroupValues(!showFilterGroupValues);
 	};

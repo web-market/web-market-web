@@ -10,7 +10,7 @@ const addFilterGroup = (data) => {
 };
 
 const deleteFilterGroup = (id) => {
-	return DELETE(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/${id}`);
+	return DELETE(ENDPOINT.FILTERS_BASE_CONTROLLER, id);
 };
 
 const addFilterValueGroup = (data) => {

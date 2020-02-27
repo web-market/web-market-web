@@ -12,6 +12,7 @@ import classes from './styles/index.scss';
 
 const FiltersAddFilterGroupValueForm = (
 	{
+		id,
 		handleSubmit,
 		handleAddFilterValue
 	}
@@ -22,7 +23,7 @@ const FiltersAddFilterGroupValueForm = (
 			className={classes.filtersAddFilterValue_form}
 		>
 			<Form
-				name={ADD_FILTER_VALUE_FORM}
+				name={`${ADD_FILTER_VALUE_FORM}-${id}`}
 				onSubmit={handleAddFilterValue}
 			>
 				<GridLayout>
@@ -65,6 +66,7 @@ const FiltersAddFilterGroupValueForm = (
 };
 
 FiltersAddFilterGroupValueForm.propTypes = {
+	id: PropTypes.number,
 	handleSubmit: PropTypes.func,
 	handleAddFilterValue: PropTypes.func
 };
