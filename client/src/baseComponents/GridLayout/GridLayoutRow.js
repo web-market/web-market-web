@@ -6,7 +6,15 @@ import { getGridItemsStyles, getBaseGridStyles, getGridItems, isValidGrid } from
 import classes from './styles/index.scss';
 import classNames from 'classnames';
 
-const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
+const GridLayoutRow = (
+	{
+		grid,
+		children,
+		gapColumn,
+		className,
+		gridColumn
+	}
+	) => {
 	const componentClassName = classNames(
 		classes.gridLayout,
 		className
@@ -14,11 +22,11 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 
 	const gridItems = getGridItems(grid);
 
-	if (isValidGrid(gridItems)) {
+	if (isValidGrid(gridItems, gridColumn)) {
 		const gridItemsStyles = getGridItemsStyles(gridItems, gapColumn);
 
 		return (
-			<div className={componentClassName} style={getBaseGridStyles(gapColumn)}>
+			<div className={componentClassName} style={getBaseGridStyles(gapColumn, gridColumn)}>
 				{children.map((child, index) => {
 					const key = getUniqueKey('griditem', index);
 
@@ -41,11 +49,13 @@ const GridLayoutRow = ({ children, grid, gapColumn, className }) => {
 
 GridLayoutRow.defaultProps = {
 	gapColumn: 0,
+	gridColumn: 12,
 	grid: '',
 };
 
 GridLayoutRow.propTypes = {
 	gapColumn: PropTypes.number,
+	gridColumn: PropTypes.number,
 	grid: PropTypes.string,
 	className: PropTypes.string,
 };

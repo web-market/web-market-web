@@ -1,4 +1,15 @@
-import { GAP, COL, BASE_GRID_MODEL, DISPLAY_GRID } from './consts';
+import { GAP, COL, DISPLAY_GRID } from './consts';
+
+const getBaseGridModel = (gridColumn) => {
+	const baseGridModel = [];
+
+	//eslint-disable-next-line
+	for (let i = 0; gridColumn > i; i++) {
+		baseGridModel.push('1fr');
+	}
+
+	return baseGridModel.join(' ');
+};
 
 export const getGridItems = grid => {
 	const hasGap = dimension => dimension.split('_').length > 1;
@@ -37,20 +48,22 @@ export const getGridItemsStyles = gridItems => {
     return gridStyles;
 };
 
-export const getBaseGridStyles = gapColumn => {
+export const getBaseGridStyles = (gapColumn, gridColumn) => {
+	const baseGridModel = getBaseGridModel(gridColumn);
+
     return {
         display: DISPLAY_GRID,
         gridColumnGap: `${gapColumn}em`,
-        gridTemplateColumns: BASE_GRID_MODEL,
+        gridTemplateColumns: baseGridModel,
     };
 };
 
-export const isValidGrid = gridItems => {
+export const isValidGrid = (gridItems, gridColumn) => {
     if (gridItems.length > 0) {
         return (
             gridItems.reduce((counter, gridItem) => {
                 return counter + Number(Object.values(gridItem));
-            }, 0) <= 12
+            }, 0) <= gridColumn
         );
     }
     return false;
