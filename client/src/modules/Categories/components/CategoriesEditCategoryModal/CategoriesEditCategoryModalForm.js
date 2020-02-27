@@ -62,7 +62,7 @@ const CategoriesEditCategoryModalForm = (
 								<Field
 									component={Textbox}
 									name="sortOrder"
-									label="!!!Порядок отображения категории"
+									label="!!!Порядок сортировки"
 									hasTooltip
 									toolTipMessage="!!!Место категории в общем списке категорий (например: 5)"
 									validate={{

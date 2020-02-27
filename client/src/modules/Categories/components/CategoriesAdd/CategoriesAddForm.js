@@ -59,7 +59,7 @@ const CategoriesAddForm = ({
 						<Field
 							component={Textbox}
 							name="sortOrder"
-							label="!!!Порядок отображения"
+							label="!!!Порядок сортировки"
 							hasTooltip
 							toolTipMessage="!!!Место категории в общем списке категорий (например: 5)"
 							validate={{

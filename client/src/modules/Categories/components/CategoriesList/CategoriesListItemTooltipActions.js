@@ -15,17 +15,17 @@ const CategoriesListItemTooltipActions = (
 	const actions = useMemo(() => {
 		return [
 			{
-				name: '!!Удалить',
-				icon: trash,
-				iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
-				action: () => handleDeleteCategory(id)
-			},
-			{
 				name: '!!Редактировать',
 				icon: pencil,
 				iconClass: '',
 				action: () => handleEditCategory(id)
 			},
+			{
+				name: '!!Удалить',
+				icon: trash,
+				iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
+				action: () => handleDeleteCategory(id)
+			}
 		];
 	}, [id, handleDeleteCategory, handleEditCategory]);
 

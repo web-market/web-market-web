@@ -27,5 +27,10 @@
 }
 
 .button_onlyIcon.button_hasIcon {
-	padding: 6px;
+	padding: 8px;
+}
+
+.button_onlyIcon.button_hasIcon.button_size__tiny {
+	padding: 3px;
+	font-size: 10px;
 }

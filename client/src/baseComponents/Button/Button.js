@@ -9,13 +9,13 @@ import classNames from 'classnames';
 import classes from './styles/index.scss';
 
 const Button = ({
+	size,
 	label,
 	type,
-	transparent,
 	icon,
 	actionName,
+	transparent,
 	actionHandler,
-	size
 }) => {
 	const [hover, setHover] = useState(false);
 
@@ -41,6 +41,7 @@ const Button = ({
 			[classes.button_dark__transparent]: transparent && type === 'dark',
 
 			[classes.button_size__tiny]: size === 'tiny',
+			[classes.button_size__normal]: size === 'normal',
 
 			[classes.button_hasIcon]: icon,
 			[classes.button_onlyIcon]: !label
@@ -56,8 +57,8 @@ const Button = ({
 	const componentIconClassName = classNames(
 		classes.button_icon,
 		{
-			[classes.button_size__tiny]: size === 'tiny',
 			[classes.button_size__normal]: size === 'normal',
+			[classes.button_size__large]: size === 'large',
 		}
 	);
 

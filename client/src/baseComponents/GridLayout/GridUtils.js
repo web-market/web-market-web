@@ -48,13 +48,14 @@ export const getGridItemsStyles = gridItems => {
     return gridStyles;
 };
 
-export const getBaseGridStyles = (gapColumn, gridColumn) => {
+export const getBaseGridStyles = (gapColumn, gridColumn, alignItems) => {
 	const baseGridModel = getBaseGridModel(gridColumn);
 
     return {
         display: DISPLAY_GRID,
         gridColumnGap: `${gapColumn}em`,
         gridTemplateColumns: baseGridModel,
+		alignItems
     };
 };
 

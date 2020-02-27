@@ -1,8 +1,9 @@
 import {
-	getFilters as getFiltersAPI,
-	addFilter as addFilterAPI,
-	deleteFilter as deleteFilterAPI,
-	addFilterValue as addFilterValueAPI
+	getFiltersGroup as getFiltersGroupAPI,
+	addFilterGroup as addFilterGroupAPI,
+	deleteFilterGroup as deleteFilterGroupAPI,
+	addFilterValueGroup as addFilterValueGroupAPI,
+	addFilterGroupValue as addFilterGroupValueAPI,
 } from '../api';
 
 import {
@@ -28,7 +29,7 @@ export default (dispatch) => {
 	const getFiltersList = () => {
 		setPending(true);
 
-		return getFiltersAPI()
+		return getFiltersGroupAPI()
 			.then(({ data }) => setFilters(data))
 			.catch(e => console.log(e))
 			.finally(() => setPending(false));
@@ -37,25 +38,32 @@ export default (dispatch) => {
 	const addFilter = (data) => {
 		setPending(true);
 
-		return addFilterAPI(data)
+		return addFilterGroupAPI(data)
 			.then(() => getFiltersList())
 			.catch(e => console.log(e))
 			.finally(() => setPending(false));
 	};
 
 	const deleteFilter = (id) => {
-		return deleteFilterAPI(id)
+		return deleteFilterGroupAPI(id)
 			.then(() => getFiltersList());
 	};
 
 	const addFilterValue = (data) => {
-		return addFilterValueAPI(data);
+		return addFilterValueGroupAPI(data);
+	};
+
+	//FilterGroupValue
+
+	const addFilterGroupValue = (data) => {
+		addFilterGroupValueAPI(data);
 	};
 
 	return {
 		addFilter,
 		getFiltersList,
 		deleteFilter,
-		addFilterValue
+		addFilterValue,
+		addFilterGroupValue
 	};
 };

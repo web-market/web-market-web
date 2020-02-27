@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import Tooltip from '../../../../baseComponents/Tooltip';
-import FiltersListItemTooltipActions from './FiltersListItemTooltipActions';
-import Icon from '../../../../baseComponents/Icon';
-import { exclamation } from '../../../../icons';
+import FiltersAddFilterGroupValue from '../FiltersAddFilterGroupValue';
+import FiltersListItemLeftSide from './FiltersListItemLeftSide';
+import FiltersListItemRightSide from './FiltersListItemRightSide';
+import { plus, minus } from '../../../../icons';
 import classes from './styles/index.scss';
 
-const FiltersList = (
+const FiltersListItem = (
 	{
 		id,
 		name,
@@ -16,42 +16,43 @@ const FiltersList = (
 		handleFilterDelete
 	}
 ) => {
-	const displayNameValue = useMemo(() => {
-			return (
-				<>
-						<span className={classes.filtersListItem_displayName_separator}>|</span>
-							{displayName}
-						<Icon
-							icon={exclamation}
-							className={classes.filtersListItem_displayName_iconClassName}
-						/>
-				</>
-			);
-	}, [displayName]);
+	const [showAddFilterSection, setShowAddFilterSection] = useState(false)
+
+	const handleAddFilterValue = () => {
+		console.log(id);
+		setShowAddFilterSection(!showAddFilterSection);
+		//ProcessingFilterValues
+	};
+
+	const addFilterValuesIcon = useMemo(() => {
+		return showAddFilterSection ? minus : plus;
+	}, [showAddFilterSection]);
 
 	return (
-		<div className={classes.filtersListItem}>
-			<div className={classes.filtersListItem_left}>
-				{name}
-				<div className={classes.filtersListItem_displayName}>
-						<Tooltip
-							tooltip={displayNameValue}
-							message="Имя фильтра в магазине"
-						/>
-				</div>
-			</div>
-			<div className={classes.filtersListItem_right}>
-				<FiltersListItemTooltipActions
+		<div>
+			<div className={classes.filtersListItem}>
+				<FiltersListItemLeftSide
+					name={name}
+					displayName={displayName}
+				/>
+				<FiltersListItemRightSide
 					id={id}
 					handleFilterEdit={handleFilterEdit}
 					handleFilterDelete={handleFilterDelete}
+					addFilterValuesIcon={addFilterValuesIcon}
+					handleAddFilterValue={handleAddFilterValue}
 				/>
 			</div>
+			{
+				showAddFilterSection && (
+					<FiltersAddFilterGroupValue id={id} />
+				)
+			}
 		</div>
 	);
 };
 
-FiltersList.propTypes = {
+FiltersListItem.propTypes = {
 	id: PropTypes.number,
 	name: PropTypes.string,
 	displayName: PropTypes.string,
@@ -59,4 +60,4 @@ FiltersList.propTypes = {
 	handleFilterDelete: PropTypes.func
 };
 
-export default FiltersList;
+export default FiltersListItem;

@@ -12,7 +12,7 @@ import Form, { Field } from '../../../../baseComponents/Form';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 
-const FiltersAddForm = (
+const FiltersAddFiltersGroupForm = (
 	{
 		handleAddFilter,
 		rightSectionButtons
@@ -24,13 +24,13 @@ const FiltersAddForm = (
 			onSubmit={handleAddFilter}
 		>
 			<FormLayout>
-				<FormLayoutHeader title="!!!Добавить фильтр" />
+				<FormLayoutHeader title="!!!Добавить группу фильтра" />
 				<FormLayoutItemGroup>
 					<FormLayoutItem>
 						<Field
 							component={Textbox}
 							name="name"
-							label="!!!Название фильтра а админ панеле"
+							label="!!!Имя группы фильтра в админ панеле"
 							required
 							validate={{
 								required: true
@@ -41,7 +41,7 @@ const FiltersAddForm = (
 						<Field
 							component={Textbox}
 							name="displayName"
-							label="!!!Название фильтра в магазине"
+							label="!!!Имя группы фильтра в магазине"
 							required
 							validate={{
 								required: true
@@ -52,9 +52,9 @@ const FiltersAddForm = (
 						<Field
 							component={Textbox}
 							name="sortOrder"
-							label="!!!Порядок отображения"
+							label="!!!Порядок сортировки"
 							hasTooltip
-							toolTipMessage="!!!Место фильтра в общем списке фильтров (например: '5')"
+							toolTipMessage="!!!Место группы в общем списке груп фильтров (например: '5')"
 							validate={{
 								number: true
 							}}
@@ -69,9 +69,9 @@ const FiltersAddForm = (
 	);
 };
 
-FiltersAddForm.propTypes = {
+FiltersAddFiltersGroupForm.propTypes = {
 	handleAddFilter: PropTypes.func,
 	rightSectionButtons: PropTypes.object
 };
 
-export { FiltersAddForm };
+export { FiltersAddFiltersGroupForm };

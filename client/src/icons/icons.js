@@ -5,6 +5,7 @@ export const chevronUp = classes['ti-arrow-up'];
 export const chevronRight = classes['ti-arrow-right'];
 export const chevronLeft = classes['ti-arrow-left'];
 export const plus = classes['ti-plus'];
+export const minus = classes['ti-minus'];
 export const chartBar = classes['ti-bar-chart'];
 export const th = classes['ti-layout-grid3'];
 export const filter = classes['ti-filter'];

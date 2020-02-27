@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { FiltersContext } from '../../store';
 
-import AdminControlContentBox from '../../../../components/AdminControlContentBox';
-import { FiltersAddForm } from './FiltersAddForm';
-import Button from '../../../../baseComponents/Button';
+import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
-const FiltersAdd = () => {
+import AdminControlContentBox from '../../../../components/AdminControlContentBox';
+import { FiltersAddFiltersGroupForm } from './FiltersAddFiltersGroupForm';
+import Button from '../../../../baseComponents/Button';
+
+const FiltersAddFiltersGroup = () => {
 	const { forms } = useContext(FormsGlobalContext);
 	const { addFilter } = useContext(FiltersContext);
 
@@ -26,7 +27,7 @@ const FiltersAdd = () => {
 
 	return (
 		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
-			<FiltersAddForm
+			<FiltersAddFiltersGroupForm
 				handleAddFilter={handleAddFilter}
 				rightSectionButtons={rightSectionButtons}
 			/>
@@ -34,4 +35,4 @@ const FiltersAdd = () => {
 	);
 };
 
-export { FiltersAdd };
+export { FiltersAddFiltersGroup };

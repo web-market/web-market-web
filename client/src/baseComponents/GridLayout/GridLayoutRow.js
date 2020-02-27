@@ -12,6 +12,7 @@ const GridLayoutRow = (
 		children,
 		gapColumn,
 		className,
+		alignItems,
 		gridColumn
 	}
 	) => {
@@ -26,7 +27,7 @@ const GridLayoutRow = (
 		const gridItemsStyles = getGridItemsStyles(gridItems, gapColumn);
 
 		return (
-			<div className={componentClassName} style={getBaseGridStyles(gapColumn, gridColumn)}>
+			<div className={componentClassName} style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}>
 				{children.map((child, index) => {
 					const key = getUniqueKey('griditem', index);
 
@@ -51,13 +52,15 @@ GridLayoutRow.defaultProps = {
 	gapColumn: 0,
 	gridColumn: 12,
 	grid: '',
+	alignItems: 'start',
 };
 
 GridLayoutRow.propTypes = {
+	grid: PropTypes.string,
 	gapColumn: PropTypes.number,
 	gridColumn: PropTypes.number,
-	grid: PropTypes.string,
 	className: PropTypes.string,
+	alignItems: PropTypes.string
 };
 
 export { GridLayoutRow };

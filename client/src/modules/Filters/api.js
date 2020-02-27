@@ -1,26 +1,32 @@
 import { GET, POST, DELETE, PUT } from '../../utils/api';
 import { ENDPOINT } from './consts';
 
-const getFilters = () => {
+const getFiltersGroup = () => {
     return GET(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/all`);
 };
 
-const addFilter = (data) => {
+const addFilterGroup = (data) => {
     return POST(ENDPOINT.FILTERS_BASE_CONTROLLER, data);
 };
 
-const deleteFilter = (id) => {
+const deleteFilterGroup = (id) => {
 	return DELETE(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/${id}`);
 };
 
-const addFilterValue = (data) => {
+const addFilterValueGroup = (data) => {
 	return POST(ENDPOINT.FILTER_VALUE_BASE_CONTROLLER, data);
+};
+
+//FilterGroupValue
+const addFilterGroupValue = (data) => {
+	return POST(ENDPOINT.CREATE_FILTER_GROUP_VALUE, data);
 };
 
 
 export {
-    getFilters,
-    addFilter,
-	deleteFilter,
-	addFilterValue
+    getFiltersGroup,
+    addFilterGroup,
+	deleteFilterGroup,
+	addFilterValueGroup,
+	addFilterGroupValue
 };

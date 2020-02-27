@@ -1,6 +1,6 @@
 //Tiny
 .button_size__tiny.button_onlyIcon  {
-	max-height: 30px;
+	height: 16px;
 }
 
 .button_size__tiny.button_icon {
@@ -9,11 +9,21 @@
 }
 
 //Normal
-.button_size__normal.button_onlyIcon {
-	max-height: 40px;
+.button_size__normal.button_onlyIcon  {
+	height: 32px;
 }
 
 .button_size__normal.button_icon {
+	width: 16px;
+	height: 16px;
+}
+
+//Large
+.button_size__large.button_onlyIcon {
+	height: 40px;
+}
+
+.button_size__large.button_icon {
 	width: 26px;
 	height: 26px;
 }

@@ -35,7 +35,7 @@ const FiltersEditFilterModalForm = (
 								<Field
 									component={Textbox}
 									name="name"
-									label="!!!Название фильтра а админ панеле"
+									label="!!!Имя группы фильтра в админ панеле"
 									required
 									validate={{
 										required: true
@@ -46,7 +46,7 @@ const FiltersEditFilterModalForm = (
 								<Field
 									component={Textbox}
 									name="displayName"
-									label="!!!Название фильтра в магазине"
+									label="!!!Имя группы фильтраа в магазине"
 									required
 									validate={{
 										required: true
@@ -57,9 +57,9 @@ const FiltersEditFilterModalForm = (
 								<Field
 									component={Textbox}
 									name="sortOrder"
-									label="!!!Порядок отображения"
+									label="!!!Порядок сортировки"
 									hasTooltip
-									toolTipMessage="!!!Место фильтра в общем списке фильтров (например: '5')"
+									toolTipMessage="!!!Место группы в общем списке груп фильтров (например: '5')"
 									validate={{
 										number: true
 									}}
