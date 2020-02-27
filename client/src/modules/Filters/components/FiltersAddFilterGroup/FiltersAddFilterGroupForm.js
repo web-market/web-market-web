@@ -12,7 +12,7 @@ import Form, { Field } from '../../../../baseComponents/Form';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 
-const FiltersAddFiltersGroupForm = (
+const FiltersAddFilterGroupForm = (
 	{
 		handleAddFilter,
 		rightSectionButtons
@@ -69,9 +69,9 @@ const FiltersAddFiltersGroupForm = (
 	);
 };
 
-FiltersAddFiltersGroupForm.propTypes = {
+FiltersAddFilterGroupForm.propTypes = {
 	handleAddFilter: PropTypes.func,
 	rightSectionButtons: PropTypes.object
 };
 
-export { FiltersAddFiltersGroupForm };
+export { FiltersAddFilterGroupForm };

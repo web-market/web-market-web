@@ -6,7 +6,7 @@ import classes from './styles/index.scss';
 import Icon from '../../../../baseComponents/Icon';
 import { exclamation } from '../../../../icons';
 
-const FiltersListItemLeftSide = (
+const FiltersGroupListItemLeftSide = (
 	{
 		name,
 		displayName
@@ -38,9 +38,9 @@ const FiltersListItemLeftSide = (
 	);
 };
 
-FiltersListItemLeftSide.propTypes = {
+FiltersGroupListItemLeftSide.propTypes = {
 	name: PropTypes.string,
 	displayName: PropTypes.string
 };
 
-export default FiltersListItemLeftSide;
+export default FiltersGroupListItemLeftSide;

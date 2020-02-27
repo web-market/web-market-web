@@ -6,8 +6,8 @@ import FiltersModalsProvider from './components/FiltersModalsProvider';
 
 import AdminControlHeader from '../../components/AdminControlHeader';
 import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
-import FiltersList from './components/FiltersList';
-import FiltersAddFiltersGroup from './components/FiltersAddFiltersGroup';
+import FiltersGroupList from './components/FiltersGroupList';
+import FiltersAddFiltersGroup from './components/FiltersAddFilterGroup';
 
 const Filters = () => {
 	return (
@@ -21,7 +21,7 @@ const Filters = () => {
 						<GridLayoutRow
 							grid="7-5"
 						>
-							<FiltersList />
+							<FiltersGroupList />
 							<FiltersAddFiltersGroup />
 						</GridLayoutRow>
 					</GridLayout>

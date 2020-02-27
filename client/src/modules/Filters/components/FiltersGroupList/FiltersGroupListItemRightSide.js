@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../../../baseComponents/Button';
-import FiltersListItemTooltipActions from './FiltersListItemTooltipActions';
+import FiltersGroupListItemTooltipActions from './FiltersGroupListItemTooltipActions';
 import classes from './styles/index.scss';
 
 const FiltersListItemLeftSide = (
@@ -22,7 +22,7 @@ const FiltersListItemLeftSide = (
 				icon={addFilterValuesIcon}
 				actionHandler={handleAddFilterValue}
 			/>
-			<FiltersListItemTooltipActions
+			<FiltersGroupListItemTooltipActions
 				id={id}
 				handleFilterEdit={handleFilterEdit}
 				handleFilterDelete={handleFilterDelete}

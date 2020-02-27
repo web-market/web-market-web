@@ -5,7 +5,7 @@ import TooltipAction from '../../../../baseComponents/TooltipAction';
 import { pencil, trash } from '../../../../icons';
 import classes from './styles/index.scss';
 
-const FiltersListItemTooltipActions = (
+const FiltersGroupListItemTooltipActions = (
 	{
 		id,
 		handleFilterEdit,
@@ -37,10 +37,10 @@ const FiltersListItemTooltipActions = (
 	);
 };
 
-FiltersListItemTooltipActions.propTypes = {
+FiltersGroupListItemTooltipActions.propTypes = {
 	id: PropTypes.number,
 	handleFilterEdit: PropTypes.func,
 	handleFilterDelete: PropTypes.func
 };
 
-export default FiltersListItemTooltipActions;
+export default FiltersGroupListItemTooltipActions;

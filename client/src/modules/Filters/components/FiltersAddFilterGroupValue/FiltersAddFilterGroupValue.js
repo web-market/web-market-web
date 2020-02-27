@@ -10,8 +10,8 @@ const FiltersAddFilterGroupValue = ({ id }) => {
 	const { forms } = useContext(FormsGlobalContext);
 	const { addFilterGroupValue } = useContext(FiltersContext);
 
-	const handleAddFilterValue = (value) => {
-		addFilterGroupValue({ id, ...value });
+	const handleAddFilterValue = (values) => {
+		addFilterGroupValue({ filterId: id, ...values });
 	};
 
 	return (

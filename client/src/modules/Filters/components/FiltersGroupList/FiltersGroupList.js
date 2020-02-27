@@ -4,13 +4,13 @@ import { FiltersContext } from '../../store';
 import { FiltersModalsContext } from '../FiltersModalsProvider';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
-import FiltersListItem from './FiltersListItem';
+import FiltersGroupListItem from './FiltersGroupListItem';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 import { MODALS } from '../../consts';
 
-const FiltersList = () => {
+const FiltersGroupList = () => {
 	const { openModal } = useContext(FiltersModalsContext);
 
 	const {
@@ -51,7 +51,7 @@ const FiltersList = () => {
 					const key = getUniqueKey(filter.name, index);
 
 					return (
-						<FiltersListItem
+						<FiltersGroupListItem
 							key={key}
 							id={filter.id}
 							name={filter.name}
@@ -66,4 +66,4 @@ const FiltersList = () => {
 	);
 };
 
-export { FiltersList };
+export { FiltersGroupList };

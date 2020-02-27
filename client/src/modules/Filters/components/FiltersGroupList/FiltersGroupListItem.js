@@ -2,12 +2,12 @@ import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import FiltersAddFilterGroupValue from '../FiltersAddFilterGroupValue';
-import FiltersListItemLeftSide from './FiltersListItemLeftSide';
-import FiltersListItemRightSide from './FiltersListItemRightSide';
+import FiltersGroupListItemLeftSide from './FiltersGroupListItemLeftSide';
+import FiltersListItemRightSide from './FiltersGroupListItemRightSide';
 import { plus, minus } from '../../../../icons';
 import classes from './styles/index.scss';
 
-const FiltersListItem = (
+const FiltersGroupListItem = (
 	{
 		id,
 		name,
@@ -31,7 +31,7 @@ const FiltersListItem = (
 	return (
 		<div>
 			<div className={classes.filtersListItem}>
-				<FiltersListItemLeftSide
+				<FiltersGroupListItemLeftSide
 					name={name}
 					displayName={displayName}
 				/>
@@ -52,7 +52,7 @@ const FiltersListItem = (
 	);
 };
 
-FiltersListItem.propTypes = {
+FiltersGroupListItem.propTypes = {
 	id: PropTypes.number,
 	name: PropTypes.string,
 	displayName: PropTypes.string,
@@ -60,4 +60,4 @@ FiltersListItem.propTypes = {
 	handleFilterDelete: PropTypes.func
 };
 
-export default FiltersListItem;
+export default FiltersGroupListItem;

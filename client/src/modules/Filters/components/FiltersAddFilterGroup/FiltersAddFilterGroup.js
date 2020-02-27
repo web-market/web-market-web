@@ -4,10 +4,10 @@ import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
-import { FiltersAddFiltersGroupForm } from './FiltersAddFiltersGroupForm';
+import { FiltersAddFilterGroupForm } from './FiltersAddFilterGroupForm';
 import Button from '../../../../baseComponents/Button';
 
-const FiltersAddFiltersGroup = () => {
+const FiltersAddFilterGroup = () => {
 	const { forms } = useContext(FormsGlobalContext);
 	const { addFilter } = useContext(FiltersContext);
 
@@ -27,7 +27,7 @@ const FiltersAddFiltersGroup = () => {
 
 	return (
 		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
-			<FiltersAddFiltersGroupForm
+			<FiltersAddFilterGroupForm
 				handleAddFilter={handleAddFilter}
 				rightSectionButtons={rightSectionButtons}
 			/>
@@ -35,4 +35,4 @@ const FiltersAddFiltersGroup = () => {
 	);
 };
 
-export { FiltersAddFiltersGroup };
+export { FiltersAddFilterGroup };
