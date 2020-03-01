@@ -7,7 +7,7 @@ import { ADD_FILTER_VALUE_FORM } from '../../consts';
 import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 import GridLayout, { GridLayoutRow } from '../../../../baseComponents/GridLayout';
 import Button from '../../../../baseComponents/Button';
-import { plus } from '../../../../icons';
+import { check } from '../../../../icons';
 import classes from './styles/index.scss';
 
 const FiltersAddFilterGroupValueForm = (
@@ -54,8 +54,11 @@ const FiltersAddFilterGroupValueForm = (
 							}}
 						/>
 						<Button
-							icon={plus}
+							icon={check}
 							type="primary"
+							size="small"
+							transparent
+							className={classes.filtersAddFilterValue_addButton}
 							actionHandler={handleSubmit}
 						/>
 					</GridLayoutRow>

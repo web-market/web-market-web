@@ -32,6 +32,7 @@ const Button = (
 			[classes.button_warning]: !transparent && type === 'warning',
 			[classes.button_info]: !transparent && type === 'info',
 			[classes.button_light]: !transparent && type === 'light',
+			[classes.button_grey]: !transparent && type === 'grey',
 			[classes.button_dark]: !transparent && type === 'dark',
 
 			[classes.button_primary__transparent]: transparent && type === 'primary',
@@ -41,10 +42,13 @@ const Button = (
 			[classes.button_warning__transparent]: transparent && type === 'warning',
 			[classes.button_info__transparent]: transparent && type === 'info',
 			[classes.button_light__transparent]: transparent && type === 'light',
+			[classes.button_grey__transparent]: transparent && type === 'grey',
 			[classes.button_dark__transparent]: transparent && type === 'dark',
 
 			[classes.button_size__tiny]: size === 'tiny',
+			[classes.button_size__small]: size === 'small',
 			[classes.button_size__normal]: size === 'normal',
+			[classes.button_size__large]: size === 'large',
 
 			[classes.button_hasIcon]: icon,
 			[classes.button_onlyIcon]: !label
@@ -61,6 +65,8 @@ const Button = (
 	const componentIconClassName = classNames(
 		classes.button_icon,
 		{
+			[classes.button_size__tiny]: size === 'tiny',
+			[classes.button_size__small]: size === 'small',
 			[classes.button_size__normal]: size === 'normal',
 			[classes.button_size__large]: size === 'large',
 		}

@@ -1,14 +1,23 @@
 //Tiny
-.button_size__tiny.button_onlyIcon  {
-	height: 20px;
+.button_tiny__small.button_onlyIcon  {
+	height: 18px;
+	width: 18px;
+}
+
+//Small
+.button_size__small.button_onlyIcon  {
+	height: 24px;
+	width: 24px;
 }
 
 //Normal
 .button_size__normal.button_onlyIcon  {
 	height: 32px;
+	width: 32px;
 }
 
 //Large
 .button_size__large.button_onlyIcon {
 	height: 40px;
+	width: 40px;
 }

@@ -117,6 +117,20 @@
 	};
 }
 
+.button_grey {
+	@include bg-color($grey, $hover: true);
+}
+
+.button_grey__transparent {
+	color: $grey;
+	@include border ($grey);
+
+	@include hover_focus {
+		color: $light;
+		@include bg-color($grey);
+	};
+}
+
 .button_dark {
 	@include bg-color($dark, $hover: true);
 }

@@ -24,13 +24,13 @@ const FiltersAddFilterGroupForm = (
 			onSubmit={handleAddFilter}
 		>
 			<FormLayout>
-				<FormLayoutHeader title="!!!Добавить группу фильтра" />
+				<FormLayoutHeader title="!!!Добавить группу фильтров" />
 				<FormLayoutItemGroup>
 					<FormLayoutItem>
 						<Field
 							component={Textbox}
 							name="name"
-							label="!!!Имя группы фильтра в админ панеле"
+							label="!!!Имя группы фильтров в админ панеле"
 							required
 							validate={{
 								required: true
@@ -41,7 +41,7 @@ const FiltersAddFilterGroupForm = (
 						<Field
 							component={Textbox}
 							name="displayName"
-							label="!!!Имя группы фильтра в магазине"
+							label="!!!Имя группы фильтров в магазине"
 							required
 							validate={{
 								required: true

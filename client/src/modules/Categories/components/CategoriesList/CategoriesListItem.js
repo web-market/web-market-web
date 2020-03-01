@@ -88,7 +88,7 @@ const CategoriesListItem = (
 						{
 							category.hasSubCategories && (
 								<Button
-									size="tiny"
+									size="small"
 									type="secondary"
 									icon={showCategories ? chevronUp : chevronDown}
 									actionHandler={handleParentCategories}

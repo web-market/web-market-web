@@ -26,7 +26,7 @@ const FiltersListItemLeftSide = (
 			{
 				(hasFilterValues || hasFilterGroupValues[id]) && (
 					<Button
-						size="tiny"
+						size="small"
 						type="secondary"
 						icon={showFilterGroupValuesIcon}
 						actionHandler={handleShowFilterGroupValues}
@@ -34,8 +34,8 @@ const FiltersListItemLeftSide = (
 				)
 			}
 			<Button
-				size="tiny"
-				type="primary"
+				size="small"
+				type="secondary"
 				icon={addFilterGroupValuesIcon}
 				actionHandler={handleAddFilterGroupValue}
 				className={classes.filtersGroupListItem_addFilterGroupValueButton}
