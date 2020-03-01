@@ -9,6 +9,7 @@ import GridLayout, { GridLayoutRow } from '../../../../baseComponents/GridLayout
 import Button from '../../../../baseComponents/Button';
 import { check } from '../../../../icons';
 import classes from './styles/index.scss';
+import HeaderText from '../../../../baseComponents/HeaderText';
 
 const FiltersAddFilterGroupValueForm = (
 	{
@@ -22,6 +23,13 @@ const FiltersAddFilterGroupValueForm = (
 			small
 			className={classes.filtersAddFilterValue_form}
 		>
+			<HeaderText
+				className={classes.filtersAddFilterGroupValueForm}
+				size="4"
+			>
+				!!Добавить фильтр
+			</HeaderText>
+
 			<Form
 				name={`${ADD_FILTER_VALUE_FORM}-${id}`}
 				onSubmit={handleAddFilterValue}

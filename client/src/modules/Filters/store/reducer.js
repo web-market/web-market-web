@@ -31,6 +31,7 @@ export const reducer = (state, payload) => {
 				filterGroupValueHandler: { ...state.filterGroupValueHandler }
 			};
 		case SET_FILTER_GROUP_HAS_ADDED_VALUE:
+			//eslint-disable-next-line
 			state.hasFilterGroupValues[payload.filterGroupMetadata.filterGroupId] = payload.filterGroupMetadata.hasValue;
 
 			return {

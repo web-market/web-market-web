@@ -1,10 +1,11 @@
 import {
 	getFiltersGroup as getFiltersGroupAPI,
+	updateFilterGroup as updateFilterGroupAPI,
 	addFilterGroup as addFilterGroupAPI,
 	deleteFilterGroup as deleteFilterGroupAPI,
-	addFilterValueGroup as addFilterValueGroupAPI,
 	addFilterGroupValue as addFilterGroupValueAPI,
 	getFilterGroupValue as getFilterGroupValueAPI,
+	deleteFilterGroupValue as deleteFilterGroupValueAPI
 } from '../api';
 
 import {
@@ -58,11 +59,14 @@ export default (dispatch) => {
 			.finally(() => setPending(false));
 	};
 
-	const addFilter = (data) => {
+	const updateFilterGroup = (data) => {
+		return updateFilterGroupAPI(data);
+	};
+
+	const addFilterGroup = (data) => {
 		setPending(true);
 
 		return addFilterGroupAPI(data)
-			.then(() => getFiltersList())
 			.catch(e => console.log(e))
 			.finally(() => setPending(false));
 	};
@@ -70,10 +74,6 @@ export default (dispatch) => {
 	const deleteFilter = (id) => {
 		return deleteFilterGroupAPI(id)
 			.then(() => getFiltersList());
-	};
-
-	const addFilterValue = (data) => {
-		return addFilterValueGroupAPI(data);
 	};
 
 	//FilterGroupValue
@@ -85,14 +85,19 @@ export default (dispatch) => {
 		return addFilterGroupValueAPI(data);
 	};
 
+	const deleteFilterGroupValue = (data) => {
+		return deleteFilterGroupValueAPI(data);
+	};
+
 	return {
-		addFilter,
+		addFilterGroup,
 		deleteFilter,
 		getFiltersList,
-		addFilterValue,
 		addFilterGroupValue,
 		getFilterGroupValue,
 		setFilterGroupHasValue,
-		setFilterGroupValueHandler
+		setFilterGroupValueHandler,
+		deleteFilterGroupValue,
+		updateFilterGroup
 	};
 };

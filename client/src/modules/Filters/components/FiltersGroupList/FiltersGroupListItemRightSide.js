@@ -15,8 +15,8 @@ const FiltersListItemLeftSide = (
 		handleFilterDelete,
 		addFilterGroupValuesIcon,
 		showFilterGroupValuesIcon,
-		handleAddFilterGroupValue,
-		handleShowFilterGroupValues
+		handleShowFilterGroupValues,
+		handleShoAddFilterGroupValueForm
 	}
 ) => {
 	const { hasFilterGroupValues } = useContext(FiltersContext);
@@ -37,7 +37,7 @@ const FiltersListItemLeftSide = (
 				size="small"
 				type="secondary"
 				icon={addFilterGroupValuesIcon}
-				actionHandler={handleAddFilterGroupValue}
+				actionHandler={handleShoAddFilterGroupValueForm}
 				className={classes.filtersGroupListItem_addFilterGroupValueButton}
 			/>
 			<FiltersGroupListItemTooltipActions
@@ -53,10 +53,10 @@ FiltersListItemLeftSide.propTypes = {
 	id: PropTypes.number,
 	handleFilterEdit: PropTypes.func,
 	handleFilterDelete: PropTypes.func,
-	handleAddFilterGroupValue: PropTypes.func,
-	handleShowFilterGroupValues: PropTypes.func,
 	addFilterGroupValuesIcon: PropTypes.string,
-	showFilterGroupValuesIcon: PropTypes.string
+	showFilterGroupValuesIcon: PropTypes.string,
+	handleShowFilterGroupValues: PropTypes.func,
+	handleShoAddFilterGroupValueForm: PropTypes.func,
 };
 
 export default FiltersListItemLeftSide;

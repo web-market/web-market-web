@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
+import { FiltersContext } from '../../store';
 
 import FiltersEditFilterModalForm from './FiltersEditFilterModalForm';
 import Button from '../../../../baseComponents/Button';
@@ -13,15 +14,18 @@ const FiltersEditFilterModalContent = (
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-
-	console.log(modalData);
-
-	const handleUpdateFilter = (values) => {
-		console.log(values);
-	};
+	const { getFiltersList, updateFilterGroup } = useContext(FiltersContext);
 
 	const handleClose = () => {
 		handleCloseFromProps();
+	};
+
+	const handleUpdateFilter = (values) => {
+		return updateFilterGroup({ ...values, id: modalData.id })
+			.then(() => {
+				getFiltersList();
+				handleClose();
+		});
 	};
 
 	const leftButtons = (

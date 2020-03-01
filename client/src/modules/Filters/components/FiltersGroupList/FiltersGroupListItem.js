@@ -22,9 +22,9 @@ const FiltersGroupListItem = (
 ) => {
 	const { getFilterGroupValue, setFilterGroupValueHandler } = useContext(FiltersContext);
 
-	const [showAddFilterSection, setShowAddFilterSection] = useState(false);
-	const [showFilterGroupValues, setShowFilterGroupValues] = useState(false);
 	const [filterGroupValues, setFilterGroupValues] = useState([]);
+	const [showFilterGroupValues, setShowFilterGroupValues] = useState(false);
+	const [shoAddFilterGroupValueForm, setShoAddFilterGroupValueForm] = useState(false);
 
 	const handleGetFilterGroupValue = useCallback(() => {
 		getFilterGroupValue(id)
@@ -37,8 +37,8 @@ const FiltersGroupListItem = (
 		setFilterGroupValueHandler(handleGetFilterGroupValue, id);
 	}, []);
 
-	const handleAddFilterGroupValue = () => {
-		setShowAddFilterSection(!showAddFilterSection);
+	const handleShoAddFilterGroupValueForm = () => {
+		setShoAddFilterGroupValueForm(!shoAddFilterGroupValueForm);
 	};
 
 	const handleShowFilterGroupValues = () => {
@@ -50,8 +50,8 @@ const FiltersGroupListItem = (
 	};
 
 	const addFilterGroupValuesIcon = useMemo(() => {
-		return showAddFilterSection ? minus : plus;
-	}, [showAddFilterSection]);
+		return shoAddFilterGroupValueForm ? minus : plus;
+	}, [shoAddFilterGroupValueForm]);
 
 	const showFilterGroupValuesIcon = useMemo(() => {
 		return showFilterGroupValues ? chevronUp : chevronDown;
@@ -70,9 +70,9 @@ const FiltersGroupListItem = (
 					handleFilterEdit={handleFilterEdit}
 					handleFilterDelete={handleFilterDelete}
 					addFilterGroupValuesIcon={addFilterGroupValuesIcon}
-					handleAddFilterGroupValue={handleAddFilterGroupValue}
 					showFilterGroupValuesIcon={showFilterGroupValuesIcon}
 					handleShowFilterGroupValues={handleShowFilterGroupValues}
+					handleShoAddFilterGroupValueForm={handleShoAddFilterGroupValueForm}
 				/>
 			</div>
 			{
@@ -81,7 +81,7 @@ const FiltersGroupListItem = (
 				)
 			}
 			{
-				showAddFilterSection && (
+				shoAddFilterGroupValueForm && (
 					<FiltersAddFilterGroupValue id={id} />
 				)
 			}

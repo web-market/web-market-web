@@ -2,10 +2,6 @@
 	margin-left: 8px;
 }
 
-.button_icon {
-
-}
-
 .button_hasIcon {
 	padding-left: 10px;
 	display: flex;
@@ -31,10 +27,14 @@
 }
 
 .button_onlyIcon.button_hasIcon.button_size__tiny {
-	padding: 5px;
-	font-size: 10px;
+	padding: 3px;
+	font-size: 12px;
 }
 
 .button_onlyIcon.button_hasIcon.button_size__small {
 	padding: 5px;
+}
+
+.button_onlyIcon.button_hasIcon.button_size__small.button_hasAsymmetryIcon {
+	padding: 3px;
 }

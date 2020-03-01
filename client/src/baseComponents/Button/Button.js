@@ -8,12 +8,14 @@ import { TYPE } from './consts';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
+import { check } from '../../icons';
+
 const Button = (
 	{
 		size,
-		label,
 		type,
 		icon,
+		label,
 		className,
 		actionName,
 		transparent,
@@ -49,6 +51,8 @@ const Button = (
 			[classes.button_size__small]: size === 'small',
 			[classes.button_size__normal]: size === 'normal',
 			[classes.button_size__large]: size === 'large',
+
+			[classes.button_hasAsymmetryIcon]: icon === check,
 
 			[classes.button_hasIcon]: icon,
 			[classes.button_onlyIcon]: !label

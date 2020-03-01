@@ -9,10 +9,11 @@ import Button from '../../../../baseComponents/Button';
 
 const FiltersAddFilterGroup = () => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addFilter } = useContext(FiltersContext);
+	const { addFilterGroup, getFiltersList } = useContext(FiltersContext);
 
 	const handleAddFilter = (val) => {
-		addFilter(val);
+		addFilterGroup(val)
+			.then(() => getFiltersList());
 	};
 
 	const rightSectionButtons = (

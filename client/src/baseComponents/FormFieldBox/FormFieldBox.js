@@ -46,26 +46,30 @@ const FormFieldBox = (
 
 	return (
 		<div className={componentClassName}>
-			<div className={classes.formFieldBox_labelWrapper}>
-				<div>
-					{label}
-					{
-						required && (
-							<span className={classes.formFieldBox_required}>*</span>
-						)
-					}
-				</div>
-				{
-					hasTooltip && (
-						<Tooltip
-							icon={toolTipIcon}
-							message={toolTipMessage}
-							tooltipClassName={classes.formFieldBox_tooltip}
-							tooltipIconClassName={classes.formFieldBox_tooltipIcon}
-						/>
-					)
-				}
-			</div>
+			{
+				label && (
+					<div className={classes.formFieldBox_labelWrapper}>
+						<div>
+							{label}
+							{
+								required && (
+									<span className={classes.formFieldBox_required}>*</span>
+								)
+							}
+						</div>
+						{
+							hasTooltip && (
+								<Tooltip
+									icon={toolTipIcon}
+									message={toolTipMessage}
+									tooltipClassName={classes.formFieldBox_tooltip}
+									tooltipIconClassName={classes.formFieldBox_tooltipIcon}
+								/>
+							)
+						}
+					</div>
+				)
+			}
 			<div className={fieldWrapperClassName}>
 				{
 					hasErrors && (
@@ -93,7 +97,7 @@ FormFieldBox.defaultProps = {
 };
 
 FormFieldBox.propTypes = {
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	children: PropTypes.object.isRequired,
 	required: PropTypes.bool,
 	hasErrors: PropTypes.bool,

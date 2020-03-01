@@ -32,10 +32,10 @@ const FiltersGroupList = () => {
 		openModal(
 			MODALS.DELETE_FILTER_MODAL,
 			{
-				modalTitle: '!!Удалить фильтр',
+				modalTitle: '!!Удалить фильтр группу',
 				rightButtonLabel: '!!Удалить',
 				handleSubmit: () => deleteFilter({ id }),
-				content: '!!Вы уверены, что хотите удалить фильтр?'
+				content: '!!Вы уверены, что хотите удалить фильтр группу?'
 			}
 		);
 	};
