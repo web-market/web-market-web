@@ -5,14 +5,18 @@ import {
 	deleteFilterGroup as deleteFilterGroupAPI,
 	addFilterGroupValue as addFilterGroupValueAPI,
 	getFilterGroupValue as getFilterGroupValueAPI,
-	deleteFilterGroupValue as deleteFilterGroupValueAPI
+	getUpdateFilterGroup as getUpdateFilterGroupAPI,
+	deleteFilterGroupValue as deleteFilterGroupValueAPI,
+	getEditFilterGroupValue as getEditFilterGroupValueAPI,
+	updateFiltersGroupValue as updateFiltersGroupValueAPI
 } from '../api';
 
 import {
 	SET_FILTERS,
 	SET_PENDING,
 	SET_FILTER_GROUP_HAS_ADDED_VALUE,
-	SET_FILTER_GROUP_GET_VALUES_HANDLER
+	SET_FILTER_GROUP_GET_VALUES_HANDLER,
+	SET_FILTER_GROUP_VALUE_EDIT_MODE_HANDLER
 } from './consts';
 
 export default (dispatch) => {
@@ -50,6 +54,13 @@ export default (dispatch) => {
 		});
 	};
 
+	const setFilterGroupValueEditModeHandler = (handler) => {
+		dispatch({
+			type: SET_FILTER_GROUP_VALUE_EDIT_MODE_HANDLER,
+			handler
+		});
+	};
+
 	const getFiltersList = () => {
 		setPending(true);
 
@@ -57,6 +68,10 @@ export default (dispatch) => {
 			.then(({ data }) => setFilters(data))
 			.catch(e => console.log(e))
 			.finally(() => setPending(false));
+	};
+
+	const getUpdateFilterGroup = (data) => {
+		return getUpdateFilterGroupAPI(data);
 	};
 
 	const updateFilterGroup = (data) => {
@@ -81,6 +96,14 @@ export default (dispatch) => {
 		return getFilterGroupValueAPI(id);
 	};
 
+	const getEditFilterGroupValue = (id) => {
+		return getEditFilterGroupValueAPI(id);
+	};
+
+	const updateFiltersGroupValue = (data) => {
+		return updateFiltersGroupValueAPI(data);
+	};
+
 	const addFilterGroupValue = (data) => {
 		return addFilterGroupValueAPI(data);
 	};
@@ -98,6 +121,10 @@ export default (dispatch) => {
 		setFilterGroupHasValue,
 		setFilterGroupValueHandler,
 		deleteFilterGroupValue,
-		updateFilterGroup
+		updateFilterGroup,
+		getUpdateFilterGroup,
+		getEditFilterGroupValue,
+		updateFiltersGroupValue,
+		setFilterGroupValueEditModeHandler
 	};
 };

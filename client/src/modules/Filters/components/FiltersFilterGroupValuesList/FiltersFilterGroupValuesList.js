@@ -11,8 +11,18 @@ import classes from './styles/index.scss';
 import { getUniqueKey } from '../../../../utils';
 import { MODALS } from '../../consts';
 
-const FiltersFilterGroupValuesList = ({ filterGroupValues }) => {
-	const { deleteFilterGroupValue, filterGroupValueHandler } = useContext(FiltersContext);
+const FiltersFilterGroupValuesList = (
+	{
+		filterGroupValues,
+		filterGroupValueId
+	}
+) => {
+	const {
+		deleteFilterGroupValue,
+		filterGroupValueHandler,
+		filterGroupValueEditModeHandler,
+		setFilterGroupValueEditModeHandler
+	} = useContext(FiltersContext);
 	const { openModal } = useContext(FiltersModalsContext);
 
 	const handleDeleteFilterGroupValueAction = (id) => {
@@ -47,7 +57,10 @@ const FiltersFilterGroupValuesList = ({ filterGroupValues }) => {
 							key={key}
 							id={filterValue.id}
 							value={filterValue.value}
+							filterGroupValueId={filterGroupValueId}
 							handleDeleteFilterGroupValue={handleDeleteFilterGroupValue}
+							filterGroupValueEditModeHandler={filterGroupValueEditModeHandler}
+							setFilterGroupValueEditModeHandler={setFilterGroupValueEditModeHandler}
 						/>
 					);
 				})
@@ -57,7 +70,8 @@ const FiltersFilterGroupValuesList = ({ filterGroupValues }) => {
 };
 
 FiltersFilterGroupValuesList.propTypes = {
-	filterGroupValues: PropTypes.array
+	filterGroupValues: PropTypes.array,
+	filterGroupValueId: PropTypes.number
 };
 
 export { FiltersFilterGroupValuesList };

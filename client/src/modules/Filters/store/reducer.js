@@ -4,7 +4,8 @@ import {
 	SET_FILTERS,
 	SET_PENDING,
 	SET_FILTER_GROUP_HAS_ADDED_VALUE,
-	SET_FILTER_GROUP_GET_VALUES_HANDLER
+	SET_FILTER_GROUP_GET_VALUES_HANDLER,
+	SET_FILTER_GROUP_VALUE_EDIT_MODE_HANDLER
 } from './consts';
 
 export const initialState = {
@@ -37,6 +38,11 @@ export const reducer = (state, payload) => {
 			return {
 				...state,
 				hasFilterGroupValues: { ...state.hasFilterGroupValues }
+			};
+		case SET_FILTER_GROUP_VALUE_EDIT_MODE_HANDLER:
+			return {
+				...state,
+				filterGroupValueEditModeHandler: payload.handler
 			};
 		case SET_PENDING:
 			return {

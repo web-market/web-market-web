@@ -77,7 +77,10 @@ const FiltersGroupListItem = (
 			</div>
 			{
 				showFilterGroupValues && (
-					<FiltersFilterGroupValuesList filterGroupValues={filterGroupValues} />
+					<FiltersFilterGroupValuesList
+						filterGroupValueId={id}
+						filterGroupValues={filterGroupValues}
+					/>
 				)
 			}
 			{

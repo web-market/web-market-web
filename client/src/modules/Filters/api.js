@@ -10,6 +10,10 @@ const getFiltersGroup = () => {
     return GET(`${ENDPOINT.FILTERS_BASE_CONTROLLER}`);
 };
 
+const getUpdateFilterGroup = (id) => {
+	return GET(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/${id}`);
+};
+
 const updateFilterGroup = (data) => {
 	return PUT(ENDPOINT.FILTERS_BASE_CONTROLLER, data);
 };
@@ -26,11 +30,15 @@ const addFilterGroupValue = (data) => {
 };
 
 const getFilterGroupValue = (id) => {
+	return GET(`${ENDPOINT.GET_FILTER_GROUP_VALUES}/${id}`);
+};
+
+const getEditFilterGroupValue = (id) => {
 	return GET(`${ENDPOINT.FILTER_VALUE_BASE_CONTROLLER}/${id}`);
 };
 
-const updateFiltersGroupValue = () => {
-	return PUT(`${ENDPOINT.FILTER_VALUE_BASE_CONTROLLER}`);
+const updateFiltersGroupValue = (data) => {
+	return PUT(ENDPOINT.FILTER_VALUE_BASE_CONTROLLER, data);
 };
 
 //To do
@@ -45,5 +53,8 @@ export {
 	addFilterGroupValue,
 	getFilterGroupValue,
 	deleteFilterGroupValue,
-	updateFilterGroup
+	updateFilterGroup,
+	getUpdateFilterGroup,
+	getEditFilterGroupValue,
+	updateFiltersGroupValue
 };

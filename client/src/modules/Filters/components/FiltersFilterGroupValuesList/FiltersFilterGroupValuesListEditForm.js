@@ -10,13 +10,16 @@ import { EDIT_FILTER_GROUP_VALUE_FORM } from '../../consts';
 const FiltersFilterGroupValuesListEditForm = (
 	{
 		id,
+		initialValues,
 		handleEditFilterGroupValue
 	}
 ) => {
 	return (
 		<Form
-			name={`${EDIT_FILTER_GROUP_VALUE_FORM}-${id}`}
+			restFormValues={false}
+			initialValues={initialValues}
 			onSubmit={handleEditFilterGroupValue}
+			name={`${EDIT_FILTER_GROUP_VALUE_FORM}-${id}`}
 		>
 			<GridLayout>
 				<GridLayoutRow

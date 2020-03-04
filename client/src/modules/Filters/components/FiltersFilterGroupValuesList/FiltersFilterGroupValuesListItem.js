@@ -5,23 +5,29 @@ import FiltersFilterGroupValuesListItemLeftSide from './FiltersFilterGroupValues
 import FiltersFilterGroupValuesListItemRightSide from './FiltersFilterGroupValuesListItemRightSide';
 import FiltersFilterGroupValuesListEditContent from './FiltersFilterGroupValuesListEditContent';
 
+import { isUndefined } from '../../../../utils';
 import classes from './styles/index.scss';
 
 const FiltersFilterGroupValuesListItem = (
 	{
 		id,
 		value,
-		handleDeleteFilterGroupValue
+		filterGroupValueId,
+		handleDeleteFilterGroupValue,
+		filterGroupValueEditModeHandler,
+		setFilterGroupValueEditModeHandler
 	}
 ) => {
 	const [showEditFilterGroupValueForm, setShowEditFilterGroupValueForm] = useState(false);
 
 	const onEditButtonClick = () => {
 		setShowEditFilterGroupValueForm(!showEditFilterGroupValueForm);
-	};
 
-	const handleEditFilterGroupValue = (id) => {
-		console.log(id);
+		if (!isUndefined(filterGroupValueEditModeHandler)) {
+			filterGroupValueEditModeHandler(false);
+		}
+
+		setFilterGroupValueEditModeHandler(setShowEditFilterGroupValueForm);
 	};
 
 	return (
@@ -43,7 +49,7 @@ const FiltersFilterGroupValuesListItem = (
 					<FiltersFilterGroupValuesListEditContent
 						id={id}
 						onEditButtonClick={onEditButtonClick}
-						handleEditFilterGroupValue={handleEditFilterGroupValue}
+						filterGroupValueId={filterGroupValueId}
 					/>
 				)
 			}
@@ -54,7 +60,10 @@ const FiltersFilterGroupValuesListItem = (
 FiltersFilterGroupValuesListItem.propTypes = {
 	id: PropTypes.number,
 	value: PropTypes.string,
-	handleDeleteFilterGroupValue: PropTypes.func
+	filterGroupValueId: PropTypes.number,
+	handleDeleteFilterGroupValue: PropTypes.func,
+	filterGroupValueEditModeHandler: PropTypes.func,
+	setFilterGroupValueEditModeHandler: PropTypes.func
 };
 
 export default FiltersFilterGroupValuesListItem;

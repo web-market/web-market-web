@@ -9,7 +9,8 @@ import { close, check } from '../../../../icons';
 
 const FiltersFilterGroupValuesListEditContentRightSide = (
 	{
-		onEditButtonClick
+		onEditButtonClick,
+		handleRemoteSubmit
 	}
 ) => {
 	const componentClassName = ClassName(
@@ -31,7 +32,7 @@ const FiltersFilterGroupValuesListEditContentRightSide = (
 				icon={check}
 				type="primary"
 				transparent
-				// actionHandler={onEditButtonClick}
+				actionHandler={handleRemoteSubmit}
 				className={classes.filtersFilterGroupValuesListItemRightSide_editButton}
 			/>
 		</div>
@@ -39,7 +40,8 @@ const FiltersFilterGroupValuesListEditContentRightSide = (
 };
 
 FiltersFilterGroupValuesListEditContentRightSide.propTypes = {
-	onEditButtonClick: PropTypes.func
+	onEditButtonClick: PropTypes.func,
+	handleRemoteSubmit: PropTypes.func
 };
 
 export default FiltersFilterGroupValuesListEditContentRightSide;

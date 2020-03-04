@@ -5,16 +5,24 @@ import FiltersFilterGroupValuesListEditForm from './FiltersFilterGroupValuesList
 
 const FiltersFilterGroupValuesListEditContentLeftSide = (
 	{
-		id
+		id,
+		initialValues,
+		handleEditFilterGroupValue
 	}
 ) => {
 	return (
-		<FiltersFilterGroupValuesListEditForm id={id} />
+		<FiltersFilterGroupValuesListEditForm
+			id={id}
+			initialValues={initialValues}
+			handleEditFilterGroupValue={handleEditFilterGroupValue}
+		/>
 	);
 };
 
 FiltersFilterGroupValuesListEditContentLeftSide.propTypes = {
-	id: PropTypes.number
+	id: PropTypes.number,
+	initialValues: PropTypes.object,
+	handleEditFilterGroupValue: PropTypes.func
 };
 
 export default FiltersFilterGroupValuesListEditContentLeftSide;

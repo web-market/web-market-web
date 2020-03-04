@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
@@ -14,7 +14,13 @@ const FiltersEditFilterModalContent = (
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { getFiltersList, updateFilterGroup } = useContext(FiltersContext);
+	const { getFiltersList, updateFilterGroup, getUpdateFilterGroup } = useContext(FiltersContext);
+	const [data, setData] = useState({});
+
+	useEffect(() => {
+		getUpdateFilterGroup(modalData.id)
+		.then(({ data }) => setData(data));
+	}, [modalData.id, getUpdateFilterGroup]);
 
 	const handleClose = () => {
 		handleCloseFromProps();
@@ -44,12 +50,20 @@ const FiltersEditFilterModalContent = (
 		/>
 	);
 
+	const initialValues = useMemo(() => {
+		return {
+			sortOrder: data.sortOrder,
+			name: data.name,
+			displayName: data.displayName
+		};
+	}, [data]);
+
 	return (
 		<FiltersEditFilterModalForm
 			handleClose={handleClose}
 			leftButtons={leftButtons}
 			rightButtons={rightButtons}
-			initialValues={{}}
+			initialValues={initialValues}
 			handleUpdateFilter={handleUpdateFilter}
 		/>
 	);
