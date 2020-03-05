@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
+import LoadSpinner from '../LoadSpinner';
 
 import { COLORS } from '../../styles/baseColors';
 import { TYPE } from './consts';
@@ -17,6 +18,7 @@ const Button = (
 		icon,
 		label,
 		className,
+		isPending,
 		actionName,
 		transparent,
 		actionHandler,
@@ -104,31 +106,46 @@ const Button = (
 	const iconColor = getIconColor();
 
 	return (
-		<div
-			className={componentClassName}
-			onClick={() => actionHandler(actionName)}
-			onMouseEnter={() => setHover(true)}
-			onMouseLeave={() => setHover(false)}
-		>
+		<>
 			{
-				icon && (
-					<Icon
-						icon={icon}
-						onHover={hover}
-						color={iconColor.color}
-						onHoverColor={iconColor.onHoverColor}
-						className={componentIconClassName}
+				!isPending && (
+					<div
+						className={componentClassName}
+						onClick={() => actionHandler(actionName)}
+						onMouseEnter={() => setHover(true)}
+						onMouseLeave={() => setHover(false)}
+					>
+						{
+							icon && (
+								<Icon
+									icon={icon}
+									onHover={hover}
+									color={iconColor.color}
+									onHoverColor={iconColor.onHoverColor}
+									className={componentIconClassName}
+								/>
+							)
+						}
+						{
+							label && (
+								<span className={componentLabelClassName}>
+									{label}
+								</span>
+							)
+						}
+					</div>
+				)
+			}
+			{
+				isPending && (
+					<LoadSpinner
+						width={25}
+						height={25}
+						className={className}
 					/>
 				)
 			}
-			{
-				label && (
-					<span className={componentLabelClassName}>
-						{label}
-					</span>
-				)
-			}
-		</div>
+		</>
 	);
 };
 
@@ -137,6 +154,7 @@ Button.defaultProps = {
 	className: '',
 	size: 'normal',
 	type: 'secondary',
+	isPending: false,
 	transparent: false,
 	actionHandler: () => {}
 };
@@ -149,6 +167,7 @@ Button.propTypes = {
 	className: PropTypes.string,
 	actionName: PropTypes.string,
 	transparent: PropTypes.bool,
+	isPending: PropTypes.bool,
 	actionHandler: PropTypes.func
 };
 

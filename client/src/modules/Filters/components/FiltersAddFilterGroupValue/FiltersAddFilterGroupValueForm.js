@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 
 import Form, { Field } from '../../../../baseComponents/Form';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
-import { ADD_FILTER_VALUE_FORM } from '../../consts';
 import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 import GridLayout, { GridLayoutRow } from '../../../../baseComponents/GridLayout';
 import Button from '../../../../baseComponents/Button';
-import { check } from '../../../../icons';
-import classes from './styles/index.scss';
 import HeaderText from '../../../../baseComponents/HeaderText';
+
+import classes from './styles/index.scss';
+import { check } from '../../../../icons';
+import { ADD_FILTER_VALUE_FORM } from '../../consts';
 
 const FiltersAddFilterGroupValueForm = (
 	{
 		id,
+		isPending,
 		handleSubmit,
 		handleAddFilterValue
 	}
@@ -29,7 +31,6 @@ const FiltersAddFilterGroupValueForm = (
 			>
 				!!Добавить фильтр
 			</HeaderText>
-
 			<Form
 				name={`${ADD_FILTER_VALUE_FORM}-${id}`}
 				onSubmit={handleAddFilterValue}
@@ -66,8 +67,10 @@ const FiltersAddFilterGroupValueForm = (
 							type="primary"
 							size="small"
 							transparent
-							className={classes.filtersAddFilterValue_addButton}
+							hasPendig
+							isPending={isPending}
 							actionHandler={handleSubmit}
+							className={classes.filtersAddFilterValue_addButton}
 						/>
 					</GridLayoutRow>
 				</GridLayout>
@@ -78,6 +81,7 @@ const FiltersAddFilterGroupValueForm = (
 
 FiltersAddFilterGroupValueForm.propTypes = {
 	id: PropTypes.number,
+	isPending: PropTypes.bool,
 	handleSubmit: PropTypes.func,
 	handleAddFilterValue: PropTypes.func
 };

@@ -5,7 +5,7 @@ import { isNullOrUndefined } from '../../utils';
 
 import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
-import DropDownSpinner from './DropDownSpinner';
+import LoadSpinner from '../LoadSpinner';
 
 import classes from './styles/index.scss';
 import Icon from '../Icon';
@@ -110,7 +110,7 @@ const Dropdown = (
 					color={COLORS.FIELD_ICON}
 				/>
 			) : (
-				<DropDownSpinner
+				<LoadSpinner
 					className={classes.dropdown_icon}
 				/>
 			);
