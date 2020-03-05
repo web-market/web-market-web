@@ -5,7 +5,7 @@ import FiltersFilterGroupValuesListItemLeftSide from './FiltersFilterGroupValues
 import FiltersFilterGroupValuesListItemRightSide from './FiltersFilterGroupValuesListItemRightSide';
 import FiltersFilterGroupValuesListEditContent from './FiltersFilterGroupValuesListEditContent';
 
-import { isUndefined } from '../../../../utils';
+import { isNullOrUndefined } from '../../../../utils';
 import classes from './styles/index.scss';
 
 const FiltersFilterGroupValuesListItem = (
@@ -23,11 +23,15 @@ const FiltersFilterGroupValuesListItem = (
 	const onEditButtonClick = () => {
 		setShowEditFilterGroupValueForm(!showEditFilterGroupValueForm);
 
-		if (!isUndefined(filterGroupValueEditModeHandler)) {
+		if (!isNullOrUndefined(filterGroupValueEditModeHandler)) {
 			filterGroupValueEditModeHandler(false);
 		}
 
-		setFilterGroupValueEditModeHandler(setShowEditFilterGroupValueForm);
+		if (showEditFilterGroupValueForm) {
+			setFilterGroupValueEditModeHandler(null);
+		} else {
+			setFilterGroupValueEditModeHandler(setShowEditFilterGroupValueForm);
+		}
 	};
 
 	return (

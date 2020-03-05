@@ -7,10 +7,10 @@ import { isUndefined } from '../../utils';
 const Field = (props) => {
 	const { name, component, validate } = props;
 	const {
-		registerField,
-		setFieldValue,
-		formValues,
 		fields,
+		formValues,
+		setFieldValue,
+		registerField,
 		setFieldValidationResult
 	} = useContext(ContextForm);
 	const [hasFocus, setHasFocus] = useState(false);
@@ -21,11 +21,11 @@ const Field = (props) => {
 		registerField({
 			name,
 			validate,
+			value: null,
 			isValid: true,
 			isTouched: false,
 			errorMessages: [],
-			hasValidationError: false,
-			value: null
+			hasValidationError: false
 		});
 
 		isRegistered.current = true;

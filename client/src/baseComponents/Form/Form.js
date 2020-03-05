@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef, memo } from 'react';
+import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { ContextForm } from './store/FormContext';
@@ -32,6 +32,46 @@ const Form = memo((
 	const valuesRef = useRef();
 	const fieldsRef = useRef();
 
+	const handleErrors = useCallback((fields) => {
+		const errors = fields.map(field => {
+			return `\n${field.field}: ${field.errorMessages}`;
+		});
+
+		actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
+	}, []);
+
+	const handleSuccess = useCallback((values) => {
+		onSubmit(values);
+		actionLogger(`FROM "${name}" HAS SUBMITTED`);
+
+		if (restFormValues) {
+			resetFormValues();
+			actionLogger(`FROM "${name}" HAS RESETED`);
+		}
+	}, [name, onSubmit, restFormValues, resetFormValues]);
+
+	const submitForm = useCallback(() => {
+		validateForm(fieldsRef.current, valuesRef.current)
+		.then(values => handleSuccess(values))
+		.catch(fields => handleErrors(fields));
+	}, [handleSuccess, handleErrors, validateForm]);
+
+	const handleSubmitOnEnter = useCallback((e) => {
+		const { keyCode } = e;
+
+		if (keyCode === 13) {
+			submitForm();
+		}
+	}, [submitForm]);
+
+	useEffect(() => {
+		window.addEventListener('keyup', handleSubmitOnEnter);
+
+		return () => {
+			window.removeEventListener('keyup', handleSubmitOnEnter);
+		};
+	}, [handleSubmitOnEnter]);
+
 	useEffect(() => {
 		initForm({ name });
 
@@ -51,30 +91,6 @@ const Form = memo((
 		valuesRef.current = formValues;
 		fieldsRef.current = fields;
 	}, [formValues, fields]);
-
-	const handleErrors = (fields) => {
-		const errors = fields.map(field => {
-			return `\n${field.field}: ${field.errorMessages}`;
-		});
-
-		actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
-	};
-
-	const handleSuccess = (values) => {
-		onSubmit(values);
-		actionLogger(`FROM "${name}" HAS SUBMITTED`);
-
-		if (restFormValues) {
-			resetFormValues();
-			actionLogger(`FROM "${name}" HAS RESETED`);
-		}
-	};
-
-	const submitForm = () => {
-		validateForm(fieldsRef.current, valuesRef.current)
-			.then(values => handleSuccess(values))
-			.catch(fields => handleErrors(fields));
-	};
 
 	//set submit function to global context on init
 	useEffect(() => {

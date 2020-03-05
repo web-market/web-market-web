@@ -18,7 +18,6 @@ const updateFilterGroup = (data) => {
 	return PUT(ENDPOINT.FILTERS_BASE_CONTROLLER, data);
 };
 
-//To do
 const deleteFilterGroup = (id) => {
 	return DELETE(ENDPOINT.FILTERS_BASE_CONTROLLER, id);
 };
@@ -41,7 +40,6 @@ const updateFiltersGroupValue = (data) => {
 	return PUT(ENDPOINT.FILTER_VALUE_BASE_CONTROLLER, data);
 };
 
-//To do
 const deleteFilterGroupValue = (data) => {
 	return DELETE(ENDPOINT.FILTER_VALUE_BASE_CONTROLLER, data);
 };

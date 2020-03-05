@@ -20,16 +20,25 @@ const FiltersGroupListItem = (
 		handleFilterDelete
 	}
 ) => {
-	const { getFilterGroupValue, setFilterGroupValueHandler } = useContext(FiltersContext);
+	const {
+		getFilterGroupValue,
+		hasFilterGroupValues,
+		setFilterGroupHasValue,
+		setFilterGroupValueHandler
+	} = useContext(FiltersContext);
 
 	const [filterGroupValues, setFilterGroupValues] = useState([]);
 	const [showFilterGroupValues, setShowFilterGroupValues] = useState(false);
 	const [shoAddFilterGroupValueForm, setShoAddFilterGroupValueForm] = useState(false);
 
 	const handleGetFilterGroupValue = useCallback(() => {
-		getFilterGroupValue(id)
+		return getFilterGroupValue(id)
 			.then(({ data }) => {
 				setFilterGroupValues(data);
+
+				setFilterGroupHasValue(true, id);
+
+				return data;
 			});
 	}, [getFilterGroupValue, id]);
 
@@ -76,7 +85,7 @@ const FiltersGroupListItem = (
 				/>
 			</div>
 			{
-				showFilterGroupValues && (
+				showFilterGroupValues && hasFilterGroupValues[id] && (
 					<FiltersFilterGroupValuesList
 						filterGroupValueId={id}
 						filterGroupValues={filterGroupValues}

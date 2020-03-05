@@ -19,15 +19,25 @@ const FiltersFilterGroupValuesList = (
 ) => {
 	const {
 		deleteFilterGroupValue,
+		setFilterGroupHasValue,
 		filterGroupValueHandler,
 		filterGroupValueEditModeHandler,
 		setFilterGroupValueEditModeHandler
 	} = useContext(FiltersContext);
-	const { openModal } = useContext(FiltersModalsContext);
+	const { openModal, closeModal } = useContext(FiltersModalsContext);
 
 	const handleDeleteFilterGroupValueAction = (id) => {
-		return deleteFilterGroupValue({ id })
-			.then(() => filterGroupValueHandler[id]());
+		return deleteFilterGroupValue({ ids: [id] })
+			.then(() => {
+				closeModal(MODALS.DELETE_FILTER_MODAL);
+
+				return filterGroupValueHandler[filterGroupValueId]();
+			})
+			.then(data => {
+				if (data.length === 0) {
+					setFilterGroupHasValue(false, filterGroupValueId);
+				}
+			});
 	};
 
 	const handleDeleteFilterGroupValue = (id) => {
