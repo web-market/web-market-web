@@ -40,10 +40,14 @@ const FiltersGroupListItem = (
 
 				return data;
 			});
-	}, [getFilterGroupValue, id]);
+	}, [getFilterGroupValue, id, setFilterGroupHasValue]);
 
 	useEffect(() => {
 		setFilterGroupValueHandler(handleGetFilterGroupValue, id);
+	}, []);
+
+	useEffect(() => {
+		setFilterGroupHasValue(hasFilterValues, id);
 	}, []);
 
 	const handleShoAddFilterGroupValueForm = () => {
@@ -75,7 +79,6 @@ const FiltersGroupListItem = (
 				/>
 				<FiltersListItemRightSide
 					id={id}
-					hasFilterValues={hasFilterValues}
 					handleFilterEdit={handleFilterEdit}
 					handleFilterDelete={handleFilterDelete}
 					addFilterGroupValuesIcon={addFilterGroupValuesIcon}
@@ -85,7 +88,7 @@ const FiltersGroupListItem = (
 				/>
 			</div>
 			{
-				showFilterGroupValues && hasFilterGroupValues[id] && (
+				(showFilterGroupValues && hasFilterGroupValues[id]) && (
 					<FiltersFilterGroupValuesList
 						filterGroupValueId={id}
 						filterGroupValues={filterGroupValues}

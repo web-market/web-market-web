@@ -10,7 +10,6 @@ import classes from './styles/index.scss';
 const FiltersListItemLeftSide = (
 	{
 		id,
-		hasFilterValues,
 		handleFilterEdit,
 		handleFilterDelete,
 		addFilterGroupValuesIcon,
@@ -24,7 +23,7 @@ const FiltersListItemLeftSide = (
 	return (
 		<div className={classes.filtersGroupListItem_right}>
 			{
-				(hasFilterValues || hasFilterGroupValues[id]) && (
+				hasFilterGroupValues[id] && (
 					<Button
 						size="small"
 						type="secondary"
