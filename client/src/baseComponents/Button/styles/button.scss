@@ -144,3 +144,7 @@
 		@include bg-color($dark);
 	};
 }
+
+.button_noBorder {
+	border: none;
+}

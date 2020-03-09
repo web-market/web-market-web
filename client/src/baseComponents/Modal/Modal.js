@@ -1,32 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import className from 'classnames';
 import classes from './styles/index.scss';
-import { MODAL_PORTAL_CLASS } from './consts';
 import { AppGlobalContext } from '../../App/store/AppGlobalContext';
+import { CSSTransition } from 'react-transition-group';
 
-const modalPortalNode = document.getElementsByClassName(MODAL_PORTAL_CLASS)[0];
 
 const Modal = (
 	{
+		size,
 		render,
 		isOpen,
-		handleClose,
-		size
+		handleClose
 	}
 ) => {
-	const { handleShowOverlayCloak, setHandleOverlayClose, showOverlayCloak } = useContext(AppGlobalContext);
-	const [hasMounted, setHasMounted] = useState(false);
+	const { handleShowOverlayCloak, setHandleOverlayClose } = useContext(AppGlobalContext);
 
 	useEffect(() => {
 		if (isOpen) {
 			setHandleOverlayClose(() => handleClose);
-			setTimeout(() => setHasMounted(isOpen), 50);
 		} else {
 			setHandleOverlayClose(() => {});
-			setTimeout(() => setHasMounted(isOpen), 50);
 		}
 
 		handleShowOverlayCloak(isOpen);
@@ -35,24 +30,28 @@ const Modal = (
 	const componentClassName = className(
 		classes.modal,
 		{
-			[classes.modal_open]: isOpen && hasMounted,
 			[classes.modal_small]: size === 'small',
 			[classes.modal_medium]: size === 'medium',
 			[classes.modal_large]: size === 'large'
 		}
 	);
 
-	const ModalComponent = isOpen && showOverlayCloak
-		? (
+	return (
+		<CSSTransition
+			in={isOpen}
+			unmountOnExit
+			timeout={500}
+			classNames={{
+				enter: classes['modal-enter'],
+				enterActive: classes['modal-enter-active'],
+				exit: classes['modal-exit'],
+				exitActive: classes['modal-exit-active']
+			}}
+		>
 			<div className={componentClassName}>
 				{ render({ handleClose }) }
 			</div>
-
-		) : null;
-
-	return createPortal(
-		ModalComponent,
-		modalPortalNode
+		</CSSTransition>
 	);
 };
 
@@ -64,8 +63,8 @@ Modal.defaultProps = {
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
 	render: PropTypes.func,
+	size: PropTypes.string,
 	handleClose: PropTypes.func,
-	size: PropTypes.string
 };
 
 export { Modal };

@@ -5,6 +5,7 @@ import FormsContextProvider from './store/FormsGlobalContext';
 import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
 
 import OverlayCloak from '../baseComponents/OverlayCloak';
+import Notification from '../baseComponents/Notification';
 import AdminPanel from '../modules/AdminPanel';
 
 import Link from '../baseComponents/Link';
@@ -23,7 +24,7 @@ class App extends Component {
 					<Switch>
 						<Route path="/adminpanel" component={AdminPanel} />
 						<Route path="/">
-							<Link link="/adminpanel" content="Admin panel" />
+							<Link link="/adminpanel/statistic/" content="Admin panel" />
 						</Route>
 					</Switch>
 				</Router>
@@ -31,6 +32,7 @@ class App extends Component {
 					show={showOverlayCloak}
 					handleOverlayClose={handleOverlayClose}
 				/>
+				<Notification />
 			</FormsContextProvider>
 		);
 	}
