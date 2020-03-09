@@ -19,8 +19,8 @@ const FiltersEditFilterModalContent = (
 
 	useEffect(() => {
 		getUpdateFilterGroup(modalData.id)
-		.then(({ data }) => setData(data));
-	}, [modalData.id, getUpdateFilterGroup]);
+			.then(({ data }) => setData(data));
+	}, []);
 
 	const handleClose = () => {
 		handleCloseFromProps();

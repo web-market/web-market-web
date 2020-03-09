@@ -11,7 +11,7 @@ const getFiltersGroup = () => {
 };
 
 const getUpdateFilterGroup = (id) => {
-	return GET(`${ENDPOINT.FILTERS_BASE_CONTROLLER}/${id}`);
+	return GET(`${ENDPOINT.FILTERS_BASE_CONTROLLER}${id}`);
 };
 
 const updateFilterGroup = (data) => {
@@ -29,11 +29,11 @@ const addFilterGroupValue = (data) => {
 };
 
 const getFilterGroupValue = (id) => {
-	return GET(`${ENDPOINT.GET_FILTER_GROUP_VALUES}/${id}`);
+	return GET(`${ENDPOINT.GET_FILTER_GROUP_VALUES}${id}`);
 };
 
 const getEditFilterGroupValue = (id) => {
-	return GET(`${ENDPOINT.FILTER_VALUE_BASE_CONTROLLER}/${id}`);
+	return GET(`${ENDPOINT.FILTER_VALUE_BASE_CONTROLLER}${id}`);
 };
 
 const updateFiltersGroupValue = (data) => {
