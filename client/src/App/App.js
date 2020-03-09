@@ -5,6 +5,7 @@ import FormsContextProvider from './store/FormsGlobalContext';
 import AppContextProvider, { AppGlobalContext } from './store/AppGlobalContext';
 
 import OverlayCloak from '../baseComponents/OverlayCloak';
+import Notification from '../baseComponents/Notification';
 import AdminPanel from '../modules/AdminPanel';
 
 import Link from '../baseComponents/Link';
@@ -31,6 +32,7 @@ class App extends Component {
 					show={showOverlayCloak}
 					handleOverlayClose={handleOverlayClose}
 				/>
+				<Notification />
 			</FormsContextProvider>
 		);
 	}

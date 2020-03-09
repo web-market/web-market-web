@@ -1,12 +1,11 @@
-import React, { createContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 import { reducer, initialState } from './reducer';
 import {
+	FormsGlobalContext,
 	ADD_FORM_IN_GLOBAL_CONTEXT,
 	REMOVE_FORM_IN_GLOBAL_CONTEXT
 } from './consts';
-
-export const FormsGlobalContext = createContext(initialState);
 
 export const FormsGlobalContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);

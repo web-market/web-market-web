@@ -1,10 +1,26 @@
-import React, { createContext, useState } from 'react';
+import React, { useState, useReducer } from 'react';
+import { initialState, reducer } from './reducer';
 
-export const AppGlobalContext = createContext();
+import { AppGlobalContext, SHOW_NOTIFICATION, REMOVE_NOTIFICATION } from './consts';
 
 export const AppGlobalContextProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(reducer, initialState);
 	const [showOverlayCloak, setShowOverlayCloak] = useState(false);
 	const [handleOverlayClose, setHandleOverlayClose] = useState(() => {});
+
+	const showNotification = (notification) => {
+		dispatch({
+			type: SHOW_NOTIFICATION,
+			notification
+		});
+	};
+
+	const removeNotification = (notificationId) => {
+		dispatch({
+			type: REMOVE_NOTIFICATION,
+			notificationId
+		});
+	};
 
 	const handleShowOverlayCloak = (show) => {
 		setShowOverlayCloak(show);
@@ -13,7 +29,10 @@ export const AppGlobalContextProvider = ({ children }) => {
 	return (
 		<AppGlobalContext.Provider
 			value={{
+				...state,
+				showNotification,
 				showOverlayCloak,
+				removeNotification,
 				handleOverlayClose,
 				setHandleOverlayClose,
 				handleShowOverlayCloak

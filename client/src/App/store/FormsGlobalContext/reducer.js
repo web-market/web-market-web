@@ -1,4 +1,4 @@
-import { omitProperty } from '../../../utils';
+import { removeObjectProperty } from '../../../utils';
 
 import {
 	ADD_FORM_IN_GLOBAL_CONTEXT,
@@ -14,12 +14,12 @@ export const reducer = (state, payload) => {
 		case ADD_FORM_IN_GLOBAL_CONTEXT:
 			return {
 				...state,
-				forms: { ...payload.form, ...state.forms }
+				forms: { ...state.forms, ...payload.form }
 			};
 		case REMOVE_FORM_IN_GLOBAL_CONTEXT:
 			return {
 				...state,
-				forms: omitProperty(state.forms, payload.form)
+				forms: removeObjectProperty(state.forms, payload.form)
 			};
 		default:
 			throw new Error();
