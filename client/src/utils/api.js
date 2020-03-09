@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const axiosInstance = axios.create({
 	baseURL: 'http://localhost:8081/',
+	//baseURL: 'http://192.168.0.104:8081',
 });
 
 const GET = (url) => {
@@ -22,7 +23,7 @@ const DELETE = (url, data = {}) => {
 
 export {
 	GET,
+	PUT,
 	POST,
-	DELETE,
-	PUT
+	DELETE
 };
