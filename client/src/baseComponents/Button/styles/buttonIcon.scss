@@ -11,6 +11,7 @@
 .button_onlyIcon {
 	border-radius: 50px;
 	line-height: inherit;
+	justify-content: center;
 
 	.button_icon {
 		top: initial;
@@ -27,7 +28,7 @@
 }
 
 .button_onlyIcon.button_hasIcon.button_size__tiny {
-	padding: 3px;
+	padding: 4px;
 	font-size: 12px;
 }
 

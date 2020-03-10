@@ -24,7 +24,6 @@ export const reducer = (state, payload) => {
 				notifications: [...state.notifications, notification]
 			};
 		case REMOVE_NOTIFICATION:
-			console.log(removeArrayElement(state.notifications, payload.notificationId));
 			return {
 				...state,
 				notifications: removeArrayElement(state.notifications, payload.notificationId)

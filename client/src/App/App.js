@@ -24,7 +24,7 @@ class App extends Component {
 					<Switch>
 						<Route path="/adminpanel" component={AdminPanel} />
 						<Route path="/">
-							<Link link="/adminpanel" content="Admin panel" />
+							<Link link="/adminpanel/statistic/" content="Admin panel" />
 						</Route>
 					</Switch>
 				</Router>

@@ -1,5 +1,9 @@
 export const removeArrayElement = (items, itemId) => {
-	return items.splice(items.findIndex(item => {
+	const index = items.findIndex(item => {
 		return item.id === itemId;
-	}), 1);
+	});
+
+	items.splice(index, 1);
+
+	return items;
 };

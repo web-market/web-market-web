@@ -28,19 +28,35 @@ const FiltersAddFilterGroup = () => {
 		</>
 	);
 
-	const test = () => {
+	const success = () => {
 		showNotification({
-			message: '2000',
+			message: 'success',
 			type: 'success',
 			duration: 2000
 		});
 	};
 
-	const test1 = () => {
+	const warning = () => {
 		showNotification({
-			message: '5000',
-			type: 'success',
-			duration: 5000
+			message: 'warning',
+			type: 'warning',
+			duration: 2000
+		});
+	};
+
+	const danger = () => {
+		showNotification({
+			message: 'danger',
+			type: 'danger',
+			duration: 2000
+		});
+	};
+
+	const info = () => {
+		showNotification({
+			message: 'info',
+			type: 'info',
+			duration: 2000
 		});
 	};
 
@@ -50,8 +66,10 @@ const FiltersAddFilterGroup = () => {
 				handleAddFilter={handleAddFilter}
 				rightSectionButtons={rightSectionButtons}
 			/>
-			<div onClick={test}>2000</div>
-			<div onClick={test1}>5000</div>
+			<div onClick={success}>success</div>
+			<div onClick={warning}>warning</div>
+			<div onClick={danger}>danger</div>
+			<div onClick={info}>info</div>
 		</AdminControlContentBox>
 	);
 };

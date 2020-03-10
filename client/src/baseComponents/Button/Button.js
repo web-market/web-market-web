@@ -17,6 +17,7 @@ const Button = (
 		type,
 		icon,
 		label,
+		noBorder,
 		className,
 		isPending,
 		actionName,
@@ -54,10 +55,11 @@ const Button = (
 			[classes.button_size__normal]: size === 'normal',
 			[classes.button_size__large]: size === 'large',
 
-			[classes.button_hasAsymmetryIcon]: icon === check,
-
 			[classes.button_hasIcon]: icon,
-			[classes.button_onlyIcon]: !label
+			[classes.button_onlyIcon]: !label,
+
+			[classes.button_hasAsymmetryIcon]: icon === check,
+			[classes.button_noBorder]: noBorder,
 		},
 		className
 	);
@@ -155,6 +157,7 @@ Button.defaultProps = {
 	size: 'normal',
 	type: 'secondary',
 	isPending: false,
+	noBorder: false,
 	transparent: false,
 	actionHandler: () => {}
 };
@@ -167,6 +170,7 @@ Button.propTypes = {
 	className: PropTypes.string,
 	actionName: PropTypes.string,
 	transparent: PropTypes.bool,
+	noBorder: PropTypes.bool,
 	isPending: PropTypes.bool,
 	actionHandler: PropTypes.func
 };
