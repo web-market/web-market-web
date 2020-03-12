@@ -34,7 +34,7 @@ const CategoriesEditCategoryModalContent = (
 				handleClose();
 			})
 			.finally(() => setIsPending(false));
-	}, [modalData.id, getCategory, handleClose]);
+	}, []);
 
 	const handleUpdateCategory = (values) => {
 		setIsPending(true);

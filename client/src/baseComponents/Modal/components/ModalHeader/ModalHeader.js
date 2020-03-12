@@ -43,7 +43,7 @@ const ModalHeader = (
 };
 
 ModalHeader.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
 	handleClose: PropTypes.func.isRequired
 };
 
