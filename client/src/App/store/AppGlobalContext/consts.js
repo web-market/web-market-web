@@ -1,5 +1,8 @@
 import { createContext } from 'react';
-import { initialState } from './reducer';
+
+export const initialState = {
+	notifications: []
+};
 
 export const AppGlobalContext = createContext(initialState);
 

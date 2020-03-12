@@ -5,10 +5,6 @@ import {
 	REMOVE_NOTIFICATION
 } from './consts';
 
-export const initialState = {
-	notifications: []
-};
-
 export const reducer = (state, payload) => {
 	actionLogger(payload.type);
 
@@ -21,7 +17,7 @@ export const reducer = (state, payload) => {
 
 			return {
 				...state,
-				notifications: [...state.notifications, notification]
+				notifications: [notification, ...state.notifications]
 			};
 		case REMOVE_NOTIFICATION:
 			return {
