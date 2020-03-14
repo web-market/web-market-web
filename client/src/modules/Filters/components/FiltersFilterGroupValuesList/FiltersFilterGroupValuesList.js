@@ -10,6 +10,7 @@ import FiltersFilterGroupValuesListItem from './FiltersFilterGroupValuesListItem
 import classes from './styles/index.scss';
 import { getUniqueKey } from '../../../../utils';
 import { MODALS } from '../../consts';
+import FiltersFilterGroupValuesListItemHeader from './FiltersFilterGroupValuesListItemHeader';
 
 const FiltersFilterGroupValuesList = (
 	{
@@ -58,6 +59,7 @@ const FiltersFilterGroupValuesList = (
 			vrTiny
 			className={classes.filtersFilterGroupValuesList}
 		>
+			<FiltersFilterGroupValuesListItemHeader />
 			{
 				filterGroupValues.map((filterValue, index) => {
 					const key = getUniqueKey(filterValue.value, index);
@@ -67,6 +69,7 @@ const FiltersFilterGroupValuesList = (
 							key={key}
 							id={filterValue.id}
 							value={filterValue.value}
+							sortOrder={filterValue.sortOrder}
 							filterGroupValueId={filterGroupValueId}
 							handleDeleteFilterGroupValue={handleDeleteFilterGroupValue}
 							filterGroupValueEditModeHandler={filterGroupValueEditModeHandler}

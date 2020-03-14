@@ -12,6 +12,7 @@ const FiltersFilterGroupValuesListItem = (
 	{
 		id,
 		value,
+		sortOrder,
 		filterGroupValueId,
 		handleDeleteFilterGroupValue,
 		filterGroupValueEditModeHandler,
@@ -39,7 +40,10 @@ const FiltersFilterGroupValuesListItem = (
 			{
 				!showEditFilterGroupValueForm && (
 					<>
-						<FiltersFilterGroupValuesListItemLeftSide value={value} />
+						<FiltersFilterGroupValuesListItemLeftSide
+							value={value}
+							sortOrder={sortOrder}
+						/>
 						<FiltersFilterGroupValuesListItemRightSide
 							id={id}
 							onEditButtonClick={onEditButtonClick}
@@ -64,6 +68,7 @@ const FiltersFilterGroupValuesListItem = (
 FiltersFilterGroupValuesListItem.propTypes = {
 	id: PropTypes.number,
 	value: PropTypes.string,
+	sortOrder: PropTypes.number,
 	filterGroupValueId: PropTypes.number,
 	handleDeleteFilterGroupValue: PropTypes.func,
 	filterGroupValueEditModeHandler: PropTypes.func,
