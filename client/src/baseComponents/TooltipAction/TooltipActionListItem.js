@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
+
+import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 
 const TooltipActionListItem = (
@@ -12,16 +14,20 @@ const TooltipActionListItem = (
 		action: handleClick,
 	}
 ) => {
-
+	const iconClassName = ClassNames(
+		classes.tooltipActionListItem_icon,
+		iconClass
+	);
 	return (
 		<div
 			className={classes.tooltipActionListItem}
 			onClick={handleClick}
 		>
 			<Icon
-				className={iconClass}
+				className={iconClassName}
 				icon={icon}
-			/> { name }
+			/>
+			{ name }
 		</div>
 	);
 };

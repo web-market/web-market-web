@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-
-import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import { FiltersAddFilterGroupForm } from './FiltersAddFilterGroupForm';
 import Button from '../../../../baseComponents/Button';
+
+import { FiltersContext } from '../../consts';
 
 const FiltersAddFilterGroup = () => {
 	const { forms } = useContext(FormsGlobalContext);

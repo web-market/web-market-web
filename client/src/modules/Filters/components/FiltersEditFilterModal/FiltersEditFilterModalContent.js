@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
-import { FiltersContext } from '../../store';
 
 import FiltersEditFilterModalForm from './FiltersEditFilterModalForm';
 import Button from '../../../../baseComponents/Button';
+
+import { FiltersContext } from '../../consts';
 
 const FiltersEditFilterModalContent = (
 	{

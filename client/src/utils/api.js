@@ -21,9 +21,23 @@ const DELETE = (url, data = {}) => {
 	return axiosInstance.delete(url, { data: { ...data } });
 };
 
+const UPLOAD = (url, data, handleUploadProgress) => {
+	return axiosInstance.post(
+		url,
+		data,
+		{
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			},
+			onUploadProgress: progress => handleUploadProgress(progress)
+		}
+	);
+};
+
 export {
 	GET,
 	PUT,
 	POST,
-	DELETE
+	DELETE,
+	UPLOAD
 };

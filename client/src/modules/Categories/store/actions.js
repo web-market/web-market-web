@@ -5,6 +5,7 @@ import {
 	updateCategory as updateCategoryAPI,
 	getCategory
 } from '../api';
+
 import {
 	SET_CATEGORIES,
 	RESET_CATEGORIES,

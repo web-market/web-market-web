@@ -1,0 +1,13 @@
+.mediaProductFilesHeader_right {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mediaProductFilesHeader_UploadButton {
+	margin-right: 16px;
+}
+
+.mediaProductFilesHeader_deleteIcon {
+	color: $danger;
+}

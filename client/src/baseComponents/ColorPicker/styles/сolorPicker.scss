@@ -1,0 +1,26 @@
+.сolorPicker {
+	display: flex;
+	padding-left: 6px;
+}
+
+.сolorPicker_inputWrapper {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+	margin: 6px 0;
+}
+
+.сolorPicker_input {
+	padding: 0;
+	border: none;
+	background: none;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	outline: none;
+	top: -5px;
+	left: -5px;
+	position: absolute;
+}

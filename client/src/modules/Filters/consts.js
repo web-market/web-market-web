@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 export const ADD_FILTER_FORM = 'ADD_FILTER_FORM';
 export const EDIT_FILTER_FORM = 'EDIT_FILTER_FORM';
 export const ADD_FILTER_VALUE_FORM = 'ADD_FILTER_VALUE_FORM';
@@ -14,3 +16,6 @@ export const MODALS = {
 	DELETE_FILTER_MODAL: 'DELETE_FILTER_MODAL',
 	EDIT_FILTER_MODAL: 'EDIT_FILTER_MODAL',
 };
+
+export const FiltersContext = createContext();
+export const FiltersModalsContext = createContext();

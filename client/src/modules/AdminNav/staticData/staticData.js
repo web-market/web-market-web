@@ -1,4 +1,4 @@
-import { bell, chartBar, th, filter, settings, alignJustify } from '../../../icons';
+import { bell, chartBar, th, filter, settings, alignJustify, image } from '../../../icons';
 import { URL } from '../../consts';
 
 export const mainNavItem = [
@@ -24,11 +24,6 @@ export const mainNavItem = [
 				label: 'Топ продаж',
 				link: URL.CATALOG.TOP_SALE,
 				hasRoute: true
-			},
-			{
-				label: 'Зубы анархиста',
-				link: URL.CATALOG.ANARCHY_TOOTH,
-				hasRoute: true
 			}
 		]
 	},
@@ -42,7 +37,26 @@ export const mainNavItem = [
 		icon: filter,
 		label: '!!!Фильтры',
 		link: URL.FILTERS.ROOT,
-		hasRoute: true
+		hasRoute: true,
+	},
+	{
+		icon: image,
+		hasRoute: true,
+		label: '!!!Медиа',
+		link: URL.MEDIA.ROOT,
+		menuRoute: URL.MEDIA.ROOT,
+		items: [
+			{
+				label: '!Товары',
+				link: URL.MEDIA.PRODUCTS,
+				hasRoute: true
+			},
+			{
+				label: '!Другое',
+				link: URL.MEDIA.OTHER,
+				hasRoute: true
+			}
+		]
 	}
 ];
 
@@ -57,7 +71,7 @@ export const bottomNavItem = [
 		icon: bell,
 		label: '!!!Уведомления',
 		link: '/TEST/',
-		hasRoute: true
+		hasRoute: true,
 	}
 ];
 

@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import FiltersAddFilterGroupValueForm from './FiltersAddFilterGroupValueForm';
-import { ADD_FILTER_VALUE_FORM } from '../../consts';
+import { ADD_FILTER_VALUE_FORM, FiltersContext } from '../../consts';
 
 const FiltersAddFilterGroupValue = ({ id }) => {
 	const [isPending, setIsPending] = useState(false);

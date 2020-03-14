@@ -3,8 +3,7 @@ export const URL = {
 	CATALOG: {
 		ROOT: '/adminpanel/catalog',
 		PRODUCT_MANAGER: '/adminpanel/catalog/manager',
-		TOP_SALE: '/adminpanel/catalog/topSale',
-		ANARCHY_TOOTH: '/adminpanel/catalog/anarchytooth',
+		TOP_SALE: '/adminpanel/catalog/topSale'
 	},
 	CATEGORY: {
 		ROOT: '/adminpanel/categories'
@@ -12,4 +11,10 @@ export const URL = {
 	FILTERS: {
 		ROOT: '/adminpanel/filters',
 	},
+	MEDIA: {
+		ROOT: '/adminpanel/media',
+		PRODUCTS: '/adminpanel/media/products',
+		PRODUCTS_CATEGORY: '/adminpanel/media/products/category',
+		OTHER: '/adminpanel/media/other'
+	}
 };

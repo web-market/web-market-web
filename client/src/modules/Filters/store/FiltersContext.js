@@ -1,9 +1,9 @@
-import React, { createContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 import { reducer, initialState } from './reducer';
 import moduleActions from './actions';
 
-export const FiltersContext = createContext(initialState);
+import { FiltersContext } from '../consts';
 
 export const FiltersContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);

@@ -1,15 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 
-import { CategoriesContext } from '../../store';
-
+import PendingCloak from '../../../../baseComponents/PendingCloak';
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
 
-import classes from './styles/index.scss';
-import PendingCloak from '../../../../baseComponents/PendingCloak';
 import { getUniqueKey } from '../../../../utils';
-import { MODALS } from '../../consts';
-import { CategoriesModalsContext } from '../CategoriesModalsProvider';
+import classes from './styles/index.scss';
+import { MODALS, CategoriesContext, CategoriesModalsContext } from '../../consts';
 
 const CategoriesList = () => {
 	const { getCategoriesList, isPending, categories } = useContext(CategoriesContext);
@@ -28,10 +25,7 @@ const CategoriesList = () => {
 	};
 
 	return (
-		<AdminControlContentBox
-			margin={{ large: true }}
-			className={classes.category_list}
-		>
+		<AdminControlContentBox className={classes.category_list}>
 			{isPending && (<PendingCloak />)}
 			{
 				categories.map((category, index) => {

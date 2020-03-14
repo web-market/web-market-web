@@ -1,0 +1,29 @@
+.generalUploaderItem {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid $secondary;
+	cursor: pointer;
+
+	@include transition(background-color .3s);
+	@include hover_focus {
+		background-color: lighten($secondary, 5%);
+	};
+}
+
+.generalUploaderItem:last-child {
+	border-bottom: none;
+}
+
+.generalUploaderItem_extension {
+	color: lighten($grey, 15%);
+	font-size: 12px;
+}
+
+.generalUploaderItem_editMode {
+	background-color: lighten($secondary, 5%);
+}
+
+.generalUploaderItem_input {
+	width: 75%;
+	margin-right: 4px;
+}

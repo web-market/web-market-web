@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 import OverlayPoint from '../OverlayPoint';
 import TooltipActionList from './TooltipActionList';
-
-import ClassNames from 'classnames';
-import classes from './styles/index.scss';
+import TooltipActionDefaultButton from './TooltipActionDefaultButton';
 
 const TooltipAction = (
 	{
 		className,
-		actionList
+		actionList,
+		toolTipButtonOpen,
+		toolTipButtonClose,
+		handleTooltipClick
 	}
 ) => {
 	const [show, setShow] = useState(false);
@@ -18,27 +19,49 @@ const TooltipAction = (
 
 	const handleTooltipActionClick = () => {
 		setShow(!show);
+		handleTooltipClick(!show);
 	};
-
-	const componentClassName = ClassNames(
-		classes.tooltipAction,
-		className
-	);
 
 	return (
 		<>
-			<div
-				ref={tooltipActionRef}
-				onClick={handleTooltipActionClick}
-				className={componentClassName}
-			>
-				<div className={classes.tooltipAction_icon}></div>
-			</div>
+			{
+				toolTipButtonClose && toolTipButtonOpen && (
+					<div ref={tooltipActionRef}>
+						{
+							show && (
+								<div
+									onClick={handleTooltipActionClick}
+								>
+									{toolTipButtonOpen}
+								</div>
+							)
+						}
+						{
+							!show && (
+								<div
+									onClick={handleTooltipActionClick}
+								>
+									{toolTipButtonClose}
+								</div>
+							)
+						}
+					</div>
+				)
+			}
+			{
+				!toolTipButtonClose && !toolTipButtonOpen && (
+					<TooltipActionDefaultButton
+						ref={tooltipActionRef}
+						className={className}
+						handleTooltipActionClick={handleTooltipActionClick}
+					/>
+				)
+			}
 			{
 				show && (
 					<OverlayPoint
+						position="bottom-left-center"
 						onClose={handleTooltipActionClick}
-						position="bottom-left"
 						componentRef={tooltipActionRef.current}
 						render={() => {
 								return (
@@ -56,9 +79,16 @@ const TooltipAction = (
 	);
 };
 
+TooltipAction.defaultProps = {
+	handleTooltipClick: () => {}
+};
+
 TooltipAction.propTypes = {
 	className: PropTypes.string,
-	actionList: PropTypes.array
+	handleTooltipClick: PropTypes.func,
+	toolTipButtonOpen: PropTypes.object,
+	toolTipButtonClose: PropTypes.object,
+	actionList: PropTypes.array.isRequired
 };
 
 export { TooltipAction };

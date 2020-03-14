@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CategoriesContext } from '../../store';
+import { CategoriesContext } from '../../consts';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesAddForm from './CategoriesAddForm';

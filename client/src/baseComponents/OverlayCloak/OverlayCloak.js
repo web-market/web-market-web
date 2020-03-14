@@ -13,10 +13,12 @@ class OverlayCloak extends PureComponent {
 	componentDidUpdate () {
 		if (this.props.show) {
 			noScroll(true);
+
 			this.handleCloakShow(true, 0);
 			this.handleCloakReady(true);
 		} else {
 			noScroll(false);
+
 			this.handleCloakShow(false);
 			this.handleCloakReady(false, 0);
 		}

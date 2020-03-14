@@ -13,5 +13,4 @@ export const memoize = (fn) => {
         cache[n] = fn(n);
         return fn(n);
     };
-
 };

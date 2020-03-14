@@ -1,14 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 
-import { FiltersContext } from '../../store';
-import { FiltersModalsContext } from '../FiltersModalsProvider';
-
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import FiltersGroupListItem from './FiltersGroupListItem';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
+
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
-import { MODALS } from '../../consts';
+import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
 
 const FiltersGroupList = () => {
 	const { openModal } = useContext(FiltersModalsContext);
@@ -41,10 +39,7 @@ const FiltersGroupList = () => {
 	};
 
 	return (
-		<AdminControlContentBox
-			margin={{ large: true }}
-			className={classes.filtersGroupList}
-		>
+		<AdminControlContentBox className={classes.filtersGroupList}>
 			{isPending && (<PendingCloak />)}
 			{
 				filtersItems.map((filter, index) => {

@@ -60,9 +60,9 @@ class OverlayPoint extends Component {
 		return createPortal(
 			<>
 				<div
+					style={style}
 					ref={this.layoutRef}
 					className={classes.layout}
-					style={style}
 				>
 					{ render({ parentWidth }) }
 				</div>

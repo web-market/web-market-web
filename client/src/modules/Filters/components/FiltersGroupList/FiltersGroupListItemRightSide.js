@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { FiltersContext } from '../../store';
-
 import Button from '../../../../baseComponents/Button';
 import FiltersGroupListItemTooltipActions from './FiltersGroupListItemTooltipActions';
 import classes from './styles/index.scss';
+
+import { FiltersContext } from '../../consts';
 
 const FiltersListItemLeftSide = (
 	{

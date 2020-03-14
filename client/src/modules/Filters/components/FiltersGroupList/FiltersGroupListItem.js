@@ -1,14 +1,15 @@
 import React, { useState, useMemo, useContext, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { FiltersContext } from '../../store';
-
 import FiltersAddFilterGroupValue from '../FiltersAddFilterGroupValue';
 import FiltersFilterGroupValuesList from '../FiltersFilterGroupValuesList';
 import FiltersGroupListItemLeftSide from './FiltersGroupListItemLeftSide';
 import FiltersListItemRightSide from './FiltersGroupListItemRightSide';
+
 import { plus, minus, chevronDown, chevronUp } from '../../../../icons';
 import classes from './styles/index.scss';
+
+import { FiltersContext } from '../../consts';
 
 const FiltersGroupListItem = (
 	{

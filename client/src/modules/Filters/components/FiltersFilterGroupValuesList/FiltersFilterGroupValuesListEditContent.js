@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { FiltersContext } from '../../store';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import FiltersFilterGroupValuesListEditContentRightSide from './FiltersFilterGroupValuesListEditContentRightSide';
 import FiltersFilterGroupValuesListEditContentLeftSide from './FiltersFilterGroupValuesListEditContentLeftSide';
 
-import { EDIT_FILTER_GROUP_VALUE_FORM } from '../../consts';
+import { EDIT_FILTER_GROUP_VALUE_FORM, FiltersContext } from '../../consts';
 
 const FiltersFilterGroupValuesListEditContent = (
 	{

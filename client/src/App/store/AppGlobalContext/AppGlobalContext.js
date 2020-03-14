@@ -5,7 +5,9 @@ import {
 	initialState,
 	AppGlobalContext,
 	SHOW_NOTIFICATION,
-	REMOVE_NOTIFICATION
+	REMOVE_NOTIFICATION,
+	ADD_UPLOADER_TO_GLOBAL_CONTEXT,
+	REMOVE_UPLOADER_FROM_GLOBAL_CONTEXT
 } from './consts';
 
 export const AppGlobalContextProvider = ({ children }) => {
@@ -27,6 +29,20 @@ export const AppGlobalContextProvider = ({ children }) => {
 		});
 	};
 
+	const addUploaderToGlobalContext = (upLoader) => {
+		dispatch({
+			type: ADD_UPLOADER_TO_GLOBAL_CONTEXT,
+			upLoader
+		});
+	};
+
+	const removeUploaderFromGlobalContext = (upLoader) => {
+		dispatch({
+			type: REMOVE_UPLOADER_FROM_GLOBAL_CONTEXT,
+			upLoader
+		});
+	};
+
 	const handleShowOverlayCloak = (show) => {
 		setShowOverlayCloak(show);
 	};
@@ -40,7 +56,9 @@ export const AppGlobalContextProvider = ({ children }) => {
 				removeNotification,
 				handleOverlayClose,
 				setHandleOverlayClose,
-				handleShowOverlayCloak
+				handleShowOverlayCloak,
+				addUploaderToGlobalContext,
+				removeUploaderFromGlobalContext
 			}}
 		>
 			{children}

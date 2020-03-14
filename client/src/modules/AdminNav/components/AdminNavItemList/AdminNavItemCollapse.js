@@ -15,6 +15,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 	const [collapseRef, setCollapseRef] = useState();
 
 	//TODO: dKostreba. create a state management provider for side nav menu. remove isInit
+	//research solution to get height after render dom
 	const isInit = useRef(true);
 
 	const getHeight = useCallback(() => {
@@ -26,7 +27,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 		if (menuRoute === activeMenu && isInit.current) {
 			isInit.current = false;
 
-			return extraHeight + height;
+			return height + extraHeight;
 		}
 
 		return height;

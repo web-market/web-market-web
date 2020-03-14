@@ -13,7 +13,7 @@ export const initialState = {
 };
 
 export const reducer = (state, payload) => {
-	actionLogger(payload.type, SET_PENDING);
+	actionLogger(payload.type, payload, SET_PENDING);
 
 	switch (payload.type) {
 		case SET_CATEGORIES:

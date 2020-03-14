@@ -38,12 +38,10 @@ class App extends Component {
 	}
 }
 
-const AppWithGlobalContext = () => {
-	return (
+const AppWithGlobalContext = () => (
 		<AppContextProvider>
 			<App />
 		</AppContextProvider>
-	);
-};
+);
 
 export { AppWithGlobalContext };

@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { FiltersContext } from '../../store';
-import { FiltersModalsContext } from '../FiltersModalsProvider';
-
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 import FiltersFilterGroupValuesListItem from './FiltersFilterGroupValuesListItem';
 
 import classes from './styles/index.scss';
 import { getUniqueKey } from '../../../../utils';
-import { MODALS } from '../../consts';
+import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
 import FiltersFilterGroupValuesListItemHeader from './FiltersFilterGroupValuesListItemHeader';
 
 const FiltersFilterGroupValuesList = (

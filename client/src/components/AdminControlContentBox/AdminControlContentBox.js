@@ -21,7 +21,7 @@ const AdminControlContentBox = ({ children, className, margin }) => {
 
 AdminControlContentBox.defaultProps = {
 	className: '',
-	margin: {}
+	margin: { large: true }
 };
 
 AdminControlContentBox.propTypes = {

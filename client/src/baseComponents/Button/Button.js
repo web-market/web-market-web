@@ -70,16 +70,6 @@ const Button = (
 		}
 	);
 
-	const componentIconClassName = classNames(
-		classes.button_icon,
-		{
-			[classes.button_size__tiny]: size === 'tiny',
-			[classes.button_size__small]: size === 'small',
-			[classes.button_size__normal]: size === 'normal',
-			[classes.button_size__large]: size === 'large',
-		}
-	);
-
 	const getIconColor = () => {
 		const isDarkColor = type === TYPE.WARNING || type === TYPE.LIGHT;
 
@@ -113,9 +103,9 @@ const Button = (
 				!isPending && (
 					<div
 						className={componentClassName}
-						onClick={() => actionHandler(actionName)}
 						onMouseEnter={() => setHover(true)}
 						onMouseLeave={() => setHover(false)}
+						onClick={e => actionHandler(e, actionName)}
 					>
 						{
 							icon && (
@@ -124,7 +114,6 @@ const Button = (
 									onHover={hover}
 									color={iconColor.color}
 									onHoverColor={iconColor.onHoverColor}
-									className={componentIconClassName}
 								/>
 							)
 						}
@@ -158,6 +147,7 @@ Button.defaultProps = {
 	type: 'secondary',
 	isPending: false,
 	noBorder: false,
+	actionName: null,
 	transparent: false,
 	actionHandler: () => {}
 };

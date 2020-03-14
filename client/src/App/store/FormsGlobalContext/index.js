@@ -1,2 +1,2 @@
 export { FormsGlobalContextProvider as default } from './FormsGlobalContext';
-export { FormsGlobalContext } from './consts';
+export { FormsGlobalContext } from './FormsGlobalContext';

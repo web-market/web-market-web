@@ -1,10 +1,8 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 
 import CategoriesEditCategoryModal from '../CategoriesEditCategoryModal';
 import CategoriesDeleteCategoryModal from '../CategoriesDeleteCategoryModal';
-import { MODALS } from '../../consts';
-
-export const CategoriesModalsContext = createContext();
+import { MODALS, CategoriesModalsContext } from '../../consts';
 
 export const CategoriesModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});

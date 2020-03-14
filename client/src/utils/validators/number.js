@@ -1,5 +1,5 @@
 import { isNullOrUndefined } from '../isNullOrUndefined';
-import { prepareValidationResult, prepareValidationMessage } from './helpers';
+import { prepareValidationResult, numberValidationMessages } from './helpers';
 
 export const number = (value, validationRules) => {
 	const { min, max, equal, integer } = validationRules;
@@ -39,7 +39,7 @@ export const number = (value, validationRules) => {
 	}
 
 	const validationResult = prepareValidationResult(validationTemplate);
-	const errorMessage = prepareValidationMessage(validationResult.errorName, validationRules);
+	const errorMessage = numberValidationMessages(validationResult.errorName, validationRules);
 
 	return {
 		isValid: validationResult.isValid,

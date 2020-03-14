@@ -1,7 +1,7 @@
 import React, { useContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { CategoriesContext } from '../../store';
+import { CategoriesContext } from '../../consts';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import Button from '../../../../baseComponents/Button';

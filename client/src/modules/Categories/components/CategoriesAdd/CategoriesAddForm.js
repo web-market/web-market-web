@@ -6,7 +6,8 @@ import Form, { Field } from '../../../../baseComponents/Form';
 import {
 	Checkbox,
 	Textbox,
-	AjaxDropdown
+	AjaxDropdown,
+	ColorPicker
 } from '../../../../baseComponents/Form/Adapters';
 
 import FormLayout, {
@@ -69,9 +70,14 @@ const CategoriesAddForm = ({
 					</FormLayoutItem>
 					<FormLayoutItem>
 						<Field
-							component={Textbox}
+							component={ColorPicker}
 							name="color"
-							label="!!!Цвет"
+							label="!!!Цвет категории"
+							validate={{
+								length: {
+									equal: 7,
+								}
+							}}
 						/>
 					</FormLayoutItem>
 					<FormLayoutItem>

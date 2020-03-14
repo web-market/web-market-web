@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../../../baseComponents/Button';
+import { ButtonGroupIconButtons } from '../../../../baseComponents/ButtonGroup';
 
 import { pencil, trash } from '../../../../icons';
-import classes from './styles/index.scss';
 
 const FiltersFilterGroupValuesListItemRightSide = (
 	{
@@ -14,7 +14,7 @@ const FiltersFilterGroupValuesListItemRightSide = (
 	}
 ) => {
 	return (
-		<div className={classes.filtersFilterGroupValuesListItemRightSide}>
+		<ButtonGroupIconButtons>
 			<Button
 				size="tiny"
 				icon={trash}
@@ -28,9 +28,8 @@ const FiltersFilterGroupValuesListItemRightSide = (
 				type="secondary"
 				transparent
 				actionHandler={onEditButtonClick}
-				className={classes.filtersFilterGroupValuesListItemRightSide_editButton}
 			/>
-		</div>
+		</ButtonGroupIconButtons>
 	);
 };
 

@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../../../baseComponents/Button';
+import { ButtonGroupIconButtons } from '../../../../baseComponents/ButtonGroup';
 
-import ClassName from 'classnames';
-import classes from './styles/index.scss';
 import { close, check } from '../../../../icons';
 
 const FiltersFilterGroupValuesListEditContentRightSide = (
@@ -13,13 +12,8 @@ const FiltersFilterGroupValuesListEditContentRightSide = (
 		handleRemoteSubmit
 	}
 ) => {
-	const componentClassName = ClassName(
-		classes.filtersFilterGroupValuesListItemRightSide,
-		classes.filtersFilterGroupValuesListEditContentRightSide
-	);
-
 	return (
-		<div className={componentClassName}>
+		<ButtonGroupIconButtons alignCenter>
 			<Button
 				size="tiny"
 				icon={close}
@@ -33,9 +27,8 @@ const FiltersFilterGroupValuesListEditContentRightSide = (
 				type="primary"
 				transparent
 				actionHandler={handleRemoteSubmit}
-				className={classes.filtersFilterGroupValuesListItemRightSide_editButton}
 			/>
-		</div>
+		</ButtonGroupIconButtons>
 	);
 };
 

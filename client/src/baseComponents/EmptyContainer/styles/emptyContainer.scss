@@ -1,0 +1,11 @@
+.emptyContainer {
+	border: 1px dashed $secondary;
+	border-radius: 3px;
+	height: 100vh;
+}
+
+.emptyContainer_hasCenteredContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

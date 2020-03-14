@@ -17,7 +17,7 @@ const prepareValidationResult = (validationTemplate) => {
 	};
 };
 
-const prepareValidationMessage = (validationErrorName, validationRules) => {
+const numberValidationMessages = (validationErrorName, validationRules) => {
 	const { min, max, equal } = validationRules;
 
 	const messages = {
@@ -31,7 +31,20 @@ const prepareValidationMessage = (validationErrorName, validationRules) => {
 	return messages[validationErrorName];
 };
 
+const lengthValidationMessages = (validationErrorName, validationRules) => {
+	const { min, max, equal } = validationRules;
+
+	const messages = {
+		min: `!Не меньше ${min} символов`,
+		max: `!Не больше ${max} символов`,
+		equal: `!Должно быть ${equal} символов`
+	};
+
+	return messages[validationErrorName];
+};
+
 export {
 	prepareValidationResult,
-	prepareValidationMessage
+	numberValidationMessages,
+	lengthValidationMessages
 };

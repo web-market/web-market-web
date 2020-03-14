@@ -10,6 +10,10 @@
 	@include transition(background-color .3s);
 }
 
+.tooltipActionListItem_icon {
+	margin-right: 4px;
+}
+
 .tooltipActionListItem:last-child {
 	border-bottom: none;
 }

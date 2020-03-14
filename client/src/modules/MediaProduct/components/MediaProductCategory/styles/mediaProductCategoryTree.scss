@@ -1,0 +1,13 @@
+.mediaProductCategoryTree {
+	position: relative;
+}
+
+.mediaProductCategoryTree:after {
+	content: '';
+	width: 1px;
+	height: 100vh;
+	position: absolute;
+	background-color: $secondary;
+	right: 0;
+	top: 0;
+}

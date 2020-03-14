@@ -12,7 +12,7 @@ import classes from './styles/index.scss';
 const AdminNav = () => {
 	const location = useLocation();
 
-	const { activeMenu } = parsedLocation(location);
+	const { root, activeMenu } = parsedLocation(location);
 
 	const componentClassName = classNames(
 		classes.adminNav
@@ -21,7 +21,7 @@ const AdminNav = () => {
 	return (
 		<div className={componentClassName}>
 			<AdminNavProfile />
-			<AdminNavItemList activeMenu={activeMenu} />
+			<AdminNavItemList activeMenu={`/${root}/${activeMenu}`} />
 			<AdminNavBottomItemList />
 		</div>
 	);

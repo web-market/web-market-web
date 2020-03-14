@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 export const ADD_CATEGORY_FORM = 'ADD_CATEGORY_FORM';
 export const EDIT_CATEGORY_FORM = 'EDIT_CATEGORY_FORM';
 export const DELETE_CATEGORY_FORM = 'DELETE_CATEGORY_FORM';
@@ -19,3 +21,6 @@ export const MODALS = {
 	EDIT_CATEGORY_MODAL: 'EDIT_CATEGORY_MODAL',
 	DELETE_CATEGORY_MODAL: 'DELETE_CATEGORY_MODAL'
 };
+
+export const CategoriesContext = createContext();
+export const CategoriesModalsContext = createContext();

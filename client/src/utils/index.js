@@ -12,5 +12,6 @@ export { removeObjectProperty } from './removeObjectProperty';
 export { actionLogger } from './actionLogger';
 export { actionLoggerWarning } from './actionLogger';
 export { getUniqueKey } from './getUniqueKey';
-export { getRandomId } from './getRandomId';
-export { removeArrayElement } from './removeArrayElement';
+export { getUniqueId } from './getUniqueId';
+export { removeArrayElementById } from './removeArrayElementById';
+export { removeArrayElementByIndex } from './removeArrayElementByIndex';

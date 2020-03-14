@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
+import ClassNames from 'classnames';
 
 const Textbox = (
 	{
-		onFieldChange,
-		onFieldFocus,
 		name,
+		value,
 		onChange,
-		value
+		className,
+		onFieldFocus,
+		onFieldChange,
 	}
 ) => {
 	const handleInputChange = (value) => {
@@ -17,34 +19,40 @@ const Textbox = (
 		onChange(value);
 	};
 
+	const componentClassName = ClassNames(
+		classes.textbox,
+		className
+	);
+
 	return (
 		<input
+			name={name}
 			type="textbox"
-			onChange={e => handleInputChange(e.target.value)}
+			value={value || ''}
+			className={componentClassName}
 			onFocus={() => onFieldFocus(true)}
 			onBlur={() => onFieldFocus(false)}
-			name={name}
-			value={value || ''}
-			className={classes.textbox}
+			onChange={e => handleInputChange(e.target.value)}
 		/>
 	);
 };
 
 Textbox.defaultProps = {
+	value: '',
 	onChange: () => {},
-	onFieldFocus: () => {},
-	value: ''
+	onFieldFocus: () => {}
 };
 
 Textbox.propTypes = {
-	onFieldChange: PropTypes.func,
-	onFieldFocus: PropTypes.func,
-	onChange: PropTypes.func,
-	name: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 	]),
+	name: PropTypes.string,
+	onChange: PropTypes.func,
+	className: PropTypes.string,
+	onFieldFocus: PropTypes.func,
+	onFieldChange: PropTypes.func,
 };
 
 export { Textbox };

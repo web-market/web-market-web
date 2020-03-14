@@ -1,6 +1,6 @@
 const baseOffset = 2;
 
-const _getPositionValues = (componentRef, layoutRef) => {
+const _getPositionValues = (componentRef, contentRef) => {
 	const {
 		top,
 		left,
@@ -11,7 +11,7 @@ const _getPositionValues = (componentRef, layoutRef) => {
 	const {
 		width: contentWidth,
 		height: contentHeight
-	} = layoutRef.getBoundingClientRect();
+	} = contentRef.getBoundingClientRect();
 
 	return {
 		top,
@@ -23,7 +23,7 @@ const _getPositionValues = (componentRef, layoutRef) => {
 	};
 };
 
-const getGeneralPosition = (componentRef, layoutRef, position) => {
+const getGeneralPosition = (componentRef, contentRef, position) => {
 	const {
 		top,
 		left,
@@ -31,7 +31,7 @@ const getGeneralPosition = (componentRef, layoutRef, position) => {
 		height,
 		contentWidth,
 		contentHeight
-	} = _getPositionValues(componentRef, layoutRef);
+	} = _getPositionValues(componentRef, contentRef);
 
 	const definedPosition = {
 		left: null,
@@ -66,6 +66,10 @@ const getGeneralPosition = (componentRef, layoutRef, position) => {
 		case 'bottom-left':
 			definedPosition.left = left - contentWidth - baseOffset;
 			definedPosition.top = top + height + baseOffset;
+			break;
+		case 'bottom-left-center':
+			definedPosition.left = left - contentWidth + width;
+			definedPosition.top = top + height + 8;
 			break;
 		case 'bottom-right':
 			definedPosition.left = left + width + baseOffset;

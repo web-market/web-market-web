@@ -1,10 +1,8 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 
 import NotificationModal from '../../../../components/NotificationModal';
 import FiltersEditFilterModal from '../FiltersEditFilterModal';
-import { MODALS } from '../../consts';
-
-export const FiltersModalsContext = createContext();
+import { MODALS, FiltersModalsContext } from '../../consts';
 
 export const FiltersModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
