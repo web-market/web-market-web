@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { AdminNavItem } from './AdminNavItem';
-import { mainNavItem } from '../../staticData/staticData';
+import { mainNavItem } from '../../staticData';
 
 import classes from './styles/index.scss';
 

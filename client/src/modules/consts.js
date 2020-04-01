@@ -3,7 +3,7 @@ export const URL = {
 	CATALOG: {
 		ROOT: '/adminpanel/catalog',
 		PRODUCT_MANAGER: '/adminpanel/catalog/manager',
-		TOP_SALE: '/adminpanel/catalog/topSale'
+		MANUFACTURES: '/adminpanel/catalog/manufactures'
 	},
 	CATEGORY: {
 		ROOT: '/adminpanel/categories'

@@ -9,6 +9,7 @@ const TooltipAction = (
 	{
 		className,
 		actionList,
+		targetElementId,
 		toolTipButtonOpen,
 		toolTipButtonClose,
 		handleTooltipClick
@@ -17,7 +18,9 @@ const TooltipAction = (
 	const [show, setShow] = useState(false);
 	const tooltipActionRef = useRef(null);
 
-	const handleTooltipActionClick = () => {
+	const handleTooltipActionClick = (event) => {
+		event.stopPropagation();
+
 		setShow(!show);
 		handleTooltipClick(!show);
 	};
@@ -30,7 +33,7 @@ const TooltipAction = (
 						{
 							show && (
 								<div
-									onClick={handleTooltipActionClick}
+									onClick={event => handleTooltipActionClick(event)}
 								>
 									{toolTipButtonOpen}
 								</div>
@@ -39,7 +42,7 @@ const TooltipAction = (
 						{
 							!show && (
 								<div
-									onClick={handleTooltipActionClick}
+									onClick={event => handleTooltipActionClick(event)}
 								>
 									{toolTipButtonClose}
 								</div>
@@ -66,8 +69,9 @@ const TooltipAction = (
 						render={() => {
 								return (
 									<TooltipActionList
-										handleOnClick={handleTooltipActionClick}
 										actionList={actionList}
+										targetElementId={targetElementId}
+										handleOnClick={handleTooltipActionClick}
 									/>
 								);
 							}
@@ -88,7 +92,8 @@ TooltipAction.propTypes = {
 	handleTooltipClick: PropTypes.func,
 	toolTipButtonOpen: PropTypes.object,
 	toolTipButtonClose: PropTypes.object,
-	actionList: PropTypes.array.isRequired
+	actionList: PropTypes.array.isRequired,
+	targetElementId: PropTypes.number.isRequired
 };
 
 export { TooltipAction };

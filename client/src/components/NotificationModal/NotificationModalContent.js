@@ -5,6 +5,8 @@ import { ModalContent, ModalFooter, ModalHeader } from '../../baseComponents/Mod
 import Button from '../../baseComponents/Button';
 import ButtonGroup from '../../baseComponents/ButtonGroup';
 
+import classes from './styles/index.scss';
+
 const NotificationModalContent = (
 	{
 		modalData,
@@ -45,7 +47,7 @@ const NotificationModalContent = (
 				label={modalTitle}
 				handleClose={handleClose}
 			/>
-			<ModalContent>
+			<ModalContent className={classes.notificationModalContent}>
 				{content}
 			</ModalContent>
 			<ModalFooter>

@@ -18,7 +18,7 @@ const CategoriesEditCategoryModalContent = (
 	const [isPending, setIsPending] = useState(false);
 	const { forms } = useContext(FormsGlobalContext);
 
-	const { updateCategory, getCategory } = useContext(CategoriesContext);
+	const { updateCategory, getCategoryAPI } = useContext(CategoriesContext);
 
 	const handleClose = useCallback(() => {
 		setData(null);
@@ -28,7 +28,7 @@ const CategoriesEditCategoryModalContent = (
 	useEffect(() => {
 		setIsPending(true);
 
-		getCategory(modalData.id)
+		getCategoryAPI(modalData.id)
 			.then(({ data }) => setData(data))
 			.catch(e => {
 				console.log(e);

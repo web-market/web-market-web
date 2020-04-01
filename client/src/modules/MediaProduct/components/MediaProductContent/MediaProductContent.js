@@ -25,12 +25,12 @@ const MediaProductContent = () => {
 	return (
 		<AdminControlContentBox>
 			{
-				!hasMediaProductCategories && (
+				hasMediaProductCategories && (
 					<MediaProductContentEmpty />
 				)
 			}
 			{
-				hasMediaProductCategories && (
+				!hasMediaProductCategories && (
 					<GridLayout>
 						<GridLayoutRow gridColumn={24} grid="7-17">
 							<MediaProductCategory

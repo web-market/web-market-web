@@ -1,6 +1,9 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../Button';
+
+import { menuSeparated } from '../../icons';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 
@@ -12,7 +15,7 @@ const TooltipActionDefaultButton = forwardRef((
 	ref
 ) => {
 	const componentClassName = ClassNames(
-		classes.tooltipAction,
+		classes.tooltipActionDefaultButton,
 		className
 	);
 
@@ -20,10 +23,15 @@ const TooltipActionDefaultButton = forwardRef((
 
 		<div
 			ref={ref}
-			className={componentClassName}
-			onClick={handleTooltipActionClick}
+			onClick={event => handleTooltipActionClick(event)}
 		>
-			<div className={classes.tooltipAction_icon}></div>
+			<Button
+				noBorder
+				size="small"
+				transparent
+				icon={menuSeparated}
+				className={componentClassName}
+			/>
 		</div>
 	);
 });

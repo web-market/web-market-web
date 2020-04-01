@@ -23,13 +23,13 @@ const MediaProductFilesHeader = () => {
 				name: '!!Редактировать',
 				icon: pencil,
 				iconClass: '',
-				action: () => {}
+				action: (id) => console.log(id)
 			},
 			{
 				name: '!!Удалить',
 				icon: trash,
 				iconClass: classes.mediaProductFilesHeader_deleteIcon,
-				action: () => {}
+				action: (id) => console.log(id)
 			}
 		];
 	}, []);
@@ -50,6 +50,7 @@ const MediaProductFilesHeader = () => {
 					/>
 					<TooltipAction
 						actionList={actions}
+						targetElementId={activeCategoryId}
 						toolTipButtonOpen={(<Button icon={angleUp} />)}
 						toolTipButtonClose={(<Button icon={angleDown} />)}
 					/>

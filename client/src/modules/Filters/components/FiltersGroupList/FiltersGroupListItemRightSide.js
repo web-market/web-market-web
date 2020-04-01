@@ -2,16 +2,15 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../../../baseComponents/Button';
-import FiltersGroupListItemTooltipActions from './FiltersGroupListItemTooltipActions';
 import classes from './styles/index.scss';
 
 import { FiltersContext } from '../../consts';
+import TooltipAction from '../../../../baseComponents/TooltipAction';
 
-const FiltersListItemLeftSide = (
+const FiltersListItemRightSide = (
 	{
 		id,
-		handleFilterEdit,
-		handleFilterDelete,
+		actions,
 		addFilterGroupValuesIcon,
 		showFilterGroupValuesIcon,
 		handleShowFilterGroupValues,
@@ -39,23 +38,22 @@ const FiltersListItemLeftSide = (
 				actionHandler={handleShoAddFilterGroupValueForm}
 				className={classes.filtersGroupListItem_addFilterGroupValueButton}
 			/>
-			<FiltersGroupListItemTooltipActions
-				id={id}
-				handleFilterEdit={handleFilterEdit}
-				handleFilterDelete={handleFilterDelete}
+			<TooltipAction
+				targetElementId={id}
+				actionList={actions}
+				className={classes.filtersGroupListItemTooltipActions}
 			/>
 		</div>
 	);
 };
 
-FiltersListItemLeftSide.propTypes = {
+FiltersListItemRightSide.propTypes = {
 	id: PropTypes.number,
-	handleFilterEdit: PropTypes.func,
-	handleFilterDelete: PropTypes.func,
+	actions: PropTypes.array,
 	addFilterGroupValuesIcon: PropTypes.string,
 	showFilterGroupValuesIcon: PropTypes.string,
 	handleShowFilterGroupValues: PropTypes.func,
 	handleShoAddFilterGroupValueForm: PropTypes.func,
 };
 
-export default FiltersListItemLeftSide;
+export default FiltersListItemRightSide;

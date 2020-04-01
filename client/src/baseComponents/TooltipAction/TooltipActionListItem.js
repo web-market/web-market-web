@@ -11,17 +11,19 @@ const TooltipActionListItem = (
 		name,
 		icon,
 		iconClass,
-		action: handleClick,
+		targetElementId,
+		action: handleClickFromProps,
 	}
 ) => {
 	const iconClassName = ClassNames(
 		classes.tooltipActionListItem_icon,
 		iconClass
 	);
+
 	return (
 		<div
 			className={classes.tooltipActionListItem}
-			onClick={handleClick}
+			onClick={() => handleClickFromProps(targetElementId)}
 		>
 			<Icon
 				className={iconClassName}
@@ -36,7 +38,8 @@ TooltipActionListItem.propTypes = {
 	name: PropTypes.string,
 	icon: PropTypes.string,
 	action: PropTypes.func,
-	iconClass: PropTypes.string
+	iconClass: PropTypes.string,
+	targetElementId: PropTypes.number
 };
 
 export default TooltipActionListItem;

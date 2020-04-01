@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import FiltersGroupListItem from './FiltersGroupListItem';
@@ -7,6 +7,7 @@ import PendingCloak from '../../../../baseComponents/PendingCloak';
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
+import { pencil, trash } from '../../../../icons';
 
 const FiltersGroupList = () => {
 	const { openModal } = useContext(FiltersModalsContext);
@@ -22,11 +23,11 @@ const FiltersGroupList = () => {
 		getFiltersList();
 	}, []);
 
-	const handleFilterEdit = (id) => {
+	const handleFilterEdit = useCallback((id) => {
 		openModal(MODALS.EDIT_FILTER_MODAL, { id });
-	};
+	}, [openModal]);
 
-	const handleFilterDelete = (id) => {
+	const handleFilterDelete = useCallback((id) => {
 		openModal(
 			MODALS.DELETE_FILTER_MODAL,
 			{
@@ -36,7 +37,24 @@ const FiltersGroupList = () => {
 				content: '!!Вы уверены, что хотите удалить фильтр группу?'
 			}
 		);
-	};
+	}, [openModal, deleteFilter]);
+
+	const actions = useMemo(() => {
+		return [
+			{
+				name: '!!Редактировать',
+				icon: pencil,
+				iconClass: '',
+				action: id => handleFilterEdit(id)
+			},
+			{
+				name: '!!Удалить',
+				icon: trash,
+				iconClass: classes.filtersGroupListItemTooltipActions_deleteIcon,
+				action: id => handleFilterDelete(id)
+			}
+		];
+	}, [handleFilterDelete, handleFilterEdit]);
 
 	return (
 		<AdminControlContentBox className={classes.filtersGroupList}>
@@ -49,6 +67,7 @@ const FiltersGroupList = () => {
 						<FiltersGroupListItem
 							key={key}
 							id={filter.id}
+							actions={actions}
 							name={filter.name}
 							displayName={filter.displayName}
 							handleFilterEdit={handleFilterEdit}

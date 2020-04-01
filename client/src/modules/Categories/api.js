@@ -14,7 +14,7 @@ const addCategory = (data) => {
 };
 
 const deleteCategory = (data) => {
-	return DELETE(ENDPOINT.ADD_CATEGORY, data);
+	return DELETE(ENDPOINT.DELETE_CATEGORY, data);
 };
 
 const getCategory = (id) => {

@@ -8,12 +8,13 @@ import classes from './styles/index.scss';
 const TooltipActionList = (
 	{
 		actionList,
-		handleOnClick
+		handleOnClick,
+		targetElementId
 	}
 ) => {
 	return (
 		<div
-			onClick={handleOnClick}
+			onClick={event => handleOnClick(event)}
 			className={classes.tooltipActionList}
 		>
 			{
@@ -27,6 +28,7 @@ const TooltipActionList = (
 							icon={actionItem.icon}
 							action={actionItem.action}
 							iconClass={actionItem.iconClass}
+							targetElementId={targetElementId}
 						/>
 					);
 				})
@@ -41,7 +43,8 @@ TooltipActionList.defaultProps = {
 
 TooltipActionList.propTypes = {
 	actionList: PropTypes.array,
-	handleOnClick: PropTypes.func
+	handleOnClick: PropTypes.func,
+	targetElementId: PropTypes.number
 };
 
 export default TooltipActionList;

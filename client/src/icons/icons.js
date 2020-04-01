@@ -23,3 +23,4 @@ export const close = classes['ti-close'];
 export const trash = classes['ti-trash'];
 export const image = classes['ti-image'];
 export const download = classes['ti-import'];
+export const menuSeparated = classes['ti-layout-menu-separated'];

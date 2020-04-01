@@ -1,0 +1,13 @@
+.manufacturesListItem {
+	border-bottom: 1px solid $secondary;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	box-sizing: border-box;
+
+	@include hover-focus{
+		background-color: lighten($secondary, 5%);
+	}
+}

@@ -2,7 +2,6 @@ import React from 'react';
 
 import MediaProductContextProvider from './store';
 
-
 import AdminControlHeader from '../../components/AdminControlHeader';
 import MediaProductContent from './components/MediaProductContent';
 

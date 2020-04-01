@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
 import { AdminNavProfileICollapseContent } from './AdminNavProfileICollapseContent';
-import { navProfile } from '../../staticData/staticData';
+import { navProfile } from '../../staticData';
 
 import classes from './styles/index.scss';
 import { angleRight } from '../../../../icons';

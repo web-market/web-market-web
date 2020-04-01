@@ -1,5 +1,5 @@
-import { bell, chartBar, th, filter, settings, alignJustify, image } from '../../../icons';
-import { URL } from '../../consts';
+import { bell, chartBar, th, filter, settings, alignJustify, image } from '../../icons';
+import { URL } from '../consts';
 
 export const mainNavItem = [
 	{
@@ -21,8 +21,8 @@ export const mainNavItem = [
 				hasRoute: true
 			},
 			{
-				label: 'Топ продаж',
-				link: URL.CATALOG.TOP_SALE,
+				label: 'Производители',
+				link: URL.CATALOG.MANUFACTURES,
 				hasRoute: true
 			}
 		]

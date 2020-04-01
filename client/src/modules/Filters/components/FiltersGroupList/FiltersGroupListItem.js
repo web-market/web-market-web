@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FiltersAddFilterGroupValue from '../FiltersAddFilterGroupValue';
 import FiltersFilterGroupValuesList from '../FiltersFilterGroupValuesList';
 import FiltersGroupListItemLeftSide from './FiltersGroupListItemLeftSide';
-import FiltersListItemRightSide from './FiltersGroupListItemRightSide';
+import FiltersGroupListItemRightSide from './FiltersGroupListItemRightSide';
 
 import { plus, minus, chevronDown, chevronUp } from '../../../../icons';
 import classes from './styles/index.scss';
@@ -15,6 +15,7 @@ const FiltersGroupListItem = (
 	{
 		id,
 		name,
+		actions,
 		displayName,
 		hasFilterValues,
 		handleFilterEdit,
@@ -78,8 +79,9 @@ const FiltersGroupListItem = (
 					name={name}
 					displayName={displayName}
 				/>
-				<FiltersListItemRightSide
+				<FiltersGroupListItemRightSide
 					id={id}
+					actions={actions}
 					handleFilterEdit={handleFilterEdit}
 					handleFilterDelete={handleFilterDelete}
 					addFilterGroupValuesIcon={addFilterGroupValuesIcon}
@@ -108,6 +110,7 @@ const FiltersGroupListItem = (
 FiltersGroupListItem.propTypes = {
 	id: PropTypes.number,
 	name: PropTypes.string,
+	actions: PropTypes.array,
 	displayName: PropTypes.string,
 	handleFilterEdit: PropTypes.func,
 	hasFilterValues: PropTypes.bool,

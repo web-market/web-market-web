@@ -20,14 +20,14 @@ import {
 } from './consts';
 
 export default (dispatch) => {
-	const setPending = (pending) => {
+	const _setPending = (pending) => {
 		dispatch({
 			type: SET_PENDING,
 			pending
 		});
 	};
 
-	const setFilters = (filtersItems) => {
+	const _setFilters = (filtersItems) => {
 		dispatch({
 			type: SET_FILTERS,
 			filtersItems
@@ -62,12 +62,12 @@ export default (dispatch) => {
 	};
 
 	const getFiltersList = () => {
-		setPending(true);
+		_setPending(true);
 
 		return getFiltersGroupAPI()
-			.then(({ data }) => setFilters(data))
+			.then(({ data }) => _setFilters(data))
 			.catch(e => console.log(e))
-			.finally(() => setPending(false));
+			.finally(() => _setPending(false));
 	};
 
 	const getUpdateFilterGroup = (data) => {
@@ -79,11 +79,11 @@ export default (dispatch) => {
 	};
 
 	const addFilterGroup = (data) => {
-		setPending(true);
+		_setPending(true);
 
 		return addFilterGroupAPI(data)
 			.catch(e => console.log(e))
-			.finally(() => setPending(false));
+			.finally(() => _setPending(false));
 	};
 
 	const deleteFilter = (id) => {

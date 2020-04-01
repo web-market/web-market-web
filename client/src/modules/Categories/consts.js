@@ -11,6 +11,7 @@ export const actions = {
 export const ENDPOINT = {
 	ADD_CATEGORY: '/category-management/categories',
 	GET_CATEGORY: '/category-management/categories',
+	DELETE_CATEGORY: '/category-management/categories',
 	GET_CATEGORY_LIST: '/category-management/root-categories',
 	GET_ALL_CATEGORIES: '/category-management/categories/fill-dropdown',
 	GET_SUB_CATEGORIES_LIST: '/category-management/root-categories',

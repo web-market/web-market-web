@@ -3,7 +3,7 @@ import {
 	getAllCategories as getAllCategoriesAPI,
 	deleteCategory as deleteCategoryAPI,
 	updateCategory as updateCategoryAPI,
-	getCategory
+	getCategory as getCategoryAPI
 } from '../api';
 
 import {
@@ -13,20 +13,20 @@ import {
 } from './consts';
 
 export default (dispatch) => {
-	const setCategories = (categories) => {
+	const _setCategories = (categories) => {
 		dispatch({
 			type: SET_CATEGORIES,
 			categories
 		});
 	};
 
-	const resetCategories = () => {
+	const _resetCategories = () => {
 		dispatch({
 			type: RESET_CATEGORIES
 		});
 	};
 
-	const setPending = (pending) => {
+	const _setPending = (pending) => {
 		dispatch({
 			type: SET_PENDING,
 			pending
@@ -34,41 +34,41 @@ export default (dispatch) => {
 	};
 
 	const getCategoriesList = () => {
-		setPending(true);
+		_setPending(true);
 
 		return getAllCategoriesAPI()
-			.then(({ data }) => setCategories(data))
+			.then(({ data }) => _setCategories(data))
 			.catch(error => console.log(error))
-			.finally(() => setPending(false));
+			.finally(() => _setPending(false));
 	};
 
 	const addCategory = (val) => {
-		setPending(true);
+		_setPending(true);
 
 		return addCategoryAPI(val)
-			.then(() => resetCategories())
+			.then(() => {})
 			.catch(error => console.log(error))
-			.finally(() => setPending(false));
+			.finally(() => _setPending(false));
 	};
 
 	const updateCategory = (data) => {
 		return updateCategoryAPI(data)
-			.then(() => resetCategories())
+			.then(() => _resetCategories())
 			.then(() => getCategoriesList())
 			.catch(error => console.log(error));
 	};
 
 	const deleteCategory = (id) => {
-		setPending(true);
+		_setPending(true);
 
 		return deleteCategoryAPI(id)
-			.then(() => resetCategories())
+			.then(() => _resetCategories())
 			.catch(error => console.log(error))
-			.finally(() => setPending(false));
+			.finally(() => _setPending(false));
 	};
 
 	return {
-		getCategory,
+		getCategoryAPI,
 		getCategoriesList,
 		addCategory,
 		deleteCategory,

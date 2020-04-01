@@ -1,31 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classes from './styles/index.scss';
+
 const Textarea = (
 	{
-		onChange,
 		name,
-		placeholder,
 		value,
-		onFieldFocus
+		onChange,
+		placeholder,
+		onFieldFocus,
+		onFieldChange,
 	}
 ) => {
+	const handleInputChange = (value) => {
+		onFieldChange(value);
+		onChange(value);
+	};
+
 	return (
 		<textarea
+			name={name}
+			value={value || ''}
+			className={classes.textarea}
 			placeholder={placeholder}
-			onChange={e => onChange(e.target.value)}
+			onChange={e => handleInputChange(e.target.value)}
 			onFocus={() => onFieldFocus(true)}
 			onBlur={() => onFieldFocus(false)}
-			name={name}
-			value={value}
 		/>
 	);
 };
 
 Textarea.defaultProps = {
+	value: '',
 	onChange: () => {},
 	onFieldFocus: () => {},
-	value: ''
 };
 
 Textarea.propTypes = {

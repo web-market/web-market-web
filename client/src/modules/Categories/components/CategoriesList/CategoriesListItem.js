@@ -2,16 +2,17 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
-import CategoriesListItemTooltipActions from './CategoriesListItemTooltipActions';
 import Button from '../../../../baseComponents/Button';
 
 import classes from './styles/index.scss';
 import { chevronDown, chevronUp } from '../../../../icons';
 import { getUniqueKey, isNull } from '../../../../utils';
 import { getSubCategories } from '../../api';
+import TooltipAction from '../../../../baseComponents/TooltipAction';
 
 const CategoriesListItem = (
 	{
+		actions,
 		category,
 		handleEditCategory,
 		handleDeleteCategory
@@ -19,7 +20,6 @@ const CategoriesListItem = (
 	) => {
 	const [showCategories, setShowCategories] = useState(false);
 	const [subCategories, setSubCategories] = useState(null);
-	const [hasFetched, setHasFetched] = useState(false);
 	const [subCategoryHeight, setSubCategoryHeight] = useState(false);
 
 	const subCategoryRef = useRef(null);
@@ -34,15 +34,14 @@ const CategoriesListItem = (
 		getSubCategories(category.id)
 			.then(({ data }) => {
 				setSubCategories(data);
-				setHasFetched(true);
 			});
 	}, [category.id]);
 
 	useEffect(() => {
-		if (!hasFetched && showCategories) {
+		if (showCategories) {
 			handleGetSubCategories();
 		}
-	}, [showCategories, hasFetched, handleGetSubCategories]);
+	}, [showCategories, handleGetSubCategories]);
 
 	const componentClassName = ClassNames(
 		classes.category_item,
@@ -95,10 +94,10 @@ const CategoriesListItem = (
 								/>
 							)
 						}
-						<CategoriesListItemTooltipActions
-							id={category.id}
-							handleEditCategory={handleEditCategory}
-							handleDeleteCategory={handleDeleteCategory}
+						<TooltipAction
+							actionList={actions}
+							targetElementId={category.id}
+							className={classes.categoriesListItemTooltipActions}
 						/>
 					</div>
 				</div>
@@ -138,6 +137,7 @@ const CategoriesListItem = (
 };
 
 CategoriesListItem.propTypes = {
+	actions: PropTypes.array,
 	category: PropTypes.object.isRequired,
 	handleDeleteCategory: PropTypes.func.isRequired,
 	handleEditCategory: PropTypes.func.isRequired,
