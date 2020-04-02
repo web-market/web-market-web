@@ -42,16 +42,16 @@ const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, active
 	}, [isOpen, collapseRef, getHeight]);
 
 	const navItemCollapsed = classNames(
-		classes.adminNavItem_content,
+		classes.adminNavigationListItem_content,
 		{
-			[classes.adminNavItem_hasActiveChild]: menuRoute === activeMenu
+			[classes.adminNavigationListItem_hasActiveChild]: menuRoute === activeMenu
 		}
 	);
 
 	const navItemCollapsedIcon = classNames(
-		classes.adminNavItem_collapsedIcon,
+		classes.adminNavigationListItem_collapsedIcon,
 		{
-			[classes.adminNavItem_collapsedIcon__open]: isOpen
+			[classes.adminNavigationListItem_collapsedIcon__open]: isOpen
 		}
 	);
 
@@ -61,16 +61,16 @@ const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, active
 			onClick={() => setIsOpen(!isOpen)}
 		>
 			<span>{ label }</span>
-			<div className={classes.adminNavItem_content_iconWrapper}>
+			<div className={classes.adminNavigationListItem_content_iconWrapper}>
 				<Icon
 					className={navItemCollapsedIcon}
 					icon={angleRight}
 				/>
 				{icon && (
-					<div className={classes.adminNavItem_content_navItemIcon}>
+					<div className={classes.adminNavigationListItem_content_navItemIcon}>
 						<Icon
 							icon={icon}
-							className={classes.adminNavItem_content_navItemIcon}
+							className={classes.adminNavigationListItem_content_navItemIcon}
 						/>
 					</div>
 				)}

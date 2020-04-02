@@ -10,10 +10,10 @@ import AdminNavigationListItemCollapse from './AdminNavigationListItemCollapse';
 
 const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
 	const linkContent = (
-			<div className={classes.adminNavItem_content}>
+			<div className={classes.adminNavigationListItem_content}>
 				<span>{ label }</span>
 				{icon && (
-					<div className={classes.adminNavItem_content_navItemIcon}>
+					<div className={classes.adminNavigationListItem_content_navItemIcon}>
 						<Icon
 							icon={icon}
 						/>

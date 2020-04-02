@@ -1,24 +1,24 @@
-.adminNavItemCollapsedContent {
+.adminNavigationListItemCollapseContent {
 	background-color: $collapse_content_bg_dark;
 	overflow: hidden;
 
 	@include transition(height .3s, padding .3s);
 }
 
-.adminNavItemCollapsedContent_item {
+.adminNavigationListItemCollapseContent_item {
 	display: flex;
 	position: relative;
 	font-size: 14px;
 	align-items: center;
 }
 
-.adminNavItemCollapsedContent_itemContent {
+.adminNavigationListItemCollapseContent_itemContent {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.adminNavItemCollapsedContent_itemIcon {
+.adminNavigationListItemCollapseContent_itemIcon {
 	width: 8px;
 	height: 8px;
 	border-radius: 10px;
@@ -29,14 +29,14 @@
 	@include transition(background-color .2s, border-color  .2s)
 }
 
-.adminNavItemCollapsedContent_item:hover {
-	.adminNavItemCollapsedContent_itemIcon {
+.adminNavigationListItemCollapseContent_item:hover {
+	.adminNavigationListItemCollapseContent_itemIcon {
 		border-color: $primary;
 		background-color: $primary;
 	}
 }
 
-.adminNavItemCollapsedContent_item > a {
+.adminNavigationListItemCollapseContent_item > a {
 	width: 100%;
 	display: block;
 	color: $text_light !important;
@@ -44,8 +44,8 @@
 	line-height: 2.3;
 }
 
-.adminNavItemCollapsedContent_activeLink {
-	.adminNavItemCollapsedContent_itemIcon {
+.adminNavigationListItemCollapseContent_activeLink {
+	.adminNavigationListItemCollapseContent_itemIcon {
 		border-color: #33cabb;
 		background-color: #33cabb;
 	}

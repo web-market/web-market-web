@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AdminNav from '../AdminNav';
+import AdminNavigation from '../AdminNavigation';
 import AdminControl from '../AdminControl';
 
 import classNames from 'classnames';
@@ -13,7 +13,7 @@ const AdminPanel = () => {
 
 	return (
 		<div className={componentClassName}>
-			<AdminNav />
+			<AdminNavigation />
 			<AdminControl />
 		</div>
 	);

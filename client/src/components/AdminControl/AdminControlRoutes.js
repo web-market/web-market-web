@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Filters from '../Filters';
-import UserProfile from '../UserProfile';
-import Categories from '../Categories';
-import MediaProduct from '../MediaProduct';
-import Manufactures from '../Manufactures';
+import Filters from '../../modules/Filters';
+import UserProfile from '../../modules/UserProfile';
+import Categories from '../../modules/Categories';
+import MediaProduct from '../../modules/MediaProduct';
+import Manufactures from '../../modules/Manufactures';
 
 import { URL } from '../consts';
 

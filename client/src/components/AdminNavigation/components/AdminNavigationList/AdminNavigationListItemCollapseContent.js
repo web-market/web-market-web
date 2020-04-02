@@ -34,23 +34,23 @@ class AdminNavigationListItemCollapseContent extends Component {
 		return this.props.items.map(item => {
 			const content = (
 				<div
-					className={classes.adminNavItemCollapsedContent_itemContent}
+					className={classes.adminNavigationListItemCollapseContent_itemContent}
 				>
 					{item.label}
-					<div className={classes.adminNavItemCollapsedContent_itemIcon}></div>
+					<div className={classes.adminNavigationListItemCollapseContent_itemIcon}></div>
 				</div>
 			);
 
 			return (
 				<div
 					key={item.label}
-					className={classes.adminNavItemCollapsedContent_item}
+					className={classes.adminNavigationListItemCollapseContent_item}
 				>
 					<Link
 						content={content}
 						link={item.link}
 						hasRoute={item.hasRoute}
-						activeLinkClass={classes.adminNavItemCollapsedContent_activeLink}
+						activeLinkClass={classes.adminNavigationListItemCollapseContent_activeLink}
 					/>
 				</div>
 			);
@@ -62,7 +62,7 @@ class AdminNavigationListItemCollapseContent extends Component {
 			<div
 				ref={this.collapseContent}
 				style={this.collapseHeight}
-				className={classes.adminNavItemCollapsedContent}
+				className={classes.adminNavigationListItemCollapseContent}
 			>
 				<div>
 					{this.getNavCollapsedContent()}

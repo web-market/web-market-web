@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import AdminPanel from '../modules/AdminPanel';
+import AdminPanel from '../components/AdminPanel';
 import Link from '../baseComponents/Link';
 
 import '../styles/index.scss';

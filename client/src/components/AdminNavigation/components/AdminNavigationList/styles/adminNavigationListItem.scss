@@ -50,3 +50,33 @@ a {
 		margin: 0 auto;
 	}
 }
+
+.adminNavigationListItem_hasActiveChild.adminNavigationListItem_content {
+	background-color: $primary;
+}
+
+.adminNavigationListItem_hasActiveChild {
+	.adminNavigationListItem_content_navItemIcon {
+		background-color: $primary;
+	}
+}
+
+.adminNavigationListItem_content_iconWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.adminNavigationListItem_collapsedIcon {
+	font-size: 14px;
+	margin-right: 16px;
+
+	@include transition(transform .3s);
+}
+
+.adminNavigationListItem_collapsedIcon__open {
+	@include rotate(90)
+}
+
+.adminNavigationListItem_collapsedLabel {
+	display: flex;
+}

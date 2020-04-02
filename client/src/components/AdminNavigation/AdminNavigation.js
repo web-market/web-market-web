@@ -9,7 +9,7 @@ import AdminNavigationBottomItemList from './components/AdminNavigationBottomIte
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 
-const AdminNav = () => {
+const AdminNavigation = () => {
 	const location = useLocation();
 
 	const { root, activeMenu } = parsedLocation(location);
@@ -27,4 +27,4 @@ const AdminNav = () => {
 	);
 };
 
-export { AdminNav };
+export { AdminNavigation };
