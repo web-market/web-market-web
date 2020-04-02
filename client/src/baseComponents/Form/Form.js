@@ -42,11 +42,11 @@ const Form = memo((
 
 	const handleSuccess = useCallback((values) => {
 		onSubmit(values);
-		actionLogger(`FROM "${name}" HAS SUBMITTED`);
+		actionLogger(`SUBMIT FROM: "${name}"`);
 
 		if (restFormValues) {
 			resetFormValues();
-			actionLogger(`FROM "${name}" HAS RESETED`);
+			actionLogger(`RESET FROM: "${name}"`);
 		}
 	}, [name, onSubmit, restFormValues, resetFormValues]);
 

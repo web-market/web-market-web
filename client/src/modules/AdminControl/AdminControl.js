@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContextProvider, { AppGlobalContext } from '../../App/store/AppGlobalContext';
+import FormsContextProvider from '../../App/store/FormsGlobalContext';
 
-import { Switch, Route } from 'react-router-dom';
-import UserProfile from '../UserProfile';
-import Categories from '../Categories';
-import Filters from '../Filters';
-import MediaProduct from '../MediaProduct';
-import Manufactures from '../Manufactures';
+import Notification from '../../baseComponents/Notification';
+import OverlayCloak from '../../baseComponents/OverlayCloak';
+
+import AdminControlRoutes from './AdminControlRoutes';
 
 import classes from './styles/index.scss';
-import { URL } from '../consts';
 
 const AdminControl = () => {
+	const { showOverlayCloak, handleOverlayClose } = useContext(AppGlobalContext);
+
 	return (
 		<div className={classes.adminControl}>
-			<Switch>
-				<Route path={URL.FILTERS.ROOT} component={Filters} />
-				<Route path={URL.USER_PROFILE} component={UserProfile} />
-				<Route path={URL.CATEGORY.ROOT} component={Categories} />
-				<Route path={URL.MEDIA.PRODUCTS} component={MediaProduct} />
-				<Route path={URL.CATALOG.MANUFACTURES} component={Manufactures} />
-			</Switch>
+			<AdminControlRoutes />
+			<OverlayCloak
+				show={showOverlayCloak}
+				handleOverlayClose={handleOverlayClose}
+			/>
+			<Notification />
 		</div>
 	);
 };
 
-export { AdminControl };
+const AdminControlWithContexts = () => (
+	<AppContextProvider>
+		<FormsContextProvider>
+			<AdminControl />
+		</FormsContextProvider>
+	</AppContextProvider>
+);
+
+export { AdminControlWithContexts };

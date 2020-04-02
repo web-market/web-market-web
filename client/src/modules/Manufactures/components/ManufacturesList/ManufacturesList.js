@@ -66,7 +66,7 @@ const ManufacturesList = () => {
 			{
 				name: '!!Удалить',
 				icon: trash,
-				iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
+				iconClass: classes.manufacturesLists_deleteIcon,
 				action: id => handleDeleteManufacture(id)
 			}
 		];

@@ -18,7 +18,7 @@ const ManufacturesEditModalContent = (
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { updateManufacture, getManufacture } = useContext(ManufacturesContext);
+	const { updateManufacture, getManufacture, getManufactures } = useContext(ManufacturesContext);
 
 	useEffect(() => {
 		getManufacture(modalData.id)
@@ -29,6 +29,7 @@ const ManufacturesEditModalContent = (
 
 	const handleEditManufacture = (values) => {
 		updateManufacture({ id: modalData.id, ...values })
+			.then(() => getManufactures())
 			.then(() => handleClose());
 	};
 

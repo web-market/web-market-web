@@ -1,1 +1,1 @@
-export { AdminControl as default } from './AdminControl';
+export { AdminControlWithContexts as default } from './AdminControl';

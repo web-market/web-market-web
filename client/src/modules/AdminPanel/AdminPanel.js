@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import AdminNav from '../AdminNav';
 import AdminControl from '../AdminControl';
@@ -19,9 +18,5 @@ const AdminPanel = () => {
 		</div>
 	);
 };
-
-// NAME.defaultProps = {};
-
-// NAME.propTypes = {};
 
 export { AdminPanel };
