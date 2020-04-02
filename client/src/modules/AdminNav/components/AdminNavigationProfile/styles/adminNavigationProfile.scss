@@ -1,11 +1,11 @@
-.adminNavProfile {
+.adminNavigationProfile {
 	display: flex;
 	align-items: center;
 	background-color: $purple;
 	height: 60px;
 }
 
-.adminNavProfile_userLogo {
+.adminNavigationProfile_userLogo {
 	display: block;
 	width: 40px;
 	border-radius: 20px;
@@ -13,7 +13,7 @@
 
 }
 
-.adminNavProfile_userNameWrapper {
+.adminNavigationProfile_userNameWrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -25,18 +25,18 @@
 	}
 }
 
-.adminNavProfile_userName {
+.adminNavigationProfile_userName {
 	font-size: 1em;
 	max-width: 125px;
 	color: $text_light;
 }
 
-.adminNavProfile_icon {
+.adminNavigationProfile_icon {
 	color: $text_light;
 
 	@include transition(transform .3s);
 }
 
-.adminNavProfile_iconIsOpen {
+.adminNavigationProfile_iconIsOpen {
 	@include rotate(90)
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
-import { AdminNavItem } from '../AdminNavItemList/AdminNavItem';
+import AdminNavigationListItem from '../AdminNavigationList/AdminNavigationListItem';
 
 import { bottomNavItem } from '../../staticData';
 
-const AdminNavBottomItemList = () => {
+const AdminNavigationBottomItemList = () => {
 	return (
 		<>
 			<PaddingBox vrTiny>
@@ -13,7 +13,7 @@ const AdminNavBottomItemList = () => {
 					{
 						bottomNavItem.map(item => {
 							return (
-								<AdminNavItem
+								<AdminNavigationListItem
 									key={item.label}
 									icon={item.icon}
 									label={item.label}
@@ -29,4 +29,4 @@ const AdminNavBottomItemList = () => {
 	);
 };
 
-export { AdminNavBottomItemList };
+export { AdminNavigationBottomItemList };

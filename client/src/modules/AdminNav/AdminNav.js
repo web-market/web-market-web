@@ -2,9 +2,9 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { parsedLocation } from './utils';
 
-import AdminNavProfile from './components/AdminNavProfile';
-import AdminNavItemList from './components/AdminNavItemList';
-import AdminNavBottomItemList from './components/AdminNavBottomItemList';
+import AdminNavigationProfile from './components/AdminNavigationProfile';
+import AdminNavigationList from './components/AdminNavigationList';
+import AdminNavigationBottomItemList from './components/AdminNavigationBottomItemList';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -20,9 +20,9 @@ const AdminNav = () => {
 
 	return (
 		<div className={componentClassName}>
-			<AdminNavProfile />
-			<AdminNavItemList activeMenu={`/${root}/${activeMenu}`} />
-			<AdminNavBottomItemList />
+			<AdminNavigationProfile />
+			<AdminNavigationList activeMenu={`/${root}/${activeMenu}`} />
+			<AdminNavigationBottomItemList />
 		</div>
 	);
 };

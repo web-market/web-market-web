@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
-import { AdminNavProfileICollapseContent } from './AdminNavProfileICollapseContent';
+import { AdminNavigationProfileICollapseContent } from './AdminNavigationProfileICollapseContent';
 import { navProfile } from '../../staticData';
 
 import classes from './styles/index.scss';
@@ -11,15 +11,15 @@ import { Icon } from '../../../../baseComponents/Icon/Icon';
 import classNames from 'classnames';
 import { isUndefined } from '../../../../utils';
 
-const AdminNavProfile = () => {
+const AdminNavigationProfile = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
 
 	const iconClassName = classNames(
-		classes.adminNavProfile_icon,
+		classes.adminNavigationProfile_icon,
 		{
-			[classes.adminNavProfile_iconIsOpen]: isOpen
+			[classes.adminNavigationProfile_iconIsOpen]: isOpen
 		}
 	);
 
@@ -35,19 +35,19 @@ const AdminNavProfile = () => {
 		<>
 			<PaddingBox
 				hrSmall
-				className={classes.adminNavProfile}
+				className={classes.adminNavigationProfile}
 			>
 				<>
 					<img
-						className={classes.adminNavProfile_userLogo}
+						className={classes.adminNavigationProfile_userLogo}
 						src={navProfile.imgUrl}
 						alt="user_img"
 					/>
 					<div
 						onClick={() => setIsOpen(!isOpen)}
-						className={classes.adminNavProfile_userNameWrapper}
+						className={classes.adminNavigationProfile_userNameWrapper}
 					>
-						<div className={classes.adminNavProfile_userName}>
+						<div className={classes.adminNavigationProfile_userName}>
 							{navProfile.userName}
 						</div>
 						<Icon
@@ -57,7 +57,7 @@ const AdminNavProfile = () => {
 					</div>
 				</>
 			</PaddingBox>
-			<AdminNavProfileICollapseContent
+			<AdminNavigationProfileICollapseContent
 				setCollapseRef={setCollapseRef}
 				height={height}
 			/>
@@ -65,4 +65,4 @@ const AdminNavProfile = () => {
 	);
 };
 
-export { AdminNavProfile };
+export { AdminNavigationProfile };

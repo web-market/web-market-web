@@ -5,7 +5,7 @@ import Link from '../../../../baseComponents/Link';
 
 import classes from './styles/index.scss';
 
-class AdminNavItemCollapseContent extends Component {
+class AdminNavigationListItemCollapseContent extends Component {
 	constructor (props) {
 		super(props);
 		this.collapseContent = React.createRef();
@@ -72,10 +72,10 @@ class AdminNavItemCollapseContent extends Component {
 	}
 }
 
-AdminNavItemCollapseContent.propTypes = {
+AdminNavigationListItemCollapseContent.propTypes = {
 	items: PropTypes.array.isRequired,
 	height: PropTypes.number,
 	setCollapseRef: PropTypes.func
 };
 
-export { AdminNavItemCollapseContent };
+export { AdminNavigationListItemCollapseContent };

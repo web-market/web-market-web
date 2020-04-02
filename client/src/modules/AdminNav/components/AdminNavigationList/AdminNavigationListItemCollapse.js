@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { AdminNavItemCollapseContent } from './AdminNavItemCollapseContent';
+import { AdminNavigationListItemCollapseContent } from './AdminNavigationListItemCollapseContent';
 
 import { Icon } from '../../../../baseComponents/Icon/Icon';
 import { angleRight } from '../../../../icons';
@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import classes from './styles/index.scss';
 import { isUndefined } from '../../../../utils';
 
-const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => {
+const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
@@ -82,7 +82,7 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 		return (
 			<>
 				{collapsedLinkContent}
-				<AdminNavItemCollapseContent
+				<AdminNavigationListItemCollapseContent
 					items={items}
 					setCollapseRef={setCollapseRef}
 					height={height}
@@ -94,9 +94,9 @@ const AdminNavItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => 
 	return getNavCollapsedItem();
 };
 
-AdminNavItemCollapse.defaultProps = {};
+AdminNavigationListItemCollapse.defaultProps = {};
 
-AdminNavItemCollapse.propTypes = {
+AdminNavigationListItemCollapse.propTypes = {
 	items: PropTypes.array,
 	icon: PropTypes.string,
 	label: PropTypes.string,
@@ -104,4 +104,4 @@ AdminNavItemCollapse.propTypes = {
 	menuRoute: PropTypes.string,
 };
 
-export default AdminNavItemCollapse;
+export default AdminNavigationListItemCollapse;

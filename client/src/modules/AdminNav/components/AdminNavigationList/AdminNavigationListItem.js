@@ -6,9 +6,9 @@ import classes from './styles/index.scss';
 import { Icon } from '../../../../baseComponents/Icon/Icon';
 
 import Link from '../../../../baseComponents/Link';
-import AdminNavItemCollapse from './AdminNavItemCollapse';
+import AdminNavigationListItemCollapse from './AdminNavigationListItemCollapse';
 
-const AdminNavItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
+const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
 	const linkContent = (
 			<div className={classes.adminNavItem_content}>
 				<span>{ label }</span>
@@ -29,7 +29,7 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRout
 				link={link}
 				content={content}
 				hasRoute={hasRoute}
-				activeLinkClass={classes.adminNavItem_activeLink}
+				activeLinkClass={classes.adminNavigationListItem_activeLink}
 			/>
 		);
 	};
@@ -38,7 +38,7 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRout
 		if (isUndefined(items)) return getNavItem();
 
 		return (
-			<AdminNavItemCollapse
+			<AdminNavigationListItemCollapse
 				items={items}
 				icon={icon}
 				label={label}
@@ -49,15 +49,15 @@ const AdminNavItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRout
 	};
 
 	return (
-		<div className={classes.adminNavItem}>
+		<div className={classes.adminNavigationListItem}>
 			{getItemComponent()}
 		</div>
 	);
 };
 
-AdminNavItem.defaultProps = {};
+AdminNavigationListItem.defaultProps = {};
 
-AdminNavItem.propTypes = {
+AdminNavigationListItem.propTypes = {
 	icon: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	activeMenu: PropTypes.string,
@@ -67,4 +67,4 @@ AdminNavItem.propTypes = {
 	items: PropTypes.array,
 };
 
-export { AdminNavItem };
+export default AdminNavigationListItem;

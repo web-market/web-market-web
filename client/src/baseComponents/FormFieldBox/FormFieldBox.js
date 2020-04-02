@@ -60,6 +60,7 @@ const FormFieldBox = (
 						{
 							hasTooltip && (
 								<Tooltip
+									position="top-left"
 									icon={toolTipIcon}
 									message={toolTipMessage}
 									tooltipClassName={classes.formFieldBox_tooltip}

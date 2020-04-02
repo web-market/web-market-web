@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { AdminNavItem } from './AdminNavItem';
+import AdminNavigationListItem from './AdminNavigationListItem';
 import { mainNavItem } from '../../staticData';
 
 import classes from './styles/index.scss';
 
-const AdminNavItemList = ({ activeMenu }) => {
+const AdminNavigationList = ({ activeMenu }) => {
 	return (
 		<div>
 			{
 				mainNavItem.map(item => {
 					return (
-						<AdminNavItem
+						<AdminNavigationListItem
 							key={item.label}
 							icon={item.icon}
 							label={item.label}
@@ -25,15 +25,15 @@ const AdminNavItemList = ({ activeMenu }) => {
 					);
 				})
 			}
-			<div className={classes.adminNavItemList_separator}></div>
+			<div className={classes.adminNavigationList_separator}></div>
 		</div>
 	);
 };
 
-AdminNavItemList.defaultProps = {};
+AdminNavigationList.defaultProps = {};
 
-AdminNavItemList.propTypes = {
+AdminNavigationList.propTypes = {
 	activeMenu: PropTypes.string
 };
 
-export { AdminNavItemList };
+export { AdminNavigationList };
