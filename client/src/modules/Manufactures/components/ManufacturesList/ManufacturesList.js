@@ -19,6 +19,7 @@ const ManufacturesList = () => {
 		getManufactures,
 		deleteManufacture: deleteManufactureAction
 	} = useContext(ManufacturesContext);
+
 	const { openModal } = useContext(ManufacturesModalsContext);
 
 	useEffect(() => {
@@ -90,9 +91,11 @@ const ManufacturesList = () => {
 				})
 			}
 			{
-				manufactures.length === 0 && (
-					<EmptyContainer hasFillContent hasCenteredContent>
-						<div className={classes.manufacturesLists_emptyContent}>!!пока что не добавлено ни одного производителя</div>
+				!isPending && manufactures.length === 0 && (
+					<EmptyContainer hasFillContent>
+						<div className={classes.manufacturesLists_emptyContent}>
+							!!пока что не добавлено ни одного производителя
+						</div>
 					</EmptyContainer>
 				)
 			}

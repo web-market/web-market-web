@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 import PendingCloak from '../../../../baseComponents/PendingCloak';
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
+import EmptyContainer from '../../../../baseComponents/EmptyContainer';
 
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
@@ -43,23 +44,37 @@ const CategoriesList = () => {
 	}, [handleDeleteCategory, handleEditCategory]);
 
 	return (
-		<AdminControlContentBox className={classes.category_list}>
+		<AdminControlContentBox>
 			{isPending && (<PendingCloak />)}
 			{
-				categories.map((category, index) => {
-					const key = getUniqueKey(category.name, index);
+				categories.length !== 0 && (
+				<div className={classes.categoryList}>
+					{
+						categories.map((category, index) => {
+							const key = getUniqueKey(category.name, index);
 
-					return (
-						<CategoriesListItem
-							key={key}
-							actions={actions}
-							category={category}
-							handleDeleteCategory={handleDeleteCategory}
-							handleEditCategory={handleEditCategory}
-						/>
-					);
-				})
-
+							return (
+								<CategoriesListItem
+									key={key}
+									actions={actions}
+									category={category}
+									handleDeleteCategory={handleDeleteCategory}
+									handleEditCategory={handleEditCategory}
+								/>
+							);
+						})
+					}
+				</div>
+				)
+			}
+			{
+				!isPending && categories.length === 0 && (
+					<EmptyContainer hasFillContent>
+						<div className={classes.categoryList_emptyContent}>
+							!!пока что не добавлено ни одной категории
+						</div>
+					</EmptyContainer>
+				)
 			}
 		</AdminControlContentBox>
 	);

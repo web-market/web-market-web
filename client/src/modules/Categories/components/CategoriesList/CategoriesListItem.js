@@ -44,10 +44,7 @@ const CategoriesListItem = (
 	}, [showCategories, handleGetSubCategories]);
 
 	const componentClassName = ClassNames(
-		classes.category_item,
-		{
-			[classes.category_item__hasChild]: category.hasSubCategories
-		}
+		classes.categoryItem,
 	);
 
 	useEffect(() => {
@@ -67,12 +64,12 @@ const CategoriesListItem = (
 	const categoryItemDetail = () => {
 		return (
 
-				<div className={classes.category_item_detail}>
-					<div className={classes.category_item_labelSection}>
+				<div className={classes.categoryItem_detail}>
+					<div className={classes.categoryItem_labelSection}>
 						{
 							category.hasSubCategories && (
 								<div
-									className={classes.category_item_labelBadge}
+									className={classes.categoryItem_labelBadge}
 									style={{
 										backgroundColor: category.color,
 										height: subCategoryHeight
@@ -83,7 +80,7 @@ const CategoriesListItem = (
 						}
 						{category.name}
 					</div>
-					<div className={classes.category_item_actionSection}>
+					<div className={classes.categoryItem_actionSection}>
 						{
 							category.hasSubCategories && (
 								<Button
@@ -126,7 +123,7 @@ const CategoriesListItem = (
 				showCategories && !isNull(subCategories) && (
 					<div
 						ref={subCategoryRef}
-						className={classes.category_item_subCategoryItem}
+						className={classes.categoryItem_subCategoryItem}
 					>
 						{subCategoryItemDetail()}
 					</div>

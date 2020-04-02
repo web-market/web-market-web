@@ -35,19 +35,9 @@ const MediaProductAddCategoryForm = () => {
 								label="!!!Имя каталога"
 								required
 								validate={{
-									required: true
-								}}
-							/>
-						</FormLayoutItem>
-						<FormLayoutItem>
-							<Field
-								defaultColor="#008eae"
-								component={ColorPicker}
-								name="color"
-								label="!!!Цвет категории"
-								validate={{
+									required: true,
 									length: {
-										equal: 7,
+										max: 64
 									}
 								}}
 							/>

@@ -33,7 +33,8 @@ export default (dispatch) => {
 			.then(({ data }) => {
 				_setManufactures(data);
 				_setPending(false);
-			});
+			})
+			.catch(() => _setPending(false));
 	};
 
 	const addManufacture = (data) => {

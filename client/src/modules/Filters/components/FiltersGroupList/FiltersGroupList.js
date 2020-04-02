@@ -8,6 +8,7 @@ import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
 import { pencil, trash } from '../../../../icons';
+import { EmptyContainer } from '../../../../baseComponents/EmptyContainer/EmptyContainer';
 
 const FiltersGroupList = () => {
 	const { openModal } = useContext(FiltersModalsContext);
@@ -57,25 +58,39 @@ const FiltersGroupList = () => {
 	}, [handleFilterDelete, handleFilterEdit]);
 
 	return (
-		<AdminControlContentBox className={classes.filtersGroupList}>
+		<AdminControlContentBox>
 			{isPending && (<PendingCloak />)}
 			{
-				filtersItems.map((filter, index) => {
-					const key = getUniqueKey(filter.name, index);
+				filtersItems.length !== 0 && (
+					<div className={classes.filtersGroupList}>
+						{filtersItems.map((filter, index) => {
+							const key = getUniqueKey(filter.name, index);
 
-					return (
-						<FiltersGroupListItem
-							key={key}
-							id={filter.id}
-							actions={actions}
-							name={filter.name}
-							displayName={filter.displayName}
-							handleFilterEdit={handleFilterEdit}
-							handleFilterDelete={handleFilterDelete}
-							hasFilterValues={filter.hasFilterValues}
-						/>
-					);
-				})
+							return (
+								<FiltersGroupListItem
+									key={key}
+									id={filter.id}
+									actions={actions}
+									name={filter.name}
+									displayName={filter.displayName}
+									handleFilterEdit={handleFilterEdit}
+									handleFilterDelete={handleFilterDelete}
+									hasFilterValues={filter.hasFilterValues}
+								/>
+							);
+						})
+						}
+					</div>
+				)
+			}
+			{
+				!isPending && filtersItems.length === 0 && (
+					<EmptyContainer hasFillContent>
+						<div className={classes.filtersGroupList_emptyContent}>
+							!!пока что не добавлено ни одного фильтра
+						</div>
+					</EmptyContainer>
+				)
 			}
 		</AdminControlContentBox>
 	);
