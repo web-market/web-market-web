@@ -1,0 +1,16 @@
+.adminNavigationCollapsed {
+	width: 60px;
+	position: fixed;
+	height: 100vh;
+	box-sizing: border-box;
+	background-color: #3f4a59;
+	left: -60px;
+	opacity: 0;
+
+	@include transition(left .3s ease-in, opacity .2s ease-in)
+}
+
+.adminNavigationCollapsed_show {
+	left: 0;
+	opacity: 1;
+}

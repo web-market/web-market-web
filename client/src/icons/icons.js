@@ -24,3 +24,6 @@ export const trash = classes['ti-trash'];
 export const image = classes['ti-image'];
 export const download = classes['ti-import'];
 export const menuSeparated = classes['ti-layout-menu-separated'];
+export const moreAlt = classes['ti-more-alt'];
+export const angleDoubleLeft = classes['ti-angle-double-left'];
+export const angleDoubleRight = classes['ti-angle-double-right'];

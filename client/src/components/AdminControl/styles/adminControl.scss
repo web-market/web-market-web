@@ -3,3 +3,11 @@
 	background-color: $metro_background;
 	margin-left: 260px;
 }
+
+.adminControl_primaryNavigationCollapsed {
+	margin-left: 60px;
+}
+
+.adminControl_inCollapseProgress {
+	@include transition(margin-left .2s ease-in)
+}

@@ -1,0 +1,16 @@
+.adminNavigation {
+	width: 260px;
+	position: fixed;
+	height: 100vh;
+	box-sizing: border-box;
+	background-color: #3f4a59;
+	left: 0;
+	opacity: 1;
+
+	@include transition(left .3s ease-in, opacity .2s ease-in)
+}
+
+.adminNavigation_show {
+	left: -260px;
+	opacity: 0;
+}

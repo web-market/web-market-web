@@ -1,6 +1,7 @@
 import React from 'react';
+import NavigationGlobalContextProvider from '../../App/store/NavigationGlobalContext';
 
-// import AdminNavigation from '../AdminNavigation';
+import AdminNavigation from '../AdminNavigation';
 import AdminNavigationCollapsed from '../AdminNavigationCollapsed';
 import AdminControl from '../AdminControl';
 
@@ -14,9 +15,11 @@ const AdminPanel = () => {
 
 	return (
 		<div className={componentClassName}>
-			{/*<AdminNavigation />*/}
-			<AdminNavigationCollapsed />
-			<AdminControl />
+			<NavigationGlobalContextProvider>
+				<AdminNavigation />
+				<AdminNavigationCollapsed />
+				<AdminControl />
+			</NavigationGlobalContextProvider>
 		</div>
 	);
 };

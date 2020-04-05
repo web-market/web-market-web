@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
-import { menuSeparated } from '../../icons';
+import { moreAlt } from '../../icons';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 
@@ -29,7 +29,7 @@ const TooltipActionDefaultButton = forwardRef((
 				noBorder
 				size="small"
 				transparent
-				icon={menuSeparated}
+				icon={moreAlt}
 				className={componentClassName}
 			/>
 		</div>

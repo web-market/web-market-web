@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef } from 'react';
 import { reducer } from './reducer';
 
 import {
@@ -9,8 +9,11 @@ import {
 
 export const NavigationGlobalContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
+	const hasCollapsedOnce = useRef(false);
 
 	const collapseNavigation = (isCollapsed) => {
+		hasCollapsedOnce.current = true;
+
 		dispatch({
 			type: SET_NAVIGATION_COLLAPSED,
 			isCollapsed
@@ -22,6 +25,7 @@ export const NavigationGlobalContextProvider = ({ children }) => {
 			value={{
 				...state,
 				collapseNavigation,
+				hasCollapsedOnce: hasCollapsedOnce.current
 			}}
 		>
 			{children}

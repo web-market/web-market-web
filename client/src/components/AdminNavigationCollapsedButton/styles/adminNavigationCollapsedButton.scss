@@ -1,0 +1,27 @@
+.adminNavigationCollapsedButton {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: absolute;
+	bottom: 0;
+	width: 60px;
+
+	@include hover_focus {
+		.adminNavigationCollapsedButton_icon {
+			color: $primary;
+		}
+	}
+}
+
+.adminNavigationCollapsedButton_icon {
+	color: $light;
+	font-size: 24px;
+
+	@include transition(color .2s)
+}
+
+.adminNavigationCollapsedButton_primaryNavigation.adminNavigationCollapsedButton {
+	right: 0;
+}
