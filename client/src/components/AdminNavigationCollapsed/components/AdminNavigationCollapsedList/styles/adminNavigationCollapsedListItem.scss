@@ -1,0 +1,64 @@
+.adminNavigationCollapsedListItem {
+	a {
+		text-decoration: none !important;
+	}
+}
+
+a {
+	.adminNavigationCollapsedListItem_content:active,
+	.adminNavigationCollapsedListItem_content:visited {
+		color: $text_light !important;
+	}
+}
+
+.adminNavigationCollapsedListItem_content {
+	color: $text_light;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.adminNavigationCollapsedListItem_content:hover {
+	cursor: pointer;
+	color: $text_light;
+	background-color: #394250;
+}
+
+.adminNavigationCollapsedListItem_activeLink {
+	.adminNavigationCollapsedListItem_content {
+		background-color: #33cabb;
+	}
+
+	.adminNavigationCollapsedListItem_content_navItemIcon {
+		background-color: #53d2c5
+	}
+}
+
+.adminNavigationCollapsedListItem_content_navItemIcon {
+	width: 40px;
+	height: 40px;
+	font-size: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.adminNavigationCollapsedListItem_hasActiveChild.adminNavigationCollapsedListItem_content {
+	background-color: $primary;
+}
+
+.adminNavigationCollapsedListItem_hasActiveChild {
+	.adminNavigationCollapsedListItem_content_navItemIcon {
+		background-color: $primary;
+	}
+}
+
+.adminNavigationCollapsedListItem_content_iconWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.adminNavigationCollapsedListItem_collapsedLabel {
+	display: flex;
+}

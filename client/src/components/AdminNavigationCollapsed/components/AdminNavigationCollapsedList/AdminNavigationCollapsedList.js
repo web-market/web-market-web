@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AdminNavigationListItem from './AdminNavigationListItem';
-
-import classes from './styles/index.scss';
+import AdminNavigationCollapsedListItem from './AdminNavigationCollapsedListItem';
 import { mainNavItem } from '../../staticData';
 
-const AdminNavigationList = ({ activeMenu }) => {
+import classes from './styles/index.scss';
+
+const AdminNavigationCollapsedList = ({ activeMenu }) => {
 	return (
 		<div>
 			{
 				mainNavItem.map(item => {
 					return (
-						<AdminNavigationListItem
+						<AdminNavigationCollapsedListItem
 							key={item.label}
 							icon={item.icon}
-							label={item.label}
 							items={item.items}
 							link={item.link}
 							hasRoute={item.hasRoute}
@@ -25,15 +24,15 @@ const AdminNavigationList = ({ activeMenu }) => {
 					);
 				})
 			}
-			<div className={classes.adminNavigationList_separator}></div>
+			<div className={classes.adminNavigationCollapsedList_separator}></div>
 		</div>
 	);
 };
 
-AdminNavigationList.defaultProps = {};
+AdminNavigationCollapsedList.defaultProps = {};
 
-AdminNavigationList.propTypes = {
+AdminNavigationCollapsedList.propTypes = {
 	activeMenu: PropTypes.string
 };
 
-export { AdminNavigationList };
+export { AdminNavigationCollapsedList };

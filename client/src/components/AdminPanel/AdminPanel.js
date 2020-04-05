@@ -1,6 +1,7 @@
 import React from 'react';
 
-import AdminNavigation from '../AdminNavigation';
+// import AdminNavigation from '../AdminNavigation';
+import AdminNavigationCollapsed from '../AdminNavigationCollapsed';
 import AdminControl from '../AdminControl';
 
 import classNames from 'classnames';
@@ -13,7 +14,8 @@ const AdminPanel = () => {
 
 	return (
 		<div className={componentClassName}>
-			<AdminNavigation />
+			{/*<AdminNavigation />*/}
+			<AdminNavigationCollapsed />
 			<AdminControl />
 		</div>
 	);

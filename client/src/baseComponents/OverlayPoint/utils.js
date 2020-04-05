@@ -75,6 +75,10 @@ const getGeneralPosition = (componentRef, contentRef, position) => {
 			definedPosition.left = left + width + baseOffset;
 			definedPosition.top = top + height + baseOffset;
 			break;
+		case 'bottom-right-center':
+			definedPosition.left = left;
+			definedPosition.top = top + height + 8;
+			break;
 		default:
 			definedPosition.left = left;
 			definedPosition.top = top + height;

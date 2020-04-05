@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import { AdminNavigationListItemCollapseContent } from './AdminNavigationListItemCollapseContent';
 
-import { Icon } from '../../../../baseComponents/Icon/Icon';
+import Icon from '../../../../baseComponents/Icon';
+
 import { angleRight } from '../../../../icons';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -14,8 +15,6 @@ const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, active
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
 
-	//TODO: dKostreba. create a state management provider for side nav menu. remove isInit
-	//research solution to get height after render dom
 	const isInit = useRef(true);
 
 	const getHeight = useCallback(() => {

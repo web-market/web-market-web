@@ -1,28 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Link from '../../../../baseComponents/Link';
 import Icon from '../../../../baseComponents/Icon';
+import AdminNavigationCollapsedListItemCollapse from './AdminNavigationCollapsedListItemCollapse';
 
 import { isUndefined } from '../../../../utils';
 import classes from './styles/index.scss';
 
-import Link from '../../../../baseComponents/Link';
-import AdminNavigationListItemCollapse from './AdminNavigationListItemCollapse';
-
-const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
+const AdminNavigationCollapsedListItem = ({ icon, items, hasRoute, link, activeMenu, menuRoute }) => {
 	const linkContent = (
-			<div className={classes.adminNavigationListItem_content}>
-				<span>{ label }</span>
+			<div className={classes.adminNavigationCollapsedListItem_content}>
 				{icon && (
-					<div className={classes.adminNavigationListItem_content_navItemIcon}>
-						<Icon
-							icon={icon}
-						/>
-					</div>
+					<Icon
+						className={classes.adminNavigationCollapsedListItem_content_navItemIcon}
+						icon={icon}
+					/>
 				)}
 			</div>
 		);
-
 
 	const getNavItem = (content = linkContent) => {
 		return (
@@ -30,7 +26,7 @@ const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMen
 				link={link}
 				content={content}
 				hasRoute={hasRoute}
-				activeLinkClass={classes.adminNavigationListItem_activeLink}
+				activeLinkClass={classes.adminNavigationCollapsedListItem_activeLink}
 			/>
 		);
 	};
@@ -39,10 +35,9 @@ const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMen
 		if (isUndefined(items)) return getNavItem();
 
 		return (
-			<AdminNavigationListItemCollapse
+			<AdminNavigationCollapsedListItemCollapse
 				items={items}
 				icon={icon}
-				label={label}
 				menuRoute={menuRoute}
 				activeMenu={activeMenu}
 			/>
@@ -50,17 +45,14 @@ const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMen
 	};
 
 	return (
-		<div className={classes.adminNavigationListItem}>
+		<div className={classes.adminNavigationCollapsedListItem}>
 			{getItemComponent()}
 		</div>
 	);
 };
 
-AdminNavigationListItem.defaultProps = {};
-
-AdminNavigationListItem.propTypes = {
+AdminNavigationCollapsedListItem.propTypes = {
 	icon: PropTypes.string,
-	label: PropTypes.string.isRequired,
 	activeMenu: PropTypes.string,
 	menuRoute: PropTypes.string,
 	link: PropTypes.string,
@@ -68,4 +60,4 @@ AdminNavigationListItem.propTypes = {
 	items: PropTypes.array,
 };
 
-export default AdminNavigationListItem;
+export default AdminNavigationCollapsedListItem;
