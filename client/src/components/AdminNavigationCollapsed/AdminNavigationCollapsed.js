@@ -20,7 +20,7 @@ const AdminNavigationCollapsed = () => {
 
 	const componentClassName = classNames(
 		{
-			[classes.adminNavigationCollapsed_show]: isCollapsed
+			[classes.adminNavigationCollapsed_show]: isCollapsed === 'true'
 		},
 		classes.adminNavigationCollapsed
 	);

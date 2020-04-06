@@ -1,4 +1,5 @@
 import React, { useContext, useCallback } from 'react';
+import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 
 import { NavigationGlobalContext } from '../../App/store/NavigationGlobalContext';
@@ -14,6 +15,7 @@ const AdminNavigationCollapsedButton = (
 		primaryNavigation
 	}
 ) => {
+	const [get, setCookie] = useCookies();
 	const { collapseNavigation, isCollapsed } = useContext(NavigationGlobalContext);
 
 	const componentClassName = ClassNames(
@@ -24,18 +26,27 @@ const AdminNavigationCollapsedButton = (
 	);
 
 	const handleCollapseNavigation = useCallback(() => {
-		collapseNavigation(!isCollapsed);
-	}, [collapseNavigation, isCollapsed]);
+		const collapsedState = isCollapsed === 'false' ? 'true' : 'false';
+
+		collapseNavigation(collapsedState);
+
+		setCookie('isCollapsed', collapsedState, { path: '/' });
+	}, [collapseNavigation, isCollapsed, setCookie]);
 
 	return (
 		<div
-			onClick={handleCollapseNavigation}
 			className={componentClassName}
 		>
-			<Icon
-				icon={isCollapsed ? angleDoubleRight : angleDoubleLeft}
-				className={classes.adminNavigationCollapsedButton_icon}
-			/>
+			<div className={classes.adminNavigationCollapsedButton_separator}></div>
+			<div
+				onClick={handleCollapseNavigation}
+				className={classes.adminNavigationCollapsedButton_button}
+			>
+				<Icon
+					icon={isCollapsed === 'true' ? angleDoubleRight : angleDoubleLeft}
+					className={classes.adminNavigationCollapsedButton_icon}
+				/>
+			</div>
 		</div>
 	);
 };

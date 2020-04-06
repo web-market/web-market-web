@@ -1,15 +1,25 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
+import { useCookies } from 'react-cookie';
 import { reducer } from './reducer';
 
 import {
-	initialState,
 	NavigationGlobalContext,
 	SET_NAVIGATION_COLLAPSED,
 } from './consts';
+import { isUndefined } from '../../../utils';
 
 export const NavigationGlobalContextProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [get, setCookie] = useCookies();
+	const { isCollapsed } = get;
+
+	const [state, dispatch] = useReducer(reducer, { isCollapsed });
 	const hasCollapsedOnce = useRef(false);
+
+	useEffect(() => {
+		if (isUndefined(isCollapsed)) {
+			setCookie('isCollapsed', false, { path: '/' });
+		}
+	}, []);
 
 	const collapseNavigation = (isCollapsed) => {
 		hasCollapsedOnce.current = true;

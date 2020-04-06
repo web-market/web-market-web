@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import AppContextProvider, { AppGlobalContext } from '../../App/store/AppGlobalContext';
 import { NavigationGlobalContext } from '../../App/store/NavigationGlobalContext';
 import FormsContextProvider from '../../App/store/FormsGlobalContext';
@@ -17,7 +18,7 @@ const AdminControl = () => {
 
 	const componentClassName = ClassNames(
 		{
-			[classes.adminControl_primaryNavigationCollapsed]: isCollapsed,
+			[classes.adminControl_primaryNavigationCollapsed]: isCollapsed === 'true',
 			[classes.adminControl_inCollapseProgress]: hasCollapsedOnce
 		},
 		classes.adminControl

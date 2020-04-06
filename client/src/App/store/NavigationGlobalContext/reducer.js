@@ -1,5 +1,4 @@
 import { actionLogger } from '../../../utils';
-
 import {
 	SET_NAVIGATION_COLLAPSED
 } from './consts';

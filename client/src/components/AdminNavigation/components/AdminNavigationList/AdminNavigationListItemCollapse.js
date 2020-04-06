@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { AdminNavigationListItemCollapseContent } from './AdminNavigationListItemCollapseContent';
@@ -10,12 +10,19 @@ import classNames from 'classnames';
 import classes from './styles/index.scss';
 import { isUndefined } from '../../../../utils';
 
-const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, activeMenu }) => {
+const AdminNavigationListItemCollapse = (
+	{
+		icon,
+		items,
+		label,
+		isInit,
+		menuRoute,
+		activeMenu
+	}
+) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState(0);
 	const [collapseRef, setCollapseRef] = useState();
-
-	const isInit = useRef(true);
 
 	const getHeight = useCallback(() => {
 		if (isUndefined(collapseRef)) return;
@@ -30,7 +37,7 @@ const AdminNavigationListItemCollapse = ({ items, label, icon, menuRoute, active
 		}
 
 		return height;
-	}, [collapseRef, menuRoute, activeMenu]);
+	}, [collapseRef, menuRoute, activeMenu, isInit]);
 
 	useEffect(() => {
 		setIsOpen(menuRoute === activeMenu);
@@ -99,6 +106,7 @@ AdminNavigationListItemCollapse.propTypes = {
 	items: PropTypes.array,
 	icon: PropTypes.string,
 	label: PropTypes.string,
+	isInit: PropTypes.object,
 	activeMenu: PropTypes.string,
 	menuRoute: PropTypes.string,
 };

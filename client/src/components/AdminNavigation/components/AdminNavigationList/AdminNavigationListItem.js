@@ -9,7 +9,18 @@ import classes from './styles/index.scss';
 import Link from '../../../../baseComponents/Link';
 import AdminNavigationListItemCollapse from './AdminNavigationListItemCollapse';
 
-const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMenu, menuRoute }) => {
+const AdminNavigationListItem = (
+	{
+		link,
+		icon,
+		label,
+		items,
+		isInit,
+		hasRoute,
+		menuRoute,
+		activeMenu
+	}
+) => {
 	const linkContent = (
 			<div className={classes.adminNavigationListItem_content}>
 				<span>{ label }</span>
@@ -40,6 +51,7 @@ const AdminNavigationListItem = ({ icon, label, items, hasRoute, link, activeMen
 
 		return (
 			<AdminNavigationListItemCollapse
+				isInit={isInit}
 				items={items}
 				icon={icon}
 				label={label}
@@ -60,12 +72,13 @@ AdminNavigationListItem.defaultProps = {};
 
 AdminNavigationListItem.propTypes = {
 	icon: PropTypes.string,
-	label: PropTypes.string.isRequired,
-	activeMenu: PropTypes.string,
-	menuRoute: PropTypes.string,
 	link: PropTypes.string,
-	hasRoute: PropTypes.bool,
 	items: PropTypes.array,
+	hasRoute: PropTypes.bool,
+	isInit: PropTypes.object,
+	menuRoute: PropTypes.string,
+	activeMenu: PropTypes.string,
+	label: PropTypes.string.isRequired
 };
 
 export default AdminNavigationListItem;

@@ -7,7 +7,7 @@
 	left: -60px;
 	opacity: 0;
 
-	@include transition(left .3s ease-in, opacity .2s ease-in)
+	@include transition(left .3s ease-in, opacity .3s ease-in)
 }
 
 .adminNavigationCollapsed_show {

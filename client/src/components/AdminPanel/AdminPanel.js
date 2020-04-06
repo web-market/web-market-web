@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { CookiesProvider, useCookies } from 'react-cookie';
 import NavigationGlobalContextProvider from '../../App/store/NavigationGlobalContext';
 
 import AdminNavigation from '../AdminNavigation';
@@ -24,4 +25,10 @@ const AdminPanel = () => {
 	);
 };
 
-export { AdminPanel };
+const AdminPanelWithCookiesProvider = () => (
+	<CookiesProvider>
+		<AdminPanel />
+	</CookiesProvider>
+);
+
+export default AdminPanelWithCookiesProvider;

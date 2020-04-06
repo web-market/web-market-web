@@ -1,12 +1,17 @@
 .adminNavigationCollapsedButton {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.adminNavigationCollapsedButton_button {
 	height: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	position: absolute;
-	bottom: 0;
 	width: 60px;
+	float: right;
 
 	@include hover_focus {
 		.adminNavigationCollapsedButton_icon {
@@ -24,4 +29,9 @@
 
 .adminNavigationCollapsedButton_primaryNavigation.adminNavigationCollapsedButton {
 	right: 0;
+}
+
+.adminNavigationCollapsedButton_separator {
+	margin: 0 16px;
+	border-bottom: 1px dashed #727d8a;
 }
