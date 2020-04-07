@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 
-import PendingCloak from '../../../../baseComponents/PendingCloak';
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
-
 import ManufacturesListItem from './ManufacturesListItem';
+import EmptyContainer from '../../../../baseComponents/EmptyContainer';
+import Typography from '../../../../baseComponents/Typography';
 
 import { getUniqueKey } from '../../../../utils';
 import { pencil, trash } from '../../../../icons';
 import { ManufacturesContext, ManufacturesModalsContext, MODALS } from '../../consts';
-import { EmptyContainer } from '../../../../baseComponents/EmptyContainer/EmptyContainer';
 
 import classes from './styles/index.scss';
 
@@ -57,24 +56,25 @@ const ManufacturesList = () => {
 
 	const actions = useMemo(() => {
 		return [
-			{
-				name: '!!Редактировать',
-				icon: pencil,
-				iconClass: '',
-				action: id => handleEditManufacture(id)
-			},
-			{
-				name: '!!Удалить',
-				icon: trash,
-				iconClass: classes.manufacturesLists_deleteIcon,
-				action: id => handleDeleteManufacture(id)
-			}
+			[
+				{
+					name: '!!Редактировать',
+					icon: pencil,
+					iconClass: '',
+					action: id => handleEditManufacture(id)
+				},
+				{
+					name: '!!Удалить',
+					icon: trash,
+					iconClass: classes.manufacturesLists_deleteIcon,
+					action: id => handleDeleteManufacture(id)
+				}
+			]
 		];
 	}, [handleDeleteManufacture, handleEditManufacture]);
 
 	return (
 		<AdminControlContentBox>
-			{isPending && (<PendingCloak />)}
 			{
 				manufactures.map(item => {
 					const key = getUniqueKey(item.name, item.id);
@@ -94,7 +94,7 @@ const ManufacturesList = () => {
 				!isPending && manufactures.length === 0 && (
 					<EmptyContainer hasFillContent>
 						<div className={classes.manufacturesLists_emptyContent}>
-							!!пока что не добавлено ни одного производителя
+							<Typography displayBlock>!!пока что не добавлено ни одного производителя</Typography>
 						</div>
 					</EmptyContainer>
 				)

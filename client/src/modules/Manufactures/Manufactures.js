@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ManufacturesContext } from './consts';
 
 import ManufacturesContextProvider from './store';
 
@@ -10,23 +11,29 @@ import ManufacturesModalsProvider from './components/ManufacturesModalsProvider'
 
 
 const Manufactures = () => {
+	const { isPending } = useContext(ManufacturesContext);
+
 	return (
 		<>
 			<AdminControlHeader label="!!Производители" />
-			<ManufacturesContextProvider>
-				<GridLayout>
-					<GridLayoutRow
-						grid="7-5"
-					>
-						<ManufacturesModalsProvider>
-							<ManufacturesList />
-						</ManufacturesModalsProvider>
-						<ManufacturesAddManufacture />
-					</GridLayoutRow>
-				</GridLayout>
-			</ManufacturesContextProvider>
+			<GridLayout isPending={isPending}>
+				<GridLayoutRow
+					grid="7-5"
+				>
+					<ManufacturesModalsProvider>
+						<ManufacturesList />
+					</ManufacturesModalsProvider>
+					<ManufacturesAddManufacture />
+				</GridLayoutRow>
+			</GridLayout>
 		</>
 	);
 };
 
-export { Manufactures };
+const ManufacturesWithProviders = () => (
+	<ManufacturesContextProvider>
+		<Manufactures />
+	</ManufacturesContextProvider>
+);
+
+export { ManufacturesWithProviders };

@@ -1,14 +1,21 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { AdminNavigationCollapsedListItemCollapseContent } from './AdminNavigationCollapsedListItemCollapseContent';
+import AdminNavigationCollapsedContent from '../AdminNavigationCollapsedContent';
 
 import { Icon } from '../../../../baseComponents/Icon/Icon';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 import OverlayPoint from '../../../../baseComponents/OverlayPoint';
 
-const AdminNavigationCollapsedListItemCollapse = ({ items, icon, menuRoute, activeMenu }) => {
+const AdminNavigationCollapsedListItemCollapse = (
+	{
+		icon,
+		items,
+		menuRoute,
+		activeMenu
+	}
+) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const tooltipActionRef = useRef(null);
 
@@ -47,12 +54,15 @@ const AdminNavigationCollapsedListItemCollapse = ({ items, icon, menuRoute, acti
 				{
 					isOpen && (
 						<OverlayPoint
-							position="bottom-right-center"
+							position="mobile-navigation"
 							onClose={() => setIsOpen(!isOpen)}
 							componentRef={tooltipActionRef.current}
-							render={() => {
+							render={(renderData) => {
 								return (
-									<AdminNavigationCollapsedListItemCollapseContent items={items} />
+									<AdminNavigationCollapsedContent
+										items={items}
+										{...renderData}
+									/>
 								);
 							}
 							}

@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 import AdminNavigationListItem from './AdminNavigationListItem';
 
 import classes from './styles/index.scss';
-import { mainNavItem } from '../../staticData';
+import { mainNavItem } from '../../../consts';
+import { isUndefined } from '../../../../utils';
 
-const AdminNavigationList = ({ activeMenu }) => {
-	const isInit = useRef(true);
+const AdminNavigationList = (
+	{
+		activeMenu,
+		activeSubMenu
+	}
+) => {
+	const isInit = useRef(!isUndefined(activeSubMenu));
 
 	return (
 		<div>
@@ -36,7 +42,8 @@ const AdminNavigationList = ({ activeMenu }) => {
 AdminNavigationList.defaultProps = {};
 
 AdminNavigationList.propTypes = {
-	activeMenu: PropTypes.string
+	activeMenu: PropTypes.string,
+	activeSubMenu: PropTypes.string
 };
 
 export { AdminNavigationList };

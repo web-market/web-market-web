@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { AdminNavigationListItemCollapseContent } from './AdminNavigationListItemCollapseContent';
+import AdminNavigationCollapseContent from '../AdminNavigationCollapseContent';
 
 import Icon from '../../../../baseComponents/Icon';
 
@@ -88,7 +88,7 @@ const AdminNavigationListItemCollapse = (
 		return (
 			<>
 				{collapsedLinkContent}
-				<AdminNavigationListItemCollapseContent
+				<AdminNavigationCollapseContent
 					items={items}
 					setCollapseRef={setCollapseRef}
 					height={height}

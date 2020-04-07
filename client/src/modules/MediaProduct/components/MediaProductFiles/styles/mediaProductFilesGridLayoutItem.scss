@@ -1,0 +1,34 @@
+.mediaProductFilesGridLayoutItem {
+	width: 100px;
+	margin-bottom: 12px;
+	position: relative;
+}
+
+.mediaProductFilesGridLayoutItem_name {
+	text-align: center;
+}
+
+.mediaProductFilesGridLayoutItem_image {
+	width: 90%;
+	height: 150px;
+	margin: 0 auto;
+	display: block;
+}
+
+.mediaProductFilesGridLayoutItem_checkbox {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	width: 16px;
+	height: 16px;
+	background: $light;
+}
+
+.mediaProductFilesGridLayoutItem_checkboxIcon {
+	top: 2px;
+	font-size: 12px;
+}
+
+.mediaProductFilesGridLayoutItem_checkboxIcon__check {
+	right: 2px;
+}

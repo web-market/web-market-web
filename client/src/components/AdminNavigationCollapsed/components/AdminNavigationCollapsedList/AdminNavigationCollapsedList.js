@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AdminNavigationCollapsedListItem from './AdminNavigationCollapsedListItem';
-import { mainNavItem } from '../../staticData';
+import { mainNavItem } from '../../../consts';
 
 import classes from './styles/index.scss';
 

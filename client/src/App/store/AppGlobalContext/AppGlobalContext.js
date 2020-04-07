@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from 'react';
+
 import { reducer } from './reducer';
 
 import {
@@ -11,9 +12,10 @@ import {
 } from './consts';
 
 export const AppGlobalContextProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(reducer, initialState);
 	const [showOverlayCloak, setShowOverlayCloak] = useState(false);
 	const [handleOverlayClose, setHandleOverlayClose] = useState(() => {});
+
+	const [state, dispatch] = useReducer(reducer, { ...initialState });
 
 	const showNotification = (notification) => {
 		dispatch({

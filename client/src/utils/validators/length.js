@@ -18,10 +18,10 @@ export const length = (value, validationRules) => {
 	};
 
 	if (!isNullOrUndefined(min)) {
-		validationTemplate.min = min < value.length;
+		validationTemplate.min = min <= value.length;
 	}
 	if (!isNullOrUndefined(max)) {
-		validationTemplate.max = max > value.length;
+		validationTemplate.max = max >= value.length;
 	}
 	if (!isNullOrUndefined(equal)) {
 		validationTemplate.equal = equal === value.length;

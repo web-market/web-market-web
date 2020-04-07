@@ -15,3 +15,6 @@ export { getUniqueKey } from './getUniqueKey';
 export { getUniqueId } from './getUniqueId';
 export { removeArrayElementById } from './removeArrayElementById';
 export { removeArrayElementByIndex } from './removeArrayElementByIndex';
+export { getBooleanCookie } from './getBooleanCookie';
+export { uuidv4 } from './uuidv4';
+export { removeArrayElementByValue } from './removeArrayElementByValue';

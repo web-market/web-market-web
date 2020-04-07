@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FiltersContext } from './consts';
 
 import FiltersContextProvider from './store';
 import FiltersModalsProvider from './components/FiltersModalsProvider';
@@ -10,24 +11,31 @@ import FiltersGroupList from './components/FiltersGroupList';
 import FiltersAddFiltersGroup from './components/FiltersAddFilterGroup';
 
 const Filters = () => {
+	const { isPending } = useContext(FiltersContext);
+
 	return (
 		<>
 			<AdminControlHeader
 				label="!!!Фильтры"
 			/>
-			<FiltersContextProvider>
-				<FiltersModalsProvider>
-					<GridLayout>
-						<GridLayoutRow
-							grid="7-5"
-						>
-							<FiltersGroupList />
-							<FiltersAddFiltersGroup />
-						</GridLayoutRow>
-					</GridLayout>
-				</FiltersModalsProvider>
-			</FiltersContextProvider>
+			<GridLayout isPending={isPending}>
+				<GridLayoutRow
+					grid="7-5"
+				>
+					<FiltersGroupList />
+					<FiltersAddFiltersGroup />
+				</GridLayoutRow>
+			</GridLayout>
 		</>
 	);
 };
-export { Filters };
+
+const FiltersWithContext = () => (
+	<FiltersContextProvider>
+		<FiltersModalsProvider>
+			<Filters />
+		</FiltersModalsProvider>
+	</FiltersContextProvider>
+);
+
+export { FiltersWithContext };

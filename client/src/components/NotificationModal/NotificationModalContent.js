@@ -47,7 +47,10 @@ const NotificationModalContent = (
 				label={modalTitle}
 				handleClose={handleClose}
 			/>
-			<ModalContent className={classes.notificationModalContent}>
+			<ModalContent
+				autoHeight
+				className={classes.notificationModalContent}
+			>
 				{content}
 			</ModalContent>
 			<ModalFooter>

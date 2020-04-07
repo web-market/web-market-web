@@ -1,17 +1,14 @@
 .modalContent {
 	flex: 1 1 auto;
-	max-height: 400px;
-	overflow: hidden;
-	overflow-y: scroll;
+	height: 350px;
 	padding: 16px;
 }
 
-.modalContent::-webkit-scrollbar {
-	width: 4px;
-	margin-right: 4px;
-	height: 50px;
-}
+.modalContent_autoHeight {
+	max-height: 350px;
+	height: inherit;
 
-.modalContent::-webkit-scrollbar-thumb {
-	background-color: #becad6;
+	div {
+		overflow-y: inherit;
+	}
 }

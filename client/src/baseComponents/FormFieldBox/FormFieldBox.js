@@ -5,6 +5,7 @@ import Tooltip from '../Tooltip';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
+import { Typography } from '../Typography/Typography';
 
 const FormFieldBox = (
 	{
@@ -50,7 +51,7 @@ const FormFieldBox = (
 				label && (
 					<div className={classes.formFieldBox_labelWrapper}>
 						<div>
-							{label}
+							<Typography variant="14">{label}</Typography>
 							{
 								required && (
 									<span className={classes.formFieldBox_required}>*</span>

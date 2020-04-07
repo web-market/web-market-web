@@ -1,0 +1,27 @@
+.mediaProductFilesListLayoutItem {
+	display: flex;
+	margin-bottom: 12px;
+	align-items: center;
+}
+
+.mediaProductFilesListLayoutItem_image {
+	width: 40px;
+	height: 65px;
+	margin-right: 16px;
+}
+
+.mediaProductFilesListLayoutItem_checkbox {
+	width: 16px;
+	height: 16px;
+	background: $light;
+	margin-right: 4px;
+}
+
+.mediaProductFilesListLayoutItem_checkboxIcon {
+	top: 2px;
+	font-size: 12px;
+}
+
+.mediaProductFilesListLayoutItem_checkboxIcon__check {
+	right: 2px;
+}

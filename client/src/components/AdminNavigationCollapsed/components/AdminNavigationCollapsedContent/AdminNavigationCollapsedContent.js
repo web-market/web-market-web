@@ -5,15 +5,16 @@ import Link from '../../../../baseComponents/Link';
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
 import classes from './styles/index.scss';
+import { Typography } from '../../../../baseComponents/Typography/Typography';
 
-class AdminNavigationCollapsedListItemCollapseContent extends Component {
+class AdminNavigationCollapsedContent extends Component {
 	getNavCollapsedContent = () => {
 		return this.props.items.map(item => {
 			const content = (
 				<div
 					className={classes.adminNavigationCollapsedListItemCollapseContent_itemContent}
 				>
-					{item.label}
+					<Typography variant="14" displayBlock>{item.label}</Typography>
 					<div className={classes.adminNavigationCollapsedListItemCollapseContent_itemIcon}></div>
 				</div>
 			);
@@ -21,11 +22,12 @@ class AdminNavigationCollapsedListItemCollapseContent extends Component {
 			return (
 				<div
 					key={item.label}
+					onClick={this.props.onClose}
 					className={classes.adminNavigationCollapsedListItemCollapseContent_item}
 				>
 					<Link
-						content={content}
 						link={item.link}
+						content={content}
 						hasRoute={item.hasRoute}
 						activeLinkClass={classes.adminNavigationCollapsedListItemCollapseContent_activeLink}
 					/>
@@ -46,8 +48,8 @@ class AdminNavigationCollapsedListItemCollapseContent extends Component {
 	}
 }
 
-AdminNavigationCollapsedListItemCollapseContent.propTypes = {
+AdminNavigationCollapsedContent.propTypes = {
 	items: PropTypes.array.isRequired,
 };
 
-export { AdminNavigationCollapsedListItemCollapseContent };
+export { AdminNavigationCollapsedContent };

@@ -9,6 +9,7 @@ import Icon from '../../baseComponents/Icon';
 import { angleDoubleRight, angleDoubleLeft } from '../../icons';
 import classes from './styles/index.scss';
 import ClassNames from 'classnames';
+import { getBooleanCookie } from '../../utils';
 
 const AdminNavigationCollapsedButton = (
 	{
@@ -29,9 +30,10 @@ const AdminNavigationCollapsedButton = (
 		const collapsedState = isCollapsed === 'false' ? 'true' : 'false';
 
 		collapseNavigation(collapsedState);
-
 		setCookie('isCollapsed', collapsedState, { path: '/' });
 	}, [collapseNavigation, isCollapsed, setCookie]);
+
+	const collapseButtonIcon = getBooleanCookie(isCollapsed) ? angleDoubleRight : angleDoubleLeft;
 
 	return (
 		<div
@@ -43,7 +45,7 @@ const AdminNavigationCollapsedButton = (
 				className={classes.adminNavigationCollapsedButton_button}
 			>
 				<Icon
-					icon={isCollapsed === 'true' ? angleDoubleRight : angleDoubleLeft}
+					icon={collapseButtonIcon}
 					className={classes.adminNavigationCollapsedButton_icon}
 				/>
 			</div>

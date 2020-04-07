@@ -64,7 +64,7 @@ class OverlayPoint extends Component {
 					ref={this.layoutRef}
 					className={classes.layout}
 				>
-					{ render({ parentWidth }) }
+					{ render({ parentWidth, onClose }) }
 				</div>
 				<div
 					onClick={onClose}

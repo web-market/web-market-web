@@ -24,7 +24,6 @@
 	border-radius: 10px;
 	border: 1px solid $text_light;
 	box-sizing: border-box;
-	margin-right: 32px;
 
 	@include transition(background-color .2s, border-color  .2s)
 }
@@ -36,12 +35,17 @@
 	}
 }
 
-.adminNavigationListItemCollapseContent_item > a {
+.adminNavigationListItemCollapseContent_itemLink {
 	width: 100%;
 	display: block;
 	color: $text_light !important;
-	padding-left: 16px;
-	line-height: 2.3;
+	padding: 12px 16px;
+	border-radius: 2px;
+
+	@include transition(background-color .2s);
+	@include hover-focus {
+		background-color: lighten($dark, 5%);
+	}
 }
 
 .adminNavigationListItemCollapseContent_activeLink {

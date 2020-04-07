@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link as RouteLink, NavLink } from 'react-router-dom';
 
 import classes from './styles/index.scss';
+import ClassNames from 'classnames';
 
 const Link = (
 	{
@@ -35,10 +36,15 @@ const Link = (
 			);
 	};
 
+	const linkClassName = ClassNames(
+		classes.link,
+		className
+	);
+
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={classes.link} href={link}>{content}</a>;
+			: <a className={linkClassName} href={link}>{content}</a>;
 	};
 
 	return getLink();

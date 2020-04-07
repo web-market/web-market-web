@@ -1,1 +1,1 @@
-export { Manufactures as default } from './Manufactures';
+export { ManufacturesWithProviders as default } from './Manufactures';

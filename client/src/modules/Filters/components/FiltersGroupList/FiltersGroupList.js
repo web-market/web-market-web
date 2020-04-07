@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import FiltersGroupListItem from './FiltersGroupListItem';
-import PendingCloak from '../../../../baseComponents/PendingCloak';
+import Typography from '../../../../baseComponents/Typography';
 
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
@@ -42,24 +42,25 @@ const FiltersGroupList = () => {
 
 	const actions = useMemo(() => {
 		return [
-			{
-				name: '!!Редактировать',
-				icon: pencil,
-				iconClass: '',
-				action: id => handleFilterEdit(id)
-			},
-			{
-				name: '!!Удалить',
-				icon: trash,
-				iconClass: classes.filtersGroupListItemTooltipActions_deleteIcon,
-				action: id => handleFilterDelete(id)
-			}
+			[
+				{
+					name: '!!Редактировать',
+					icon: pencil,
+					iconClass: '',
+					action: id => handleFilterEdit(id)
+				},
+				{
+					name: '!!Удалить',
+					icon: trash,
+					iconClass: classes.filtersGroupListItemTooltipActions_deleteIcon,
+					action: id => handleFilterDelete(id)
+				}
+			]
 		];
 	}, [handleFilterDelete, handleFilterEdit]);
 
 	return (
 		<AdminControlContentBox>
-			{isPending && (<PendingCloak />)}
 			{
 				filtersItems.length !== 0 && (
 					<div className={classes.filtersGroupList}>
@@ -87,7 +88,7 @@ const FiltersGroupList = () => {
 				!isPending && filtersItems.length === 0 && (
 					<EmptyContainer hasFillContent>
 						<div className={classes.filtersGroupList_emptyContent}>
-							!!пока что не добавлено ни одного фильтра
+							<Typography displayBlock>!!пока что не добавлено ни одного фильтра</Typography>
 						</div>
 					</EmptyContainer>
 				)

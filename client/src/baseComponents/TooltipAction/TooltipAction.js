@@ -29,7 +29,10 @@ const TooltipAction = (
 		<>
 			{
 				toolTipButtonClose && toolTipButtonOpen && (
-					<div ref={tooltipActionRef}>
+					<div
+						className={className}
+						ref={tooltipActionRef}
+					>
 						{
 							show && (
 								<div
@@ -89,11 +92,11 @@ TooltipAction.defaultProps = {
 
 TooltipAction.propTypes = {
 	className: PropTypes.string,
+	targetElementId: PropTypes.number,
 	handleTooltipClick: PropTypes.func,
 	toolTipButtonOpen: PropTypes.object,
 	toolTipButtonClose: PropTypes.object,
-	actionList: PropTypes.array.isRequired,
-	targetElementId: PropTypes.number.isRequired
+	actionList: PropTypes.array.isRequired
 };
 
 export { TooltipAction };

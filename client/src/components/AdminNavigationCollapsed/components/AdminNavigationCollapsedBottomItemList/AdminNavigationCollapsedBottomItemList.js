@@ -3,7 +3,7 @@ import React from 'react';
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 import AdminNavigationCollapsedListItem from '../AdminNavigationCollapsedList/AdminNavigationCollapsedListItem';
 
-import { bottomNavItem } from '../../staticData';
+import { bottomNavItem } from '../../../consts';
 
 const AdminNavigationCollapsedBottomItemList = () => {
 	return (

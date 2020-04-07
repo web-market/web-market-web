@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-import { isNullOrUndefined } from '../../utils';
+import ScrollContainer from '../ScrollContainer';
+import Icon from '../Icon';
 
 import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
 import LoadSpinner from '../LoadSpinner';
 
 import classes from './styles/index.scss';
-import Icon from '../Icon';
 import { angleDown, angleUp } from '../../icons';
 import { COLORS } from '../../styles/baseColors';
+import { isNullOrUndefined } from '../../utils';
 
 const Dropdown = (
 	{
@@ -136,9 +137,13 @@ const Dropdown = (
 						render={
 							({ parentWidth }) => {
 								return (
-									<div style={{ width: parentWidth }} className={classes.dropdown_container}>
-										{dropdownItems}
-									</div>
+
+										<div style={{ width: parentWidth }} className={classes.dropdown_container}>
+											<ScrollContainer>
+												{dropdownItems}
+											</ScrollContainer>
+										</div>
+
 								);
 							}
 						}

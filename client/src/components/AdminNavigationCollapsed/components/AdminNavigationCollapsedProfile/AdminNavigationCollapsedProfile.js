@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
+import AdminNavigationCollapsedContent from '../AdminNavigationCollapsedContent';
 
-import AdminNavigationCollapsedProfileCollapseContent from './AdminNavigationCollapsedProfileCollapseContent';
-import { navProfile } from '../../staticData';
+import { navProfile } from '../../../consts';
 
 import classes from './styles/index.scss';
 import OverlayPoint from '../../../../baseComponents/OverlayPoint';
+import { profileItem } from './staticData/staticData';
 
 const AdminNavigationCollapsedProfile = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -33,12 +34,12 @@ const AdminNavigationCollapsedProfile = () => {
 			{
 				isOpen && (
 					<OverlayPoint
-						position="bottom-right-center"
+						position="mobile-navigation"
 						onClose={() => setIsOpen(!isOpen)}
 						componentRef={tooltipActionRef.current}
 						render={() => {
 							return (
-								<AdminNavigationCollapsedProfileCollapseContent />
+								<AdminNavigationCollapsedContent items={profileItem}/>
 							);
 						}
 						}

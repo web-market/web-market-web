@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typography from '../../baseComponents/Typography';
 
-const AdminControlHeaderLeftSide = ({
-										label
-									}) => {
+const AdminControlHeaderLeftSide = (
+	{
+		label
+	}
+) => {
 	return (
 		<div>
-			<h4>{label}</h4>
+			<Typography variant="24" bold="400">{label}</Typography>
 		</div>
 	);
 };

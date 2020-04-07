@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MediaProductContext } from '../../consts';
 
 import Button from '../../../../baseComponents/Button';
+import Typography from '../../../../baseComponents/Typography';
 
 import classNames from 'classnames';
 import { getUniqueKey } from '../../../../utils';
@@ -38,12 +39,6 @@ const MediaProductCategoryItem = (
 		classes.mediaProductCategoryItem_button
 	);
 
-	const componentCategoryNameClassName = classNames(
-		{
-			[classes.mediaProductCategoryItem_name]: isRootCategory
-		}
-	);
-
 	const handleOpenChildrenList = (e) => {
 		e.stopPropagation();
 		setIsOpen(!isOpen);
@@ -62,7 +57,7 @@ const MediaProductCategoryItem = (
 						<div className={classes.mediaProductCategoryItem_indicator}></div>
 					)
 				}
-				<span className={componentCategoryNameClassName}>{name}</span>
+				<Typography bold="500">{name}</Typography>
 				{
 					hasChildren && (
 						<Button

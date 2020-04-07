@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getUniqueKey } from '../../utils';
-import TooltipActionListItem from './TooltipActionListItem';
+import TooltipActionListSection from './TooltipActionListSection';
 import classes from './styles/index.scss';
+import { getUniqueKey } from '../../utils';
 
 const TooltipActionList = (
 	{
@@ -13,21 +13,16 @@ const TooltipActionList = (
 	}
 ) => {
 	return (
-		<div
-			onClick={event => handleOnClick(event)}
-			className={classes.tooltipActionList}
-		>
+		<div className={classes.tooltipActionList}>
 			{
-				actionList.map((actionItem, index) => {
-					const key = getUniqueKey(actionItem.name, index);
+				actionList.map((section) => {
+					const key = getUniqueKey();
 
 					return (
-						<TooltipActionListItem
+						<TooltipActionListSection
 							key={key}
-							name={actionItem.name}
-							icon={actionItem.icon}
-							action={actionItem.action}
-							iconClass={actionItem.iconClass}
+							actionList={section}
+							handleOnClick={handleOnClick}
 							targetElementId={targetElementId}
 						/>
 					);

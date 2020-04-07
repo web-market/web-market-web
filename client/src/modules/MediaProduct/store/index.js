@@ -1,1 +1,1 @@
-export { MediaProducContextProvider as default } from './MediaProductContext';
+export { MediaProductContextProvider as default } from './MediaProductContext';

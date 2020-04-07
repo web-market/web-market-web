@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { check } from '../../icons';
 import Icon from '../Icon';
 import { isNull } from '../../utils';
 
-const Checkbox = ({ value, onFieldChange }) => {
+const Checkbox = (
+	{
+		value,
+		className,
+		onFieldChange,
+		iconClassName: iconClassNameFromProps,
+		iconCheckClassName: iconCheckClassNameFromProps,
+	}
+) => {
 	const [checkboxValue, setCheckboxValue] = useState(false);
 
 	useEffect(() => {
 		if (isNull(value)) {
 			onFieldChange(false);
-		} else {
+		}
+
+		if (value) {
 			onFieldChange(value);
 			setCheckboxValue(value);
 		}
@@ -24,17 +34,24 @@ const Checkbox = ({ value, onFieldChange }) => {
 		onFieldChange(!checkboxValue);
 	};
 
-	const iconClassName = classNames(
+	const componentClassName = ClassNames(
+		classes.checkbox,
+		className
+	);
+
+	const iconClassName = ClassNames(
 		classes.checkbox_icon,
 		{
-			[classes.checkbox__checked]: checkboxValue
-		}
+			[classes.checkbox__checked]: checkboxValue && !iconCheckClassNameFromProps,
+			[iconCheckClassNameFromProps]: checkboxValue && iconCheckClassNameFromProps,
+		},
+		iconClassNameFromProps
 	);
 
 	return (
 		<div
 			onClick={ToggleCheckbox}
-			className={classes.checkbox}
+			className={componentClassName}
 		>
 			<Icon
 				className={iconClassName}
@@ -50,8 +67,11 @@ Checkbox.defaultProps = {
 };
 
 Checkbox.propTypes = {
-	onFieldChange: PropTypes.func,
 	value: PropTypes.bool,
+	className: PropTypes.string,
+	onFieldChange: PropTypes.func,
+	iconClassName: PropTypes.string,
+	iconCheckClassName: PropTypes.string
 };
 
 export { Checkbox };

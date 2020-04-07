@@ -11,6 +11,7 @@ import AdminControlRoutes from './AdminControlRoutes';
 
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
+import { getBooleanCookie } from '../../utils';
 
 const AdminControl = () => {
 	const { showOverlayCloak, handleOverlayClose } = useContext(AppGlobalContext);
@@ -18,7 +19,7 @@ const AdminControl = () => {
 
 	const componentClassName = ClassNames(
 		{
-			[classes.adminControl_primaryNavigationCollapsed]: isCollapsed === 'true',
+			[classes.adminControl_primaryNavigationCollapsed]: getBooleanCookie(isCollapsed),
 			[classes.adminControl_inCollapseProgress]: hasCollapsedOnce
 		},
 		classes.adminControl
@@ -29,6 +30,7 @@ const AdminControl = () => {
 			<AdminControlRoutes />
 			<OverlayCloak
 				show={showOverlayCloak}
+				isCollapsed={isCollapsed}
 				handleOverlayClose={handleOverlayClose}
 			/>
 			<Notification />

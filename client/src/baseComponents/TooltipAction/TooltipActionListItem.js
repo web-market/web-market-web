@@ -10,20 +10,37 @@ const TooltipActionListItem = (
 	{
 		name,
 		icon,
+		disabled,
 		iconClass,
 		targetElementId,
 		action: handleClickFromProps,
 	}
 ) => {
+	const componentClassName = ClassNames(
+		{
+			[classes.tooltipActionListItem_disabled]: disabled
+		},
+		classes.tooltipActionListItem
+	);
+
 	const iconClassName = ClassNames(
+		{
+			[classes.tooltipActionListItem_iconDisabled]: disabled
+		},
 		classes.tooltipActionListItem_icon,
 		iconClass
 	);
 
+	const handleClick = () => {
+		if (!disabled) {
+			handleClickFromProps(targetElementId);
+		}
+	};
+
 	return (
 		<div
-			className={classes.tooltipActionListItem}
-			onClick={() => handleClickFromProps(targetElementId)}
+			className={componentClassName}
+			onClick={handleClick}
 		>
 			<Icon
 				className={iconClassName}
@@ -34,10 +51,15 @@ const TooltipActionListItem = (
 	);
 };
 
+TooltipActionListItem.defaultProps = {
+	disabled: false
+};
+
 TooltipActionListItem.propTypes = {
 	name: PropTypes.string,
 	icon: PropTypes.string,
 	action: PropTypes.func,
+	disabled: PropTypes.bool,
 	iconClass: PropTypes.string,
 	targetElementId: PropTypes.number
 };

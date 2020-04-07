@@ -23,7 +23,7 @@ const CategoriesDeleteCategoryModalForm = (
 				handleClose={handleClose}
 				label="!!!Удалить категорию"
 			/>
-			<ModalContent isPending={isPending}>
+			<ModalContent autoHeight isPending={isPending}>
 				<Form
 					onSubmit={handleDeleteCategory}
 					name={DELETE_CATEGORY_FORM}

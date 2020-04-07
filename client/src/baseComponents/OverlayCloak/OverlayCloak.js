@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
-import { noScroll } from '../../utils';
+import { getBooleanCookie, noScroll } from '../../utils';
 
 class OverlayCloak extends PureComponent {
 	state = {
@@ -38,7 +39,8 @@ class OverlayCloak extends PureComponent {
 			classes.overlay_cloak,
 			{
 				[classes.overlay_cloak__show]: this.state.show,
-				[classes.overlay_cloak__appeared]: this.state.isReady
+				[classes.overlay_cloak__appeared]: this.state.isReady,
+				[classes.overlay_cloak__collapsed]: getBooleanCookie(this.props.isCollapsed)
 			}
 		);
 
@@ -58,6 +60,7 @@ OverlayCloak.defaultProps = {
 
 OverlayCloak.propTypes = {
 	show: PropTypes.bool,
+	isCollapsed: PropTypes.string,
 	handleOverlayClose: PropTypes.func
 };
 

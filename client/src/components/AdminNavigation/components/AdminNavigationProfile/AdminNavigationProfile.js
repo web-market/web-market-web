@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
-import { AdminNavigationProfileICollapseContent } from './AdminNavigationProfileICollapseContent';
-import { navProfile } from '../../staticData';
+import AdminNavigationCollapseContent from '../AdminNavigationCollapseContent';
+import { navProfile } from '../../../consts';
 
 import classes from './styles/index.scss';
 import { angleRight } from '../../../../icons';
 import { Icon } from '../../../../baseComponents/Icon/Icon';
 import classNames from 'classnames';
 import { isUndefined } from '../../../../utils';
+import { profileItem } from './staticData/staticData';
 
 const AdminNavigationProfile = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +58,10 @@ const AdminNavigationProfile = () => {
 					</div>
 				</>
 			</PaddingBox>
-			<AdminNavigationProfileICollapseContent
-				setCollapseRef={setCollapseRef}
+			<AdminNavigationCollapseContent
 				height={height}
+				items={profileItem}
+				setCollapseRef={setCollapseRef}
 			/>
 		</>
 	);

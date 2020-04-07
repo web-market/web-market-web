@@ -8,8 +8,8 @@ import { close } from '../../../../icons';
 
 const ModalHeader = (
 	{
-		handleClose,
-		label
+		label,
+		handleClose
 	}
 	) => {
 	const handleCloseModal = useCallback((e) => {

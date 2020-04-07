@@ -1,5 +1,5 @@
 .dropdownItem {
-	padding: 8px 1em 8px 1em;
+	padding: 8px .5em 8px 1em;
 	word-spacing: normal;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -13,8 +13,6 @@
 
 .dropdownItem_placeholder {
 	word-spacing: normal;
-	//font-style: italic;
-	//color: #abb6bf;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;

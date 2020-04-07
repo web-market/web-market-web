@@ -35,6 +35,7 @@ const ManufacturesAddManufactureForm = (
 							validate={{
 								required: true,
 								length: {
+									min: 5,
 									max: 64
 								}
 							}}

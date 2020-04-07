@@ -17,7 +17,7 @@ const GridLayoutRow = (
 	}
 	) => {
 	const componentClassName = classNames(
-		classes.gridLayout,
+		classes.gridLayoutRow,
 		className
 	);
 

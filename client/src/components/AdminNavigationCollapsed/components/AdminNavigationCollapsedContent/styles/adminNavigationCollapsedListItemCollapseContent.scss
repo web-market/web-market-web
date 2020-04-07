@@ -1,7 +1,7 @@
 .adminNavigationListItemCollapseContent {
 	background-color: $collapse_content_bg_dark;
 	overflow: hidden;
-	width: 150px;
+	width: 180px;
 	border-radius: 2px;
 
 	@include box-shadow(0 0 25px rgba(0,0,0,0.5));
@@ -10,8 +10,14 @@
 .adminNavigationCollapsedListItemCollapseContent_item {
 	display: flex;
 	position: relative;
-	font-size: 14px;
 	align-items: center;
+	padding: 8px 4px;
+	border-radius: 2px;
+
+	@include transition(background-color .2s);
+	@include hover_focus{
+		background-color: lighten($dark, 5%);
+	}
 }
 
 .adminNavigationCollapsedListItemCollapseContent_itemContent {
@@ -26,6 +32,7 @@
 	border-radius: 10px;
 	border: 1px solid $text_light;
 	box-sizing: border-box;
+	margin-left: 8px;
 
 	@include transition(background-color .2s, border-color  .2s)
 }
@@ -41,7 +48,6 @@
 	width: 100%;
 	display: block;
 	color: $text_light !important;
-	line-height: 2;
 }
 
 .adminNavigationCollapsedListItemCollapseContent_activeLink {

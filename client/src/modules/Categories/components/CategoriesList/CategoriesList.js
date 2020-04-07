@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 
-import PendingCloak from '../../../../baseComponents/PendingCloak';
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
 import EmptyContainer from '../../../../baseComponents/EmptyContainer';
+import Typography from '../../../../baseComponents/Typography';
 
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
@@ -28,24 +28,25 @@ const CategoriesList = () => {
 
 	const actions = useMemo(() => {
 		return [
-			{
-				name: '!!Редактировать',
-				icon: pencil,
-				iconClass: '',
-				action: (id) => handleEditCategory(id)
-			},
-			{
-				name: '!!Удалить',
-				icon: trash,
-				iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
-				action: (id) => handleDeleteCategory(id)
-			}
+			[
+				{
+					name: '!!Редактировать',
+					icon: pencil,
+					iconClass: '',
+					action: (id) => handleEditCategory(id)
+				},
+				{
+					name: '!!Удалить',
+					icon: trash,
+					iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
+					action: (id) => handleDeleteCategory(id)
+				}
+			]
 		];
 	}, [handleDeleteCategory, handleEditCategory]);
 
 	return (
 		<AdminControlContentBox>
-			{isPending && (<PendingCloak />)}
 			{
 				categories.length !== 0 && (
 				<div className={classes.categoryList}>
@@ -71,7 +72,7 @@ const CategoriesList = () => {
 				!isPending && categories.length === 0 && (
 					<EmptyContainer hasFillContent>
 						<div className={classes.categoryList_emptyContent}>
-							!!пока что не добавлено ни одной категории
+							<Typography displayBlock>!!пока что не добавлено ни одной категории</Typography>
 						</div>
 					</EmptyContainer>
 				)

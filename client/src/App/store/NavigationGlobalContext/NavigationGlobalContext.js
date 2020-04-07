@@ -17,7 +17,7 @@ export const NavigationGlobalContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (isUndefined(isCollapsed)) {
-			setCookie('isCollapsed', false, { path: '/' });
+			setCookie('isCollapsed', 'false', { path: '/' });
 		}
 	}, []);
 

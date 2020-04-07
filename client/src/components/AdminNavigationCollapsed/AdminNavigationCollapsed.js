@@ -11,6 +11,7 @@ import AdminNavigationCollapsedButton from '../AdminNavigationCollapsedButton/Ad
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
+import { getBooleanCookie } from '../../utils';
 
 const AdminNavigationCollapsed = () => {
 	const location = useLocation();
@@ -20,7 +21,7 @@ const AdminNavigationCollapsed = () => {
 
 	const componentClassName = classNames(
 		{
-			[classes.adminNavigationCollapsed_show]: isCollapsed === 'true'
+			[classes.adminNavigationCollapsed_show]: getBooleanCookie(isCollapsed)
 		},
 		classes.adminNavigationCollapsed
 	);

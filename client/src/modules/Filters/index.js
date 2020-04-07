@@ -1,1 +1,1 @@
-export { Filters as default } from './Filters';
+export { FiltersWithContext as default } from './Filters';

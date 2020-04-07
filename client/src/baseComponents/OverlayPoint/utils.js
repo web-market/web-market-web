@@ -75,8 +75,8 @@ const getGeneralPosition = (componentRef, contentRef, position) => {
 			definedPosition.left = left + width + baseOffset;
 			definedPosition.top = top + height + baseOffset;
 			break;
-		case 'bottom-right-center':
-			definedPosition.left = left;
+		case 'mobile-navigation':
+			definedPosition.left = left - 8;
 			definedPosition.top = top + height + 8;
 			break;
 		default:
@@ -94,10 +94,8 @@ const getDropdownPosition = (componentRef, layoutRef) => {
 		height
 	} = _getPositionValues(componentRef, layoutRef);
 
-	// -1 --magic number to set dropddown container position based on dropdown component
-	// (because of border)
 	return {
-		left: left - 1,
+		left,
 		top: top + height + 1
 	};
 };

@@ -5,7 +5,7 @@ import Link from '../../../../baseComponents/Link';
 
 import classes from './styles/index.scss';
 
-class AdminNavigationListItemCollapseContent extends Component {
+class AdminNavigationCollapseContent extends Component {
 	constructor (props) {
 		super(props);
 		this.collapseContent = React.createRef();
@@ -21,12 +21,10 @@ class AdminNavigationListItemCollapseContent extends Component {
 		return this.props.height
 			? {
 				height: this.props.height,
-				paddingTop: 16,
-				paddingBottom: 16
+				padding: 16
 			} : {
 				height: this.props.height,
-				paddingTop: 0,
-				paddingBottom: 0
+				padding: 0,
 			};
 	}
 
@@ -50,6 +48,7 @@ class AdminNavigationListItemCollapseContent extends Component {
 						content={content}
 						link={item.link}
 						hasRoute={item.hasRoute}
+						className={classes.adminNavigationListItemCollapseContent_itemLink}
 						activeLinkClass={classes.adminNavigationListItemCollapseContent_activeLink}
 					/>
 				</div>
@@ -72,10 +71,10 @@ class AdminNavigationListItemCollapseContent extends Component {
 	}
 }
 
-AdminNavigationListItemCollapseContent.propTypes = {
+AdminNavigationCollapseContent.propTypes = {
 	items: PropTypes.array.isRequired,
 	height: PropTypes.number,
 	setCollapseRef: PropTypes.func
 };
 
-export { AdminNavigationListItemCollapseContent };
+export { AdminNavigationCollapseContent };
