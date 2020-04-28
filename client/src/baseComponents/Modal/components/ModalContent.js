@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ScrollContainer from '../../../ScrollContainer';
+import ScrollContainer from '../../ScrollContainer';
 
-import classes from './styles/index.scss';
+import classes from '../styles/index.scss';
 import ClassNames from 'classnames';
+import PendingCloak from '../../PendingCloak';
 
 const ModalContent = (
 	{
 		children,
+		isPending,
 		className,
 		autoHeight
 	}
 ) => {
-	console.log(autoHeight);
 	const componentClassName = ClassNames(
 		{
 			[classes.modalContent_autoHeight]: autoHeight
@@ -24,6 +25,11 @@ const ModalContent = (
 
 	return (
 		<div className={componentClassName}>
+			{
+				isPending && (
+					<PendingCloak />
+				)
+			}
 			<ScrollContainer>
 				{ children }
 			</ScrollContainer>
@@ -32,6 +38,7 @@ const ModalContent = (
 };
 
 ModalContent.propTypes = {
+	isPending: PropTypes.bool,
 	autoHeight: PropTypes.bool,
 	className: PropTypes.string
 };

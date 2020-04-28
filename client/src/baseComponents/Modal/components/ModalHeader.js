@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '../../../Icon';
-import HeaderText from '../../../HeaderText';
-import classes from './styles/index.scss';
-import { close } from '../../../../icons';
+import Icon from '../../Icon';
+import HeaderText from '../../HeaderText';
+import classes from '../styles/index.scss';
+import { close } from '../../../icons';
 
 const ModalHeader = (
 	{

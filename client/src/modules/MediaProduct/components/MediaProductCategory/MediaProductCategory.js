@@ -18,9 +18,10 @@ const MediaProductCategory = (
 			small
 			className={classes.mediaProductCategoryTree}
 		>
+
 			<TreeList
 				linearList={categories}
-				referenceKey="parentCategoryId"
+				referenceKey="parentFolderId"
 				render={({ treeList }) => {
 					return (
 						<MediaProductCategoryList

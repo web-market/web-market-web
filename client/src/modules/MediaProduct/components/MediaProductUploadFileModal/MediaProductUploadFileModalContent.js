@@ -8,7 +8,7 @@ import GeneralUploader from '../../../../baseComponents/Uploader';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import Button from '../../../../baseComponents/Button';
 
-import { UPLOADERS } from '../../consts';
+import { UPLOADERS, ENDPOINTS } from '../../consts';
 
 const MediaProductUploadFileModalContent = (
 	{
@@ -26,22 +26,6 @@ const MediaProductUploadFileModalContent = (
 			.catch(e => console.log(e));
 	};
 
-	const leftButtons = (
-		<Button
-			actionHandler={handleClose}
-			label="!!Закрыть"
-			type="secondary"
-		/>
-	);
-
-	const rightButtons = (
-		<Button
-			actionHandler={handleUpload}
-			label="!!Загрузить"
-			type="primary"
-		/>
-	);
-
 	return (
 		<>
 			<ModalHeader
@@ -50,15 +34,27 @@ const MediaProductUploadFileModalContent = (
 			/>
 			<ModalContent>
 				<GeneralUploader
-					url="test-url"
+					url={ENDPOINTS.ADD_IMAGES}
 					id={modalData.categoryId}
 					name={UPLOADERS.FILE_UPLOADER}
 				/>
 			</ModalContent>
 			<ModalFooter>
 				<ButtonGroup
-					leftButtons={leftButtons}
-					rightButtons={rightButtons}
+					leftButtons={(
+						<Button
+							actionHandler={handleClose}
+							label="!!Закрыть"
+							type="secondary"
+						/>
+					)}
+					rightButtons={(
+						<Button
+							actionHandler={handleUpload}
+							label="!!Загрузить"
+							type="primary"
+						/>
+					)}
 				/>
 			</ModalFooter>
 		</>

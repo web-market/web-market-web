@@ -7,10 +7,12 @@ import { AdminControlHeaderRightSide } from './AdminControlHeaderRightSide';
 import classes from './styles/index.scss';
 import { PaddingBox } from '../../baseComponents/PaddingBox/PaddingBox';
 
-const AdminControlHeader = ({
-								label,
-								onActionClick
-							}) => {
+const AdminControlHeader = (
+	{
+		label,
+		actions
+	}
+) => {
 	return (
 		<PaddingBox
 			hrSmall
@@ -20,19 +22,19 @@ const AdminControlHeader = ({
 				label={label}
 			/>
 			<AdminControlHeaderRightSide
-				actions={[]}
-				onActionClick={onActionClick}
+				actions={actions}
 			/>
 		</PaddingBox>
 	);
 };
 
-AdminControlHeader.defaultProps = {};
+AdminControlHeader.defaultProps = {
+	actions: []
+};
 
 AdminControlHeader.propTypes = {
 	label: PropTypes.string,
-	// actions: PropTypes.array,
-	onActionClick: PropTypes.func
+	actions: PropTypes.array
 };
 
 export { AdminControlHeader };

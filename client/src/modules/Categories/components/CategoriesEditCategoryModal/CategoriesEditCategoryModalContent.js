@@ -108,14 +108,14 @@ const CategoriesEditCategoryModalContent = (
 
 	return (
 		<CategoriesEditCategoryModalForm
-			isPending={isPending}
-			handleClose={handleClose}
-			initialValues={initialValues}
-			handleUpdateCategory={handleUpdateCategory}
-			fieldsMetadata={fieldsMetadata}
-			leftButtons={leftButtons}
-			rightButtons={rightButtons}
 			id={modalData.id}
+			isPending={isPending}
+			leftButtons={leftButtons}
+			handleClose={handleClose}
+			rightButtons={rightButtons}
+			initialValues={initialValues}
+			fieldsMetadata={fieldsMetadata}
+			handleUpdateCategory={handleUpdateCategory}
 		/>
 	);
 };

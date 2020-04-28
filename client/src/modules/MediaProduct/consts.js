@@ -3,11 +3,23 @@ import { createContext } from 'react';
 export const ADD_MEDIA_CATEGORY_FORM = 'ADD_MEDIA_CATEGORY_FORM';
 
 export const MODALS = {
-	UPLOAD_FILE_MODAL: 'UPLOAD_FILE_MODAL'
+	UPLOAD_FILE_MODAL: 'UPLOAD_FILE_MODAL',
+	DELETE_MEDIA_CATEGORY_MODAL: 'DELETE_MEDIA_CATEGORY_MODAL',
+	MEDIA_CATEGORY_MODAL: 'MEDIA_CATEGORY_MODAL'
 };
 
 export const UPLOADERS = {
 	FILE_UPLOADER: 'FILE_UPLOADER'
+};
+
+export const ENDPOINTS = {
+	ADD_MEDIA_CATEGORY: '/media-folder-management/media-folder',
+	DELETE_MEDIA_CATEGORY: '/media-folder-management/media-folder',
+	GET_MEDIA_CATEGORIES: '/media-folder-management/media-folder-inline',
+	GET_MEDIA_CATEGORY: '/media-folder-management/media-folder',
+	GET_MEDIA_CATEGORY_DROP_DOWN: '/media-folder-management/media-folder/all',
+	ADD_IMAGES: '/media-management/media',
+	DELETE_IMAGES: '/media-management/media'
 };
 
 export const MediaProductContext = createContext();

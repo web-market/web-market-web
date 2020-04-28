@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
 import { MediaProductContext } from '../../consts';
-import MediaProductModalsProvider from '../MediaProductModalsProvider';
 
 import GridListSwitcher from '../../../../baseComponents/GridListSwitcher';
 import MediaProductFilesHeader from './MediaProductFilesHeader';
@@ -10,15 +9,14 @@ import MediaProductFilesGridLayoutItem from './MediaProductFilesGridLayoutItem';
 import MediaProductFilesListLayoutItem from './MediaProductFilesListLayoutItem';
 import ScrollContainer from '../../../../baseComponents/ScrollContainer';
 
-import { mediaProductsDataFiles } from '../../staticData';
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 
 const MediaProductFiles = () => {
-	const { mediaProductGrisLayout } = useContext(MediaProductContext);
+	const { mediaProductGrisLayout, images } = useContext(MediaProductContext);
 
 	const filesListLayout = useMemo(() => {
-		return mediaProductsDataFiles.map(item => {
+		return images.map(item => {
 			const key = getUniqueKey(item.name, item.id);
 
 			return (
@@ -33,7 +31,7 @@ const MediaProductFiles = () => {
 	}, []);
 
 	const filesGridLayout = useMemo(() => {
-		return mediaProductsDataFiles.map(item => {
+		return images.map(item => {
 			const key = getUniqueKey(item.name, item.id);
 
 			return (
@@ -49,9 +47,7 @@ const MediaProductFiles = () => {
 
 	return (
 		<>
-			<MediaProductModalsProvider>
-				<MediaProductFilesHeader />
-			</MediaProductModalsProvider>
+			<MediaProductFilesHeader />
 			<PaddingBox
 				small
 				className={classes.mediaProductFiles}

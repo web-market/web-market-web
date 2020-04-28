@@ -1,20 +1,19 @@
 import React from 'react';
 
 import MediaProductContextProvider from './store';
+import MediaProductModalsProvider from './components/MediaProductModalsProvider';
 
-import AdminControlHeader from '../../components/AdminControlHeader';
+import MediaProductHeader from './components/MediaProductHeader';
 import MediaProductContent from './components/MediaProductContent';
 
 const MediaProduct = () => {
 	return (
-		<>
-			<AdminControlHeader
-				label="!!!Медиа файлы"
-			/>
-			<MediaProductContextProvider>
+		<MediaProductContextProvider>
+			<MediaProductModalsProvider>
+				<MediaProductHeader />
 				<MediaProductContent />
-			</MediaProductContextProvider>
-		</>
+			</MediaProductModalsProvider>
+		</MediaProductContextProvider>
 	);
 };
 

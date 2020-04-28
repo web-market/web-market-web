@@ -14,7 +14,6 @@ const ManufacturesAddManufacture = () => {
 	const { addManufacture, getManufactures } = useContext(ManufacturesContext);
 
 	const handleAddManufacture = (values) => {
-		console.log(values);
 		addManufacture(values)
 			.then(() => getManufactures());
 	};

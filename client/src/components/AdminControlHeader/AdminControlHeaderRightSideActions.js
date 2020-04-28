@@ -1,22 +1,22 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../../baseComponents/Button';
-import PropTypes from 'prop-types';
 
 const AdminControlHeaderRightSideActions = memo((
 	{
-		actions,
-		onActionClick
+		actions
 	}
 ) => {
 	const getSingleAction = () => {
 		return (
 			<Button
 				type={actions[0].type}
-				transparent={actions[0].transparent}
 				icon={actions[0].icon}
+				label={actions[0].label}
 				actionName={actions[0].actionName}
-				actionHandler={onActionClick}
+				transparent={actions[0].transparent}
+				actionHandler={actions[0].actionHandler}
 			/>
 		);
 	};

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { MediaProductContext } from '../../consts';
 
@@ -10,11 +10,16 @@ import MediaProductCategory from '../MediaProductCategory';
 
 const MediaProductContent = () => {
 	const {
+		pending,
 		categories,
 		setActiveCategory,
+		getMediaCategories,
 		hasMediaProductCategories
 	} = useContext(MediaProductContext);
-	//fetchDataHere
+
+	useEffect(() => {
+		getMediaCategories();
+	}, []);
 
 	const handleOnCategoryClick = (e, id) => {
 		e.stopPropagation();
@@ -31,7 +36,7 @@ const MediaProductContent = () => {
 			}
 			{
 				hasMediaProductCategories && (
-					<GridLayout>
+					<GridLayout isPending={pending}>
 						<GridLayoutRow gridColumn={24} grid="7-17">
 							<MediaProductCategory
 								categories={categories}

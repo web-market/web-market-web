@@ -53,8 +53,14 @@ ButtonGroup.defaultProps = {
 
 ButtonGroup.propTypes = {
 	singleButton: PropTypes.object,
-	leftButtons: PropTypes.object,
-	rightButtons: PropTypes.object,
+	leftButtons: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	]),
+	rightButtons: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	]),
 	className: PropTypes.string
 };
 

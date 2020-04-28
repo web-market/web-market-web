@@ -1,4 +1,11 @@
 import {
+	addMediaCategory as addMediaCategoryAPI,
+	getMediaCategories as getMediaCategoriesAPI,
+	deleteMediaCategory as deleteMediaCategoryAPI,
+	getMediaCategoryDetail as getMediaCategoryDetailAPI,
+} from '../api';
+
+import {
 	SET_PENDING,
 	SET_ACTIVE_CATEGORY_ID,
 	SET_ACTIVE_CATEGORY_NAME,
@@ -10,14 +17,14 @@ import {
 } from './consts';
 
 export default (dispatch) => {
-	const setPending = (pending) => {
+	const _setPending = (pending) => {
 		dispatch({
 			type: SET_PENDING,
 			pending
 		});
 	};
 
-	const setMediaProductCategories = (categories) => {
+	const _setMediaProductCategories = (categories) => {
 		dispatch({
 			type: SET_MEDIA_PRODUCT_CATEGORIES,
 			categories
@@ -62,12 +69,37 @@ export default (dispatch) => {
 		});
 	};
 
+	const addMediaCategory = (data) => {
+		return addMediaCategoryAPI(data);
+	};
+
+	const getMediaCategories = () => {
+		_setPending(true);
+
+		return getMediaCategoriesAPI()
+			.then(({ data }) => {
+				_setMediaProductCategories(data);
+				return data;
+			})
+			.finally(() => _setPending(false));
+	};
+
+	const getMediaCategoryDetail = (id) => {
+		return getMediaCategoryDetailAPI(id);
+	};
+
+	const deleteMediaCategory = (id) => {
+		return deleteMediaCategoryAPI(id);
+	};
+
 	return {
-		setPending,
+		addMediaCategory,
 		setActiveCategory,
 		setSelectedImageId,
+		getMediaCategories,
+		deleteMediaCategory,
 		deleteSelectedImageId,
 		setMediaProductLayout,
-		setMediaProductCategories
+		getMediaCategoryDetail
 	};
 };

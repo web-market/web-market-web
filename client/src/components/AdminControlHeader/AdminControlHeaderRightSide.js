@@ -3,16 +3,16 @@ import React from 'react';
 import { AdminControlHeaderRightSideActions } from './AdminControlHeaderRightSideActions';
 import PropTypes from 'prop-types';
 
-const AdminControlHeaderRightSide = ({
-										actions,
-										onActionClick
-									}) => {
+const AdminControlHeaderRightSide = (
+	{
+		actions
+	}
+) => {
 	return (
 		<>
 			{actions && (
 				<AdminControlHeaderRightSideActions
 					actions={actions}
-					onActionClick={onActionClick}
 				/>
 			)}
 		</>
@@ -22,8 +22,7 @@ const AdminControlHeaderRightSide = ({
 AdminControlHeaderRightSide.defaultProps = {};
 
 AdminControlHeaderRightSide.propTypes = {
-	actions: PropTypes.array,
-	onActionClick: PropTypes.func
+	actions: PropTypes.array
 };
 
 export { AdminControlHeaderRightSide };

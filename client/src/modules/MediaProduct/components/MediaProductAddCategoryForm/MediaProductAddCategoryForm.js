@@ -2,26 +2,28 @@ import React, { useContext } from 'react';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
-import { Textbox, ColorPicker } from '../../../../baseComponents/Form/Adapters';
+import { Textbox } from '../../../../baseComponents/Form/Adapters';
 import Form, { Field } from '../../../../baseComponents/Form';
 import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../baseComponents/FormLayout';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import { Button } from '../../../../baseComponents/Button/Button';
 
-import { ADD_MEDIA_CATEGORY_FORM } from '../../consts';
+import { ADD_MEDIA_CATEGORY_FORM, MediaProductContext } from '../../consts';
 
 const MediaProductAddCategoryForm = () => {
 	const { forms } = useContext(FormsGlobalContext);
+	const { addMediaCategory, getMediaCategories } = useContext(MediaProductContext);
 
-	const handleUpdateFilter = (values) => {
-		console.log(values);
+	const handleAddMediaCategory = (values) => {
+		addMediaCategory(values)
+			.then(() => getMediaCategories());
 	};
 
 	return (
 		<>
 			<Form
 				name={ADD_MEDIA_CATEGORY_FORM}
-				onSubmit={handleUpdateFilter}
+				onSubmit={handleAddMediaCategory}
 			>
 				<FormLayout>
 					<FormLayoutItemGroup padding={{
@@ -32,7 +34,7 @@ const MediaProductAddCategoryForm = () => {
 							<Field
 								component={Textbox}
 								name="name"
-								label="!!!Имя каталога"
+								label="!!!Имя категории"
 								required
 								validate={{
 									required: true,

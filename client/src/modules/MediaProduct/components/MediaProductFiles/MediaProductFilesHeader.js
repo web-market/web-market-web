@@ -1,16 +1,16 @@
-import React, { useContext, useMemo, useEffect } from 'react';
+import React, { useContext, useMemo, useEffect, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 
 import AdminControlContentHeader, {
 	AdminControlContentHeaderLeftSide,
 	AdminControlContentHeaderRightSide
 } from '../../../../components/AdminControlContentHeader';
-import Button from '../../../../baseComponents/Button';
 import Typography from '../../../../baseComponents/Typography';
 
+import MediaProductFilesHeaderActions from './MediaProductFilesHeaderActions';
+
 import { MediaProductContext, MediaProductModalsContext, MODALS } from '../../consts';
-import { TooltipAction } from '../../../../baseComponents/TooltipAction/TooltipAction';
-import { pencil, trash, angleDown, angleUp, layoutGrid3Alt, layoutListThumbAlt } from '../../../../icons';
+import { pencil, trash, layoutGrid3Alt, layoutListThumbAlt, plus } from '../../../../icons';
 import classes from './styles/index.scss';
 import { getBooleanCookie } from '../../../../utils';
 
@@ -19,11 +19,16 @@ const MediaProductFilesHeader = () => {
 	const { mediaProductGrisLayout: mediaProductGrisLayoutFromCookies } = get;
 	const { openModal } = useContext(MediaProductModalsContext);
 	const {
+		categories,
 		selectedImageIds,
 		activeCategoryId,
+		setActiveCategory,
 		activeCategoryName,
+		getMediaCategories,
+		deleteMediaCategory: deleteMediaCategoryAction,
 		setMediaProductLayout,
-		mediaProductGrisLayout
+		mediaProductGrisLayout,
+		getMediaCategoryDetail
 	} = useContext(MediaProductContext);
 
 	useEffect(() => {
@@ -37,22 +42,86 @@ const MediaProductFilesHeader = () => {
 		setCookie('mediaProductGrisLayout', !mediaProductGrisLayout, { path: '/' });
 	};
 
+	const selectedCategory = useMemo(() => {
+		return categories.find(item => item.id === activeCategoryId);
+	}, [activeCategoryId, categories]);
+
+	const deleteMediaCategory = useCallback((id) => {
+		return deleteMediaCategoryAction(id)
+			.then(() => {
+				return getMediaCategories();
+			})
+			.then((data) => {
+				if (data.length !== 0) {
+					setActiveCategory(data[0].id);
+				}
+			});
+	}, [deleteMediaCategoryAction, getMediaCategories, setActiveCategory]);
+
+	const handleAddSubCategory = useCallback((id) => {
+		openModal(
+			MODALS.MEDIA_CATEGORY_MODAL,
+			{
+				categoryId: id,
+				isSubCategory: true,
+				categoryName: selectedCategory.name
+			}
+		);
+	}, [openModal, selectedCategory]);
+
+	const handleEditCategory = useCallback((id) => {
+		return getMediaCategoryDetail(id)
+			.then(({ data }) => {
+				console.log(data);
+
+				openModal(
+					MODALS.MEDIA_CATEGORY_MODAL,
+					{
+						categoryId: id,
+						isEditMode: true,
+						categoryName: selectedCategory.name
+					}
+				);
+			})
+			.catch(error => console.log(error));
+	}, [openModal, getMediaCategoryDetail, selectedCategory]);
+
+	const handleDeleteMediaCategory = useCallback((id) => {
+		openModal(
+			MODALS.DELETE_MEDIA_CATEGORY_MODAL,
+			{
+				modalTitle: '!!Удалить протзводителя',
+				rightButtonLabel: '!!Удалить',
+				handleSubmit: () => deleteMediaCategory(id),
+				content: (
+					<span>!!Вы уверены, что хотите удалить категорию <strong>{selectedCategory.name}</strong>?</span>
+				)
+			}
+		);
+	}, [openModal, deleteMediaCategory, selectedCategory]);
+
 	const actions = useMemo(() => {
 		const isDeleteImagesDisabled = selectedImageIds.length === 0;
 
 		return [
 			[
 				{
+					name: '!!Добавить подкатегорию',
+					icon: plus,
+					iconClass: '',
+					action: (id) => handleAddSubCategory(id)
+				},
+				{
 					name: '!!Редактировать категорию',
 					icon: pencil,
 					iconClass: '',
-					action: (id) => console.log(id)
+					action: (id) => handleEditCategory(id)
 				},
 				{
 					name: '!!Удалить категорию',
 					icon: trash,
 					iconClass: classes.mediaProductFilesHeader_deleteIcon,
-					action: (id) => console.log(id)
+					action: (id) => handleDeleteMediaCategory(id)
 				}
 			],
 			[
@@ -65,7 +134,7 @@ const MediaProductFilesHeader = () => {
 				}
 			]
 		];
-	}, [selectedImageIds]);
+	}, [selectedImageIds, handleDeleteMediaCategory, handleAddSubCategory]);
 
 	const mediaProductGrisLayoutIcon = mediaProductGrisLayout ? layoutListThumbAlt : layoutGrid3Alt;
 
@@ -75,28 +144,13 @@ const MediaProductFilesHeader = () => {
 				<Typography variant="24">{activeCategoryName}</Typography>
 			</AdminControlContentHeaderLeftSide>
 			<AdminControlContentHeaderRightSide>
-				<div className={classes.mediaProductFilesHeader_right}>
-					<Button
-						size="small"
-						type="primary"
-						label="!Загрузить"
-						actionHandler={handleOpenUploadFileModal}
-						className={classes.mediaProductFilesHeader_UploadButton}
-					/>
-					<TooltipAction
-						actionList={actions}
-						targetElementId={activeCategoryId}
-						toolTipButtonOpen={(<Button icon={angleUp} />)}
-						toolTipButtonClose={(<Button icon={angleDown} />)}
-						className={classes.mediaProductFilesHeader_tooltipButton}
-					/>
-					<Button
-						noBorder
-						transparent
-						icon={mediaProductGrisLayoutIcon}
-						actionHandler={handleSetGridLayout}
-					/>
-				</div>
+				<MediaProductFilesHeaderActions
+					actions={actions}
+					activeCategoryId={activeCategoryId}
+					handleSetGridLayout={handleSetGridLayout}
+					handleOpenUploadFileModal={handleOpenUploadFileModal}
+					mediaProductGrisLayoutIcon={mediaProductGrisLayoutIcon}
+				/>
 			</AdminControlContentHeaderRightSide>
 		</AdminControlContentHeader>
 	);

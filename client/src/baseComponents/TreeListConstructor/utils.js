@@ -22,7 +22,7 @@ export const buildTree = (list) => {
 
 		if (!isRootElem) {
 			listWithChildrenListKey.forEach((listElement, index) => {
-				if (listElement[idKey] === elem[referenceKey]) {
+				if (+listElement[idKey] === elem[referenceKey]) {
 					listWithChildrenListKey[index][childrenListKey].push(elem);
 				}
 			});

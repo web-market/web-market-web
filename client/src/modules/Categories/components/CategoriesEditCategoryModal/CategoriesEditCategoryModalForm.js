@@ -103,8 +103,6 @@ const CategoriesEditCategoryModalForm = (
 	);
 };
 
-CategoriesEditCategoryModalForm.defaultProps = {};
-
 CategoriesEditCategoryModalForm.propTypes = {
 	id: PropTypes.oneOfType([
 		PropTypes.string,

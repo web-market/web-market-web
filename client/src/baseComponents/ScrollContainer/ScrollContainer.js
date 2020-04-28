@@ -14,7 +14,10 @@ const ScrollContainer = (
 };
 
 ScrollContainer.propTypes = {
-	children: PropTypes.object
+	children: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	])
 };
 
 export { ScrollContainer };

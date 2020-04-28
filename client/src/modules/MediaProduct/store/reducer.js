@@ -11,15 +11,17 @@ import {
 	SET_HAS_MEDIA_PRODUCT_CATEGORIES
 } from './consts';
 
-import { mediaProductsDataCategories, hasMediaProductCategories } from '../staticData';
+//import { mediaProductsDataCategories, hasMediaProductCategories } from '../staticData';
 
 export const initialState = {
 	selectedImageIds: [],
 	activeCategoryId: null,
 	activeCategoryName: null,
-	hasMediaProductCategories,
+	hasMediaProductCategories: false,
 	mediaProductGrisLayout: false,
-	categories: mediaProductsDataCategories
+	categories: [],
+	pending: false,
+	images: []
 };
 
 export const reducer = (state, payload) => {
@@ -63,6 +65,11 @@ export const reducer = (state, payload) => {
 			return {
 				...state,
 				selectedImageIds: removeArrayElementByValue(state.selectedImageIds, payload.selectedImageId)
+			};
+		case SET_PENDING:
+			return {
+				...state,
+				pending: payload.pending
 			};
 		default:
 			throw new Error();

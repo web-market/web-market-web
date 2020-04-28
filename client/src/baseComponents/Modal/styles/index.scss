@@ -2,5 +2,10 @@
 @import "../../../styles/mixins/box-shadow";
 @import "../../../styles/mixins/bg-color";
 @import "../../../styles/mixins/transition";
+@import "../../../styles/mixins/hover_focus";
 
 @import "modal";
+@import "modalContent";
+@import "modalContentInfoSection";
+@import "modalFooter";
+@import "modalHeader";

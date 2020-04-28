@@ -7,7 +7,11 @@ import MediaProductCategoryItem from './MediaProductCategoryItem';
 
 import { getUniqueKey } from '../../../../utils';
 
-const MediaProductCategoryList = ({ treeList, handleOnCategoryClick }) => {
+const MediaProductCategoryList = (
+	{
+		treeList, handleOnCategoryClick
+	}
+) => {
 	const { setActiveCategory } = useContext(MediaProductContext);
 
 	useEffect(() => {
