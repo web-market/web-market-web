@@ -5,7 +5,7 @@ export const URL = {
 	STATISTIC: '/adminpanel/statistic',
 	CATALOG: {
 		ROOT: '/adminpanel/catalog',
-		PRODUCT_MANAGER: '/adminpanel/catalog/manager',
+		PRODUCT_MANAGER: '/adminpanel/catalog/products-manager',
 		MANUFACTURES: '/adminpanel/catalog/manufactures'
 	},
 	CATEGORY: {

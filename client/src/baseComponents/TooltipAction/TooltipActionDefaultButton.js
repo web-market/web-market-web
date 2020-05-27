@@ -20,7 +20,6 @@ const TooltipActionDefaultButton = forwardRef((
 	);
 
 	return (
-
 		<div
 			ref={ref}
 			onClick={event => handleTooltipActionClick(event)}

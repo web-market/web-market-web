@@ -6,6 +6,7 @@ import UserProfile from '../../modules/UserProfile';
 import Categories from '../../modules/Categories';
 import MediaProduct from '../../modules/MediaProduct';
 import Manufactures from '../../modules/Manufactures';
+import Products from '../../modules/Products';
 
 import { URL } from '../consts';
 
@@ -17,6 +18,7 @@ const AdminControlRoutes = () => {
 			<Route path={URL.CATEGORY.ROOT} component={Categories} />
 			<Route path={URL.MEDIA.PRODUCTS} component={MediaProduct} />
 			<Route path={URL.CATALOG.MANUFACTURES} component={Manufactures} />
+			<Route path={URL.CATALOG.PRODUCT_MANAGER} component={Products} />
 		</Switch>
 	);
 };

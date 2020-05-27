@@ -17,7 +17,9 @@
 	position: absolute;
 	right: -20px;
 	font-weight: bold;
+}
 
+.checkbox_icon__transition {
 	@include transition(right .2s)
 }
 

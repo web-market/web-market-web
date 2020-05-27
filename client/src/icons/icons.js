@@ -28,5 +28,6 @@ export const moreAlt = classes['ti-more-alt'];
 export const angleDoubleLeft = classes['ti-angle-double-left'];
 export const angleDoubleRight = classes['ti-angle-double-right'];
 export const tiPackage = classes['ti-package'];
+export const tiImage = classes['ti-image'];
 export const layoutGrid3Alt = classes['ti-layout-grid3-alt'];
 export const layoutListThumbAlt = classes['ti-layout-list-thumb-alt'];
