@@ -12,6 +12,7 @@ import classes from './styles/index.scss';
 import { angleDown, angleUp } from '../../icons';
 import { COLORS } from '../../styles/baseColors';
 import { isNullOrUndefined } from '../../utils';
+import ClassNames from 'classnames';
 
 const Dropdown = (
 	{
@@ -33,6 +34,7 @@ const Dropdown = (
 	const [displayValue, setDisplayValue] = useState('');
 
 	const hasItems = items.length !== 0;
+	const hasSelectedValue = isNullOrUndefined(value);
 
 	useEffect(() => {
 		setOpen(isOpen);
@@ -65,7 +67,7 @@ const Dropdown = (
 	}, [multiSelect, onItemSelect, toggleDropdown]);
 
 	useEffect(() => {
-		if (isNullOrUndefined(value)) {
+		if (hasSelectedValue) {
 			setDisplayValue(placeholder);
 		}
 	}, [value]);
@@ -117,14 +119,21 @@ const Dropdown = (
 			);
 	};
 
+	const dropdownItemClassName = ClassNames(
+		{
+			[classes.dropdownItem_value]: !hasSelectedValue,
+			[classes.dropdownItem_placeholder]: hasSelectedValue
+		}
+	);
+
 	return (
 		<div className={classes.dropdown}>
 			<div
 				ref={dropdownRef}
-				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
+				className={classes.dropdown_selectArea}
 			>
-				<div className={classes.dropdownItem_placeholder}>{displayValue}</div>
+				<div className={dropdownItemClassName}>{displayValue}</div>
 				{getIcon()}
 
 			</div>

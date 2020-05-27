@@ -7,17 +7,13 @@ import {
 	SET_MEDIA_PRODUCT_CATEGORIES,
 	SET_SELECTED_PRODUCT_IMAGE_ID,
 	DELETE_SELECTED_PRODUCT_IMAGE_ID,
-	MEDIA_PRODUCT_IMAGES_GRID_LAYOUT,
-	SET_HAS_MEDIA_PRODUCT_CATEGORIES
+	MEDIA_PRODUCT_IMAGES_GRID_LAYOUT
 } from './consts';
-
-//import { mediaProductsDataCategories, hasMediaProductCategories } from '../staticData';
 
 export const initialState = {
 	selectedImageIds: [],
 	activeCategoryId: null,
 	activeCategoryName: null,
-	hasMediaProductCategories: false,
 	mediaProductGrisLayout: false,
 	categories: [],
 	pending: false,
@@ -33,18 +29,12 @@ export const reducer = (state, payload) => {
 				...state,
 				categories: [...payload.categories]
 			};
-		case SET_HAS_MEDIA_PRODUCT_CATEGORIES:
-			return {
-				...state,
-				hasMediaProductCategories: payload.hasMediaProductCategories
-			};
 		case SET_ACTIVE_CATEGORY_ID:
 			return {
 				...state,
 				activeCategoryId: payload.activeCategoryId
 			};
 		case SET_ACTIVE_CATEGORY_NAME:
-			// change categories23 => state.categories
 			const targetElement = state.categories.find(category => category.id === payload.activeCategoryId);
 
 			return {

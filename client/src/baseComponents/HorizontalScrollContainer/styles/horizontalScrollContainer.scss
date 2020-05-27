@@ -1,0 +1,14 @@
+.horizontalScrollContainer {
+	overflow-x: scroll;
+	margin: 0 8px;
+}
+
+.horizontalScrollContainer::-webkit-scrollbar {
+	height: 6px;
+	width: 40px;
+}
+
+.horizontalScrollContainer::-webkit-scrollbar-thumb {
+	background-color: #abb3be;
+	border-radius: 4px;
+}

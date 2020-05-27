@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
 import Button from '../../../../baseComponents/Button';
 
 import classes from './styles/index.scss';
-import { chevronDown, chevronUp } from '../../../../icons';
+import { chevronDown, chevronUp, pencil, trash } from '../../../../icons';
 import { getUniqueKey, isNull } from '../../../../utils';
 import { getSubCategories } from '../../api';
 import TooltipAction from '../../../../baseComponents/TooltipAction';
 
 const CategoriesListItem = (
 	{
-		actions,
 		category,
 		handleEditCategory,
 		handleDeleteCategory
@@ -60,6 +59,25 @@ const CategoriesListItem = (
 
 		setSubCategoryHeight(h);
 	}, [showCategories]);
+
+	const actions = useMemo(() => {
+		return [
+			[
+				{
+					name: '!!Редактировать',
+					icon: pencil,
+					iconClass: '',
+					action: (id) => handleEditCategory(id)
+				},
+				{
+					name: '!!Удалить',
+					icon: trash,
+					iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
+					action: (id) => handleDeleteCategory(id)
+				}
+			]
+		];
+	}, [handleDeleteCategory, handleEditCategory]);
 
 	const categoryItemDetail = () => {
 		return (

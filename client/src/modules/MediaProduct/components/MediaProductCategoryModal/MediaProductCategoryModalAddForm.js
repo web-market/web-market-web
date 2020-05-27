@@ -7,17 +7,17 @@ import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../bas
 
 import { ADD_MEDIA_CATEGORY_FORM, ENDPOINTS } from '../../consts';
 
-const MediaProductCategoryModalForm = (
+const MediaProductCategoryModalAddForm = (
 	{
 		isSubCategory,
-		handleAddMediaCategory
+		handleSubmit
 	}
 ) => {
 	return (
 		<>
 			<Form
+				onSubmit={handleSubmit}
 				name={ADD_MEDIA_CATEGORY_FORM}
-				onSubmit={handleAddMediaCategory}
 			>
 				<FormLayout>
 					<FormLayoutItemGroup>
@@ -56,9 +56,9 @@ const MediaProductCategoryModalForm = (
 	);
 };
 
-MediaProductCategoryModalForm.propTypes = {
+MediaProductCategoryModalAddForm.propTypes = {
 	isSubCategory: PropTypes.bool,
-	handleAddMediaCategory: PropTypes.func
+	handleSubmit: PropTypes.func
 };
 
-export default MediaProductCategoryModalForm;
+export default MediaProductCategoryModalAddForm;

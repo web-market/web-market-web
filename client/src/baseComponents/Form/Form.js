@@ -12,9 +12,10 @@ const Form = memo((
 		children,
 		onSubmit,
 		initialValues,
-		restFormValues
+		formData,
+		resetFormValues: resetFormValuesFromProps
 	}
-	) => {
+) => {
 	const {
 		addFormToGlobalContext,
 		removeFormFromGlobalContext
@@ -41,14 +42,14 @@ const Form = memo((
 	}, []);
 
 	const handleSuccess = useCallback((values) => {
-		onSubmit(values);
+		onSubmit(values, formData);
 		actionLogger(`SUBMIT FROM: "${name}"`);
 
-		if (restFormValues) {
+		if (resetFormValuesFromProps) {
 			resetFormValues();
 			actionLogger(`RESET FROM: "${name}"`);
 		}
-	}, [name, onSubmit, restFormValues, resetFormValues]);
+	}, [formData, name, onSubmit, resetFormValues, resetFormValues, resetFormValuesFromProps]);
 
 	const submitForm = useCallback(() => {
 		validateForm(fieldsRef.current, valuesRef.current)
@@ -122,7 +123,7 @@ const Form = memo((
 
 Form.defaultProps = {
 	initialValues: null,
-	restFormValues: true,
+	resetFormValues: true,
 };
 
 Form.propTypes = {
@@ -133,7 +134,7 @@ Form.propTypes = {
 	]),
 	name: PropTypes.string.isRequired,
 	onSubmit: PropTypes.func,
-	restFormValues: PropTypes.bool,
+	resetFormValues: PropTypes.bool,
 };
 
 export { Form };

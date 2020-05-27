@@ -1,10 +1,17 @@
 .mediaProductCategoryItem {
 	cursor: pointer;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: end;
 	position: relative;
+	padding: 4px;
+	transition: background-color .2s;
+	border-radius: 2px;
+}
+
+.mediaProductCategoryItem:hover {
+	background-color: #f3f6f9;
 }
 
 .mediaProductCategoryItem_indicator {
@@ -13,6 +20,7 @@
 	background-color: $primary;
 	position: absolute;
 	left: -6px;
+	top: 0;
 }
 
 .mediaProductCategoryItem_button {

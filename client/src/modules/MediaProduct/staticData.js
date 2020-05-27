@@ -208,5 +208,3 @@ export const mediaProductsDataFiles = [
 		url: 'https://morningstar.com.ua/image/cache/catalog/Odezhda/MuzhskayaOdezhda/fytbolki/fomsuumer/9J5A5450-500x500.jpg.pagespeed.ce._WCwL-t0rO.jpg'
 	},
 ];
-
-export const hasMediaProductCategories = true;

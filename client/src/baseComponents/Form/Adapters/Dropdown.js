@@ -7,27 +7,33 @@ class Dropdown extends Component {
 	render () {
 		const {
 			label,
-			required,
+			width,
 			isValid,
-			errorMessages,
+			required,
+			hasFocus,
+			hasBorder,
+			labelBold,
 			hasTooltip,
-			toolTipMessage,
 			toolTipIcon,
+			errorMessages,
 			displayInline,
-			hasFocus
+			toolTipMessage
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
+				width={width}
+				hasFocus={hasFocus}
 				required={required}
 				hasErrors={!isValid}
-				errorMessages={errorMessages}
+				labelBold={labelBold}
+				hasBorder={hasBorder}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
-				toolTipMessage={toolTipMessage}
-				hasFocus={hasFocus}
+				errorMessages={errorMessages}
 				displayInline={displayInline}
+				toolTipMessage={toolTipMessage}
 			>
 				<DropdownComponent
 					{...this.props}

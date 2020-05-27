@@ -22,6 +22,8 @@ const MediaProductCategoryModal = (
 						categoryId={modalData.categoryId}
 						categoryName={modalData.categoryName}
 						isSubCategory={modalData.isSubCategory}
+						initialValues={modalData.initialValues}
+						isEditMode={modalData.isEditMode}
 					/>
 				);
 			}}

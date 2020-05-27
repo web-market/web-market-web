@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 
 import AdminControlContentBox from '../../../../components/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
@@ -8,7 +8,6 @@ import Typography from '../../../../baseComponents/Typography';
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 import { MODALS, CategoriesContext, CategoriesModalsContext } from '../../consts';
-import { pencil, trash } from '../../../../icons';
 
 const CategoriesList = () => {
 	const { getCategoriesList, isPending, categories } = useContext(CategoriesContext);
@@ -26,25 +25,6 @@ const CategoriesList = () => {
 		openModal(MODALS.EDIT_CATEGORY_MODAL, { id });
 	}, [openModal]);
 
-	const actions = useMemo(() => {
-		return [
-			[
-				{
-					name: '!!Редактировать',
-					icon: pencil,
-					iconClass: '',
-					action: (id) => handleEditCategory(id)
-				},
-				{
-					name: '!!Удалить',
-					icon: trash,
-					iconClass: classes.categoriesListItemTooltipActions_deleteIcon,
-					action: (id) => handleDeleteCategory(id)
-				}
-			]
-		];
-	}, [handleDeleteCategory, handleEditCategory]);
-
 	return (
 		<AdminControlContentBox>
 			{
@@ -57,7 +37,6 @@ const CategoriesList = () => {
 							return (
 								<CategoriesListItem
 									key={key}
-									actions={actions}
 									category={category}
 									handleDeleteCategory={handleDeleteCategory}
 									handleEditCategory={handleEditCategory}

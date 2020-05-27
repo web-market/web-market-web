@@ -72,13 +72,12 @@ const MediaProductFilesHeader = () => {
 	const handleEditCategory = useCallback((id) => {
 		return getMediaCategoryDetail(id)
 			.then(({ data }) => {
-				console.log(data);
-
 				openModal(
 					MODALS.MEDIA_CATEGORY_MODAL,
 					{
 						categoryId: id,
 						isEditMode: true,
+						initialValues: data,
 						categoryName: selectedCategory.name
 					}
 				);

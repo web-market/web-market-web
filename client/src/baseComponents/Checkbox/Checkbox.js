@@ -5,33 +5,42 @@ import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { check } from '../../icons';
 import Icon from '../Icon';
-import { isNull } from '../../utils';
+import { isNull, isUndefined } from '../../utils';
 
 const Checkbox = (
 	{
 		value,
 		className,
+		transition,
+		handleClick,
 		onFieldChange,
 		iconClassName: iconClassNameFromProps,
 		iconCheckClassName: iconCheckClassNameFromProps,
 	}
 ) => {
 	const [checkboxValue, setCheckboxValue] = useState(false);
-
 	useEffect(() => {
-		if (isNull(value)) {
+		if (isNull(value) && !isUndefined(onFieldChange)) {
 			onFieldChange(false);
 		}
 
 		if (value) {
-			onFieldChange(value);
+			if (!isUndefined(onFieldChange)) {
+				onFieldChange(value);
+			}
 			setCheckboxValue(value);
 		}
 	}, [value]);
 
 	const ToggleCheckbox = () => {
 		setCheckboxValue(!checkboxValue);
-		onFieldChange(!checkboxValue);
+		if (!isUndefined(onFieldChange)) {
+			onFieldChange(!checkboxValue);
+		}
+
+		if (!isUndefined(handleClick)) {
+			handleClick(!checkboxValue);
+		}
 	};
 
 	const componentClassName = ClassNames(
@@ -44,6 +53,7 @@ const Checkbox = (
 		{
 			[classes.checkbox__checked]: checkboxValue && !iconCheckClassNameFromProps,
 			[iconCheckClassNameFromProps]: checkboxValue && iconCheckClassNameFromProps,
+			[classes.checkbox_icon__transition]: transition,
 		},
 		iconClassNameFromProps
 	);
@@ -63,13 +73,16 @@ const Checkbox = (
 
 
 Checkbox.defaultProps = {
-	value: false
+	value: false,
+	transition: true
 };
 
 Checkbox.propTypes = {
 	value: PropTypes.bool,
+	transition: PropTypes.bool,
 	className: PropTypes.string,
 	onFieldChange: PropTypes.func,
+	handleClick: PropTypes.func,
 	iconClassName: PropTypes.string,
 	iconCheckClassName: PropTypes.string
 };

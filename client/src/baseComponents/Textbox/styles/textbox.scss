@@ -13,3 +13,8 @@ input.textbox:focus {
 	outline: none !important;
 	border-color: $primary;
 }
+
+input.textbox::placeholder {
+	font-style: italic;
+	color: $disabled;
+}

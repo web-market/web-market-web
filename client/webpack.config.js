@@ -43,6 +43,10 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader'],
+			},
+			{
 				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 				use: [
 					{
@@ -67,7 +71,7 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['.js', '.jsx', '.scss']
+		extensions: ['.js', '.jsx', '.scss', '.css']
 	},
 	devServer: {
 		historyApiFallback: true

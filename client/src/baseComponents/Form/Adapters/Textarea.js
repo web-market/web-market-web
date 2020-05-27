@@ -7,27 +7,33 @@ class Textarea extends Component {
 	render () {
 		const {
 			label,
-			required,
+			width,
 			isValid,
-			errorMessages,
+			hasFocus,
+			required,
+			hasBorder,
+			labelBold,
 			hasTooltip,
-			toolTipMessage,
 			toolTipIcon,
+			errorMessages,
 			displayInline,
-			hasFocus
+			toolTipMessage,
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
+				width={width}
+				hasFocus={hasFocus}
 				required={required}
 				hasErrors={!isValid}
-				errorMessages={errorMessages}
-				displayInline={displayInline}
+				labelBold={labelBold}
+				hasBorder={hasBorder}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
+				displayInline={displayInline}
+				errorMessages={errorMessages}
 				toolTipMessage={toolTipMessage}
-				hasFocus={hasFocus}
 			>
 				<TextareaComponent
 					{...this.props}

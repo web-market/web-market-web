@@ -5,6 +5,10 @@ const addMediaCategory = (data) => {
 	return POST(ENDPOINTS.ADD_MEDIA_CATEGORY, data);
 };
 
+const editMediaCategory = (data) => {
+	return PUT(ENDPOINTS.ADD_MEDIA_CATEGORY, data);
+};
+
 const getMediaCategories = () => {
 	return GET(ENDPOINTS.GET_MEDIA_CATEGORIES);
 };
@@ -17,10 +21,16 @@ const getMediaCategoryDetail = (id) => {
 	return GET(`${ENDPOINTS.GET_MEDIA_CATEGORY}/${id}`);
 };
 
+const getMediaFilesInCategory = (id) => {
+	return GET(`${ENDPOINTS.GET_FILES_IN_CATEGORY}/${id}`);
+};
+
 
 export {
 	addMediaCategory,
 	getMediaCategories,
 	deleteMediaCategory,
-	getMediaCategoryDetail
+	getMediaCategoryDetail,
+	editMediaCategory,
+	getMediaFilesInCategory
 };

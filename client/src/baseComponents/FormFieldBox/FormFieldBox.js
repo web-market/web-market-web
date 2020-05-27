@@ -11,6 +11,7 @@ const FormFieldBox = (
 	{
 		children,
 		label,
+		labelBold,
 		required,
 		hasErrors,
 		errorMessages,
@@ -19,7 +20,8 @@ const FormFieldBox = (
 		toolTipIcon,
 		toolTipMessage,
 		hasFocus,
-		displayInline
+		displayInline,
+		width
 	}
 ) => {
 	const componentClassName = classNames(
@@ -46,12 +48,15 @@ const FormFieldBox = (
 	};
 
 	return (
-		<div className={componentClassName}>
+		<div
+			style={{ width }}
+			className={componentClassName}
+		>
 			{
 				label && (
 					<div className={classes.formFieldBox_labelWrapper}>
 						<div>
-							<Typography variant="14">{label}</Typography>
+							<Typography bold={labelBold} variant="14">{label}</Typography>
 							{
 								required && (
 									<span className={classes.formFieldBox_required}>*</span>
@@ -95,6 +100,7 @@ FormFieldBox.defaultProps = {
 	hasBorder: true,
 	hasFocus: false,
 	hasTooltip: false,
+	labelBold: '400',
 	displayInline: false,
 };
 
@@ -107,7 +113,9 @@ FormFieldBox.propTypes = {
 	hasFocus: PropTypes.bool,
 	hasTooltip: PropTypes.bool,
 	displayInline: PropTypes.bool,
+	labelBold: PropTypes.string,
 	toolTipIcon: PropTypes.string,
+	width: PropTypes.string,
 	toolTipMessage: PropTypes.string,
 };
 

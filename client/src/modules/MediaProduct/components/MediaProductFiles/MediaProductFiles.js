@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useEffect, useState } from 'react';
 
 import { MediaProductContext } from '../../consts';
 
@@ -9,41 +9,54 @@ import MediaProductFilesGridLayoutItem from './MediaProductFilesGridLayoutItem';
 import MediaProductFilesListLayoutItem from './MediaProductFilesListLayoutItem';
 import ScrollContainer from '../../../../baseComponents/ScrollContainer';
 
-import { getUniqueKey } from '../../../../utils';
+import { getUniqueKey, isNull } from '../../../../utils';
 import classes from './styles/index.scss';
+import { getMediaFilesInCategory } from '../../api';
 
 const MediaProductFiles = () => {
-	const { mediaProductGrisLayout, images } = useContext(MediaProductContext);
+	const { mediaProductGrisLayout, activeCategoryId } = useContext(MediaProductContext);
+	const [mediaFiles, setMediaFiles] = useState([]);
+
+	useEffect(() => {
+		if (!isNull(activeCategoryId)) {
+			getMediaFilesInCategory(activeCategoryId)
+			.then(({ data }) => setMediaFiles(data));
+		}
+	}, [activeCategoryId]);
 
 	const filesListLayout = useMemo(() => {
-		return images.map(item => {
-			const key = getUniqueKey(item.name, item.id);
+		return mediaFiles.map(item => {
+			const key = getUniqueKey(item.createdAtDate, item.id);
+
+			if (item.files.length === 0) return;
 
 			return (
 				<MediaProductFilesListLayoutItem
 					key={key}
 					id={item.id}
-					src={item.url}
-					name={item.name}
+					src={item.files[1].path}
+					name={item.files[1].name}
 				/>
 			);
 		});
-	}, []);
+	}, [mediaFiles]);
 
 	const filesGridLayout = useMemo(() => {
-		return images.map(item => {
+		return mediaFiles.map(item => {
 			const key = getUniqueKey(item.name, item.id);
+
+			if (item.files.length === 0) return;
 
 			return (
 				<MediaProductFilesGridLayoutItem
 					key={key}
 					id={item.id}
-					src={item.url}
-					name={item.name}
+					src={item.files[0].path}
+					name={item.files[0].name}
 				/>
 			);
 		});
-	}, []);
+	}, [mediaFiles]);
 
 	return (
 		<>

@@ -11,9 +11,15 @@
 	cursor: pointer;
 }
 
-.dropdownItem_placeholder {
+.dropdownItem_value {
 	word-spacing: normal;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+
+.dropdownItem_placeholder {
+	font-style: italic;
+	color: $disabled;
 }

@@ -18,6 +18,7 @@ const Typography = (
 			[classes.typography_12]: variant === '12',
 			[classes.typography_14]: variant === '14',
 			[classes.typography_16]: variant === '16',
+			[classes.typography_18]: variant === '18',
 			[classes.typography_24]: variant === '24',
 			[classes.typography_32]: variant === '32',
 			[classes.typography_bold200]: bold === '200',

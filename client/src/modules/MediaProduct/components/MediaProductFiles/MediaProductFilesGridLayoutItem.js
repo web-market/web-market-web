@@ -31,7 +31,7 @@ const MediaProductFilesGridLayoutItem = (
 				iconCheckClassName={classes.mediaProductFilesGridLayoutItem_checkboxIcon__check}
 			/>
 			<img
-				src={src}
+				src={`http://localhost:8081/${src}`}
 				alt={name}
 				className={classes.mediaProductFilesGridLayoutItem_image}
 			/>
