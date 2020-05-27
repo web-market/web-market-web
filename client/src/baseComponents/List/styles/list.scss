@@ -1,0 +1,7 @@
+.list {
+	padding: 8px;
+}
+
+.list .listRow:nth-child(even) {
+	background-color: lighten($grey, 40%);
+}

@@ -1,26 +1,17 @@
-import React from 'react';
-import PaddingBox from '../PaddingBox';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
+import classes from './styles/index.scss';
 
-const List = (
+const List = forwardRef((
 	{
-		padding,
 		children
-	}
+	},
+	ref
 ) => {
 	return (
-		<PaddingBox {...padding}>
+		<div ref={ref} className={classes.list}>
 			{children}
-		</PaddingBox>
+		</div>
 	);
-};
-
-List.defaultProps = {
-	padding: { small: true }
-};
-
-List.propTypes = {
-	padding: PropTypes.object
-};
+});
 
 export { List };

@@ -13,7 +13,8 @@ const ListHeaderTooltipList = (
 ) => {
 	return (
 		<PaddingBox
-			tiny
+			hrTiny
+			vrUltraTiny
 			className={classes.listHeaderTooltipList}
 		>
 			{

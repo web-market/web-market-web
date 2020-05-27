@@ -20,7 +20,7 @@ const ListRowItem = (
 };
 
 ListRowItem.propTypes = {
-	width: PropTypes.string
+	width: PropTypes.number
 };
 
 export { ListRowItem };

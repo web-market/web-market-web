@@ -30,13 +30,11 @@ const ListHeaderItem = (
 	);
 };
 
-// ListHeaderItem.defaultProps = {};
-
 ListHeaderItem.propTypes = {
 	action: PropTypes.func,
 	label: PropTypes.string,
 	icon: PropTypes.string,
-	width: PropTypes.string
+	width: PropTypes.number
 };
 
 export { ListHeaderItem };

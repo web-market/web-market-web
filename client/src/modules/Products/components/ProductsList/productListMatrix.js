@@ -16,7 +16,7 @@ export const productListMatrix = [
 		label: '',
 		icon: '',
 		action: null,
-		width: '25px',
+		width: 25,
 		show: true,
 		itemName: productListMatrixItemsName.checkbox,
 		displayInTooltip: false
@@ -25,7 +25,7 @@ export const productListMatrix = [
 		label: '',
 		icon: image,
 		action: null,
-		width: '75px',
+		width: 75,
 		show: true,
 		itemName: productListMatrixItemsName.image,
 		displayInTooltip: false
@@ -34,7 +34,7 @@ export const productListMatrix = [
 		label: '!Название',
 		icon: '',
 		action: null,
-		width: '500px',
+		width: 200,
 		show: true,
 		itemName: productListMatrixItemsName.name,
 		displayInTooltip: false
@@ -43,7 +43,7 @@ export const productListMatrix = [
 		label: '!Артикул',
 		icon: '',
 		action: null,
-		width: '520px',
+		width: 120,
 		show: false,
 		itemName: productListMatrixItemsName.setNumber,
 		displayInTooltip: true
@@ -52,7 +52,7 @@ export const productListMatrix = [
 		label: '!Остаток',
 		icon: '',
 		action: null,
-		width: '580px',
+		width: 150,
 		show: false,
 		itemName: productListMatrixItemsName.inStock,
 		displayInTooltip: true
@@ -61,7 +61,7 @@ export const productListMatrix = [
 		label: '!Цена',
 		icon: '',
 		action: null,
-		width: '80px',
+		width: 100,
 		show: true,
 		itemName: productListMatrixItemsName.price,
 		displayInTooltip: true
@@ -70,7 +70,7 @@ export const productListMatrix = [
 		label: '!Категории',
 		icon: '',
 		action: null,
-		width: '250px',
+		width: 250,
 		show: true,
 		itemName: productListMatrixItemsName.categories,
 		displayInTooltip: true
@@ -79,7 +79,7 @@ export const productListMatrix = [
 		label: '!Дата',
 		icon: '',
 		action: null,
-		width: '120px',
+		width: 120,
 		show: true,
 		itemName: productListMatrixItemsName.date,
 		displayInTooltip: true

@@ -17,6 +17,7 @@ const ListHeaderTooltipListItem = (
 			<Checkbox
 				transition={false}
 				value={listState[item.itemName]}
+				className={classes.listHeaderTooltipListItem_checkbox}
 				handleClick={value => updateListItemState({ itemName: item.itemName, itemState: value })}
 			/>
 			{item.label}

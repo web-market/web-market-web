@@ -6,11 +6,12 @@ import { products } from '../../testData';
 import { productListMatrix } from './productListMatrix';
 import { ListContextProvider } from '../../../../baseComponents/List/store/ListContext';
 import { ListContext } from '../../../../baseComponents/List/store';
-import { getListHeaderTooltipItems, getListInitials } from '../../../../baseComponents/List/utils';
+import { getListHeaderTooltipItems, getListInitials, getContentWidth } from '../../../../baseComponents/List/utils';
 import { isUndefined } from '../../../../utils';
 import { PRODUCTS_LIST_NAME } from '../../consts';
 import { ProductsListHeader } from './ProductsListHeader';
 import { ProductsListBody } from './ProductsListBody';
+import HorizontalScroll from '../../../../baseComponents/HorizontalScrollContainer';
 
 const ProductsList = () => {
 	const [get, setCookie, removeCookie] = useCookies();
@@ -43,8 +44,12 @@ const ProductsList = () => {
 
 	const actionList = getListHeaderTooltipItems(productListMatrix);
 
+	const contentWidth = getContentWidth(productListMatrix, listState);
+
 	return (
-		<div>
+		<HorizontalScroll
+			contentWidth={contentWidth}
+		>
 			<List>
 				<ProductsListHeader
 					listState={listState}
@@ -55,7 +60,7 @@ const ProductsList = () => {
 					products={products}
 				/>
 			</List>
-		</div>
+		</HorizontalScroll>
 	);
 };
 
