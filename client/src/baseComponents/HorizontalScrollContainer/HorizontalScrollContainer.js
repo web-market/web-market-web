@@ -14,7 +14,7 @@ const HorizontalScrollContainer = (
 
 	//140 - collapse menu offset + margin + scroll
 	//340 - menu offset + margin + scroll
-	const menuOffset = getBooleanCookie(isCollapsed) ? 140 : 340;
+	const menuOffset = getBooleanCookie(isCollapsed) ? 155 : 355;
 
 	const [clientWidthPercent, setClientWidthPercent] = useState(0);
 	setTimeout(() => {
