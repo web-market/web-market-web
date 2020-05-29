@@ -1,4 +1,4 @@
-import { image } from '../../../../icons';
+import { image } from '../../../../../icons';
 
 export const productListMatrixItemsName = {
 	checkbox: 'checkbox',

@@ -6,6 +6,7 @@ export const URL = {
 	CATALOG: {
 		ROOT: '/adminpanel/catalog',
 		PRODUCT_MANAGER: '/adminpanel/catalog/products-manager',
+		CREATE_PRODUCT: '/adminpanel/catalog/create-product',
 		MANUFACTURES: '/adminpanel/catalog/manufactures'
 	},
 	CATEGORY: {

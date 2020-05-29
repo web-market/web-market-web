@@ -1,4 +1,4 @@
-import { GET, POST, DELETE, PUT } from '../../utils/api';
+import { GET, POST, DELETE, PUT } from '../../../utils/api';
 import { ENDPOINTS } from './consts';
 
 // const getManufactures = () => {

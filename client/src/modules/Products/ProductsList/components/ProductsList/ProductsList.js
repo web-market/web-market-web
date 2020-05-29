@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
-import List from '../../../../baseComponents/List';
-import { products } from '../../testData';
+import List from '../../../../../baseComponents/List';
+import { products } from '../../../testData';
 import { productListMatrix } from './productListMatrix';
-import { ListContextProvider } from '../../../../baseComponents/List/store/ListContext';
-import { ListContext } from '../../../../baseComponents/List/store';
-import { getListHeaderTooltipItems, getListInitials, getContentWidth } from '../../../../baseComponents/List/utils';
-import { isUndefined } from '../../../../utils';
+import { ListContextProvider } from '../../../../../baseComponents/List/store/ListContext';
+import { ListContext } from '../../../../../baseComponents/List/store';
+import { getListHeaderTooltipItems, getListInitials, getContentWidth } from '../../../../../baseComponents/List/utils';
+import { isUndefined } from '../../../../../utils';
 import { PRODUCTS_LIST_NAME } from '../../consts';
 import { ProductsListHeader } from './ProductsListHeader';
 import { ProductsListBody } from './ProductsListBody';
-import HorizontalScroll from '../../../../baseComponents/HorizontalScrollContainer';
+import HorizontalScroll from '../../../../../baseComponents/HorizontalScrollContainer';
 
 const ProductsList = () => {
 	const [get, setCookie, removeCookie] = useCookies();

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import ProductsContextProvider from './store';
-import AdminControlHeader from '../../components/AdminControlHeader';
-import AdminControlContentBox from '../../components/AdminControlContentBox';
+import AdminControlContentBox from '../../../components/AdminControlContentBox';
 import { ProductsListWithListContext } from './components/ProductsList/ProductsList';
+import { ProductsHeader } from './components/ProductsHeader/ProductsHeader';
 
-const Products = () => {
+const ProductsList = () => {
 	return (
 		<>
-			<AdminControlHeader label="!!Товары" />
+			<ProductsHeader />
 			<AdminControlContentBox>
 				<ProductsListWithListContext />
 			</AdminControlContentBox>
@@ -18,7 +18,7 @@ const Products = () => {
 
 const ProductsWithProviders = () => (
 	<ProductsContextProvider>
-		<Products />
+		<ProductsList />
 	</ProductsContextProvider>
 );
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getUniqueKey, isUndefined } from '../../../../utils';
+import { getUniqueKey, isUndefined } from '../../../../../utils';
 import { productListMatrix } from './productListMatrix';
-import { ListHeader, ListHeaderItem } from '../../../../baseComponents/List';
+import { ListHeader, ListHeaderItem } from '../../../../../baseComponents/List';
 
 const ProductsListHeader = (
 	{
