@@ -1,1 +1,1 @@
-export { ProductsContextProvider as default } from './ProductsListContext';
+export { ProductsListContextProvider as default } from './ProductsListContext';

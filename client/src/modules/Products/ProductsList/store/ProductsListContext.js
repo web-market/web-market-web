@@ -5,7 +5,7 @@ import moduleActions from './actions';
 
 import { ProductsContext } from './consts';
 
-export const ProductsContextProvider = ({ children }) => {
+export const ProductsListContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (

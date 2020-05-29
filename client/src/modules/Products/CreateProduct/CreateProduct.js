@@ -1,24 +1,29 @@
 import React from 'react';
 
-import CreateProductsContext from './store';
-import AdminControlContentBox from '../../../components/AdminControlContentBox';
+import CreateProductContextProvider from './store';
+import AdminControlContentBox, { AdminControlContentBoxFooter } from '../../../components/AdminControlContentBox';
 import { CreateProductsHeader } from './components/CreateProductsHeader/CreateProductsHeader';
+import { CreateProductForm } from './components/CreateProductForm/CreateProductForm';
+import { CreateProductFooter } from './components/CreateProductFooter/CreateProductFooter';
 
 const CreateProduct = () => {
 	return (
 		<>
 			<CreateProductsHeader />
 			<AdminControlContentBox>
-				{/*<ProductsListWithListContext />*/}
+				<CreateProductForm />
+				<AdminControlContentBoxFooter>
+					<CreateProductFooter />
+				</AdminControlContentBoxFooter>
 			</AdminControlContentBox>
 		</>
 	);
 };
 
 const CreateProductWithProviders = () => (
-	<CreateProductsContext>
+	<CreateProductContextProvider>
 		<CreateProduct />
-	</CreateProductsContext>
+	</CreateProductContextProvider>
 );
 
 export { CreateProductWithProviders };

@@ -3,13 +3,13 @@ import React, { useReducer } from 'react';
 import { reducer, initialState } from './reducer';
 import moduleActions from './actions';
 
-import { CreateProducts } from './consts';
+import { CreateProductContext } from './consts';
 
-export const CreateProductsContext = ({ children }) => {
+export const CreateProductContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (
-		<CreateProducts.Provider
+		<CreateProductContext.Provider
 			value={{
 				...state,
 				...moduleActions(dispatch),
@@ -17,6 +17,6 @@ export const CreateProductsContext = ({ children }) => {
 			}}
 		>
 			{children}
-		</CreateProducts.Provider>
+		</CreateProductContext.Provider>
 	);
 };

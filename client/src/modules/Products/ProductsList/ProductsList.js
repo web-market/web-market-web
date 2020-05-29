@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProductsContextProvider from './store';
+import ProductsListContextProvider from './store';
 import AdminControlContentBox from '../../../components/AdminControlContentBox';
 import { ProductsListWithListContext } from './components/ProductsList/ProductsList';
 import { ProductsHeader } from './components/ProductsHeader/ProductsHeader';
@@ -17,9 +17,9 @@ const ProductsList = () => {
 };
 
 const ProductsWithProviders = () => (
-	<ProductsContextProvider>
+	<ProductsListContextProvider>
 		<ProductsList />
-	</ProductsContextProvider>
+	</ProductsListContextProvider>
 );
 
 export { ProductsWithProviders };

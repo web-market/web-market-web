@@ -1,10 +1,10 @@
-// import {
-// 	getManufactures as getManufacturesAPI,
-// 	addManufacture as addManufactureAPI,
-// 	updateManufacture as updateManufactureAPI,
-// 	deleteManufacture as deleteManufactureAPI,
-// 	getManufacture as getManufactureAPI
-// } from '../api';
+import {
+	createProduct as createProductAPI,
+	// addManufacture as addManufactureAPI,
+	// updateManufacture as updateManufactureAPI,
+	// deleteManufacture as deleteManufactureAPI,
+	// getManufacture as getManufactureAPI
+} from '../api';
 
 import {
 	SET_PENDING,
@@ -18,7 +18,11 @@ export default (dispatch) => {
 		});
 	};
 
-	return {
+	const createProduct = (data) => {
+		return createProductAPI(data);
+	};
 
+	return {
+		createProduct
 	};
 };

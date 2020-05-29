@@ -1,1 +1,1 @@
-export { CreateProductsContext as default } from './CreateProductsContext';
+export { CreateProductContextProvider as default } from './CreateProductContext';
