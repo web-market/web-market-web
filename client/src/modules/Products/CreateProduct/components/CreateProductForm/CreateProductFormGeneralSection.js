@@ -6,6 +6,7 @@ import {
 	FormLayoutItemGroup
 } from '../../../../../baseComponents/FormLayout';
 import { Textbox, AjaxDropdown } from '../../../../../baseComponents/Form/Adapters';
+import { ENDPOINT } from '../../consts';
 
 
 const CreateProductFormGeneralSection = () => {
@@ -23,6 +24,13 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Название товара"
 						name="name"
 						component={Textbox}
+						required
+						validate={{
+							required: true,
+							length: {
+								max: 64
+							}
+						}}
 					/>
 				</FormLayoutItem>
 				<FormLayoutItem>
@@ -30,6 +38,11 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Цена"
 						name="price"
 						component={Textbox}
+						required
+						validate={{
+							required: true,
+							number: true
+						}}
 					/>
 				</FormLayoutItem>
 				<FormLayoutItem>
@@ -37,7 +50,11 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Категории"
 						name="categoryIds"
 						component={AjaxDropdown}
-						url="/test"
+						url={ENDPOINT.GET_ALL_CATEGORIES}
+						required
+						validate={{
+							required: true
+						}}
 					/>
 				</FormLayoutItem>
 				<FormLayoutItem>
@@ -45,7 +62,11 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Фильтры"
 						name="filterValueIds"
 						component={AjaxDropdown}
-						url="/test"
+						url={ENDPOINT.GET_ALL_FILTERS}
+						required
+						validate={{
+							required: true
+						}}
 					/>
 				</FormLayoutItem>
 				<FormLayoutItem>
