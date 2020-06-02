@@ -44,7 +44,7 @@ const tinyInit = (height, changeHandler) => {
 			'alignright alignjustify | bullist numlist outdent indent | ' +
 			'removeformat | help',
 		content_css: [
-			'skins/ui/oxide/content.min.css'
+			'skins/content.min.css'
 		],
 		setup: editor => {
 			editor.on('keyup', e => changeHandler(e));
