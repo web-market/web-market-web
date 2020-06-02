@@ -58,14 +58,14 @@ const TextEditor = (
 		onFieldChange
 	}
 ) => {
-	const сhangeHandler = (e) => {
+	const changeHandler = (e) => {
 		if (!isNullOrUndefined(e.currentTarget)) {
 			onFieldChange(e.currentTarget.innerHTML);
 		}
 	};
 
 	useEffect(() => {
-		tinyInit(height, сhangeHandler);
+		tinyInit(height, changeHandler);
 	}, []);
 
 	return (
