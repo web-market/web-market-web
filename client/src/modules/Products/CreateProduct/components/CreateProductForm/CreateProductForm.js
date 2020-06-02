@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Form from '../../../../../baseComponents/Form';
 import GridLayout, { GridLayoutRow } from '../../../../../baseComponents/GridLayout';
@@ -8,13 +8,16 @@ import { CreateProductFormGeneralSection } from './CreateProductFormGeneralSecti
 import { CreateProductFormDescriptionSection } from './CreateProductFormDescriptionSection';
 import { CreateProductFormMediaSection } from './CreateProductFormMediaSection';
 import { CreateProductContext } from '../../store/consts';
-import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
 
 const CreateProductForm = () => {
+	const [description, setDescription] = useState('');
 	const { createProduct } = useContext(CreateProductContext);
 
 	const handleCreateProduct = (values) => {
-		createProduct(values);
+		createProduct({
+			...values,
+			description
+		});
 	};
 
 	return (
@@ -24,12 +27,12 @@ const CreateProductForm = () => {
 				name={CREATE_PRODUCT_FORM}
 			>
 				<GridLayout>
-					<GridLayoutRow gridColumn={17} grid="5-_1-5-_1-5">
+					<GridLayoutRow gridColumn={13} grid="6-_1-6">
 						<CreateProductFormGeneralSection />
-						<CreateProductFormDescriptionSection />
 						<CreateProductFormMediaSection />
 					</GridLayoutRow>
 				</GridLayout>
+				<CreateProductFormDescriptionSection setDescription={setDescription} />
 			</Form>
 		</MarginBox>
 	);

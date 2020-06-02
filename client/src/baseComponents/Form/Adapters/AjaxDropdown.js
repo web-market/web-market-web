@@ -7,27 +7,33 @@ class AjaxDropdown extends Component {
 	render () {
 		const {
 			label,
+			width,
 			isValid,
 			required,
 			hasFocus,
+			labelBold,
+			hasBorder,
 			hasTooltip,
 			toolTipIcon,
 			errorMessages,
-			toolTipMessage,
-			displayInline
+			displayInline,
+			toolTipMessage
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
+				width={width}
+				hasFocus={hasFocus}
 				required={required}
 				hasErrors={!isValid}
-				errorMessages={errorMessages}
+				hasBorder={hasBorder}
+				labelBold={labelBold}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
-				toolTipMessage={toolTipMessage}
+				errorMessages={errorMessages}
 				displayInline={displayInline}
-				hasFocus={hasFocus}
+				toolTipMessage={toolTipMessage}
 			>
 				<AjaxDropdownComponent
 					{...this.props}

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import { Checkbox as CheckboxComponent } from '../../Checkbox';
+import { TextEditor as TextEditorComponent } from '../../TextEditor';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 
-class Checkbox extends Component {
+class TextEditor extends Component {
 	render () {
 		const {
 			label,
 			width,
 			isValid,
+			required,
+			hasFocus,
+			hasBorder,
 			labelBold,
 			hasTooltip,
 			toolTipIcon,
 			displayInline,
+			errorMessages,
 			toolTipMessage
 		} = this.props;
 
@@ -20,15 +24,18 @@ class Checkbox extends Component {
 			<FieldBox
 				label={label}
 				width={width}
-				hasBorder={false}
+				hasFocus={hasFocus}
+				required={required}
 				hasErrors={!isValid}
 				labelBold={labelBold}
+				hasBorder={hasBorder}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
 				displayInline={displayInline}
+				errorMessages={errorMessages}
 				toolTipMessage={toolTipMessage}
 			>
-				<CheckboxComponent
+				<TextEditorComponent
 					{...this.props}
 				/>
 			</FieldBox>
@@ -36,4 +43,4 @@ class Checkbox extends Component {
 	}
 }
 
-export { Checkbox };
+export { TextEditor };

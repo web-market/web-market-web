@@ -7,27 +7,33 @@ class Textbox extends Component {
 	render () {
 		const {
 			label,
-			required,
+			width,
 			isValid,
-			errorMessages,
+			required,
+			hasFocus,
+			hasBorder,
+			labelBold,
 			hasTooltip,
-			toolTipMessage,
 			toolTipIcon,
 			displayInline,
-			hasFocus
+			errorMessages,
+			toolTipMessage,
 		} = this.props;
 
 		return (
 			<FieldBox
 				label={label}
+				width={width}
+				hasFocus={hasFocus}
 				required={required}
 				hasErrors={!isValid}
-				displayInline={displayInline}
-				errorMessages={errorMessages}
+				labelBold={labelBold}
+				hasBorder={hasBorder}
 				hasTooltip={hasTooltip}
 				toolTipIcon={toolTipIcon}
+				displayInline={displayInline}
+				errorMessages={errorMessages}
 				toolTipMessage={toolTipMessage}
-				hasFocus={hasFocus}
 			>
 				<TexboxComponent
 					{...this.props}

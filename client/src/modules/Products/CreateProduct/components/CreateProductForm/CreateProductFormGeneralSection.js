@@ -5,7 +5,11 @@ import {
 	FormLayoutItem,
 	FormLayoutItemGroup
 } from '../../../../../baseComponents/FormLayout';
-import { Textbox, AjaxDropdown } from '../../../../../baseComponents/Form/Adapters';
+import {
+	Textbox,
+	AjaxDropdown,
+	Checkbox
+} from '../../../../../baseComponents/Form/Adapters';
 import { ENDPOINT } from '../../consts';
 
 
@@ -43,6 +47,8 @@ const CreateProductFormGeneralSection = () => {
 							required: true,
 							number: true
 						}}
+						width="40%"
+						placeholder="000.00"
 					/>
 				</FormLayoutItem>
 				<FormLayoutItem>
@@ -71,9 +77,32 @@ const CreateProductFormGeneralSection = () => {
 				</FormLayoutItem>
 				<FormLayoutItem>
 					<Field
+						label="!!Производитель"
+						name="filterValueIds"
+						component={AjaxDropdown}
+						url={ENDPOINT.GET_ALL_MANUFACTURES}
+					/>
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<Field
 						label="!!Порядок сортировки"
 						name="sortOrder"
+						width="40%"
 						component={Textbox}
+						validate={{
+							number: true
+						}}
+					/>
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<Field
+						label="!!Статус"
+						name="active"
+						component={Checkbox}
+						value
+						hasTooltip
+						displayInline
+						toolTipMessage="!!Отображать товар в магазине"
 					/>
 				</FormLayoutItem>
 			</FormLayoutItemGroup>

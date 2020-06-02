@@ -4,4 +4,5 @@ export const ENDPOINT = {
 	CREATE_PRODUCT: '/products',
 	GET_ALL_CATEGORIES: '/category-management/categories/fill-dropdown',
 	GET_ALL_FILTERS: '/filter-values',
+	GET_ALL_MANUFACTURES: '/filter-values',
 };

@@ -12,6 +12,7 @@ const Textbox = (
 		className,
 		onFieldFocus,
 		onFieldChange,
+		placeholder
 	}
 ) => {
 	const handleInputChange = (value) => {
@@ -29,6 +30,7 @@ const Textbox = (
 			name={name}
 			type="textbox"
 			value={value || ''}
+			placeholder={placeholder}
 			className={componentClassName}
 			onFocus={() => onFieldFocus(true)}
 			onBlur={() => onFieldFocus(false)}
@@ -52,6 +54,7 @@ Textbox.propTypes = {
 	onChange: PropTypes.func,
 	className: PropTypes.string,
 	onFieldFocus: PropTypes.func,
+	placeholder: PropTypes.string,
 	onFieldChange: PropTypes.func,
 };
 
