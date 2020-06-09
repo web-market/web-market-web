@@ -49,10 +49,10 @@ export default (dispatch) => {
 		// formData.append('lowResolution', true);
 		// formData.append('mediumResolution', true);
 		// formData.append('highResolution', true);
-		formData.append('mediaCategoryId', data.id);
+		formData.append('mediaFolderId', data.id);
 
 		data.files.forEach(file => {
-			formData.append('files', file, file.name);
+			formData.append('images', file, file.name);
 		});
 
 		return uploadFilesAPI(url, formData, handleUploadProgress);

@@ -1,5 +1,6 @@
 import {
 	addMediaCategory as addMediaCategoryAPI,
+	editMediaCategory as editMediaCategoryAPI,
 	getMediaCategories as getMediaCategoriesAPI,
 	deleteMediaCategory as deleteMediaCategoryAPI,
 	getMediaCategoryDetail as getMediaCategoryDetailAPI,
@@ -28,11 +29,6 @@ export default (dispatch) => {
 		dispatch({
 			type: SET_MEDIA_PRODUCT_CATEGORIES,
 			categories
-		});
-
-		dispatch({
-			type: SET_HAS_MEDIA_PRODUCT_CATEGORIES,
-			hasMediaProductCategories: categories.length !== 0
 		});
 	};
 
@@ -73,6 +69,10 @@ export default (dispatch) => {
 		return addMediaCategoryAPI(data);
 	};
 
+	const editMediaCategory = (data) => {
+		return editMediaCategoryAPI(data);
+	};
+
 	const getMediaCategories = () => {
 		_setPending(true);
 
@@ -97,6 +97,7 @@ export default (dispatch) => {
 		setActiveCategory,
 		setSelectedImageId,
 		getMediaCategories,
+		editMediaCategory,
 		deleteMediaCategory,
 		deleteSelectedImageId,
 		setMediaProductLayout,

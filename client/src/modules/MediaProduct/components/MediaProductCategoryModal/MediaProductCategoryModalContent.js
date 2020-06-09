@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
@@ -11,23 +11,37 @@ import {
 } from '../../../../baseComponents/Modal';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import Button from '../../../../baseComponents/Button';
-import MediaProductCategoryModalForm from './MediaProductCategoryModalForm';
+import MediaProductCategoryModalAddForm from './MediaProductCategoryModalAddForm';
+import MediaProductCategoryModalEditForm from './MediaProductCategoryModalEditForm';
 import { MediaProductContext } from '../../consts';
 import { Typography } from '../../../../baseComponents/Typography/Typography';
+import { getInitialValuesHook, getFieldsMetadataHook } from './hooks';
 
 const MediaProductCategoryModalContent = (
 	{
 		categoryId,
 		handleClose: handleCloseFromProps,
 		categoryName,
-		isSubCategory
+		isSubCategory,
+		initialValues,
+		isEditMode
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addMediaCategory, getMediaCategories } = useContext(MediaProductContext);
+	const {
+		addMediaCategory,
+		getMediaCategories,
+		editMediaCategory,
+		setActiveCategory
+	} = useContext(MediaProductContext);
 	const [isPending, setIsPending] = useState(false);
 
-	const handleAddMediaCategory = (values) => {
+	const handleClose = useCallback(() => {
+		setIsPending(false);
+		handleCloseFromProps();
+	}, [handleCloseFromProps]);
+
+	const handleAddCategory = useCallback((values) => {
 		setIsPending(true);
 
 		const requestValues = isSubCategory
@@ -38,12 +52,28 @@ const MediaProductCategoryModalContent = (
 			.then(() => getMediaCategories())
 			.catch(error => console.log(error))
 			.finally(() => handleClose());
-	};
+	}, [
+		addMediaCategory,
+		categoryId,
+		getMediaCategories,
+		handleClose,
+		isSubCategory
+	]);
 
-	const handleClose = () => {
-		setIsPending(false);
-		handleCloseFromProps();
-	};
+	const handleEditCategory = useCallback((values) => {
+		setIsPending(true);
+
+		editMediaCategory({ ...values, id: categoryId })
+			.then(() => getMediaCategories())
+			.then(() => setActiveCategory(categoryId))
+			.catch(error => console.log(error))
+			.finally(() => handleClose());
+	}, [
+		editMediaCategory,
+		categoryId,
+		getMediaCategories,
+		handleClose
+	]);
 
 	const modalLabel = isSubCategory ? '!! Добавить подкатегорию' : '!! Добавить категорию';
 
@@ -56,17 +86,33 @@ const MediaProductCategoryModalContent = (
 			{
 				isSubCategory && (
 					<ModalContentInfoSection>
-						<Typography>
+						!!Родительская категоия:&nbsp;
+						<Typography bold="600">
 							{categoryName}
 						</Typography>
 					</ModalContentInfoSection>
 				)
 			}
 			<ModalContent isPending={isPending}>
-				<MediaProductCategoryModalForm
-					isSubCategory={isSubCategory}
-					handleAddMediaCategory={handleAddMediaCategory}
-				/>
+				<>
+					{
+						!isEditMode && (
+							<MediaProductCategoryModalAddForm
+								isSubCategory={isSubCategory}
+								handleSubmit={handleAddCategory}
+							/>
+						)
+					}
+					{
+						isEditMode && (
+							<MediaProductCategoryModalEditForm
+								initialValues={getInitialValuesHook(initialValues)}
+								fieldsMetadata={getFieldsMetadataHook(initialValues)}
+								handleSubmit={handleEditCategory}
+							/>
+						)
+					}
+				</>
 			</ModalContent>
 			<ModalFooter>
 				<ButtonGroup
@@ -76,13 +122,21 @@ const MediaProductCategoryModalContent = (
 							actionHandler={() => handleClose()}
 						/>
 					)}
-					rightButtons={(
-						<Button
-							type="primary"
-							label="!добавить"
-							actionHandler={() => forms.ADD_MEDIA_CATEGORY_FORM.submitForm()}
-						/>
-					)}
+					rightButtons={
+						isEditMode ? (
+							<Button
+								type="primary"
+								label="!редактировать"
+								actionHandler={() => forms.EDIT_MEDIA_CATEGORY_FORM.submitForm()}
+							/>
+						) : (
+							<Button
+								type="primary"
+								label="!добавить"
+								actionHandler={() => forms.ADD_MEDIA_CATEGORY_FORM.submitForm()}
+							/>
+						)
+					}
 				/>
 			</ModalFooter>
 		</>
@@ -90,13 +144,15 @@ const MediaProductCategoryModalContent = (
 };
 
 MediaProductCategoryModalContent.defaultProps = {
-	isSubCategory: false
+	isSubCategory: false,
+	isEditMode: false
 };
 
 MediaProductCategoryModalContent.propTypes = {
 	handleClose: PropTypes.func,
 	categoryId: PropTypes.number,
 	isSubCategory: PropTypes.bool,
+	isEditMode: PropTypes.bool,
 	categoryName: PropTypes.string
 };
 

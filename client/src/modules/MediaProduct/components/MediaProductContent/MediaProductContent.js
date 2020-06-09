@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { MediaProductContext } from '../../consts';
 
@@ -9,16 +9,19 @@ import MediaProductFiles from '../MediaProductFiles';
 import MediaProductCategory from '../MediaProductCategory';
 
 const MediaProductContent = () => {
+	const [pending, setPending] = useState(false);
+
 	const {
-		pending,
 		categories,
 		setActiveCategory,
 		getMediaCategories,
-		hasMediaProductCategories
 	} = useContext(MediaProductContext);
 
 	useEffect(() => {
-		getMediaCategories();
+		setPending(true);
+
+		getMediaCategories()
+			.then(() => setPending(false));
 	}, []);
 
 	const handleOnCategoryClick = (e, id) => {
@@ -30,12 +33,12 @@ const MediaProductContent = () => {
 	return (
 		<AdminControlContentBox>
 			{
-				!hasMediaProductCategories && (
+				categories.length === 0 && (
 					<MediaProductContentEmpty />
 				)
 			}
 			{
-				hasMediaProductCategories && (
+				categories.length !== 0 && (
 					<GridLayout isPending={pending}>
 						<GridLayoutRow gridColumn={24} grid="7-17">
 							<MediaProductCategory

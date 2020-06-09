@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 
 export const ADD_MEDIA_CATEGORY_FORM = 'ADD_MEDIA_CATEGORY_FORM';
+export const EDIT_MEDIA_CATEGORY_FORM = 'EDIT_MEDIA_CATEGORY_FORM';
 
 export const MODALS = {
 	UPLOAD_FILE_MODAL: 'UPLOAD_FILE_MODAL',
@@ -19,7 +20,8 @@ export const ENDPOINTS = {
 	GET_MEDIA_CATEGORY: '/media-folder-management/media-folder',
 	GET_MEDIA_CATEGORY_DROP_DOWN: '/media-folder-management/media-folder/all',
 	ADD_IMAGES: '/media-management/media',
-	DELETE_IMAGES: '/media-management/media'
+	DELETE_IMAGES: '/media-management/media',
+	GET_IMAGES_IN_CATEGORY: '/media-management/media/media-folder',
 };
 
 export const MediaProductContext = createContext();

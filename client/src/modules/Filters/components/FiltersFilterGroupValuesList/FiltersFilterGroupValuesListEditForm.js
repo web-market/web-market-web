@@ -16,7 +16,7 @@ const FiltersFilterGroupValuesListEditForm = (
 ) => {
 	return (
 		<Form
-			restFormValues={false}
+			resetFormValues={false}
 			initialValues={initialValues}
 			onSubmit={handleEditFilterGroupValue}
 			name={`${EDIT_FILTER_GROUP_VALUE_FORM}-${id}`}

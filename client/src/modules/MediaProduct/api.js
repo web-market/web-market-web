@@ -5,6 +5,10 @@ const addMediaCategory = (data) => {
 	return POST(ENDPOINTS.ADD_MEDIA_CATEGORY, data);
 };
 
+const editMediaCategory = (data) => {
+	return PUT(ENDPOINTS.ADD_MEDIA_CATEGORY, data);
+};
+
 const getMediaCategories = () => {
 	return GET(ENDPOINTS.GET_MEDIA_CATEGORIES);
 };
@@ -22,5 +26,6 @@ export {
 	addMediaCategory,
 	getMediaCategories,
 	deleteMediaCategory,
-	getMediaCategoryDetail
+	getMediaCategoryDetail,
+	editMediaCategory
 };
