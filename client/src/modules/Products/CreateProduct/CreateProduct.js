@@ -12,10 +12,10 @@ const CreateProduct = () => {
 			<CreateProductsHeader />
 			<AdminControlContentBox>
 				<CreateProductForm />
-				<AdminControlContentBoxFooter>
-					<CreateProductFooter />
-				</AdminControlContentBoxFooter>
 			</AdminControlContentBox>
+			<AdminControlContentBoxFooter>
+				<CreateProductFooter />
+			</AdminControlContentBoxFooter>
 		</>
 	);
 };

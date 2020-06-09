@@ -69,7 +69,7 @@ const TextEditor = (
 	}, []);
 
 	return (
-		<div style={{ height: height + 60 }}>
+		<div style={{ height: height + 30 }}>
 			<textarea
 				id="tiny-editor"
 			/>

@@ -46,9 +46,9 @@ export default (dispatch) => {
 
 	const uploadFiles = (url, data, handleUploadProgress) => {
 		const formData = new FormData();
-		formData.append('lowResolution', true);
-		formData.append('mediumResolution', true);
-		formData.append('highResolution', true);
+		// formData.append('lowResolution', true);
+		// formData.append('mediumResolution', true);
+		// formData.append('highResolution', true);
 		formData.append('mediaCategoryId', data.id);
 
 		data.files.forEach(file => {
