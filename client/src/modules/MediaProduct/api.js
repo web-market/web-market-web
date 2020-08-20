@@ -21,11 +21,16 @@ const getMediaCategoryDetail = (id) => {
 	return GET(`${ENDPOINTS.GET_MEDIA_CATEGORY}/${id}`);
 };
 
+const getMediaFilesInCategory = (id) => {
+	return GET(`${ENDPOINTS.GET_FILES_IN_CATEGORY}/${id}`);
+};
+
 
 export {
 	addMediaCategory,
 	getMediaCategories,
 	deleteMediaCategory,
 	getMediaCategoryDetail,
-	editMediaCategory
+	editMediaCategory,
+	getMediaFilesInCategory
 };

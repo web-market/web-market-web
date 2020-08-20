@@ -21,7 +21,7 @@ export const ENDPOINTS = {
 	GET_MEDIA_CATEGORY_DROP_DOWN: '/media-folder-management/media-folder/all',
 	ADD_IMAGES: '/media-management/media',
 	DELETE_IMAGES: '/media-management/media',
-	GET_IMAGES_IN_CATEGORY: '/media-management/media/media-folder',
+	GET_FILES_IN_CATEGORY: '/media-management/media/media-folder',
 };
 
 export const MediaProductContext = createContext();
