@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { CookiesProvider, useCookies } from 'react-cookie';
+import React from 'react';
+import { CookiesProvider } from 'react-cookie';
 import NavigationGlobalContextProvider from '../../App/store/NavigationGlobalContext';
 
 import AdminNavigation from '../AdminNavigation';

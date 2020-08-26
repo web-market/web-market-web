@@ -1,0 +1,24 @@
+body {
+	margin: 0;
+}
+
+.onLoading {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #f6f6fa;
+	z-index: 99;
+	top: 0;
+	opacity: 1;
+	transition: opacity, .3s;
+	overflow-x: hidden;
+	text-align: center;
+	font-size: 30px;
+	padding-top: 70px;
+}
+
+.onLoad {
+	z-index: -1;
+	opacity: 0;
+	overflow-x: auto;
+}

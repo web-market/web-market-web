@@ -5,7 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV !== 'prod';
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		app: './src/index.js',
+		onAppLoad: './src/assets/js/onLoadApp.js',
+	},
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: isDevelopment ? '[name].js' : '[name].[hash].js',
