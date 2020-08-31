@@ -57,7 +57,7 @@ const MediaProductCategoryItem = (
 						<div className={classes.mediaProductCategoryItem_indicator}></div>
 					)
 				}
-				<Typography bold="500">{name}</Typography>
+				<Typography>{name}</Typography>
 				{
 					hasChildren && (
 						<Button
