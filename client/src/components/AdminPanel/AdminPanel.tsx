@@ -2,8 +2,8 @@ import React from 'react';
 import { CookiesProvider } from 'react-cookie';
 import NavigationGlobalContextProvider from '../../App/store/NavigationGlobalContext';
 
-import AdminNavigation from '../AdminNavigation';
-import AdminNavigationCollapsed from '../AdminNavigationCollapsed';
+import { AdminNavigation } from '../AdminNavigation/AdminNavigation';
+import { AdminNavigationCollapsed } from '../AdminNavigationCollapsed/AdminNavigationCollapsed';
 import AdminControl from '../AdminControl';
 
 import classNames from 'classnames';

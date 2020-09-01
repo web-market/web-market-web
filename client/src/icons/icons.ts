@@ -1,4 +1,5 @@
-import classes from '../styles/index.scss';
+// @ts-ignore
+import * as classes from '../styles/themify-icons.scss';
 
 export const chevronDown = classes['ti-arrow-down'];
 export const chevronUp = classes['ti-arrow-up'];

@@ -61,4 +61,4 @@ AdminNavigationCollapsedButton.propTypes = {
 	primaryNavigation: PropTypes.bool
 };
 
-export default AdminNavigationCollapsedButton;
+export { AdminNavigationCollapsedButton };

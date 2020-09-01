@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, createRef } from 'react';
 
 import Link from '../../../../baseComponents/Link';
 
 import classes from './styles/index.scss';
 
-class AdminNavigationCollapseContent extends Component {
+type AdminNavigationCollapseContentType = {
+    setCollapseRef: (current: {}) => void,
+    height: number,
+    items: {
+        label: string,
+        link: string,
+        hasRoute: boolean,
+    }[]
+}
+
+class AdminNavigationCollapseContent extends Component<AdminNavigationCollapseContentType> {
+    collapseContent = createRef<HTMLInputElement>();
+
 	constructor (props) {
 		super(props);
-		this.collapseContent = React.createRef();
 	}
 
 	componentDidMount () {
@@ -70,11 +80,5 @@ class AdminNavigationCollapseContent extends Component {
 		);
 	}
 }
-
-AdminNavigationCollapseContent.propTypes = {
-	items: PropTypes.array.isRequired,
-	height: PropTypes.number,
-	setCollapseRef: PropTypes.func
-};
 
 export { AdminNavigationCollapseContent };

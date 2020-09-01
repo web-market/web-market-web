@@ -6,7 +6,7 @@ import Link from '../baseComponents/Link';
 
 import '../styles/index.scss';
 
-class App extends Component {
+class App extends Component<any, any> {
 	render () {
 		return (
 			<Router>

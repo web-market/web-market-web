@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import AdminNavigationCollapseContent from '../AdminNavigationCollapseContent';
+import { AdminNavigationCollapseContent } from '../AdminNavigationCollapseContent/AdminNavigationCollapseContent';
 
 import Icon from '../../../../baseComponents/Icon';
 
@@ -9,6 +9,20 @@ import { angleRight } from '../../../../icons';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
 import { isUndefined } from '../../../../utils';
+
+type CollapseRefType = {
+    childNodes: {
+        offsetHeight: number,
+        childElementCount: number,
+    }[]
+}
+
+const collapseRefInitial = {
+    childNodes: [{
+        offsetHeight: 0,
+        childElementCount: 0
+    }]
+};
 
 const AdminNavigationListItemCollapse = (
 	{
@@ -22,7 +36,7 @@ const AdminNavigationListItemCollapse = (
 ) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState(0);
-	const [collapseRef, setCollapseRef] = useState();
+    const [collapseRef, setCollapseRef] = useState<CollapseRefType>(collapseRefInitial);
 
 	const getHeight = useCallback(() => {
 		if (isUndefined(collapseRef)) return;

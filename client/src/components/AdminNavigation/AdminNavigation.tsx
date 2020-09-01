@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavigationGlobalContext } from '../../App/store/NavigationGlobalContext';
 
-import AdminNavigationProfile from './components/AdminNavigationProfile';
-import AdminNavigationList from './components/AdminNavigationList';
-import AdminNavigationBottomItemList from './components/AdminNavigationBottomItemList';
+import { AdminNavigationProfile } from './components/AdminNavigationProfile/AdminNavigationProfile';
+import { AdminNavigationList } from './components/AdminNavigationList/AdminNavigationList';
+import { AdminNavigationBottomItemList } from './components/AdminNavigationBottomItemList/AdminNavigationBottomItemList';
 
 import { parsedLocation } from './utils';
 import classNames from 'classnames';
 import classes from './styles/index.scss';
-import AdminNavigationCollapsedButton from '../AdminNavigationCollapsedButton/AdminNavigationCollapsedButton';
+import { AdminNavigationCollapsedButton } from '../AdminNavigationCollapsedButton/AdminNavigationCollapsedButton';
 import { getBooleanCookie } from '../../utils';
 
 const AdminNavigation = () => {

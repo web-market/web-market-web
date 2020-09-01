@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import AdminNavigationCollapsedContent from '../AdminNavigationCollapsedContent';
+import { AdminNavigationCollapsedContent } from '../AdminNavigationCollapsedContent/AdminNavigationCollapsedContent';
 
 import { Icon } from '../../../../baseComponents/Icon/Icon';
 import classNames from 'classnames';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
 
-import AdminNavigationCollapseContent from '../AdminNavigationCollapseContent';
+import { AdminNavigationCollapseContent } from '../AdminNavigationCollapseContent/AdminNavigationCollapseContent';
 import { navProfile } from '../../../consts';
 
 import classes from './styles/index.scss';
@@ -12,10 +12,12 @@ import classNames from 'classnames';
 import { isUndefined } from '../../../../utils';
 import { profileItem } from './staticData/staticData';
 
+type CollapseRefType = {childNodes: {offsetHeight: number}[]}
+
 const AdminNavigationProfile = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState(0);
-	const [collapseRef, setCollapseRef] = useState();
+    const [collapseRef, setCollapseRef] = useState<CollapseRefType>({ childNodes: [{ offsetHeight: 0 }] });
 
 	const iconClassName = classNames(
 		classes.adminNavigationProfile_icon,
@@ -27,7 +29,7 @@ const AdminNavigationProfile = () => {
 	useEffect(() => {
 		if (isUndefined(collapseRef)) return;
 
-		const collapseContentHeight = collapseRef.childNodes[0].offsetHeight;
+        const collapseContentHeight = collapseRef.childNodes[0].offsetHeight;
 
 		return isOpen ? setHeight(collapseContentHeight) : setHeight(0);
 	}, [isOpen, collapseRef]);

@@ -6,7 +6,7 @@ const isDevelopment = process.env.NODE_ENV !== 'prod';
 
 module.exports = {
 	entry: {
-		app: './src/index.js',
+		app: './src/index.ts',
 		onAppLoad: './src/assets/js/onLoadApp.js',
 	},
 	output: {
@@ -14,12 +14,32 @@ module.exports = {
 		filename: isDevelopment ? '[name].js' : '[name].[hash].js',
 		publicPath: isDevelopment ? '/' : '',
 	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './src/index.html'
+		}),
+		new MiniCssExtractPlugin({
+			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
+			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+		}),
+	],
+	resolve: {
+		extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css']
+	},
+	devServer: {
+		historyApiFallback: true
+	},
+	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				use: ['babel-loader'],
+			},
+			{
+				test: /\.tsx?$/,
+				loader: 'ts-loader'
 			},
 			{
 				test: /\.s[ac]ss$/i,
@@ -64,20 +84,4 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './src/index.html'
-		}),
-		new MiniCssExtractPlugin({
-			filename: isDevelopment ? '[name].css' : 'css/[name].[hash].css',
-			chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-		}),
-	],
-	resolve: {
-		extensions: ['.js', '.jsx', '.scss', '.css']
-	},
-	devServer: {
-		historyApiFallback: true
-	},
-	devtool: 'inline-source-map',
 };

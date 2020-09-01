@@ -16,7 +16,6 @@ const AdminNavigationCollapsedBottomItemList = () => {
 								<AdminNavigationCollapsedListItem
 									key={item.label}
 									icon={item.icon}
-									label={item.label}
 									link={item.link}
 									hasRoute={item.hasRoute}
 								/>

@@ -4,10 +4,10 @@ import { NavigationGlobalContext } from '../../App/store/NavigationGlobalContext
 import { useLocation } from 'react-router-dom';
 import { parsedLocation } from './utils';
 
-import AdminNavigationCollapsedProfile from './components/AdminNavigationCollapsedProfile';
-import AdminNavigationCollapsedList from './components/AdminNavigationCollapsedList';
-import AdminNavigationCollapsedBottomItemList from './components/AdminNavigationCollapsedBottomItemList';
-import AdminNavigationCollapsedButton from '../AdminNavigationCollapsedButton/AdminNavigationCollapsedButton';
+import { AdminNavigationCollapsedProfile } from './components/AdminNavigationCollapsedProfile/AdminNavigationCollapsedProfile';
+import { AdminNavigationCollapsedList } from './components/AdminNavigationCollapsedList/AdminNavigationCollapsedList';
+import { AdminNavigationCollapsedBottomItemList } from './components/AdminNavigationCollapsedBottomItemList/AdminNavigationCollapsedBottomItemList';
+import { AdminNavigationCollapsedButton } from '../AdminNavigationCollapsedButton/AdminNavigationCollapsedButton';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';

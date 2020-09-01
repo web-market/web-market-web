@@ -1,14 +1,14 @@
 import React, { useRef, useState, useContext } from 'react';
 
 import PaddingBox from '../../../../baseComponents/PaddingBox';
-import AdminNavigationCollapsedContent from '../AdminNavigationCollapsedContent';
+import { AdminNavigationCollapsedContent } from '../AdminNavigationCollapsedContent/AdminNavigationCollapsedContent';
 
 import { navProfile } from '../../../consts';
 
 import classes from './styles/index.scss';
 import ClassName from 'classnames';
 import OverlayPoint from '../../../../baseComponents/OverlayPoint';
-import { profileItem } from './staticData/staticData';
+import { profileItem } from './staticData';
 import { NavigationGlobalContext } from '../../../../App/store/NavigationGlobalContext';
 
 const AdminNavigationCollapsedProfile = () => {
@@ -57,7 +57,7 @@ const AdminNavigationCollapsedProfile = () => {
 						componentRef={tooltipActionRef.current}
 						render={() => {
 							return (
-								<AdminNavigationCollapsedContent items={profileItem}/>
+								<AdminNavigationCollapsedContent items={profileItem} />
 							);
 						}
 						}

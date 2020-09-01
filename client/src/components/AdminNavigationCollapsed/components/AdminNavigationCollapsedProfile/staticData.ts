@@ -1,5 +1,5 @@
-import { chevronLeft } from '../../../../../icons';
-import { URL } from '../../../../consts';
+import { chevronLeft } from '../../../../icons';
+import { URL } from '../../../consts';
 
 export const profileItem = [
 	{
