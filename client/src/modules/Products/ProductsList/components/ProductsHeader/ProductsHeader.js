@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import AdminControlHeader from '../../../../../components/AdminControlHeader';
+import { AdminControlHeader } from '../../../../../components/AdminControlHeader/AdminControlHeader';
 import { URL } from '../../../../../components/consts';
 
 const ProductsHeader = () => {

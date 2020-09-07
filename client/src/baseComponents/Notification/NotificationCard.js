@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import PaddingBox from '../PaddingBox';
-import Button from '../Button';
+import { PaddingBox } from '../PaddingBox/PaddingBox';
+import { Button } from '../Button/Button';
 
 import { isUndefined } from '../../utils';
 import ClassNames from 'classnames';
@@ -63,11 +63,16 @@ const NotificationCard = (
 	);
 };
 
+NotificationCard.defaultProps = {
+	duration: 3000,
+	type: 'info'
+};
+
 NotificationCard.propTypes = {
 	id: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
+	type: PropTypes.string,
 	message: PropTypes.string.isRequired,
-	duration: PropTypes.number.isRequired,
+	duration: PropTypes.number,
 	removeNotification: PropTypes.func.isRequired
 };
 

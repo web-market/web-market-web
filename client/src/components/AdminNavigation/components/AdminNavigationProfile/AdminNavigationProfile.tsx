@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 
 import { AdminNavigationCollapseContent } from '../AdminNavigationCollapseContent/AdminNavigationCollapseContent';
 import { navProfile } from '../../../consts';

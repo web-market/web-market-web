@@ -1,0 +1,26 @@
+.previewField {
+	border-bottom: 1px solid lighten($grey, 20%);
+}
+
+.previewField__vertical {
+	display: block;
+}
+
+.previewField__horizontal {
+	display: flex;
+	align-items: baseline;
+}
+
+.previewField:last-child {
+	border-bottom: none;
+}
+
+.previewField_label {
+	min-width: 150px;
+	max-width: 150px;
+	font-size: 18px;
+}
+
+.previewField__vertical .previewField_label {
+	margin-bottom: 8px;
+}

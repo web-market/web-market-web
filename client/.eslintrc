@@ -36,10 +36,7 @@
 				"ignorePattern": "(^import )|(^} from)"
 			}
 		],
-		"indent": [
-			0,
-			"tab"
-		],
+		"indent": 0,
 		"eqeqeq": 0,
 		"no-tabs": 0,
 		"react/jsx-indent": 0,
@@ -85,7 +82,7 @@
 		"global-require": 0,
 		//custom
 		"react/jsx-indent-props": [
-			2,
+			0,
 			"tab"
 		],
 		"jsx-a11y/label-has-associated-control": 0,

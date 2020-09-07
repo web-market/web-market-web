@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../../../../baseComponents/Link';
-import Icon from '../../../../baseComponents/Icon';
+import { Icon } from '../../../../baseComponents/Icon/Icon';
 import AdminNavigationCollapsedListItemCollapse from './AdminNavigationCollapsedListItemCollapse';
 
 import { isUndefined } from '../../../../utils';

@@ -4,7 +4,7 @@ import NavigationGlobalContextProvider from '../../App/store/NavigationGlobalCon
 
 import { AdminNavigation } from '../AdminNavigation/AdminNavigation';
 import { AdminNavigationCollapsed } from '../AdminNavigationCollapsed/AdminNavigationCollapsed';
-import AdminControl from '../AdminControl';
+import { AdminControlWithContexts } from '../AdminControl/AdminControl';
 
 import classNames from 'classnames';
 import classes from './styles/index.scss';
@@ -19,7 +19,7 @@ const AdminPanel = () => {
 			<NavigationGlobalContextProvider>
 				<AdminNavigation />
 				<AdminNavigationCollapsed />
-				<AdminControl />
+				<AdminControlWithContexts />
 			</NavigationGlobalContextProvider>
 		</div>
 	);

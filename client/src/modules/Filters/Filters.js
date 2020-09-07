@@ -5,8 +5,8 @@ import FiltersContextProvider from './store';
 import FiltersModalsProvider from './components/FiltersModalsProvider';
 
 
-import AdminControlHeader from '../../components/AdminControlHeader';
-import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
+import { AdminControlHeader } from '../../components/AdminControlHeader/AdminControlHeader';
+import { GridLayoutRow, GridLayout } from '../../baseComponents/GridLayout';
 import FiltersGroupList from './components/FiltersGroupList';
 import FiltersAddFiltersGroup from './components/FiltersAddFilterGroup';
 

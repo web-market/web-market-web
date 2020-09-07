@@ -5,7 +5,7 @@ import {
 	deleteFilterGroup as deleteFilterGroupAPI,
 	addFilterGroupValue as addFilterGroupValueAPI,
 	getFilterGroupValue as getFilterGroupValueAPI,
-	getUpdateFilterGroup as getUpdateFilterGroupAPI,
+	getFilterGroup as getFilterGroupAPI,
 	deleteFilterGroupValue as deleteFilterGroupValueAPI,
 	getEditFilterGroupValue as getEditFilterGroupValueAPI,
 	updateFiltersGroupValue as updateFiltersGroupValueAPI
@@ -70,8 +70,8 @@ export default (dispatch) => {
 			.finally(() => _setPending(false));
 	};
 
-	const getUpdateFilterGroup = (data) => {
-		return getUpdateFilterGroupAPI(data);
+	const getFilterGroup = (data) => {
+		return getFilterGroupAPI(data);
 	};
 
 	const updateFilterGroup = (data) => {
@@ -122,7 +122,7 @@ export default (dispatch) => {
 		setFilterGroupValueHandler,
 		deleteFilterGroupValue,
 		updateFilterGroup,
-		getUpdateFilterGroup,
+		getFilterGroup,
 		getEditFilterGroupValue,
 		updateFiltersGroupValue,
 		setFilterGroupValueEditModeHandler

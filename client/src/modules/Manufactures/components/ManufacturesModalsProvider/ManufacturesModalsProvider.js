@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import NotificationModal from '../../../../components/NotificationModal';
+import { NotificationModal } from '../../../../components/NotificationModal/NotificationModal';
 
 import ManufacturesDetailModal from '../ManufacturesDetailModal';
 import ManufacturesEditModal from '../ManufacturesEditModal';

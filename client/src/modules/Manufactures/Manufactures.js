@@ -3,8 +3,8 @@ import { ManufacturesContext } from './consts';
 
 import ManufacturesContextProvider from './store';
 
-import AdminControlHeader from '../../components/AdminControlHeader';
-import GridLayout, { GridLayoutRow } from '../../baseComponents/GridLayout';
+import { AdminControlHeader } from '../../components/AdminControlHeader/AdminControlHeader';
+import { GridLayoutRow, GridLayout } from '../../baseComponents/GridLayout';
 import ManufacturesList from './components/ManufacturesList';
 import ManufacturesAddManufacture from './components/ManufacturesAddManufacture';
 import ManufacturesModalsProvider from './components/ManufacturesModalsProvider';
@@ -20,9 +20,7 @@ const Manufactures = () => {
 				<GridLayoutRow
 					grid="7-5"
 				>
-					<ManufacturesModalsProvider>
-						<ManufacturesList />
-					</ManufacturesModalsProvider>
+					<ManufacturesList />
 					<ManufacturesAddManufacture />
 				</GridLayoutRow>
 			</GridLayout>
@@ -32,7 +30,9 @@ const Manufactures = () => {
 
 const ManufacturesWithProviders = () => (
 	<ManufacturesContextProvider>
-		<Manufactures />
+		<ManufacturesModalsProvider>
+			<Manufactures />
+		</ManufacturesModalsProvider>
 	</ManufacturesContextProvider>
 );
 

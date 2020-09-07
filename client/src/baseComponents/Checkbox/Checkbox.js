@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 import { check } from '../../icons';
-import Icon from '../Icon';
+import { Icon } from '../Icon/Icon';
 import { isNull, isUndefined } from '../../utils';
 
 const Checkbox = (

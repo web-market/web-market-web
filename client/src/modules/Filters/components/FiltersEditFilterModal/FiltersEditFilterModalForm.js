@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ModalContent, ModalFooter, ModalHeader } from '../../../../baseComponents/Modal';
 import Form, { Field } from '../../../../baseComponents/Form';
-import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../baseComponents/FormLayout';
+import { FormLayoutItem, FormLayoutItemGroup } from '../../../../baseComponents/FormLayout';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import { EDIT_FILTER_FORM } from '../../consts';
@@ -29,44 +29,40 @@ const FiltersEditFilterModalForm = (
 					initialValues={initialValues}
 					onSubmit={handleUpdateFilter}
 				>
-					<FormLayout>
-						<FormLayoutItemGroup>
-							<FormLayoutItem>
-								<Field
-									component={Textbox}
-									name="name"
-									label="!!!Имя группы фильтра в админ панеле"
-									required
-									validate={{
-										required: true
-									}}
-								/>
-							</FormLayoutItem>
-							<FormLayoutItem>
-								<Field
-									component={Textbox}
-									name="displayName"
-									label="!!!Имя группы фильтраа в магазине"
-									required
-									validate={{
-										required: true
-									}}
-								/>
-							</FormLayoutItem>
-							<FormLayoutItem>
-								<Field
-									component={Textbox}
-									name="sortOrder"
-									label="!!!Порядок сортировки"
-									hasTooltip
-									toolTipMessage="!!!Место группы в общем списке груп фильтров (например: '5')"
-									validate={{
-										number: true
-									}}
-								/>
-							</FormLayoutItem>
-						</FormLayoutItemGroup>
-					</FormLayout>
+					<FormLayoutItemGroup>
+						<FormLayoutItem>
+							<Field
+								component={Textbox}
+								name="name"
+								label="!!!Имя группы фильтра в админ панеле"
+								validate={{
+									required: true
+								}}
+							/>
+						</FormLayoutItem>
+						<FormLayoutItem>
+							<Field
+								component={Textbox}
+								name="displayName"
+								label="!!!Имя группы фильтраа в магазине"
+								validate={{
+									required: true
+								}}
+							/>
+						</FormLayoutItem>
+						<FormLayoutItem>
+							<Field
+								component={Textbox}
+								name="sortOrder"
+								label="!!!Порядок сортировки"
+								hasTooltip
+								toolTipMessage="!!!Место группы в общем списке груп фильтров (например: '5')"
+								validate={{
+									number: true
+								}}
+							/>
+						</FormLayoutItem>
+					</FormLayoutItemGroup>
 				</Form>
 			</ModalContent>
 			<ModalFooter>

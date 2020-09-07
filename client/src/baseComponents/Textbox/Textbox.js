@@ -12,12 +12,19 @@ const Textbox = (
 		className,
 		onFieldFocus,
 		onFieldChange,
-		placeholder
+		placeholder,
+		onFieldBLur
 	}
 ) => {
 	const handleInputChange = (value) => {
 		onFieldChange(value);
 		onChange(value);
+	};
+
+	const handleBlur = () => {
+		onFieldFocus(false);
+
+		onFieldBLur(value);
 	};
 
 	const componentClassName = ClassNames(
@@ -33,7 +40,7 @@ const Textbox = (
 			placeholder={placeholder}
 			className={componentClassName}
 			onFocus={() => onFieldFocus(true)}
-			onBlur={() => onFieldFocus(false)}
+			onBlur={handleBlur}
 			onChange={e => handleInputChange(e.target.value)}
 		/>
 	);
@@ -42,7 +49,8 @@ const Textbox = (
 Textbox.defaultProps = {
 	value: '',
 	onChange: () => {},
-	onFieldFocus: () => {}
+	onFieldFocus: () => {},
+	onFieldBLur: () => {}
 };
 
 Textbox.propTypes = {
@@ -52,6 +60,7 @@ Textbox.propTypes = {
 	]),
 	name: PropTypes.string,
 	onChange: PropTypes.func,
+	onFieldBLur: PropTypes.func,
 	className: PropTypes.string,
 	onFieldFocus: PropTypes.func,
 	placeholder: PropTypes.string,

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 import FiltersFilterGroupValuesListItem from './FiltersFilterGroupValuesListItem';
 
 import classes from './styles/index.scss';
-import { getUniqueKey } from '../../../../utils';
+import { getArrayElementByKey, getUniqueKey } from '../../../../utils';
 import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
 import FiltersFilterGroupValuesListItemHeader from './FiltersFilterGroupValuesListItemHeader';
 
@@ -39,13 +39,17 @@ const FiltersFilterGroupValuesList = (
 	};
 
 	const handleDeleteFilterGroupValue = (id) => {
+		const currentItem = getArrayElementByKey(filterGroupValues, id);
+
 		openModal(
 			MODALS.DELETE_FILTER_MODAL,
 			{
-				modalTitle: '!!Удалить фильтр',
+				modalTitle: '!!Удалить значение фильтра',
 				rightButtonLabel: '!!Удалить',
 				handleSubmit: () => handleDeleteFilterGroupValueAction(id),
-				content: '!!Вы уверены, что хотите удалить фильтр?'
+				content: (
+					<span>!!Вы уверены, что хотите значение фильтра: <strong>${currentItem.value}</strong>?</span>
+				)
 			}
 		);
 	};

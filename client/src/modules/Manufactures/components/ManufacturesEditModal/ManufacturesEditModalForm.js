@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FormLayout, {
+import {
 	FormLayoutItem,
 	FormLayoutItemGroup
 } from '../../../../baseComponents/FormLayout';
@@ -22,30 +22,28 @@ const ManufacturesEditModalForm = (
 			initialValues={initialValues}
 			onSubmit={handleEditManufacture}
 		>
-			<FormLayout>
-				<FormLayoutItemGroup>
-					<FormLayoutItem>
-						<Field
-							component={Textbox}
-							name="name"
-							label="!!!Название производителя"
-							validate={{
-								length: { max: 64 }
-							}}
-						/>
-					</FormLayoutItem>
-					<FormLayoutItem>
-						<Field
-							component={Textarea}
-							name="description"
-							label="!!!Описание"
-							validate={{
-								length: { max: 256 }
-							}}
-						/>
-					</FormLayoutItem>
-				</FormLayoutItemGroup>
-			</FormLayout>
+			<FormLayoutItemGroup>
+				<FormLayoutItem>
+					<Field
+						component={Textbox}
+						name="name"
+						label="!!!Название производителя"
+						validate={{
+							length: { max: 64 }
+						}}
+					/>
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<Field
+						component={Textarea}
+						name="description"
+						label="!!!Описание"
+						validate={{
+							length: { max: 256 }
+						}}
+					/>
+				</FormLayoutItem>
+			</FormLayoutItemGroup>
 		</Form>
 	);
 };

@@ -2,16 +2,44 @@
 	font-size: 2em;
 }
 
+.typography_48 {
+	font-size: 3em;
+}
+
+.typography_82 {
+	font-size: 5.125em
+}
+
 .typography_24 {
 	font-size: 1.5em;
+}
+
+.typography_26 {
+	font-size: 1.625em
+}
+
+.typography_28 {
+	font-size: 1.750em
+}
+
+.typography_16 {
+	font-size: 1em;
 }
 
 .typography_18 {
 	font-size: 1.125em;
 }
 
-.typography_16 {
-	font-size: 1em;
+.typography_20 {
+	font-size: 1.250em;
+}
+
+.typography_54 {
+	font-size: 3.375em
+}
+
+.typography_22 {
+	font-size: 1.375em;
 }
 
 .typography_14 {
@@ -22,14 +50,13 @@
 	font-size: .75em;
 }
 
+.typography_10 {
+	font-size: 0.625em;
+}
+
 .typography_8 {
 	font-size: .5em;
 }
-
-.typography_displayBlock {
-	display: block;
-}
-
 .typography_bold200 {
 	font-weight: 200;
 }
@@ -56,4 +83,20 @@
 
 .typography_bold800 {
 	font-weight: 800;
+}
+
+.typography_lineHeight1 {
+	line-height: 1;
+}
+
+.typography_displayBlock {
+	display: block;
+}
+
+.typography_upperCase {
+	text-transform: uppercase;
+}
+
+.text_center {
+	text-align: center;
 }

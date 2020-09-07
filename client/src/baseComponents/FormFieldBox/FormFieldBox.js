@@ -40,7 +40,7 @@ const FormFieldBox = (
 	);
 
 	const getErrors = () => {
-		return errorMessages.map(message => {
+		return errorMessages?.map(message => {
 			return (
 				<div key={message}>{message}</div>
 			);

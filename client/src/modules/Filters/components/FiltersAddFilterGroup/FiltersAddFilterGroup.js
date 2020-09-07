@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
-import AdminControlContentBox from '../../../../components/AdminControlContentBox';
+import { AdminControlContentBox } from '../../../../components/AdminControlContentBox/AdminControlContentBox';
 import { FiltersAddFilterGroupForm } from './FiltersAddFilterGroupForm';
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import { FiltersContext } from '../../consts';
 
@@ -27,7 +27,7 @@ const FiltersAddFilterGroup = () => {
 	);
 
 	return (
-		<AdminControlContentBox margin={{ tLarge: true, rLarge: true }}>
+		<AdminControlContentBox margin={{ tSmall: true, rSmall: true }}>
 			<FiltersAddFilterGroupForm
 				handleAddFilter={handleAddFilter}
 				rightSectionButtons={rightSectionButtons}

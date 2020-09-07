@@ -4,6 +4,8 @@ import { prepareValidationResult, numberValidationMessages } from './helpers';
 export const number = (value, validationRules) => {
 	const { min, max, equal, integer } = validationRules;
 
+	value = value.replace(',', '.');
+
 	if (isNullOrUndefined(value)) {
 		return {
 			isValid: true,

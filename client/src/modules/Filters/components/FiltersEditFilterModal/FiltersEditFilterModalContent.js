@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import FiltersEditFilterModalForm from './FiltersEditFilterModalForm';
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import { FiltersContext } from '../../consts';
 
@@ -15,11 +15,11 @@ const FiltersEditFilterModalContent = (
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { getFiltersList, updateFilterGroup, getUpdateFilterGroup } = useContext(FiltersContext);
+	const { getFiltersList, updateFilterGroup, getFilterGroup } = useContext(FiltersContext);
 	const [data, setData] = useState({});
 
 	useEffect(() => {
-		getUpdateFilterGroup(modalData.id)
+		getFilterGroup(modalData.id)
 			.then(({ data }) => setData(data));
 	}, []);
 

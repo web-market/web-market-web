@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import PropTypes from 'prop-types';
 
 import ScrollContainer from '../ScrollContainer';
-import Icon from '../Icon';
+import { Icon } from '../Icon/Icon';
 
 import OverlayPoint from '../OverlayPoint';
 import DropDownItem from './DropDownItem';
@@ -32,6 +32,7 @@ const Dropdown = (
 	const dropdownRef = useRef(null);
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
+	const [selectedValue, setSelectedValue] = useState('');
 
 	const hasItems = items.length !== 0;
 	const hasSelectedValue = isNullOrUndefined(value);
@@ -54,9 +55,9 @@ const Dropdown = (
 		const selectedItem = items.find(i => i.id === id);
 
 		setDisplayValue(selectedItem.name);
-
+		setSelectedValue(id);
 		onFieldChange(id);
-	}, [items]);
+	}, [items, onFieldChange]);
 
 	const handleItemClick = useCallback((id) => {
 		onItemSelect(id);
@@ -69,8 +70,10 @@ const Dropdown = (
 	useEffect(() => {
 		if (hasSelectedValue) {
 			setDisplayValue(placeholder);
+		} else {
+			onItemSelect(value);
 		}
-	}, [value]);
+	}, [value, hasSelectedValue, placeholder]);
 
 	const getDropdownItems = useMemo(() => {
 		if (hasDefaultValue) {
@@ -86,11 +89,12 @@ const Dropdown = (
 					key={item.id}
 					value={item.name}
 					id={item.id}
+					selectedValue={selectedValue}
 					handleItemClick={handleItemClick}
 				/>
 			);
 		});
-	}, [items]);
+	}, [items, handleItemClick, hasDefaultValue]);
 
 	const dropdownItems = useMemo(() => {
 		return hasItems
@@ -102,7 +106,7 @@ const Dropdown = (
 					id={null}
 				/>
 			);
-	}, [getDropdownItems, hasItems]);
+	}, [getDropdownItems, hasItems, selectedValue]);
 
 	const getIcon = () => {
 		return !isItemPending

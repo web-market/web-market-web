@@ -2,11 +2,11 @@ const prepareValidationResult = (validationTemplate) => {
 	let isValid = true;
 	let errorName = null;
 
-	for (const result in validationTemplate) {
-		if (validationTemplate.hasOwnProperty(result)) {
-			if (!validationTemplate[result]) {
-				isValid = validationTemplate[result];
-				errorName = result;
+	for (const key in validationTemplate) {
+		if (validationTemplate.hasOwnProperty(key)) {
+			if (!validationTemplate[key]) {
+				isValid = validationTemplate[key];
+				errorName = key;
 			}
 		}
 	}

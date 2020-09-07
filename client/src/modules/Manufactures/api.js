@@ -1,7 +1,7 @@
 import { GET, POST, DELETE, PUT } from '../../utils/api';
 import { ENDPOINTS } from './consts';
 
-const getManufactures = () => {
+const getAllManufactures = () => {
 	return GET(ENDPOINTS.GET_MANUFACTURES);
 };
 
@@ -24,7 +24,7 @@ const getManufacture = (id) => {
 export {
 	addManufacture,
 	getManufacture,
-	getManufactures,
+	getAllManufactures,
 	deleteManufacture,
 	updateManufacture
 };

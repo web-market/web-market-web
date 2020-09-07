@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useCallback } from 'react';
 
-import AdminControlContentBox from '../../../../components/AdminControlContentBox';
+import { AdminControlContentBox } from '../../../../components/AdminControlContentBox/AdminControlContentBox';
 import CategoriesListItem from './CategoriesListItem';
-import EmptyContainer from '../../../../baseComponents/EmptyContainer';
-import Typography from '../../../../baseComponents/Typography';
+import { EmptyContainer } from '../../../../baseComponents/EmptyContainer/EmptyContainer';
+import { Typography } from '../../../../baseComponents/Typography/Typography';
 
 import { getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
@@ -49,10 +49,8 @@ const CategoriesList = () => {
 			}
 			{
 				!isPending && categories.length === 0 && (
-					<EmptyContainer hasFillContent>
-						<div className={classes.categoryList_emptyContent}>
-							<Typography displayBlock>!!пока что не добавлено ни одной категории</Typography>
-						</div>
+					<EmptyContainer hasCenteredContent>
+						<Typography displayBlock>!!пока что не добавлено ни одной категории</Typography>
 					</EmptyContainer>
 				)
 			}

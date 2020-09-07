@@ -32,3 +32,6 @@ export const tiPackage = classes['ti-package'];
 export const tiImage = classes['ti-image'];
 export const layoutGrid3Alt = classes['ti-layout-grid3-alt'];
 export const layoutListThumbAlt = classes['ti-layout-list-thumb-alt'];
+export const viewList = classes['ti-view-list'];
+export const calendar = classes['ti-calendar'];
+export const equal = classes['ti-line-double'];

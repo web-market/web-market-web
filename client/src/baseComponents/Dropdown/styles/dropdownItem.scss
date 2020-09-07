@@ -4,6 +4,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	position: relative;
 }
 
 .dropdownItem:hover {
@@ -22,4 +23,15 @@
 .dropdownItem_placeholder {
 	font-style: italic;
 	color: $disabled;
+}
+
+.dropdownItem__selected:before {
+	content: '';
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #33cabb;
+	position: absolute;
+	left: 6px;
+	top: 15px;
 }

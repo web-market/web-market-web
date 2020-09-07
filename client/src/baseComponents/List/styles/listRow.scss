@@ -1,11 +1,16 @@
 .listRow {
 	display: flex;
 	align-items: center;
-	cursor: pointer;
 
+	min-height: 45px;
 	transition: background-color .2s;
+	position: relative;
 
 	@include hover-focus{
 		background-color: lighten($grey, 30%) !important;
 	}
+}
+
+.listRow__pointer {
+	cursor: pointer;
 }

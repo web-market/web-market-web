@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Link from '../../../../baseComponents/Link';
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 
 import classes from './styles/index.scss';
 import { Typography } from '../../../../baseComponents/Typography/Typography';

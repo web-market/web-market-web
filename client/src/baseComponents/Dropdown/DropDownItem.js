@@ -1,13 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ClassNames from 'classnames';
 import classes from './styles/index.scss';
 
-const DropDownItem = ({ value, id, handleItemClick }) => {
+const DropDownItem = (
+	{
+		id,
+		value,
+		selectedValue,
+		handleItemClick
+	}
+) => {
+	const componentsClassNames = ClassNames(
+		{
+			[classes.dropdownItem__selected]: selectedValue === id
+		},
+		classes.dropdownItem
+	);
+
 	return (
 		<div
 			onClick={() => handleItemClick(id)}
-			className={classes.dropdownItem}
+			className={componentsClassNames}
 		>
 			{value}
 		</div>

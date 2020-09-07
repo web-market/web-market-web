@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Form, { Field } from '../../../../baseComponents/Form';
-import GridLayout, { GridLayoutRow } from '../../../../baseComponents/GridLayout';
+import { GridLayoutRow, GridLayout } from '../../../../baseComponents/GridLayout';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
 
 import { EDIT_FILTER_GROUP_VALUE_FORM } from '../../consts';

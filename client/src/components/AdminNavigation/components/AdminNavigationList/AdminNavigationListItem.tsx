@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '../../../../baseComponents/Icon';
+import { Icon } from '../../../../baseComponents/Icon/Icon';
 
 import { isUndefined } from '../../../../utils';
 import classes from './styles/index.scss';

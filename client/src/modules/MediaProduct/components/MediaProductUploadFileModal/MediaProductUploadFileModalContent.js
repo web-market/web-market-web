@@ -6,7 +6,7 @@ import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
 import { ModalContent, ModalFooter, ModalHeader } from '../../../../baseComponents/Modal';
 import GeneralUploader from '../../../../baseComponents/Uploader';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import { UPLOADERS, ENDPOINTS } from '../../consts';
 

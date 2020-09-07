@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import OverlayPoint from '../OverlayPoint';
-import Icon from '../Icon';
+import { Icon } from '../Icon/Icon';
 import Badge from '../Badge';
 import { exclamation } from '../../icons';
 import ClassNames from 'classnames';

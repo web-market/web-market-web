@@ -3,7 +3,7 @@ import { ModalContent, ModalFooter, ModalHeader } from '../../../../baseComponen
 
 import Form, { Field } from '../../../../baseComponents/Form';
 import { DELETE_CATEGORY_FORM } from '../../consts';
-import FormLayout, { FormLayoutItem, FormLayoutItemGroup } from '../../../../baseComponents/FormLayout';
+import { FormLayoutItem, FormLayoutItemGroup } from '../../../../baseComponents/FormLayout';
 import { Checkbox } from '../../../../baseComponents/Form/Adapters';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import PropTypes from 'prop-types';
@@ -28,18 +28,16 @@ const CategoriesDeleteCategoryModalForm = (
 					onSubmit={handleDeleteCategory}
 					name={DELETE_CATEGORY_FORM}
 				>
-					<FormLayout>
-						<FormLayoutItemGroup>
-							<FormLayoutItem>
-								<Field
-									displayInline
-									component={Checkbox}
-									name="deleteSubCategories"
-									label="!!!Удалить дочернии категории?"
-								/>
-							</FormLayoutItem>
-						</FormLayoutItemGroup>
-					</FormLayout>
+					<FormLayoutItemGroup>
+						<FormLayoutItem>
+							<Field
+								displayInline
+								component={Checkbox}
+								name="deleteSubCategories"
+								label="!!!Удалить дочернии категории?"
+							/>
+						</FormLayoutItem>
+					</FormLayoutItemGroup>
 				</Form>
 			</ModalContent>
 			<ModalFooter>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { NavigationGlobalContext } from '../../App/store/NavigationGlobalContext';
 
-import Icon from '../../baseComponents/Icon';
+import { Icon } from '../../baseComponents/Icon/Icon';
 
 import { angleDoubleRight, angleDoubleLeft } from '../../icons';
 import classes from './styles/index.scss';

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import classes from './styles/index.scss';
 import { chevronDown, chevronUp, pencil, trash } from '../../../../icons';

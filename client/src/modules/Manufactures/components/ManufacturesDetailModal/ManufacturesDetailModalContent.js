@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 
 import { ModalContent, ModalFooter, ModalHeader } from '../../../../baseComponents/Modal';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import { ManufacturesContext } from '../../consts';
-import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
-
-import classes from './styles/index.scss';
+import { PreviewField } from '../../../../baseComponents/PreviewField/PreviewField';
 
 const ManufacturesDetailModalContent = (
 	{
@@ -33,32 +31,20 @@ const ManufacturesDetailModalContent = (
 		<ModalContent>
 			{
 				data.name && (
-					<PaddingBox
-						vrSmall
-						className={classes.manufacturesDetailModalContent_informationItem}
-					>
-						<div className={classes.manufacturesDetailModalContent_rowName}>
-							!!производитель:
-						</div>
-						<div>
-							{data.name}
-						</div>
-					</PaddingBox>
+					<PreviewField
+						alignment="horizontal"
+						label="!!производитель:"
+						value={data.name}
+					/>
 				)
 			}
 			{
 				data.description && (
-					<PaddingBox
-						vrSmall
-						className={classes.manufacturesDetailModalContent_informationItem}
-					>
-						<div className={classes.manufacturesDetailModalContent_rowName}>
-							!!описание:
-						</div>
-						<div>
-							{data.description}
-						</div>
-					</PaddingBox>
+					<PreviewField
+						alignment="horizontal"
+						label="!!описание:"
+						value={data.description}
+					/>
 				)
 			}
 		</ModalContent>

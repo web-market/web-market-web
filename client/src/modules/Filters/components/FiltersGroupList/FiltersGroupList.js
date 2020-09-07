@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useCallback } from 'react';
 
-import AdminControlContentBox from '../../../../components/AdminControlContentBox';
+import { AdminControlContentBox } from '../../../../components/AdminControlContentBox/AdminControlContentBox';
 import FiltersGroupListItem from './FiltersGroupListItem';
-import Typography from '../../../../baseComponents/Typography';
+import { Typography } from '../../../../baseComponents/Typography/Typography';
 
-import { getUniqueKey } from '../../../../utils';
+import { getArrayElementByKey, getUniqueKey } from '../../../../utils';
 import classes from './styles/index.scss';
 import { MODALS, FiltersContext, FiltersModalsContext } from '../../consts';
 import { pencil, trash } from '../../../../icons';
@@ -29,13 +29,17 @@ const FiltersGroupList = () => {
 	}, [openModal]);
 
 	const handleFilterDelete = useCallback((id) => {
+		const currentItem = getArrayElementByKey(filtersItems, id);
+
 		openModal(
 			MODALS.DELETE_FILTER_MODAL,
 			{
 				modalTitle: '!!Удалить фильтр группу',
 				rightButtonLabel: '!!Удалить',
 				handleSubmit: () => deleteFilter({ ids: [id] }),
-				content: '!!Вы уверены, что хотите удалить фильтр группу?'
+				content: (
+					<span>!!!!Вы уверены, что хотите удалить фильтр группу: <strong>{currentItem.name}</strong>?</span>
+				)
 			}
 		);
 	}, [openModal, deleteFilter]);
@@ -86,10 +90,8 @@ const FiltersGroupList = () => {
 			}
 			{
 				!isPending && filtersItems.length === 0 && (
-					<EmptyContainer hasFillContent>
-						<div className={classes.filtersGroupList_emptyContent}>
-							<Typography displayBlock>!!пока что не добавлено ни одного фильтра</Typography>
-						</div>
+					<EmptyContainer hasCenteredContent>
+						<Typography displayBlock>!!пока что не добавлено ни одного фильтра</Typography>
 					</EmptyContainer>
 				)
 			}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProductsListContextProvider from './store';
-import AdminControlContentBox from '../../../components/AdminControlContentBox';
+import { AdminControlContentBox } from '../../../components/AdminControlContentBox/AdminControlContentBox';
 import { ProductsListWithListContext } from './components/ProductsList/ProductsList';
 import { ProductsHeader } from './components/ProductsHeader/ProductsHeader';
 

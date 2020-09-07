@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Tooltip from '../../../../baseComponents/Tooltip';
 import classes from './styles/index.scss';
-import Icon from '../../../../baseComponents/Icon';
+import { Icon } from '../../../../baseComponents/Icon/Icon';
 import { exclamation } from '../../../../icons';
 
 const FiltersGroupListItemLeftSide = (

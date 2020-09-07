@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import Form from '../../../../../baseComponents/Form';
-import GridLayout, { GridLayoutRow } from '../../../../../baseComponents/GridLayout';
+import { GridLayoutRow, GridLayout } from '../../../../../baseComponents/GridLayout';
 import { CREATE_PRODUCT_FORM } from '../../consts';
 import { MarginBox } from '../../../../../baseComponents/MarginBox/MarginBox';
 import { CreateProductFormGeneralSection } from './CreateProductFormGeneralSection';

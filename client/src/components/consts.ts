@@ -1,4 +1,4 @@
-import { bell, chartBar, th, filter, settings, tiPackage, image } from '../icons';
+import { bell, chartBar, th, filter, settings, tiPackage, image, viewList } from '../icons';
 
 export const URL = {
 	USER_PROFILE: '/adminpanel/userprofile',
@@ -7,8 +7,19 @@ export const URL = {
 		ROOT: '/adminpanel/catalog',
 		PRODUCT_MANAGER: '/adminpanel/catalog/products-manager',
 		CREATE_PRODUCT: '/adminpanel/catalog/create-product',
-		MANUFACTURES: '/adminpanel/catalog/manufactures'
 	},
+    STORE: {
+        ROOT: '/adminpanel/store',
+        MANUFACTURES: '/adminpanel/store/manufactures-list',
+        STORES: '/adminpanel/store/stores-list',
+        SUPPLY: '/adminpanel/store/supplies-list',
+        ADD_SUPPLY: '/adminpanel/store/add-supply',
+        RAW_PRODUCT: '/adminpanel/store/raw-products-list'
+    },
+    STORE_DETAIL: {
+        ROOT: '/adminpanel/store/store-detail/:storeId',
+        DETAIL: '/adminpanel/store/store-detail',
+    },
 	CATEGORY: {
 		ROOT: '/adminpanel/categories'
 	},
@@ -27,13 +38,12 @@ export const mainNavItem = [
 	{
 		icon: chartBar,
 		label: '!!!Статистика',
-		link: '/adminpanel/statistic/',
+		link: URL.STATISTIC,
 		hasRoute: true
 	},
 	{
-		icon: tiPackage,
+		icon: viewList,
 		label: '!!!Каталог',
-		link: '/TEST/',
 		hasRoute: true,
 		menuRoute: URL.CATALOG.ROOT,
 		items: [
@@ -41,14 +51,37 @@ export const mainNavItem = [
 				label: 'Менеджер товаров',
 				link: URL.CATALOG.PRODUCT_MANAGER,
 				hasRoute: true
-			},
-			{
-				label: 'Производители',
-				link: URL.CATALOG.MANUFACTURES,
-				hasRoute: true
 			}
 		]
 	},
+    {
+        icon: tiPackage,
+        label: '!!!Склад',
+        menuRoute: URL.STORE.ROOT,
+        hasRoute: true,
+        items: [
+            {
+                label: '!!Поставки',
+                link: URL.STORE.SUPPLY,
+                hasRoute: true
+            },
+            {
+                label: '!!Производители',
+                link: URL.STORE.MANUFACTURES,
+                hasRoute: true
+            },
+            {
+                label: '!!Склады',
+                link: URL.STORE.STORES,
+                hasRoute: true
+            },
+            {
+                label: '!!Типовый товар',
+                link: URL.STORE.RAW_PRODUCT,
+                hasRoute: true
+            }
+        ]
+    },
 	{
 		icon: th,
 		label: '!!!Категории',
@@ -65,7 +98,6 @@ export const mainNavItem = [
 		icon: image,
 		hasRoute: true,
 		label: '!!!Медиа',
-		link: URL.MEDIA.ROOT,
 		menuRoute: URL.MEDIA.ROOT,
 		items: [
 			{

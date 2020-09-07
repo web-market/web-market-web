@@ -28,7 +28,6 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Название товара"
 						name="name"
 						component={Textbox}
-						required
 						validate={{
 							required: true,
 							length: {
@@ -42,7 +41,6 @@ const CreateProductFormGeneralSection = () => {
 						label="!!Цена"
 						name="price"
 						component={Textbox}
-						required
 						validate={{
 							required: true,
 							number: true
@@ -57,7 +55,6 @@ const CreateProductFormGeneralSection = () => {
 						name="categoryIds"
 						component={AjaxDropdown}
 						url={ENDPOINT.GET_ALL_CATEGORIES}
-						required
 						validate={{
 							required: true
 						}}
@@ -69,7 +66,6 @@ const CreateProductFormGeneralSection = () => {
 						name="filterValueIds"
 						component={AjaxDropdown}
 						url={ENDPOINT.GET_ALL_FILTERS}
-						required
 						validate={{
 							required: true
 						}}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 
 import classes from './styles/index.scss';
 import { TooltipAction } from '../../../../baseComponents/TooltipAction/TooltipAction';

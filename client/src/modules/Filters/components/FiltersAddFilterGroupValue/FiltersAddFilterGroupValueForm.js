@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Form, { Field } from '../../../../baseComponents/Form';
 import { Textbox } from '../../../../baseComponents/Form/Adapters';
 import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
-import GridLayout, { GridLayoutRow } from '../../../../baseComponents/GridLayout';
-import Button from '../../../../baseComponents/Button';
+import { GridLayoutRow, GridLayout } from '../../../../baseComponents/GridLayout';
+import { Button } from '../../../../baseComponents/Button/Button';
 import HeaderText from '../../../../baseComponents/HeaderText';
 
 import classes from './styles/index.scss';
@@ -45,7 +45,6 @@ const FiltersAddFilterGroupValueForm = (
 							component={Textbox}
 							name="value"
 							label="Имя фильтра"
-							required
 							validate={{
 								required: true
 							}}
@@ -53,7 +52,6 @@ const FiltersAddFilterGroupValueForm = (
 						<Field
 							component={Textbox}
 							name="sortOrder"
-							required
 							label="Порядок"
 							hasTooltip
 							toolTipMessage="!!!Место фильтра в общем списке фильтров (например: '5')"

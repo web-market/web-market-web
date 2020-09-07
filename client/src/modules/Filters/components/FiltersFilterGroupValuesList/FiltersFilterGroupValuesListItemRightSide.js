@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 import { ButtonGroupIconButtons } from '../../../../baseComponents/ButtonGroup';
 
 import { pencil, trash } from '../../../../icons';

@@ -5,7 +5,7 @@ import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 
 import { ModalHeader, ModalContent, ModalFooter } from '../../../../baseComponents/Modal';
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
-import Button from '../../../../baseComponents/Button';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import ManufacturesEditModalForm from './ManufacturesEditModalForm';
 
@@ -18,7 +18,7 @@ const ManufacturesEditModalContent = (
 	}
 ) => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { updateManufacture, getManufacture, getManufactures } = useContext(ManufacturesContext);
+	const { updateManufacture, getManufacture, getAllManufactures } = useContext(ManufacturesContext);
 
 	useEffect(() => {
 		getManufacture(modalData.id)
@@ -29,7 +29,7 @@ const ManufacturesEditModalContent = (
 
 	const handleEditManufacture = (values) => {
 		updateManufacture({ id: modalData.id, ...values })
-			.then(() => getManufactures())
+			.then(() => getAllManufactures())
 			.then(() => handleClose());
 	};
 

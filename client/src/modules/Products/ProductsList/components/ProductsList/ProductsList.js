@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
-import List from '../../../../../baseComponents/List';
+import { List } from '../../../../../baseComponents/List';
 import { products } from '../../../testData';
 import { productListMatrix } from './productListMatrix';
 import { ListContextProvider } from '../../../../../baseComponents/List/store/ListContext';

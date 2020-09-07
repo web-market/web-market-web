@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext } from 'react';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 import { AdminNavigationCollapsedContent } from '../AdminNavigationCollapsedContent/AdminNavigationCollapsedContent';
 
 import { navProfile } from '../../../consts';

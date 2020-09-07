@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../../Button';
-import PaddingBox from '../../../PaddingBox';
-import GridLayout, { GridLayoutRow } from '../../../GridLayout';
+import { Button } from '../../../Button/Button';
+import { PaddingBox } from '../../../PaddingBox/PaddingBox';
+import { GridLayout, GridLayoutRow } from '../../../GridLayout';
 import GeneralUploaderList from './GeneralUploaderList';
 import GeneralUploaderMessages from './GeneralUploaderMessages';
 import GeneralUploaderDragDrop from './GeneralUploaderDragDrop';

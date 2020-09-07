@@ -3,19 +3,19 @@ import React, { useContext } from 'react';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 import { ManufacturesContext } from '../../consts';
 
-import AdminControlContentBox from '../../../../components/AdminControlContentBox';
-import Button from '../../../../baseComponents/Button';
+import { AdminControlContentBox } from '../../../../components/AdminControlContentBox/AdminControlContentBox';
+import { Button } from '../../../../baseComponents/Button/Button';
 
 import ManufacturesAddManufactureForm from './ManufacturesAddManufactureForm';
 
 
 const ManufacturesAddManufacture = () => {
 	const { forms } = useContext(FormsGlobalContext);
-	const { addManufacture, getManufactures } = useContext(ManufacturesContext);
+	const { addManufacture, getAllManufactures } = useContext(ManufacturesContext);
 
 	const handleAddManufacture = (values) => {
 		addManufacture(values)
-			.then(() => getManufactures());
+			.then(() => getAllManufactures());
 	};
 
 	const rightSectionButtons = (
@@ -29,9 +29,7 @@ const ManufacturesAddManufacture = () => {
 	);
 
 	return (
-		<AdminControlContentBox
-			margin={{ tLarge: true, rLarge: true }}
-		>
+		<AdminControlContentBox>
 			<ManufacturesAddManufactureForm
 				rightSectionButtons={rightSectionButtons}
 				handleAddManufacture={handleAddManufacture}

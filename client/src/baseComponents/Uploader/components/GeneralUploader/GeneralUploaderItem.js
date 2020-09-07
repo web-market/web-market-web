@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Textbox } from '../../../Textbox';
-import Button from '../../../Button';
+import { Button } from '../../../Button/Button';
 import { ButtonGroupIconButtons } from '../../../ButtonGroup';
-import PaddingBox from '../../../PaddingBox';
+import { PaddingBox } from '../../../PaddingBox/PaddingBox';
 
 import classes from './styles/index.scss';
 import ClassNames from 'classnames';

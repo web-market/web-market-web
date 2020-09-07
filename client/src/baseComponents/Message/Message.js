@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PaddingBox from '../PaddingBox';
-import MarginBox from '../MarginBox';
+import { PaddingBox } from '../PaddingBox/PaddingBox';
+import { MarginBox } from '../MarginBox/MarginBox';
 
 import classes from './styles/index.scss';
 

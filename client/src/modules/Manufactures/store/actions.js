@@ -1,5 +1,5 @@
 import {
-	getManufactures as getManufacturesAPI,
+	getAllManufactures as getAllManufacturesAPI,
 	addManufacture as addManufactureAPI,
 	updateManufacture as updateManufactureAPI,
 	deleteManufacture as deleteManufactureAPI,
@@ -26,10 +26,10 @@ export default (dispatch) => {
 		});
 	};
 
-	const getManufactures = () => {
+	const getAllManufactures = () => {
 		_setPending(true);
 
-		return getManufacturesAPI()
+		return getAllManufacturesAPI()
 			.then(({ data }) => {
 				_setManufactures(data);
 				_setPending(false);
@@ -56,7 +56,7 @@ export default (dispatch) => {
 	return {
 		getManufacture,
 		addManufacture,
-		getManufactures,
+		getAllManufactures,
 		updateManufacture,
 		deleteManufacture
 	};

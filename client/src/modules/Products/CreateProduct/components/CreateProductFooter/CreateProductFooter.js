@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Button from '../../../../../baseComponents/Button';
-import MarginBox from '../../../../../baseComponents/MarginBox';
+import { Button } from '../../../../../baseComponents/Button/Button';
+import { MarginBox } from '../../../../../baseComponents/MarginBox/MarginBox';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';
 
 const CreateProductFooter = () => {

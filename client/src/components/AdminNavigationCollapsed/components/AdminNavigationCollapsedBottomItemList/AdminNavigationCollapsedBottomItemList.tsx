@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PaddingBox from '../../../../baseComponents/PaddingBox';
+import { PaddingBox } from '../../../../baseComponents/PaddingBox/PaddingBox';
 import AdminNavigationCollapsedListItem from '../AdminNavigationCollapsedList/AdminNavigationCollapsedListItem';
 
 import { bottomNavItem } from '../../../consts';

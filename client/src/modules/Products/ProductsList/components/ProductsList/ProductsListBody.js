@@ -112,7 +112,10 @@ const ProductsListBody = (
 					const rowItems = getRowItems(product);
 
 					return (
-						<ListRow key={getUniqueKey()}>
+						<ListRow
+							pointer
+							key={getUniqueKey()}
+						>
 							{rowItems}
 						</ListRow>
 					);

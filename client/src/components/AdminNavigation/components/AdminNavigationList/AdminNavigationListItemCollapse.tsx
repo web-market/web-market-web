@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { AdminNavigationCollapseContent } from '../AdminNavigationCollapseContent/AdminNavigationCollapseContent';
 
-import Icon from '../../../../baseComponents/Icon';
+import { Icon } from '../../../../baseComponents/Icon/Icon';
 
 import { angleRight } from '../../../../icons';
 import classNames from 'classnames';

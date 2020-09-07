@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ClassNames from 'classnames';
-import PaddingBox from '../../../PaddingBox';
-import Icon from '../../../Icon';
+import { PaddingBox } from '../../../PaddingBox/PaddingBox';
+import { Icon } from '../../../Icon/Icon';
 
 import classes from './styles/index.scss';
 import { download } from '../../../../icons';
