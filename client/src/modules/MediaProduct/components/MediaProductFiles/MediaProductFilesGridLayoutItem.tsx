@@ -35,7 +35,10 @@ const MediaProductFilesGridLayoutItem = (
 				alt={name}
 				className={classes.mediaProductFilesGridLayoutItem_image}
 			/>
-			<div className={classes.mediaProductFilesGridLayoutItem_name}>
+			<div
+                title={name}
+                className={classes.mediaProductFilesGridLayoutItem_name}
+			>
 				{name}
 			</div>
 		</div>

@@ -5,15 +5,29 @@ type categoryType = {
     name: string;
 };
 
+type mediaFileType = {
+    id: number;
+    createdAtDate: string;
+    files: {
+        format: string;
+        id: number;
+        name: string;
+        path: string;
+        size: string;
+    }[]
+};
+
 export type MediaProductContextPropsType = {
     selectedImageIds: number[] | string[];
     activeCategoryId: null,
     activeCategoryName: null;
     mediaProductGrisLayout: boolean;
     categories: categoryType[];
+    mediaFiles: mediaFileType[];
     pending: boolean;
     images: number[] | string[];
     addMediaCategory: (values: { name: string }) => Promise<any>;
+    getMediaFilesInCategory: (id: number) => Promise<any>;
     setActiveCategory: (id: _idType) => void;
     setSelectedImageId: (id: _idType) => void;
     getMediaCategories: () => Promise<any>;

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
@@ -9,6 +9,7 @@ import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 import { Button } from '../../../../baseComponents/Button/Button';
 
 import { UPLOADERS, ENDPOINTS } from '../../consts';
+import { MediaProductContext } from '../../store/consts';
 
 const MediaProductUploadFileModalContent = (
 	{
@@ -16,14 +17,26 @@ const MediaProductUploadFileModalContent = (
 		handleClose
 	}
 ) => {
-	const { upLoaders } = useContext(AppGlobalContext);
+	const { upLoaders, showNotification } = useContext(AppGlobalContext);
+	const { activeCategoryId, getMediaFilesInCategory } = useContext(MediaProductContext);
+	const [isPending, setIsPending] = useState(false);
 
 	const handleUpload = () => {
+        setIsPending(true);
+
 		upLoaders.FILE_UPLOADER.upload()
+            .then(() => getMediaFilesInCategory(activeCategoryId))
 			.then(() => {
 				handleClose();
+                showNotification({
+                    message: '!!Изображения(е) добавлены'
+                });
+                setIsPending(false);
 			})
-			.catch(e => console.log(e));
+			.catch(e => {
+                console.log(e);
+                setIsPending(false);
+            });
 	};
 
 	return (
@@ -32,7 +45,9 @@ const MediaProductUploadFileModalContent = (
 				handleClose={handleClose}
 				label="!!Загрузите файлы"
 			/>
-			<ModalContent>
+			<ModalContent
+                isPending={isPending}
+			>
 				<GeneralUploader
 					url={ENDPOINTS.ADD_IMAGES}
 					id={modalData.categoryId}

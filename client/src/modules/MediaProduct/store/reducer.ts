@@ -2,6 +2,7 @@ import { actionLogger, removeArrayElementByValue } from '../../../utils';
 
 import {
 	SET_PENDING,
+    SET_MEDIA_FILES,
 	SET_ACTIVE_CATEGORY_ID,
 	SET_ACTIVE_CATEGORY_NAME,
 	SET_MEDIA_PRODUCT_CATEGORIES,
@@ -24,6 +25,11 @@ export const reducer = (state, payload) => {
 				...state,
 				activeCategoryId: payload.activeCategoryId
 			};
+        case SET_MEDIA_FILES:
+            return {
+                ...state,
+                mediaFiles: payload.mediaFiles
+            };
 		case SET_ACTIVE_CATEGORY_NAME:
 			const targetElement = state.categories.find(category => category.id === payload.activeCategoryId);
 

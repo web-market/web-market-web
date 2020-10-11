@@ -24,7 +24,6 @@ const RawProductsEditModalContent = (
         updateRawProduct(values)
             .then(() => {
                 showNotification({
-                    type: 'info',
                     message: `!!Типовый продукт "${values.name}" !!отредактирован`
                 });
                 handleClose();

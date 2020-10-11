@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useEffect, useState } from 'react';
+import React, { useContext, useMemo, useEffect } from 'react';
 
 import GridListSwitcher from '../../../../baseComponents/GridListSwitcher';
 import MediaProductFilesHeader from './MediaProductFilesHeader';
@@ -9,17 +9,14 @@ import ScrollContainer from '../../../../baseComponents/ScrollContainer';
 
 import { getUniqueKey, isNull } from '../../../../utils';
 import classes from './styles/index.scss';
-import { getMediaFilesInCategory } from '../../api';
 import { MediaProductContext } from '../../store/consts';
 
 const MediaProductFiles = () => {
-	const { mediaProductGrisLayout, activeCategoryId } = useContext(MediaProductContext);
-	const [mediaFiles, setMediaFiles] = useState([]);
+    const { mediaProductGrisLayout, activeCategoryId, mediaFiles, getMediaFilesInCategory } = useContext(MediaProductContext);
 
 	useEffect(() => {
 		if (!isNull(activeCategoryId)) {
-			getMediaFilesInCategory(activeCategoryId)
-			.then(({ data }) => setMediaFiles(data));
+            getMediaFilesInCategory(activeCategoryId);
 		}
 	}, [activeCategoryId]);
 
@@ -42,7 +39,7 @@ const MediaProductFiles = () => {
 
 	const filesGridLayout = useMemo(() => {
 		return mediaFiles.map(item => {
-			const key = getUniqueKey(item.name, item.id);
+			const key = getUniqueKey();
 
 			if (item.files.length === 0) return;
 

@@ -18,7 +18,6 @@ const RawProductsAdd = () => {
         addRawProduct(values)
             .then(() => {
                 showNotification({
-                    type: 'info',
                     message: `!!Типовый продукт "${values.name}" !!добавлен`
                 });
             });

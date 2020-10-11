@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { AppGlobalContextTypes } from './types';
 
 export const initialState = {
-	upLoaders: [],
+	upLoaders: {},
 	notifications: [],
     showNotification: () => {},
     showOverlayCloak: () => {},

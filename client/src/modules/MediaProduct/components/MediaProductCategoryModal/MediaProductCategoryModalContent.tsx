@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
@@ -14,7 +14,7 @@ import { Button } from '../../../../baseComponents/Button/Button';
 import MediaProductCategoryModalAddForm from './MediaProductCategoryModalAddForm';
 import MediaProductCategoryModalEditForm from './MediaProductCategoryModalEditForm';
 import { Typography } from '../../../../baseComponents/Typography/Typography';
-import { getInitialValuesHook, getFieldsMetadataHook } from './hooks';
+import { useGetEditFormData } from './hooks';
 import { MediaProductContext } from '../../store/consts';
 
 const MediaProductCategoryModalContent = (
@@ -76,7 +76,28 @@ const MediaProductCategoryModalContent = (
 		handleClose
 	]);
 
-	const modalLabel = isSubCategory ? '!! Добавить подкатегорию' : '!! Добавить категорию';
+	const modalLabel = useMemo(() => {
+        let label = '!! Добавить категорию';
+
+        if (isSubCategory && !isEditMode) {
+            label = '!! Добавить подкатегорию';
+        }
+
+        if (!isSubCategory && isEditMode) {
+            label = '!!Редактировать категорию';
+        }
+
+        if (isSubCategory && isEditMode) {
+            label = '!!Редактировать подкатегорию';
+        }
+
+        return label;
+    }, [isSubCategory, isEditMode]);
+
+	const {
+        fieldsInitialValues,
+        fieldsMetadata
+    } = useGetEditFormData(initialValues);
 
 	return (
 		<>
@@ -107,8 +128,8 @@ const MediaProductCategoryModalContent = (
 					{
 						isEditMode && (
 							<MediaProductCategoryModalEditForm
-								initialValues={getInitialValuesHook(initialValues)}
-								fieldsMetadata={getFieldsMetadataHook(initialValues)}
+								initialValues={fieldsInitialValues}
+								fieldsMetadata={fieldsMetadata}
 								handleSubmit={handleEditCategory}
 							/>
 						)

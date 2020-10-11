@@ -31,7 +31,6 @@ const StoreAddModalContent:FC<StoreAddModalContentPropsType> = (
                 handleClose();
 
                 showNotification({
-                    type: 'info',
                     message: `!!Склад "${data.name}" !!добавлен`
                 });
             });

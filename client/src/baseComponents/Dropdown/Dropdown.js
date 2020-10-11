@@ -35,14 +35,15 @@ const Dropdown = (
 	const [selectedValue, setSelectedValue] = useState('');
 
 	const hasItems = items.length !== 0;
-	const hasSelectedValue = isNullOrUndefined(value);
+	const hasSelectedValue = !isNullOrUndefined(value);
 
 	useEffect(() => {
-		setOpen(isOpen);
-		if (displayValueFromProp !== '') {
-			setDisplayValue(displayValueFromProp);
+		if (!hasSelectedValue) {
+			setDisplayValue(placeholder);
+		} else {
+			onItemSelect(value);
 		}
-	}, [isOpen, displayValueFromProp]);
+	}, [value, hasSelectedValue, placeholder]);
 
 	const toggleDropdown = useCallback(() => {
 		if (!open) onDropdownClick();
@@ -52,12 +53,19 @@ const Dropdown = (
 	}, [open, onDropdownClick, onFieldFocus]);
 
 	const onItemSelect = useCallback((id) => {
-		const selectedItem = items.find(i => i.id === id);
+		if (hasItems) {
+			const selectedItem = items.find(i => i.id === id);
 
-		setDisplayValue(selectedItem.name);
-		setSelectedValue(id);
-		onFieldChange(id);
-	}, [items, onFieldChange]);
+			setDisplayValue(selectedItem.name);
+			setSelectedValue(id);
+			onFieldChange(id);
+		}
+
+		if (!hasItems && hasSelectedValue) {
+			setSelectedValue(value);
+			setDisplayValue(displayValueFromProp);
+		}
+	}, [items, value, onFieldChange, hasItems, displayValueFromProp, hasSelectedValue]);
 
 	const handleItemClick = useCallback((id) => {
 		onItemSelect(id);
@@ -66,14 +74,6 @@ const Dropdown = (
 			toggleDropdown();
 		}
 	}, [multiSelect, onItemSelect, toggleDropdown]);
-
-	useEffect(() => {
-		if (hasSelectedValue) {
-			setDisplayValue(placeholder);
-		} else {
-			onItemSelect(value);
-		}
-	}, [value, hasSelectedValue, placeholder]);
 
 	const getDropdownItems = useMemo(() => {
 		if (hasDefaultValue) {
@@ -125,8 +125,8 @@ const Dropdown = (
 
 	const dropdownItemClassName = ClassNames(
 		{
-			[classes.dropdownItem_value]: !hasSelectedValue,
-			[classes.dropdownItem_placeholder]: hasSelectedValue
+			[classes.dropdownItem_value]: hasSelectedValue,
+			[classes.dropdownItem_placeholder]: !hasSelectedValue
 		}
 	);
 

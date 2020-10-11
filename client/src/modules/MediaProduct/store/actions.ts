@@ -1,14 +1,16 @@
 import {
-	addMediaCategory as addMediaCategoryAPI,
-	editMediaCategory as editMediaCategoryAPI,
-	getMediaCategories as getMediaCategoriesAPI,
-	deleteMediaCategory as deleteMediaCategoryAPI,
-	getMediaCategoryDetail as getMediaCategoryDetailAPI,
+    addMediaCategory as addMediaCategoryAPI,
+    editMediaCategory as editMediaCategoryAPI,
+    getMediaCategories as getMediaCategoriesAPI,
+    deleteMediaCategory as deleteMediaCategoryAPI,
+    getMediaCategoryDetail as getMediaCategoryDetailAPI,
+    getMediaFilesInCategory as getMediaFilesInCategoryAPI,
 } from '../api';
 
 import {
 	SET_PENDING,
 	SET_ACTIVE_CATEGORY_ID,
+    SET_MEDIA_FILES,
 	SET_ACTIVE_CATEGORY_NAME,
 	SET_MEDIA_PRODUCT_CATEGORIES,
 	SET_SELECTED_PRODUCT_IMAGE_ID,
@@ -43,6 +45,13 @@ export default (dispatch) => {
 		});
 	};
 
+    const _setMediaFiles = (mediaFiles) => {
+        dispatch({
+            type: SET_MEDIA_FILES,
+            mediaFiles
+        });
+    };
+
 	const setSelectedImageId = (selectedImageId) => {
 		dispatch({
 			type: SET_SELECTED_PRODUCT_IMAGE_ID,
@@ -73,7 +82,7 @@ export default (dispatch) => {
 	};
 
 	const getMediaCategories = () => {
-		_setPending(true);
+        _setPending(true);
 
 		return getMediaCategoriesAPI()
 			.then(({ data }) => {
@@ -82,6 +91,17 @@ export default (dispatch) => {
 			})
 			.finally(() => _setPending(false));
 	};
+
+    const getMediaFilesInCategory = (id: number) => {
+        _setPending(true);
+
+        return getMediaFilesInCategoryAPI(id)
+            .then(({ data }) => {
+                _setMediaFiles(data);
+                return data;
+            })
+            .finally(() => _setPending(false));
+    };
 
 	const getMediaCategoryDetail = (id) => {
 		return getMediaCategoryDetailAPI(id);
@@ -97,6 +117,7 @@ export default (dispatch) => {
 		setSelectedImageId,
 		getMediaCategories,
 		editMediaCategory,
+        getMediaFilesInCategory,
 		deleteMediaCategory,
 		deleteSelectedImageId,
 		setMediaProductLayout,

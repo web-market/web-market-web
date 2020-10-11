@@ -6,6 +6,10 @@
 
 .mediaProductFilesGridLayoutItem_name {
 	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 20px;
 }
 
 .mediaProductFilesGridLayoutItem_image {

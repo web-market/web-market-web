@@ -43,7 +43,6 @@ const RawProductsList = () => {
                 handleSubmit: () => deleteRawProduct({ ids: [id] }),
                 rightButtonLabel: '!!Удалить',
                 onSuccess: () => showNotification({
-                                    type: 'info',
                                     message: `!!Типовый продукт "${currentItem.name}" !!удален`
                                 }),
                 content: (
