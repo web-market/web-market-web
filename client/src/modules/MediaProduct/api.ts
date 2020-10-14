@@ -25,6 +25,9 @@ const getMediaFilesInCategory = (id) => {
 	return GET(`${ENDPOINTS.GET_FILES_IN_CATEGORY}/${id}`);
 };
 
+const deleteMediaFiles = (id) => {
+    return DELETE(`${ENDPOINTS.DELETE_IMAGES}/${id}`);
+};
 
 export {
 	addMediaCategory,
@@ -32,5 +35,6 @@ export {
 	deleteMediaCategory,
 	getMediaCategoryDetail,
 	editMediaCategory,
+    deleteMediaFiles,
 	getMediaFilesInCategory
 };

@@ -10,7 +10,10 @@ export const useGetMediaModuleHandlers = () => {
         setActiveCategory,
         getMediaCategories,
         deleteMediaCategory,
-        getMediaCategoryDetail
+        getMediaCategoryDetail,
+        deleteMediaFiles,
+        selectedImageIds,
+        getMediaFilesInCategory
     } = useContext(MediaProductContext);
 
     const selectedCategory = useMemo(() => {
@@ -56,23 +59,17 @@ export const useGetMediaModuleHandlers = () => {
             .catch(error => console.log(error));
     }, [openModal, getMediaCategoryDetail, selectedCategory]);
 
-    // const handleDeleteMediaCategory = useCallback((id) => {
-    //     openModal(
-    //         MODALS.DELETE_MEDIA_CATEGORY_MODAL,
-    //         {
-    //             modalTitle: '!!Удалить протзводителя',
-    //             rightButtonLabel: '!!Удалить',
-    //             handleSubmit: () => deleteMediaCategory(id),
-    //             content: (
-    //                 <span>!!Вы уверены, что хотите удалить категорию <strong>{selectedCategory.name}</strong>?</span>
-    //     )
-    // }
-    // );
-    // }, [openModal, deleteMediaCategory, selectedCategory]);
+    const useDeleteMediaFiles = useCallback(() => {
+        return deleteMediaFiles(selectedImageIds)
+            .then(() => getMediaFilesInCategory(activeCategoryId))
+            .catch(error => console.log(error));
+    }, [deleteMediaFiles, selectedImageIds, getMediaFilesInCategory, activeCategoryId]);
+
 
     return {
         useDeleteMediaCategory,
         useEditCategory,
-        useAddSubCategory
+        useAddSubCategory,
+        useDeleteMediaFiles
     };
 };

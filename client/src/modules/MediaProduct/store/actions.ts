@@ -5,6 +5,7 @@ import {
     deleteMediaCategory as deleteMediaCategoryAPI,
     getMediaCategoryDetail as getMediaCategoryDetailAPI,
     getMediaFilesInCategory as getMediaFilesInCategoryAPI,
+    deleteMediaFiles as deleteMediaFilesAPI,
 } from '../api';
 
 import {
@@ -111,6 +112,10 @@ export default (dispatch) => {
 		return deleteMediaCategoryAPI(id);
 	};
 
+    const deleteMediaFiles = (ids) => {
+        return deleteMediaFiles(ids);
+    };
+
 	return {
 		addMediaCategory,
 		setActiveCategory,
@@ -121,6 +126,7 @@ export default (dispatch) => {
 		deleteMediaCategory,
 		deleteSelectedImageId,
 		setMediaProductLayout,
+        deleteMediaFiles,
 		getMediaCategoryDetail
 	};
 };

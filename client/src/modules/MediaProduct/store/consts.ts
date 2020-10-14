@@ -38,6 +38,7 @@ export const initialState = {
     editMediaCategory: () => Promise.resolve(),
     deleteMediaCategory: () => Promise.resolve(),
     deleteSelectedImageId: () => {},
+    deleteMediaFiles: () => Promise.resolve(),
     setMediaProductLayout: () => {},
     getMediaCategoryDetail: () => Promise.resolve(),
 };

@@ -1,4 +1,5 @@
 type _idType = number | string
+type _selectedImageIdsType = _idType[]
 
 type categoryType = {
     id: number;
@@ -18,7 +19,7 @@ type mediaFileType = {
 };
 
 export type MediaProductContextPropsType = {
-    selectedImageIds: number[] | string[];
+    selectedImageIds: _selectedImageIdsType;
     activeCategoryId: null,
     activeCategoryName: null;
     mediaProductGrisLayout: boolean;
@@ -33,6 +34,7 @@ export type MediaProductContextPropsType = {
     getMediaCategories: () => Promise<any>;
     editMediaCategory: (values: { id: _idType }) => Promise<any>;
     deleteMediaCategory: (id: _idType) => Promise<any>;
+    deleteMediaFiles: (ids: _selectedImageIdsType) => Promise<any>;
     deleteSelectedImageId: (id: _idType) => void;
     setMediaProductLayout: (gridType: string | boolean) => void;
     getMediaCategoryDetail: (id: _idType) => Promise<any>;
