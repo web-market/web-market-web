@@ -113,7 +113,7 @@ export default (dispatch) => {
 	};
 
     const deleteMediaFiles = (ids) => {
-        return deleteMediaFiles(ids);
+        return deleteMediaFilesAPI(ids);
     };
 
 	return {

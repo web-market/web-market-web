@@ -49,7 +49,8 @@ const MediaProductFilesHeader = () => {
 	const {
         useEditCategory,
         useAddSubCategory,
-        useDeleteMediaCategory
+        useDeleteMediaCategory,
+        useDeleteMediaFiles
     } = useGetMediaModuleHandlers();
 
 	const actions = useMemo(() => {
@@ -84,12 +85,13 @@ const MediaProductFilesHeader = () => {
 					name: '!!Удалить изображения',
 					icon: trash,
 					iconClass: classes.mediaProductFilesHeader_deleteIcon,
-					action: (id) => console.log(id),
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+					action: () => useDeleteMediaFiles(),
 					disabled: isDeleteImagesDisabled,
 				}
 			]
 		];
-	}, [selectedImageIds, useEditCategory, useAddSubCategory, useDeleteMediaCategory]);
+	}, [selectedImageIds.length, useAddSubCategory, useEditCategory, useDeleteMediaCategory, useDeleteMediaFiles]);
 
 	const mediaProductGrisLayoutIcon = mediaProductGrisLayout ? layoutListThumbAlt : layoutGrid3Alt;
 
