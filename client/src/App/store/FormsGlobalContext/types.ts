@@ -2,7 +2,13 @@ type form = {
     [name: string]: {
         addFormValues: (values: {} | []) => void,
         submitForm: () => void,
-        values: {} | []
+        values: {} | [],
+        setFieldValidationResult: (
+            validationResult: {
+                isValid: boolean;
+                errorMessages: string[];
+            },
+            fieldName: string) => void;
     }
 };
 

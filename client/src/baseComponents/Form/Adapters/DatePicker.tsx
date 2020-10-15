@@ -9,7 +9,7 @@ const DatePicker = (props) => {
         width,
         isValid,
         hasFocus,
-        required,
+        validate,
         hasBorder,
         labelBold,
         hasTooltip,
@@ -24,7 +24,7 @@ const DatePicker = (props) => {
             label={label}
             width={width}
             hasFocus={hasFocus}
-            required={required}
+            required={validate?.required}
             hasErrors={!isValid}
             labelBold={labelBold}
             hasBorder={hasBorder}

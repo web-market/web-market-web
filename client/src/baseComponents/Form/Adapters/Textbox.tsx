@@ -16,7 +16,7 @@ const Textbox = (props) => {
 		toolTipIcon,
 		displayInline,
 		errorMessages,
-		toolTipMessage,
+		toolTipMessage
 	} = props;
 
 	return (
@@ -24,7 +24,7 @@ const Textbox = (props) => {
 			label={label}
 			width={width}
 			hasFocus={hasFocus}
-            required={validate.required}
+            required={validate?.required}
 			hasErrors={!isValid}
 			labelBold={labelBold}
 			hasBorder={hasBorder}

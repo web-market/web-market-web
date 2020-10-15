@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
-import PendingCloak from '../PendingCloak';
+import { PendingCloak } from '../PendingCloak/PendingCloak';
 
 const GridLayout = (
 	{

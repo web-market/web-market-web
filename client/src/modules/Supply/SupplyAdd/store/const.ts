@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { StoreAddContextPropsType } from '../types';
 import { getUniqueKey } from '../../../../utils';
+import { supplyListMatrixItemsName } from '../components/SupplyAddList/supplyListMatrix';
 
 const key = getUniqueKey();
 
@@ -11,9 +12,9 @@ export const REMOVE_ITEM_FROM_LIST = 'REMOVE_ITEM_FROM_LIST';
 export const initialState = {
     itemsToAdd: [
         {
-            [`rowProductName__${key}`]: null,
-            [`quantity__${key}`]: null,
-            [`pricePerItem__${key}`]: null,
+            [`${supplyListMatrixItemsName.rawProduct}__${key}`]: null,
+            [`${supplyListMatrixItemsName.rawProductQuantity}__${key}`]: null,
+            [`${supplyListMatrixItemsName.pricePerItem}__${key}`]: null,
             id: key
         }
     ],

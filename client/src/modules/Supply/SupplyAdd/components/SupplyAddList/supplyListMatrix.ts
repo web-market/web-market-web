@@ -1,6 +1,6 @@
 export const supplyListMatrixItemsName = {
-    rowProductName: 'rowProductName',
-    quantity: 'quantity',
+    rawProduct: 'rawProduct',
+    rawProductQuantity: 'rawProductQuantity',
     pricePerItem: 'pricePerItem',
     priceTotalPerItem: 'priceTotalPerItem',
     plusIcon: 'plusIcon',
@@ -12,14 +12,14 @@ export const supplyListMatrix = [
         label: '!!наименование',
         width: '30%',
         show: true,
-        itemName: supplyListMatrixItemsName.rowProductName,
+        itemName: supplyListMatrixItemsName.rawProduct,
         displayInTooltip: false
     },
     {
         label: '!!количество',
         width: '12%',
         show: true,
-        itemName: supplyListMatrixItemsName.quantity,
+        itemName: supplyListMatrixItemsName.rawProductQuantity,
         displayInTooltip: true
     },
     {

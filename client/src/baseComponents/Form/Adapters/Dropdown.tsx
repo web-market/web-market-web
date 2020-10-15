@@ -24,7 +24,7 @@ const Dropdown = (props) => {
             label={label}
             width={width}
             hasFocus={hasFocus}
-            required={validate.required}
+            required={validate?.required}
             hasErrors={!isValid}
             labelBold={labelBold}
             hasBorder={hasBorder}

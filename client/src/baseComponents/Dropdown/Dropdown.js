@@ -26,7 +26,8 @@ const Dropdown = (
 		onFieldChange,
 		isItemPending,
 		onDropdownClick,
-		hasDefaultValue
+		hasDefaultValue,
+		onItemSelected
 	}
 ) => {
 	const dropdownRef = useRef(null);
@@ -59,13 +60,14 @@ const Dropdown = (
 			setDisplayValue(selectedItem.name);
 			setSelectedValue(id);
 			onFieldChange(id);
+			onItemSelected(id);
 		}
 
 		if (!hasItems && hasSelectedValue) {
 			setSelectedValue(value);
 			setDisplayValue(displayValueFromProp);
 		}
-	}, [items, value, onFieldChange, hasItems, displayValueFromProp, hasSelectedValue]);
+	}, [items, value, onFieldChange, onItemSelected, hasItems, displayValueFromProp, hasSelectedValue]);
 
 	const handleItemClick = useCallback((id) => {
 		onItemSelect(id);
@@ -175,7 +177,8 @@ Dropdown.defaultProps = {
 	placeholder: '###пусто',
 	displayValue: '',
 	onDropdownClick: () => {},
-	onFieldFocus: () => {}
+	onFieldFocus: () => {},
+	onItemSelected: () => {}
 };
 
 Dropdown.propTypes = {
@@ -187,6 +190,7 @@ Dropdown.propTypes = {
 	placeholder: PropTypes.string,
 	displayValue: PropTypes.string,
 	onFieldChange: PropTypes.func,
+	onItemSelected: PropTypes.func,
 	onDropdownClick: PropTypes.func,
 	onFieldFocus: PropTypes.func,
 };

@@ -30,7 +30,8 @@ const Form:FC<FormPropsType> = memo((
 		formValues,
 		validateForm,
 		setFormValues,
-		resetFormValues
+		resetFormValues,
+        setFieldValidationResult
 	} = useContext(ContextForm);
 
 	const valuesRef = useRef({});
@@ -54,7 +55,7 @@ const Form:FC<FormPropsType> = memo((
 			resetFormValues();
 			actionLogger(`RESET FROM: "${name}"`);
 		}
-	}, [formData, name, onSubmit, resetFormValues, resetFormValues, resetFormValuesFromProps]);
+	}, [formData, name, onSubmit, resetFormValues, resetFormValuesFromProps]);
 
 	const submitForm = useCallback(() => {
 		validateForm(fieldsRef.current, valuesRef.current)
@@ -125,7 +126,13 @@ const Form:FC<FormPropsType> = memo((
 
 	//set submit function to global context on init
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm, addFormValues } });
+		addFormToGlobalContext({
+            [name]: {
+                submitForm,
+                addFormValues,
+                setFieldValidationResult
+            }
+		});
 
 		return () => {
 			removeFormFromGlobalContext(name);

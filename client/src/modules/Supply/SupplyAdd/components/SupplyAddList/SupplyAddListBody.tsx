@@ -5,21 +5,23 @@ import Form from '../../../../../baseComponents/Form';
 import { ADD_SUPPLY_ROW_PRODUCT_FORM } from '../../const';
 import { SupplyAddContext } from '../../store/const';
 
-const SupplyAddListBody = () => {
+const SupplyAddListBody = (
+    {
+        rawProducts,
+        handleSupplyRawProductSubmit
+    }
+) => {
     const {
         itemsToAdd,
         removeItem,
         updateItem
     } = useContext(SupplyAddContext);
 
-    const handleSubmit = (values) => {
-        console.log(values);
-    };
-
     return (
         <Form
+            resetFormValues={false}
             noValuesOnInitInContext
-            onSubmit={handleSubmit}
+            onSubmit={handleSupplyRawProductSubmit}
             name={ADD_SUPPLY_ROW_PRODUCT_FORM}
         >
             {
@@ -30,6 +32,7 @@ const SupplyAddListBody = () => {
                         >
                             <SupplyAddListItem
                                 item={item}
+                                rawProducts={rawProducts}
                                 itemIndex={index}
                                 removeItem={removeItem}
                                 updateItem={updateItem}

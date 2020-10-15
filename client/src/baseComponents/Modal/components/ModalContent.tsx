@@ -5,7 +5,7 @@ import ScrollContainer from '../../ScrollContainer';
 
 import classes from '../styles/index.scss';
 import ClassNames from 'classnames';
-import PendingCloak from '../../PendingCloak';
+import { PendingCloak } from '../../PendingCloak/PendingCloak';
 
 const ModalContent = (
 	{

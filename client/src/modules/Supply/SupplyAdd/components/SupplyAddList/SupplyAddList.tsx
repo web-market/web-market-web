@@ -7,9 +7,15 @@ import { Button } from '../../../../../baseComponents/Button/Button';
 import { SupplyAddContext } from '../../store/const';
 import classes from './styles/index.scss';
 import { getBlankSupplyItem } from '../../utils';
-import { scrollTo } from '../../../../../utils';
+import { isNullOrUndefined, scrollTo } from '../../../../../utils';
+import { PendingCloak } from '../../../../../baseComponents/PendingCloak/PendingCloak';
 
-const SupplyAddList = () => {
+const SupplyAddList = (
+    {
+        rawProducts,
+        handleSupplyRawProductSubmit
+    }
+) => {
     const { addItem } = useContext(SupplyAddContext);
 
     const handleAddBlankSupplyItem = () => {
@@ -20,15 +26,26 @@ const SupplyAddList = () => {
     return (
         <MarginBox
             tSmall
-            hrSmall
             bExtraLarge
         >
-            <List
-                className={classes.supplyAddList}
-            >
-                <SupplyAddListHeader />
-                <SupplyAddListBody />
-            </List>
+            {
+                isNullOrUndefined(rawProducts) && (
+                    <PendingCloak />
+                )
+            }
+            {
+                !isNullOrUndefined(rawProducts) && (
+                    <List
+                        className={classes.supplyAddList}
+                    >
+                        <SupplyAddListHeader />
+                        <SupplyAddListBody
+                            rawProducts={rawProducts}
+                            handleSupplyRawProductSubmit={handleSupplyRawProductSubmit}
+                        />
+                    </List>
+                )
+            }
             <Button
                 type="secondary"
                 label="Добавить еще"

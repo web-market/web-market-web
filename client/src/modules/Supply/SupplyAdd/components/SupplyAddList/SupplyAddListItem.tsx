@@ -9,20 +9,20 @@ import { trash, close, equal } from '../../../../../icons';
 import { Button } from '../../../../../baseComponents/Button/Button';
 import { Icon } from '../../../../../baseComponents/Icon/Icon';
 import classes from './styles/index.scss';
-import { normalizeRulesList } from '../../../../../baseComponents/Form/const';
 
 const SupplyAddListItem = (
     {
         item: formItem,
         itemIndex,
         removeItem,
-        updateItem
+        updateItem,
+        rawProducts
     }
 ) => {
     const filedName = useMemo(() => {
         return {
-            rowProductName: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.rowProductName),
-            quantity: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.quantity),
+            rowProductName: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.rawProduct),
+            quantity: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.rawProductQuantity),
             pricePerItem: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.pricePerItem),
         };
     }, [formItem]);
@@ -31,7 +31,7 @@ const SupplyAddListItem = (
         const rowItems = [];
 
         supplyListMatrix.forEach(item => {
-            if (supplyListMatrixItemsName.rowProductName === item.itemName) {
+            if (supplyListMatrixItemsName.rawProduct === item.itemName) {
                 rowItems.push(
                     <ListRowItem
                         key={getUniqueKey()}
@@ -40,16 +40,18 @@ const SupplyAddListItem = (
                         <Field
                             name={filedName.rowProductName}
                             component={Dropdown}
+                            items={rawProducts}
                             initialValue={formItem[filedName.rowProductName]}
                             validate={{
                                 required: true
                             }}
+                            onItemSelected={value => updateItem(value, itemIndex, filedName.rowProductName)}
                         />
                     </ListRowItem>
                 );
             }
 
-            if (supplyListMatrixItemsName.quantity === item.itemName) {
+            if (supplyListMatrixItemsName.rawProductQuantity === item.itemName) {
                 rowItems.push(
                     <ListRowItem
                         key={getUniqueKey()}
