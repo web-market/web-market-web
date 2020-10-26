@@ -11,7 +11,7 @@ import LoadSpinner from '../LoadSpinner';
 import classes from './styles/index.scss';
 import { angleDown, angleUp } from '../../icons';
 import { COLORS } from '../../styles/baseColors';
-import { isNullOrUndefined } from '../../utils';
+import { isNull, isNullOrUndefined, removeArrayElementByValue } from '../../utils';
 import ClassNames from 'classnames';
 
 const Dropdown = (
@@ -31,6 +31,7 @@ const Dropdown = (
 	}
 ) => {
 	const dropdownRef = useRef(null);
+	const multiSelectValuesRef = useRef([]);
 	const [open, setOpen] = useState(false);
 	const [displayValue, setDisplayValue] = useState('');
 	const [selectedValue, setSelectedValue] = useState('');
@@ -41,10 +42,16 @@ const Dropdown = (
 	useEffect(() => {
 		if (!hasSelectedValue) {
 			setDisplayValue(placeholder);
-		} else {
+		}
+
+		if (!multiSelect && !isNullOrUndefined(value)) {
 			onItemSelect(value);
 		}
-	}, [value, hasSelectedValue, placeholder]);
+
+		if (multiSelect && !isNullOrUndefined(value)) {
+			onMultiselectItemSelect(value, null);
+		}
+	}, [value, hasSelectedValue, placeholder, multiSelect]);
 
 	const toggleDropdown = useCallback(() => {
 		if (!open) onDropdownClick();
@@ -52,6 +59,20 @@ const Dropdown = (
 		onFieldFocus(!open);
 		setOpen(!open);
 	}, [open, onDropdownClick, onFieldFocus]);
+
+	const getMultiSelectedItemsNames = () => {
+		const names = [];
+
+		multiSelectValuesRef.current.forEach(itemId => {
+			items.forEach(i => {
+				if (i.id === itemId) {
+					names.push(i.name);
+				}
+			});
+		});
+
+		return names.length !== 0 ? names : [placeholder];
+	};
 
 	const onItemSelect = useCallback((id) => {
 		if (hasItems) {
@@ -69,13 +90,42 @@ const Dropdown = (
 		}
 	}, [items, value, onFieldChange, onItemSelected, hasItems, displayValueFromProp, hasSelectedValue]);
 
-	const handleItemClick = useCallback((id) => {
-		onItemSelect(id);
+	const onMultiselectItemSelect = useCallback((id, isChecked) => {
+		if (hasItems) {
+			const isItemSelected = multiSelectValuesRef.current.includes(id);
 
-		if (!multiSelect) {
-			toggleDropdown();
+			if (isChecked && !isItemSelected) {
+				multiSelectValuesRef.current.push(id);
+			}
+
+			if (!isChecked && isItemSelected) {
+				multiSelectValuesRef.current = removeArrayElementByValue(multiSelectValuesRef.current, id);
+			}
+
+			if (id.length > 1 && isNull(isChecked)) {
+				multiSelectValuesRef.current = id;
+			}
+
+			const selectedItemsNames = getMultiSelectedItemsNames();
+
+			setDisplayValue(selectedItemsNames.join(', '));
+			onFieldChange(multiSelectValuesRef.current);
+			onItemSelected(id, isChecked);
 		}
-	}, [multiSelect, onItemSelect, toggleDropdown]);
+
+		if (!hasItems && hasSelectedValue) {
+			setDisplayValue(displayValueFromProp);
+		}
+	}, [hasItems, hasSelectedValue, getMultiSelectedItemsNames, onFieldChange, onItemSelected, displayValueFromProp]);
+
+	const handleItemClick = useCallback((id, isChecked) => {
+		if (!multiSelect) {
+			onItemSelect(id);
+			toggleDropdown();
+		} else {
+			onMultiselectItemSelect(id, isChecked);
+		}
+	}, [multiSelect, onItemSelect, onMultiselectItemSelect, toggleDropdown]);
 
 	const getDropdownItems = useMemo(() => {
 		if (hasDefaultValue) {
@@ -86,17 +136,21 @@ const Dropdown = (
 		}
 
 		return items.map(item => {
+			const isChecked = multiSelectValuesRef.current.includes(item.id);
+
 			return (
 				<DropDownItem
 					key={item.id}
 					value={item.name}
+					isChecked={isChecked}
 					id={item.id}
 					selectedValue={selectedValue}
 					handleItemClick={handleItemClick}
+					multiSelect={multiSelect}
 				/>
 			);
 		});
-	}, [items, handleItemClick, hasDefaultValue]);
+	}, [hasDefaultValue, items, selectedValue, handleItemClick, multiSelect]);
 
 	const dropdownItems = useMemo(() => {
 		return hasItems
@@ -108,7 +162,7 @@ const Dropdown = (
 					id={null}
 				/>
 			);
-	}, [getDropdownItems, hasItems, selectedValue]);
+	}, [getDropdownItems, hasItems]);
 
 	const getIcon = () => {
 		return !isItemPending

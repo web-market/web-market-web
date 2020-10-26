@@ -11,7 +11,7 @@ import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
 
 const RawProductsAdd = () => {
     const { forms } = useContext(FormsGlobalContext);
-    const { addRawProduct, manufactures } = useContext(RawProductContext);
+    const { addRawProduct, manufactures, filterValues } = useContext(RawProductContext);
     const { showNotification } = useContext(AppGlobalContext);
 
     const handleAddRawProduct = (values) => {
@@ -39,6 +39,7 @@ const RawProductsAdd = () => {
                 name={ADD_RAW_PRODUCT_FORM}
                 rightSectionButtons={rightSectionButtons}
                 manufactures={manufactures}
+                filterValues={filterValues}
                 handleSubmit={handleAddRawProduct}
             />
         </AdminControlContentBox>

@@ -6,6 +6,7 @@ import {
     deleteRawProduct as deleteRawProductAPI,
     updateRawProduct as updateRawProductAPI,
     getAllManufactures as getAllManufacturesAPI,
+    getAllFilterValues as getAllFilterValuesAPI,
     //getRawProduct as getRawProductAPI
 } from '../api';
 
@@ -15,6 +16,7 @@ import {
     ADD_RAW_PRODUCT,
     UPDATE_RAW_PRODUCT,
     GET_MANUFACTURES,
+    GET_FILTER_VALUES,
     DELETE_RAW_PRODUCT
 } from './const';
 
@@ -44,6 +46,13 @@ export default (dispatch) => {
         dispatch({
             type: GET_MANUFACTURES,
             manufactures
+        });
+    }, [dispatch]);
+
+    const _getFilterValues = useCallback(filterValues => {
+        dispatch({
+            type: GET_FILTER_VALUES,
+            filterValues
         });
     }, [dispatch]);
 
@@ -85,6 +94,18 @@ export default (dispatch) => {
             .finally(() => _setPending(false));
     }, [_setPending, _getManufactures]);
 
+    const getAllFilterValues = useCallback(() => {
+        _setPending(true);
+
+        return getAllFilterValuesAPI()
+            .then(({ data }) => {
+                _getFilterValues(data);
+
+                return data;
+            })
+            .finally(() => _setPending(false));
+    }, [_setPending, _getFilterValues]);
+
     const addRawProduct = useCallback(data => {
         _setPending(true);
 
@@ -121,6 +142,7 @@ export default (dispatch) => {
         addRawProduct,
         getAllManufactures,
         deleteRawProduct,
+        getAllFilterValues,
         updateRawProduct
     };
 };

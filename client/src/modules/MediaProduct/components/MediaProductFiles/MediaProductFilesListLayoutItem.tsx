@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox } from '../../../../baseComponents/Checkbox';
+import { Checkbox } from '../../../../baseComponents/Checkbox/Checkbox';
 
 import classes from './styles/index.scss';
 import { MediaProductContext } from '../../store/consts';

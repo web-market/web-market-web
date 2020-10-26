@@ -15,7 +15,7 @@ const RawProductsEditModalContent = (
         modalData
     }
 ) => {
-    const { rawProducts, manufactures, updateRawProduct } = useContext(RawProductContext);
+    const { rawProducts, manufactures, updateRawProduct, filterValues } = useContext(RawProductContext);
     const { forms } = useContext(FormsGlobalContext);
     const { showNotification } = useContext(AppGlobalContext);
     const currentItem = getArrayElementByKey(rawProducts, modalData.id);
@@ -53,6 +53,7 @@ const RawProductsEditModalContent = (
                     name={EDIT_RAW_PRODUCT_FORM}
                     rightSectionButtons={rightSectionButtons}
                     manufactures={manufactures}
+                    filterValues={filterValues}
                     handleSubmit={handleEditRawProduct}
                 />
             </ModalContent>

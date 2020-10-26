@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListRowItem, ListRow } from '../../../../../baseComponents/List';
 import { productListMatrix, productListMatrixItemsName } from './productListMatrix';
 import { getUniqueKey, isUndefined } from '../../../../../utils';
-import { Checkbox } from '../../../../../baseComponents/Checkbox';
+import { Checkbox } from '../../../../../baseComponents/Checkbox/Checkbox';
 
 const ProductsListBody = (
 	{

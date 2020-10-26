@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, FC } from 'react';
 
 import ClassNames from 'classnames';
 import classes from './styles/index.scss';
@@ -7,7 +6,17 @@ import { check } from '../../icons';
 import { Icon } from '../Icon/Icon';
 import { isNull, isUndefined } from '../../utils';
 
-const Checkbox = (
+type CheckboxType = {
+    value?: boolean,
+    transition?: boolean,
+    className?: string,
+    onFieldChange?: (isChange: boolean) => any,
+    handleClick?: (value: boolean) => boolean,
+    iconClassName?: string,
+    iconCheckClassName?: string
+};
+
+const Checkbox: FC<CheckboxType> = (
 	{
 		value,
 		className,
@@ -75,16 +84,6 @@ const Checkbox = (
 Checkbox.defaultProps = {
 	value: false,
 	transition: true
-};
-
-Checkbox.propTypes = {
-	value: PropTypes.bool,
-	transition: PropTypes.bool,
-	className: PropTypes.string,
-	onFieldChange: PropTypes.func,
-	handleClick: PropTypes.func,
-	iconClassName: PropTypes.string,
-	iconCheckClassName: PropTypes.string
 };
 
 export { Checkbox };

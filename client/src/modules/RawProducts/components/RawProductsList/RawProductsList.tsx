@@ -14,9 +14,10 @@ import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
 const RawProductsList = () => {
     const {
         getAllRawProducts,
-        rawProducts,
         getAllManufactures,
-        deleteRawProduct
+        rawProducts,
+        deleteRawProduct,
+        getAllFilterValues
     } = useContext(RawProductContext);
     const { openModal } = useContext(RawProductsModalsContext);
     const { showNotification } = useContext(AppGlobalContext);
@@ -24,7 +25,8 @@ const RawProductsList = () => {
     useEffect(() => {
         getAllRawProducts();
         getAllManufactures();
-    }, [getAllRawProducts, getAllManufactures]);
+        getAllFilterValues();
+    }, [getAllRawProducts, getAllManufactures, getAllFilterValues]);
 
     const handleRawProductClick = id => {
         openModal(
@@ -50,7 +52,7 @@ const RawProductsList = () => {
                 )
             }
         );
-    }, [deleteRawProduct, openModal, rawProducts]);
+    }, [deleteRawProduct, openModal, rawProducts, showNotification]);
 
     const handleRawProductEdit = useCallback(id => {
         openModal(

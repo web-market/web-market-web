@@ -11,21 +11,23 @@ import { Textbox, Textarea, Dropdown } from '../../../../baseComponents/Form/Ada
 import ButtonGroup from '../../../../baseComponents/ButtonGroup';
 // eslint-disable-next-line import/extensions
 import { ReactElement } from '../../../../../typings/modules/react';
-import { Manufactures, RawProduct } from '../../store/types';
+import { FilterValuesProps, Manufactures, RawProductProps } from '../../store/types';
 
 type RawProductAddFormProps = {
     name: string;
     editMode?: boolean;
     rightSectionButtons: ReactElement<any>;
     manufactures: Manufactures;
+    filterValues: FilterValuesProps;
     initialValues?: { };
-    handleSubmit: (values: RawProduct) => void;
+    handleSubmit: (values: RawProductProps) => void;
 };
 
 const RawProductAddForm:FC<RawProductAddFormProps> = (
     {
         name,
         rightSectionButtons,
+        filterValues,
         manufactures,
         initialValues,
         handleSubmit,
@@ -64,6 +66,18 @@ const RawProductAddForm:FC<RawProductAddFormProps> = (
                         component={Dropdown}
                         name="manufacturerId"
                         label="!!!Производитель"
+                        validate={{
+                            required: true,
+                        }}
+                    />
+                </FormLayoutItem>
+                <FormLayoutItem>
+                    <Field
+                        items={filterValues}
+                        component={Dropdown}
+                        multiSelect
+                        name="filterValueIds"
+                        label="!!!Фильтры"
                         validate={{
                             required: true,
                         }}

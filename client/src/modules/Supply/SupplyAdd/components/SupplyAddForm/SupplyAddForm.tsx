@@ -1,7 +1,7 @@
 import React from 'react';
 import { MarginBox } from '../../../../../baseComponents/MarginBox/MarginBox';
 import Form, { Field } from '../../../../../baseComponents/Form';
-import {ADD_SUPPLY_FORM, ENDPOINTS} from '../../const';
+import { ADD_SUPPLY_FORM, ENDPOINTS } from '../../const';
 import { FormLayoutItemGroup } from '../../../../../baseComponents/FormLayout';
 import { AjaxDropdown, Textarea, DatePicker, Textbox } from '../../../../../baseComponents/Form/Adapters';
 import { GridLayout } from '../../../../../baseComponents/GridLayout';

@@ -3,7 +3,7 @@ import { AdminControlContentBox } from '../../../../../components/AdminControlCo
 import { SupplyAddForm } from '../SupplyAddForm/SupplyAddForm';
 import { SupplyAddList } from '../SupplyAddList/SupplyAddList';
 import { SupplyAddContextProvider } from '../../store/SupplyAddContext';
-import {createSupply, validateSupplyIdentificationNumber} from '../../api';
+import { createSupply, validateSupplyIdentificationNumber } from '../../api';
 import { isNullOrUndefined } from '../../../../../utils';
 import { AppGlobalContext } from '../../../../../App/store/AppGlobalContext';
 import { FormsGlobalContext } from '../../../../../App/store/FormsGlobalContext';

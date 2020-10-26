@@ -1,27 +1,36 @@
-export type RawProduct = {
+export type RawProductProps = {
     id: number;
     name: string;
     description: string;
     manufacturerId: string | number;
 };
 
-export type Manufacture = {
+export type FilterValueProps = {
+    id: number;
+    name?: string;
+    value?: string;
+};
+
+export type ManufactureProps = {
     id: number;
     name: string;
     description: string;
 };
 
-type RawProducts = RawProduct[];
+type RawProductsProps = RawProductProps[];
+export type FilterValuesProps = FilterValueProps[];
 
-export type Manufactures = Manufacture[];
+export type Manufactures = ManufactureProps[];
 
 export type RawProductContextPropsType = {
     pending: boolean;
-    rawProducts: RawProducts;
+    rawProducts: RawProductsProps;
+    filterValues: FilterValuesProps;
     manufactures: Manufactures;
     addStore: (data: {}) => Promise<any>;
     getAllRawProducts: () => Promise<any>;
     getAllManufactures: () => Promise<any>;
+    getAllFilterValues: () => Promise<any>;
     addRawProduct: (data: {}) => Promise<any>;
     deleteRawProduct: (data: { ids: string[] | number[]}) => Promise<any>;
     updateRawProduct: (data: {}) => Promise<any>;

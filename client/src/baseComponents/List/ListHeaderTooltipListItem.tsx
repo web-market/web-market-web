@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Checkbox } from '../Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 
 import classes from './styles/index.scss';
 import PropTypes from 'prop-types';

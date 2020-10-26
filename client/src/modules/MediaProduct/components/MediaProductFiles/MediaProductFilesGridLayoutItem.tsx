@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './styles/index.scss';
-import { Checkbox } from '../../../../baseComponents/Checkbox';
+import { Checkbox } from '../../../../baseComponents/Checkbox/Checkbox';
 import { MediaProductContext } from '../../store/consts';
 
 const MediaProductFilesGridLayoutItem = (

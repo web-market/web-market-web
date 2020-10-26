@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Checkbox as CheckboxComponent } from '../../Checkbox';
+import { Checkbox as CheckboxComponent } from '../../Checkbox/Checkbox';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox';
 

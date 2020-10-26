@@ -21,6 +21,10 @@ const getAllManufactures = () => {
     return GET(EXTERNAL_MODULES_ENDPOINTS.GET_MANUFACTURES);
 };
 
+const getAllFilterValues = () => {
+    return GET(EXTERNAL_MODULES_ENDPOINTS.GET_FILTERS_VALUES);
+};
+
 // const getRawProduct = (id) => {
 //     return GET(`${ENDPOINTS.GET_RAW_PRODUCT}/${id}`);
 // };
@@ -31,6 +35,7 @@ export {
     updateRawProduct,
     getAllRawProducts,
     deleteRawProduct,
+    getAllFilterValues,
     getAllManufactures
     //getRawProduct
 };

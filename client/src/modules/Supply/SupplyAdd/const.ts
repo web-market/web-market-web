@@ -4,6 +4,6 @@ export const ENDPOINTS = {
     GET_PROVIDERS: '/provider-management/providers',
     GET_STORES: '/store-management/stores',
     VALIDATE_SUPPLY_NUMBER: '/supply-management/supplies/identification-number/check',
-    GET_ALL_RAW_PRODUCTS: '/raw-product-management/raw-products',
+    GET_ALL_RAW_PRODUCTS: '/product-variant-management/product-variants',
     CREATE_SUPPLY: '/supply-management/supplies'
 };

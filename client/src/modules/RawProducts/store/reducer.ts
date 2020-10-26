@@ -1,4 +1,4 @@
-import {actionLogger, removeArrayElementById, updateArrayElementById} from '../../../utils';
+import { actionLogger, removeArrayElementById, updateArrayElementById } from '../../../utils';
 
 import {
 	SET_PENDING,
@@ -6,8 +6,10 @@ import {
     ADD_RAW_PRODUCT,
     UPDATE_RAW_PRODUCT,
     DELETE_RAW_PRODUCT,
-    GET_MANUFACTURES
+    GET_MANUFACTURES,
+    GET_FILTER_VALUES
 } from './const';
+import { normalizeFilterValuesData } from '../utils';
 
 export const reducer = (state, payload) => {
 	actionLogger(payload.type, payload, SET_PENDING);
@@ -27,6 +29,13 @@ export const reducer = (state, payload) => {
             return {
                 ...state,
                 manufactures: [...state.manufactures, ...payload.manufactures]
+            };
+        case GET_FILTER_VALUES:
+            const normalizeFilterValues = normalizeFilterValuesData(payload.filterValues);
+
+            return {
+                ...state,
+                filterValues: normalizeFilterValues
             };
         case ADD_RAW_PRODUCT:
             return {
