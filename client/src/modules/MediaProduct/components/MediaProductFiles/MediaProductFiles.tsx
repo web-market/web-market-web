@@ -12,7 +12,12 @@ import classes from './styles/index.scss';
 import { MediaProductContext } from '../../store/consts';
 
 const MediaProductFiles = () => {
-    const { mediaProductGrisLayout, activeCategoryId, mediaFiles, getMediaFilesInCategory } = useContext(MediaProductContext);
+    const {
+        mediaProductGrisLayout,
+        activeCategoryId,
+        mediaFiles,
+        getMediaFilesInCategory
+    } = useContext(MediaProductContext);
 
 	useEffect(() => {
 		if (!isNull(activeCategoryId)) {

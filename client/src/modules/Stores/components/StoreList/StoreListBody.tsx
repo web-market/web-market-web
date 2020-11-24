@@ -53,6 +53,7 @@ const StoreListBody = (
                 stores.map(store => {
                     return (
                         <ListRow
+                            pointer
                             key={getUniqueKey()}
                             className={classes.storeListBody__row}
                             onClick={() => push(`${URL.STORE_DETAIL.DETAIL}/${store.id}`)}

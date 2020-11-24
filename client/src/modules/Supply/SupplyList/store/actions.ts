@@ -1,16 +1,14 @@
 import { useCallback } from 'react';
 
 import {
-    addSupply as addSupplyAPI,
-    editSupply as editSupplyAPI,
-    getSupply as getSupplyAPI,
     deleteSupply as deleteSupplyAPI,
-    getAllSupplies as getAllSuppliesAPI
+    getAllSupplies as getAllSuppliesAPI,
+    getSupply as getSupplyAPI
 } from '../api';
 
 import {
+    SET_SUPPLIES,
     SET_PENDING,
-    SET_SUPPLY,
     DELETE_SUPPLY
 } from './const';
 
@@ -22,17 +20,17 @@ export default (dispatch) => {
         });
     }, [dispatch]);
 
-    const _deleteStores = useCallback(({ ids }) => {
+    const _deleteSupplies = useCallback(({ ids }) => {
         dispatch({
             type: DELETE_SUPPLY,
             supplyIds: ids
         });
     }, [dispatch]);
 
-    const _setStores = useCallback(supply => {
+    const _setSupplies = useCallback(supplies => {
         dispatch({
-            type: SET_SUPPLY,
-            supply
+            type: SET_SUPPLIES,
+            supplies
         });
     }, [dispatch]);
 
@@ -41,38 +39,35 @@ export default (dispatch) => {
 
         return getAllSuppliesAPI()
             .then(({ data }) => {
-                _setStores(data);
+                _setSupplies(data);
 
                 return data;
             })
             .finally(() => _setPending(false));
-    }, [_setPending, _setStores]);
+    }, [_setPending, _setSupplies]);
 
-    const addSupply = useCallback(data => {
+    const getSupply = useCallback((supplyId: string | number) => {
         _setPending(true);
 
-        return addSupplyAPI(data)
+        return getSupplyAPI(supplyId)
             .then(({ data }) => {
-                _setStores([data]);
-
                 return data;
             })
-            .catch(e => console.log(e))
             .finally(() => _setPending(false));
-    }, [_setPending, _setStores]);
+    }, [_setPending]);
 
-    const deleteSupply = useCallback(data => {
+    const deleteSupply = useCallback((supplyIds: string[] | number[]) => {
         _setPending(true);
 
-        return deleteSupplyAPI(data)
-            .then(() => _deleteStores(data))
+        return deleteSupplyAPI(supplyIds)
+            .then(() => _deleteSupplies(supplyIds))
             .catch(e => console.log(e))
             .finally(() => _setPending(false));
-    }, [_setPending, _deleteStores]);
+    }, [_setPending, _deleteSupplies]);
 
     return {
+        getSupply,
         getSupplies,
-        addSupply,
         deleteSupply
     };
 };

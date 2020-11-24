@@ -25,7 +25,7 @@ const SupplyAddContent = () => {
         const normalizedData = normalizeSupplyData(formsDataRef.current);
         const normalizedItems = normalizeAddedItems(values);
 
-        createSupply({ ...normalizedData, supplyRawProductAudit: normalizedItems });
+        createSupply({ ...normalizedData, supplyProductAudit: normalizedItems });
     };
 
     const rawProducts = useGetRawProducts();

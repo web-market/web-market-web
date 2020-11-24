@@ -22,7 +22,7 @@ const SupplyAddListItem = (
     const filedName = useMemo(() => {
         return {
             rowProductName: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.rawProduct),
-            quantity: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.rawProductQuantity),
+            quantity: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.productQuantity),
             pricePerItem: parseSupplyAddObjectKey(formItem, supplyListMatrixItemsName.pricePerItem),
         };
     }, [formItem]);
@@ -51,7 +51,7 @@ const SupplyAddListItem = (
                 );
             }
 
-            if (supplyListMatrixItemsName.rawProductQuantity === item.itemName) {
+            if (supplyListMatrixItemsName.productQuantity === item.itemName) {
                 rowItems.push(
                     <ListRowItem
                         key={getUniqueKey()}

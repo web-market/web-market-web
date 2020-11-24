@@ -10,8 +10,9 @@ import ProductsList from '../../modules/Products/ProductsList';
 import CreateProduct from '../../modules/Products/CreateProduct';
 import { Stores } from '../../modules/Stores/Stores';
 import { StoreDetail } from '../../modules/StoreDetail/StoreDetail';
-import { Supply } from '../../modules/Supply/Supply/Supply';
+import { SupplyList } from '../../modules/Supply/SupplyList/SupplyList';
 import { SupplyAdd } from '../../modules/Supply/SupplyAdd/SupplyAdd';
+import { SupplyDetail } from '../../modules/Supply/SupplyDetail/SupplyDetail';
 import { RawProductsWithContext } from '../../modules/RawProducts/RawProducts';
 
 import { URL } from '../consts';
@@ -27,9 +28,10 @@ const AdminControlRoutes = () => {
 			<Route path={URL.CATALOG.CREATE_PRODUCT} component={CreateProduct} />
 			<Route path={URL.STORE.MANUFACTURES} component={Manufactures} />
 			<Route path={URL.STORE.STORES} component={Stores} />
-			<Route path={URL.STORE_DETAIL.ROOT} component={StoreDetail} />
-			<Route path={URL.STORE.SUPPLY} component={Supply} />
-			<Route path={URL.STORE.ADD_SUPPLY} component={SupplyAdd} />
+			<Route path={URL.STORE_DETAIL.ID} component={StoreDetail} />
+			<Route path={URL.SUPPLY.SUPPLY_LIST} component={SupplyList} />
+			<Route path={URL.SUPPLY.ADD_SUPPLY} component={SupplyAdd} />
+			<Route path={URL.SUPPLY.SUPPLY_DETAIL_ID} component={SupplyDetail} />
 			<Route path={URL.STORE.RAW_PRODUCT} component={RawProductsWithContext} />
 		</Switch>
 	);

@@ -12,12 +12,16 @@ export const URL = {
         ROOT: '/adminpanel/store',
         MANUFACTURES: '/adminpanel/store/manufactures-list',
         STORES: '/adminpanel/store/stores-list',
-        SUPPLY: '/adminpanel/store/supplies-list',
-        ADD_SUPPLY: '/adminpanel/store/add-supply',
         RAW_PRODUCT: '/adminpanel/store/raw-products-list'
     },
+    SUPPLY: {
+        SUPPLY_LIST: '/adminpanel/supply/supplies-list',
+        ADD_SUPPLY: '/adminpanel/supply/add-supply',
+        SUPPLY_DETAIL_ID: '/adminpanel/supply/supply-detail/:supplyId',
+        SUPPLY_DETAIL: '/adminpanel/supply/supply-detail',
+    },
     STORE_DETAIL: {
-        ROOT: '/adminpanel/store/store-detail/:storeId',
+        ID: '/adminpanel/store/store-detail/:storeId',
         DETAIL: '/adminpanel/store/store-detail',
     },
 	CATEGORY: {
@@ -62,7 +66,7 @@ export const mainNavItem = [
         items: [
             {
                 label: '!!Поставки',
-                link: URL.STORE.SUPPLY,
+                link: URL.SUPPLY.SUPPLY_LIST,
                 hasRoute: true
             },
             {

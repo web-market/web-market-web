@@ -5,11 +5,9 @@ import { NotificationModal } from '../../../../../components/NotificationModal/N
 
 const SupplyModalsProvider = ({ children }) => {
 	const [modalData, setModalData] = useState({});
-	// const [isAddSupplyModalOpen, setIsAddSupplyModalOpen] = useState(false);
 	const [isDeleteSupplyModalOpen, setIsDeleteSupplyModalOpen] = useState(false);
 
 	const modalState = {
-		// [MODALS.ADD_SUPPLY_MODAL]: setIsAddSupplyModalOpen,
 		[MODALS.DELETE_SUPPLY_MODAL]: setIsDeleteSupplyModalOpen,
 	};
 
@@ -35,10 +33,6 @@ const SupplyModalsProvider = ({ children }) => {
 			<SupplyModalsContext.Provider value={{ ...modalProviderActions }}>
 				{ children }
 			</SupplyModalsContext.Provider>
-            {/*<SupplyAddModal*/}
-            {/*    isOpen={isAddSupplyModalOpen}*/}
-            {/*    handleClose={() => closeModal(MODALS.ADD_SUPPLY_MODAL)}*/}
-            {/*/>*/}
             <NotificationModal
                 modalData={modalData}
                 isOpen={isDeleteSupplyModalOpen}

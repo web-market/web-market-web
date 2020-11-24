@@ -9,7 +9,7 @@ const SupplyHeader = () => {
     const actions = [
         {
             type: 'primary',
-            actionHandler: () => push(URL.STORE.ADD_SUPPLY),
+            actionHandler: () => push(URL.SUPPLY.ADD_SUPPLY),
             label: '!!Добавить'
         }
     ];

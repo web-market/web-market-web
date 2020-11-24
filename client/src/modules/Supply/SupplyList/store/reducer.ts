@@ -2,7 +2,7 @@ import { actionLogger, removeArrayElementById } from '../../../../utils';
 
 import {
 	SET_PENDING,
-    SET_SUPPLY,
+    SET_SUPPLIES,
     DELETE_SUPPLY,
 } from './const';
 
@@ -15,7 +15,7 @@ export const reducer = (state, payload) => {
                 ...state,
                 pending: payload.pending
             };
-		case SET_SUPPLY:
+		case SET_SUPPLIES:
 			return {
 				...state,
                 supplies: [...state.supplies, ...payload.supplies]

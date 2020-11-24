@@ -8,10 +8,13 @@ import { EmptyContainer } from '../../../../../baseComponents/EmptyContainer/Emp
 import { SupplyList } from '../SupplyList/SupplyList';
 import { useHistory } from 'react-router-dom';
 import { URL } from '../../../../../components/consts';
+import { useGetSupplies } from '../../hooks';
 
 const SupplyContent = () => {
     const { supplies } = useContext(SupplyContext);
     const { push } = useHistory();
+
+    useGetSupplies();
 
     return (
         <AdminControlContentBox>
@@ -41,7 +44,7 @@ const SupplyContent = () => {
                             <Button
                                 label="!!Добавить поставку"
                                 type="primary"
-                                actionHandler={() => push(URL.STORE.ADD_SUPPLY)}
+                                actionHandler={() => push(URL.SUPPLY.ADD_SUPPLY)}
                             />
                         </MarginBox>
                     </EmptyContainer>

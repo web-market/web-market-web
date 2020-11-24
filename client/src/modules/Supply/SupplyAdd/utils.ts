@@ -14,7 +14,7 @@ export const getBlankSupplyItem = () => {
 
     return {
         [`${supplyListMatrixItemsName.rawProduct}__${key}`]: null,
-        [`${supplyListMatrixItemsName.rawProductQuantity}__${key}`]: null,
+        [`${supplyListMatrixItemsName.productQuantity}__${key}`]: null,
         [`${supplyListMatrixItemsName.pricePerItem}__${key}`]: null,
         id: key
     };
@@ -39,7 +39,7 @@ export const normalizeSupplyData = values => {
 export const normalizeAddedItems = values => {
     const valuesCopy = { ...values };
 
-    const supplyRawProductAudit = [];
+    const supplyProductAudit = [];
     const uuidKeys = [];
 
     for (const key in valuesCopy) {
@@ -63,8 +63,8 @@ export const normalizeAddedItems = values => {
             }
         }
 
-        supplyRawProductAudit.push(item);
+        supplyProductAudit.push(item);
     });
 
-    return supplyRawProductAudit;
+    return supplyProductAudit;
 };

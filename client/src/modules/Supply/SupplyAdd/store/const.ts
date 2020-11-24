@@ -13,7 +13,7 @@ export const initialState = {
     itemsToAdd: [
         {
             [`${supplyListMatrixItemsName.rawProduct}__${key}`]: null,
-            [`${supplyListMatrixItemsName.rawProductQuantity}__${key}`]: null,
+            [`${supplyListMatrixItemsName.productQuantity}__${key}`]: null,
             [`${supplyListMatrixItemsName.pricePerItem}__${key}`]: null,
             id: key
         }

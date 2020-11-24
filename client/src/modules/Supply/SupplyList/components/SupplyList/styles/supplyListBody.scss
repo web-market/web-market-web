@@ -1,0 +1,11 @@
+.supplyListBody__row:hover .storeListBody__deleteButton {
+	opacity: 1;
+}
+
+.supplyListBody__deleteButton {
+	position: absolute;
+	right: 16px;
+	opacity: 0;
+
+	@include transition(opacity .2s)
+}
