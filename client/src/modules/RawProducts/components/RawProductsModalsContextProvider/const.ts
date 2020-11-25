@@ -2,9 +2,9 @@ import { createContext } from 'react';
 import { ModalsContextPropsType } from '../../../../generalTypes';
 
 export const MODALS = {
-    DETAIL_RAW_PRODUCTS_MODAL: 'DETAIL_RAW_PRODUCTS_MODAL',
-    DELETE_RAW_PRODUCTS_MODAL: 'DELETE_RAW_PRODUCTS_MODAL',
-    EDIT_RAW_PRODUCTS_MODAL: 'EDIT_RAW_PRODUCTS_MODAL',
+    DETAIL_MODEL_MODAL: 'DETAIL_MODEL_MODAL',
+    DELETE_MODEL_MODAL: 'DELETE_MODEL_MODAL',
+    EDIT_MODEL_MODAL: 'EDIT_MODEL_MODAL',
 };
 
 const StoreModalsContextInitialValues = {

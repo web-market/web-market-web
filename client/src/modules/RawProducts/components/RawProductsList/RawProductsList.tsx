@@ -30,7 +30,7 @@ const RawProductsList = () => {
 
     const handleRawProductClick = id => {
         openModal(
-            MODALS.DETAIL_RAW_PRODUCTS_MODAL,
+            MODALS.DETAIL_MODEL_MODAL,
             { id }
         );
     };
@@ -39,7 +39,7 @@ const RawProductsList = () => {
         const currentItem = getArrayElementByKey(rawProducts, id);
 
         openModal(
-            MODALS.DELETE_RAW_PRODUCTS_MODAL,
+            MODALS.DELETE_MODEL_MODAL,
             {
                 modalTitle: '!!Удалить типовый товар',
                 handleSubmit: () => deleteRawProduct({ ids: [id] }),
@@ -56,7 +56,7 @@ const RawProductsList = () => {
 
     const handleRawProductEdit = useCallback(id => {
         openModal(
-            MODALS.EDIT_RAW_PRODUCTS_MODAL,
+            MODALS.EDIT_MODEL_MODAL,
             { id }
         );
     }, [openModal]);

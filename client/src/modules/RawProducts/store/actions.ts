@@ -12,12 +12,12 @@ import {
 
 import {
     SET_PENDING,
-    GET_RAW_PRODUCTS,
-    ADD_RAW_PRODUCT,
-    UPDATE_RAW_PRODUCT,
+    GET_MODELS,
+    ADD_MODEL,
+    UPDATE_MODEL,
     GET_MANUFACTURES,
     GET_FILTER_VALUES,
-    DELETE_RAW_PRODUCT
+    DELETE_MODEL
 } from './const';
 
 export default (dispatch) => {
@@ -30,14 +30,14 @@ export default (dispatch) => {
 
     const _deleteRawProduct = useCallback(({ ids }) => {
         dispatch({
-            type: DELETE_RAW_PRODUCT,
+            type: DELETE_MODEL,
             rawProductsIds: ids
         });
     }, [dispatch]);
 
     const _getRawProducts = useCallback(rawProducts => {
         dispatch({
-            type: GET_RAW_PRODUCTS,
+            type: GET_MODELS,
             rawProducts
         });
     }, [dispatch]);
@@ -58,14 +58,14 @@ export default (dispatch) => {
 
     const _addRawProduct = useCallback(rawProduct => {
         dispatch({
-            type: ADD_RAW_PRODUCT,
+            type: ADD_MODEL,
             rawProduct
         });
     }, [dispatch]);
 
     const _updateRawProduct = useCallback(rawProduct => {
         dispatch({
-            type: UPDATE_RAW_PRODUCT,
+            type: UPDATE_MODEL,
             rawProduct
         });
     }, [dispatch]);

@@ -2,10 +2,10 @@ import { actionLogger, removeArrayElementById, updateArrayElementById } from '..
 
 import {
 	SET_PENDING,
-    GET_RAW_PRODUCTS,
-    ADD_RAW_PRODUCT,
-    UPDATE_RAW_PRODUCT,
-    DELETE_RAW_PRODUCT,
+    GET_MODELS,
+    ADD_MODEL,
+    UPDATE_MODEL,
+    DELETE_MODEL,
     GET_MANUFACTURES,
     GET_FILTER_VALUES
 } from './const';
@@ -20,7 +20,7 @@ export const reducer = (state, payload) => {
                 ...state,
                 pending: payload.pending
             };
-		case GET_RAW_PRODUCTS:
+		case GET_MODELS:
 			return {
 				...state,
                 rawProducts: [...state.rawProducts, ...payload.rawProducts]
@@ -37,19 +37,19 @@ export const reducer = (state, payload) => {
                 ...state,
                 filterValues: normalizeFilterValues
             };
-        case ADD_RAW_PRODUCT:
+        case ADD_MODEL:
             return {
                 ...state,
                 rawProducts: [...state.rawProducts, ...payload.rawProduct]
             };
-        case UPDATE_RAW_PRODUCT:
+        case UPDATE_MODEL:
             const updateRawProducts = updateArrayElementById(state.rawProducts, payload.rawProduct.id, payload.rawProduct);
 
             return {
                 ...state,
                 rawProducts: updateRawProducts
             };
-        case DELETE_RAW_PRODUCT:
+        case DELETE_MODEL:
             let newItems = state.rawProducts;
 
             payload.rawProductsIds.forEach(id => {

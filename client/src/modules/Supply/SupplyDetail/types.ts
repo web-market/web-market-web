@@ -12,11 +12,3 @@ export type Supply = {
     },
     comment: string
 };
-
-export type Supplies = Supply[];
-
-export type StoreContextPropsType = {
-    supplies: Supplies,
-    getSupplies: () => Promise<any>,
-    deleteSupply: (ids: []) => Promise<any>
-};

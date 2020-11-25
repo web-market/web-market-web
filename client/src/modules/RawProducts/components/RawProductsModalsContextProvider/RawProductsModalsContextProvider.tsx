@@ -12,9 +12,9 @@ const RawProductsModalsContextProvider = ({ children }) => {
 	const [isEditRawProductModalOpen, setIsEditRawProductModalOpen] = useState(false);
 
 	const modalState = {
-		[MODALS.DETAIL_RAW_PRODUCTS_MODAL]: setIsDetailRawProductOpen,
-		[MODALS.DELETE_RAW_PRODUCTS_MODAL]: setIsDeleteRawProductModalOpen,
-		[MODALS.EDIT_RAW_PRODUCTS_MODAL]: setIsEditRawProductModalOpen,
+		[MODALS.DETAIL_MODEL_MODAL]: setIsDetailRawProductOpen,
+		[MODALS.DELETE_MODEL_MODAL]: setIsDeleteRawProductModalOpen,
+		[MODALS.EDIT_MODEL_MODAL]: setIsEditRawProductModalOpen,
 	};
 
 	const openModal = (modalName, data) => {
@@ -42,17 +42,17 @@ const RawProductsModalsContextProvider = ({ children }) => {
             <NotificationModal
                 modalData={modalData}
                 isOpen={isDeleteRawProductModalOpen}
-                handleClose={() => closeModal(MODALS.DELETE_RAW_PRODUCTS_MODAL)}
+                handleClose={() => closeModal(MODALS.DELETE_MODEL_MODAL)}
             />
             <RawProductsDetailModal
                 isOpen={isDetailRawProductOpen}
                 modalData={modalData}
-                handleClose={() => closeModal(MODALS.DETAIL_RAW_PRODUCTS_MODAL)}
+                handleClose={() => closeModal(MODALS.DETAIL_MODEL_MODAL)}
             />
             <RawProductsEditModal
                 isOpen={isEditRawProductModalOpen}
                 modalData={modalData}
-                handleClose={() => closeModal(MODALS.EDIT_RAW_PRODUCTS_MODAL)}
+                handleClose={() => closeModal(MODALS.EDIT_MODEL_MODAL)}
             />
 		</>
 	);

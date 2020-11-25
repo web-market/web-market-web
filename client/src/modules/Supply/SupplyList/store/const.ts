@@ -14,8 +14,7 @@ export {
 export const initialState = {
     supplies: [],
     getSupplies: () => Promise.resolve(),
-    deleteSupply: () => Promise.resolve(),
-    getSupply: () => Promise.resolve(),
+    deleteSupply: () => Promise.resolve()
 };
 
 export const SupplyContext = createContext<StoreContextPropsType>(initialState);

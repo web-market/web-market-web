@@ -6,7 +6,7 @@ import { RawProductAddForm } from './RawProductAddForm';
 import { Button } from '../../../../baseComponents/Button/Button';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 import { RawProductContext } from '../../store/const';
-import { ADD_RAW_PRODUCT_FORM } from '../../const';
+import { ADD_MODEL_FORM } from '../../const';
 import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
 
 const RawProductsAdd = () => {
@@ -28,7 +28,7 @@ const RawProductsAdd = () => {
             <Button
                 label="!!добавить"
                 type="primary"
-                actionHandler={() => forms.ADD_RAW_PRODUCT_FORM.submitForm()}
+                actionHandler={() => forms.ADD_MODEL_FORM.submitForm()}
             />
         </>
     );
@@ -36,7 +36,7 @@ const RawProductsAdd = () => {
     return (
         <AdminControlContentBox>
             <RawProductAddForm
-                name={ADD_RAW_PRODUCT_FORM}
+                name={ADD_MODEL_FORM}
                 rightSectionButtons={rightSectionButtons}
                 manufactures={manufactures}
                 filterValues={filterValues}

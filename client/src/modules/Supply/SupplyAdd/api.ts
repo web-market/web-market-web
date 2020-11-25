@@ -6,7 +6,7 @@ export const validateSupplyIdentificationNumber = identificationNumber => {
 };
 
 export const getAllRawProducts = () => {
-    return GET(ENDPOINTS.GET_ALL_RAW_PRODUCTS);
+    return GET(ENDPOINTS.GET_ALL_MODELS);
 };
 
 export const createSupply = data => {

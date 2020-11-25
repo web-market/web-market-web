@@ -2,8 +2,7 @@ import { useCallback } from 'react';
 
 import {
     deleteSupply as deleteSupplyAPI,
-    getAllSupplies as getAllSuppliesAPI,
-    getSupply as getSupplyAPI
+    getAllSupplies as getAllSuppliesAPI
 } from '../api';
 
 import {
@@ -46,16 +45,6 @@ export default (dispatch) => {
             .finally(() => _setPending(false));
     }, [_setPending, _setSupplies]);
 
-    const getSupply = useCallback((supplyId: string | number) => {
-        _setPending(true);
-
-        return getSupplyAPI(supplyId)
-            .then(({ data }) => {
-                return data;
-            })
-            .finally(() => _setPending(false));
-    }, [_setPending]);
-
     const deleteSupply = useCallback((supplyIds: string[] | number[]) => {
         _setPending(true);
 
@@ -66,7 +55,6 @@ export default (dispatch) => {
     }, [_setPending, _deleteSupplies]);
 
     return {
-        getSupply,
         getSupplies,
         deleteSupply
     };

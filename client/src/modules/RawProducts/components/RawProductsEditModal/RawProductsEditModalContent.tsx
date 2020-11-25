@@ -5,7 +5,7 @@ import { Button } from '../../../../baseComponents/Button/Button';
 import { getArrayElementByKey } from '../../../../utils';
 import { RawProductContext } from '../../store/const';
 import { RawProductAddForm } from '../RawProductsAdd/RawProductAddForm';
-import { EDIT_RAW_PRODUCT_FORM } from '../../const';
+import { EDIT_MODEL_FORM } from '../../const';
 import { FormsGlobalContext } from '../../../../App/store/FormsGlobalContext';
 import { AppGlobalContext } from '../../../../App/store/AppGlobalContext';
 
@@ -35,7 +35,7 @@ const RawProductsEditModalContent = (
             <Button
                 label="!!Редактировать"
                 type="primary"
-                actionHandler={() => forms.ADD_RAW_PRODUCT_FORM.submitForm()}
+                actionHandler={() => forms.ADD_MODEL_FORM.submitForm()}
             />
         </>
     );
@@ -50,7 +50,7 @@ const RawProductsEditModalContent = (
                 <RawProductAddForm
                     editMode
                     initialValues={currentItem}
-                    name={EDIT_RAW_PRODUCT_FORM}
+                    name={EDIT_MODEL_FORM}
                     rightSectionButtons={rightSectionButtons}
                     manufactures={manufactures}
                     filterValues={filterValues}
@@ -70,7 +70,7 @@ const RawProductsEditModalContent = (
                         <Button
                             label="!!Редактировать"
                             type="primary"
-                            actionHandler={() => forms.EDIT_RAW_PRODUCT_FORM.submitForm()}
+                            actionHandler={() => forms.EDIT_MODEL_FORM.submitForm()}
                         />
                     )}
                 />

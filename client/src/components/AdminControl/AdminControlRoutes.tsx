@@ -32,7 +32,7 @@ const AdminControlRoutes = () => {
 			<Route path={URL.SUPPLY.SUPPLY_LIST} component={SupplyList} />
 			<Route path={URL.SUPPLY.ADD_SUPPLY} component={SupplyAdd} />
 			<Route path={URL.SUPPLY.SUPPLY_DETAIL_ID} component={SupplyDetail} />
-			<Route path={URL.STORE.RAW_PRODUCT} component={RawProductsWithContext} />
+			<Route path={URL.STORE.MODELS} component={RawProductsWithContext} />
 		</Switch>
 	);
 };
